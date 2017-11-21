@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Trainer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TrainerController extends Controller
 {
@@ -14,7 +15,10 @@ class TrainerController extends Controller
      */
     public function index()
     {
-        //
+        // Get all row in trainers table
+        $trainers = DB::table('trainers')->get();
+        
+        return view('trainer.index', ['trainers' => $trainers]);
     }
 
     /**
@@ -24,7 +28,7 @@ class TrainerController extends Controller
      */
     public function create()
     {
-        //
+        return view('trainer.create');
     }
 
     /**
@@ -35,7 +39,9 @@ class TrainerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        Trainer::create($input);
+        return redirect('trainer');
     }
 
     /**
