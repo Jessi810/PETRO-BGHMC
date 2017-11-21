@@ -16,6 +16,12 @@
                             <label for="name">Name of trainer</label>
                             <input type="text" id="name" name="name" />
 
+                            <label for="type">Type</label>
+                            <select name="type">
+                                <option value="Internal">Internal</option>
+                                <option value="External">External</option>
+                            </select>
+
                             <br />
 
                             <input type="submit" />

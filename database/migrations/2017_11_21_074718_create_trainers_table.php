@@ -16,6 +16,7 @@ class CreateTrainersTable extends Migration
         Schema::create('trainers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->enum('type', array('Internal', 'External'));
             $table->timestamps();
         });
     }

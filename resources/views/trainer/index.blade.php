@@ -9,9 +9,15 @@
 
                     <div class="panel-body">
                         <table class="table table-responsive">
-                            <tr><th>Trainer Name</th></tr>
+                            <tr>
+                                <th>Name</th>
+                                <th>Type</th>
+                            </tr>
                             @foreach ($trainers as $trainer)
-                                <tr><td>This is trainer {{ $trainer->name }}</td></tr>
+                                <tr>
+                                    <td>{{ $trainer->name }}</td>
+                                    <td>{{ $trainer->type }}</td>
+                                </tr>
                             @endforeach
                         </table>
 
