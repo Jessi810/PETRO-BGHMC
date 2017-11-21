@@ -1,12 +1,28 @@
-<a href="{{ url('trainer') }}">Go back to trainer list</a>
+@extends('layouts.app')
 
-<form class="form-horizontal" method="POST" action="{{ route('trainer.store') }}">
-    {{ csrf_field() }}
+@section('content')
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Create Trainer</div>
 
-    <label for="name">Name of trainer</label>
-    <input type="text" id="name" name="name" />
+                    <div class="panel-body">
+                        <a href="{{ url('trainer') }}">Go back to trainer list</a>
 
-    <br />
+                        <form class="form-horizontal" method="POST" action="{{ route('trainer.store') }}">
+                            {{ csrf_field() }}
 
-    <input type="submit" />
-</form>
+                            <label for="name">Name of trainer</label>
+                            <input type="text" id="name" name="name" />
+
+                            <br />
+
+                            <input type="submit" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
