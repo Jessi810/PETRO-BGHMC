@@ -13,8 +13,10 @@ class TrainerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $request->user()->authorizeRoles(['Admin', 'User']);
+
         // Get all row in trainers table
         $trainers = DB::table('trainers')->get();
         
@@ -26,8 +28,9 @@ class TrainerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        $request->user()->authorizeRoles(['Admin']);
         return view('trainer.create');
     }
 
@@ -39,6 +42,7 @@ class TrainerController extends Controller
      */
     public function store(Request $request)
     {
+        $request->user()->authorizeRoles(['Admin']);
         $input = $request->all();
         Trainer::create($input);
         return redirect('trainer');
