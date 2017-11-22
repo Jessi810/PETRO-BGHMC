@@ -8,25 +8,28 @@
                     <span class="l l3"></span>
                     <span class="l l4"></span>
                     <span class="l l5"></span>
-                </div> Modular Admin </div>
+                </div> PETRO-BGHMC </div>
         </div>
         <nav class="menu">
             <ul class="sidebar-menu metismenu" id="sidebar-menu">
-                <li class="active">
-                    <a href="index.html">
+                <li id="sidebar-item-dashboard">
+                    <a href="{{ url('home') }}">
                         <i class="fa fa-home"></i> Dashboard </a>
                 </li>
-                <li>
-                    <a href="">
-                        <i class="fa fa-th-large"></i> Items Manager
+                <li id="sidebar-item-trainer">
+                    <a href="{{ url('trainer') }}">
+                        <i class="fa fa-users fa-th-large"></i> Trainer
                         <i class="fa arrow"></i>
                     </a>
                     <ul class="sidebar-nav">
                         <li>
-                            <a href="items-list.html"> Items List </a>
+                            <a href="{{ url('trainer') }}"> List </a>
                         </li>
                         <li>
-                            <a href="item-editor.html"> Item Editor </a>
+                            <a href="{{ url('trainer/create') }}"> Create </a>
+                        </li>
+                        <li>
+                            <a href="#"> Info </a>
                         </li>
                     </ul>
                 </li>

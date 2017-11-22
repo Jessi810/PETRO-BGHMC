@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.modular')
 
 @section('content')
     <div class="container">
@@ -31,4 +31,10 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('sidebar-item-set-active')
+    <script>
+        $('#sidebar-item-trainer').addClass('active');
+    </script>
 @endsection

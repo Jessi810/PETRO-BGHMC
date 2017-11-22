@@ -28,3 +28,9 @@
         </div>
     </div>
 @endsection
+
+@section('sidebar-item-set-active')
+    <script>
+        $('#sidebar-item-trainer').addClass('active');
+    </script>
+@endsection
