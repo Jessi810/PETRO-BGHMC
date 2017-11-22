@@ -1,70 +1,35 @@
-@extends('layouts.app')
+@extends('auth._modular')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
+    <p class="text-center">NEW PASSWORD</p>
+        <p class="text-muted text-center">
+            <small>Enter your new password.</small>
+    </p>
+    <form class="form-horizontal" method="POST" action="{{ route('password.request') }}" novalidate="">
+        {{ csrf_field() }}
 
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('password.request') }}">
-                        {{ csrf_field() }}
+        <input type="hidden" name="token" value="{{ $token }}">
 
-                        <input type="hidden" name="token" value="{{ $token }}">
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ $email or old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-
-                                @if ($errors->has('password_confirmation'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Reset Password
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control underlined" name="email" id="email" placeholder="Your email address" required> </div>
+        
+        <div class="form-group">
+            <label for="password">Password</label>
+            <div class="row">
+                <div class="col-sm-6">
+                    <input type="password" class="form-control underlined" name="password" id="password" placeholder="Enter password" required=""> </div>
+                <div class="col-sm-6">
+                    <input type="password" class="form-control underlined" name="password_confirmation" id="password-confirm" placeholder="Re-type password" required=""> </div>
             </div>
         </div>
-    </div>
-</div>
+
+        <div class="form-group">
+            <div class="col-md-6 col-md-offset-4">
+                <button type="submit" class="btn btn-primary">
+                    Save Password
+                </button>
+            </div>
+        </div>
+    </form>
 @endsection
