@@ -17,19 +17,22 @@
                         <i class="fa fa-home"></i> Dashboard </a>
                 </li>
                 <li id="sidebar-item-trainer">
-                    <a href="{{ url('trainer') }}">
+                    <a href="#">
                         <i class="fa fa-users fa-th-large"></i> Trainer
                         <i class="fa arrow"></i>
                     </a>
                     <ul class="sidebar-nav">
                         <li>
-                            <a href="{{ url('trainer') }}"> List </a>
+                            <a href="{{ route('trainer.index') }}"> Trainers </a>
                         </li>
                         <li>
-                            <a href="{{ url('trainer/create') }}"> Create </a>
+                            <a href="{{ route('trainer.index', ['type' => 'Internal']) }}" onclick=""> Internal </a>
                         </li>
                         <li>
-                            <a href="#"> Info </a>
+                            <a href="{{ route('trainer.index', ['type' => 'External']) }}"> External </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('trainer.create') }}"> Create <span class="badge badge-secondary">Admin only</span> </a>
                         </li>
                     </ul>
                 </li>

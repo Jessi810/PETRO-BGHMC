@@ -116,6 +116,8 @@
                 case 'All':
                     $('#typeAll').attr('checked','checked');
                     break;
+                default:
+                    $('#typeAll').attr('checked','checked');
             }
         });
     </script>
