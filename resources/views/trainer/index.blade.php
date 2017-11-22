@@ -1,29 +1,31 @@
 @extends('layouts.modular')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Trainers</div>
-
-                    <div class="panel-body">
-                        <table class="table table-responsive">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-block">
+                <div class="card-title-block">
+                    <h3 class="title"> Trainers </h3>
+                </div>
+                <section class="example">
+                    <table class="table table-sm">
+                        <thead class="thead-default">
                             <tr>
                                 <th>Name</th>
                                 <th>Type</th>
                             </tr>
+                        </thead>
+                        <tbody>
                             @foreach ($trainers as $trainer)
                                 <tr>
                                     <td>{{ $trainer->name }}</td>
                                     <td>{{ $trainer->type }}</td>
                                 </tr>
                             @endforeach
-                        </table>
-
-                        <a href="{{ url('trainer/create') }}">Create new trainer</a>
-                    </div>
-                </div>
+                        </tbody>
+                    </table>
+                    <p><a href="{{ url('trainer/create') }}">Create new trainer</a></p>
+                </section>
             </div>
         </div>
     </div>
