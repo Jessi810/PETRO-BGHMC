@@ -21,7 +21,15 @@
                                 <tr>
                                     <td>{{ $trainer->name }}</td>
                                     <td>{{ $trainer->type }}</td>
-                                    <td><a href="{{ route('trainer.edit', $trainer->id) }}">Edit</a></td>
+                                    <td>
+                                        <a href="{{ route('trainer.edit', $trainer->id) }}">Edit</a>
+                                        <form class="form-horizontal" method="POST" action="{{ route('trainer.destroy', $trainer->id) }}">
+                                            {{ csrf_field() }}
+
+                                            <input type="hidden" name="_method" value="delete">
+                                            <input type="submit" class="btn btn-success" value="Delete" />
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

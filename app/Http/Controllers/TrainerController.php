@@ -91,6 +91,9 @@ class TrainerController extends Controller
      */
     public function destroy(Trainer $trainer)
     {
-        //
+        // Trainer::destroy($trainer);
+        $t = Trainer::find($trainer->id);
+        $t->delete();
+        return redirect()->route('trainer.index')->with('success','Trainer deleted successfully');
     }
 }
