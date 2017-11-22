@@ -33,7 +33,7 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+                {{--  <li>
                     <a href="">
                         <i class="fa fa-bar-chart"></i> Charts
                         <i class="fa arrow"></i>
@@ -170,7 +170,7 @@
                 <li>
                     <a href="https://github.com/modularcode/modular-admin-html">
                         <i class="fa fa-github-alt"></i> Theme Docs </a>
-                </li>
+                </li>  --}}
             </ul>
         </nav>
     </div>
