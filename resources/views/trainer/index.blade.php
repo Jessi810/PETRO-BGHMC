@@ -13,6 +13,7 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Type</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -20,11 +21,12 @@
                                 <tr>
                                     <td>{{ $trainer->name }}</td>
                                     <td>{{ $trainer->type }}</td>
+                                    <td><a href="{{ route('trainer.edit', $trainer->id) }}">Edit</a></td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
-                    <p><a href="{{ url('trainer/create') }}">Create new trainer</a></p>
+                    <p><a href="{{ route('trainer.create') }}">Create new trainer</a></p>
                 </section>
             </div>
         </div>

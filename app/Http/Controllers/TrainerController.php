@@ -67,7 +67,7 @@ class TrainerController extends Controller
      */
     public function edit(Trainer $trainer)
     {
-        //
+        return view('trainer.edit', compact('trainer'));
     }
 
     /**
@@ -79,7 +79,8 @@ class TrainerController extends Controller
      */
     public function update(Request $request, Trainer $trainer)
     {
-        //
+        $trainer->update($request->all());
+        return redirect()->route('trainer.index')->with('success','Trainer updated successfully');
     }
 
     /**
