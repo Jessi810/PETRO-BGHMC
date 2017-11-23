@@ -1,14 +1,15 @@
 @extends('layouts.modular')
 
 @section('content')
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-block">
-                <div class="card-title-block">
-                    <h3 class="title"> Edit Trainer </h3>
-                    <p><a href="{{ route('trainer.index') }}">Go back</a></p>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card card-info">
+                <div class="card-header">
+                    <div class="header-block">
+                        <p class="title"> Edit Trainer </p>
+                    </div>
                 </div>
-                <section class="example">
+                <div class="card-block">
                     <form class="form-horizontal" method="POST" action="{{ route('trainer.update', $trainer->id) }}">
                         {{ csrf_field() }}
 
@@ -38,10 +39,10 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="submit" class="btn btn-success" />
+                            <input type="submit" class="btn btn-success btn-block" />
                         </div>
                     </form>
-                </section>
+                </div>
             </div>
         </div>
     </div>
