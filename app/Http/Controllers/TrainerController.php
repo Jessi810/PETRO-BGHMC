@@ -66,9 +66,9 @@ class TrainerController extends Controller
      * @param  \App\Trainer  $trainer
      * @return \Illuminate\Http\Response
      */
-    public function show(Trainer $trainer)
+    public function show(Request $request, Trainer $trainer)
     {
-        //
+        $request->user()->authorizeRoles(['Admin', 'User']);
     }
 
     /**
@@ -77,8 +77,10 @@ class TrainerController extends Controller
      * @param  \App\Trainer  $trainer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Trainer $trainer)
+    public function edit(Request $request, Trainer $trainer)
     {
+        $request->user()->authorizeRoles(['Admin']);
+
         return view('trainer.edit', compact('trainer'));
     }
 
@@ -91,6 +93,8 @@ class TrainerController extends Controller
      */
     public function update(Request $request, Trainer $trainer)
     {
+        $request->user()->authorizeRoles(['Admin']);
+
         $trainer->update($request->all());
         return redirect()->route('trainer.index')->with('success','Trainer updated successfully');
     }
@@ -101,9 +105,10 @@ class TrainerController extends Controller
      * @param  \App\Trainer  $trainer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Trainer $trainer)
+    public function destroy(Request $request, Trainer $trainer)
     {
-        // Trainer::destroy($trainer);
+        $request->user()->authorizeRoles(['Admin']);
+        
         $t = Trainer::find($trainer->id);
         $t->delete();
         return redirect()->route('trainer.index')->with('success','Trainer deleted successfully');
