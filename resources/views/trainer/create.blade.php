@@ -37,7 +37,7 @@
     </div>
 @endsection
 
-@section('sidebar-item-set-active')
+@section('scripts')
     <script>
         $('#sidebar-item-trainer').addClass('active');
     </script>

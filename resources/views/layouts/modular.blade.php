@@ -73,6 +73,6 @@
 </script>
 <script src="{{ asset('js/vendor.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
-@yield('sidebar-item-set-active')
+@yield('scripts')
 </body>
 </html>

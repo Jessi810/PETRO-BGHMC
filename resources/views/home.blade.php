@@ -18,7 +18,7 @@
     </div>
 @endsection
 
-@section('sidebar-item-set-active')
+@section('scripts')
     <script>
         $('#sidebar-item-dashboard').addClass('active');
     </script>
