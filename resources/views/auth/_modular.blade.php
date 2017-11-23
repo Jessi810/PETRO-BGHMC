@@ -11,8 +11,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('modular/css/vendor.css') }}" rel="stylesheet">
-    <link href="{{ asset('modular/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/vendor.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <!-- Theme initialization -->
     {{--  <script>
@@ -80,7 +80,7 @@
     ga('create', 'UA-80463319-4', 'auto');
     ga('send', 'pageview');
 </script>
-<script src="{{ asset('modular/js/vendor.js') }}"></script>
-<script src="{{ asset('modular/js/app.js') }}"></script>
+<script src="{{ asset('js/vendor.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
