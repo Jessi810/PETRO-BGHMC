@@ -29,12 +29,13 @@
                                             <td>{{ $trainer->expertise }}</td>
                                             <td>{{ $trainer->agency_name }}</td>
                                             <td>
-                                                <a href="{{ route('trainer.edit', $trainer->id) }}" class="btn btn-sm btn-success">Edit</a>
+                                                <a href="{{ route('trainer.edit', $trainer->id) }}" class="btn btn-sm btn-success">
+                                                    <i class="fa fa-pencil" aria-hidden="true"></i></a>
                                                 <form class="form-horizontal" style="display: inline;" method="POST" action="{{ route('trainer.destroy', $trainer->id) }}">
                                                     {{ csrf_field() }}
 
                                                     <input type="hidden" name="_method" value="delete">
-                                                    <input type="submit" class="btn btn-sm btn-danger" value="Delete" />
+                                                    <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                                 </form>
                                             </td>
                                         </tr>
