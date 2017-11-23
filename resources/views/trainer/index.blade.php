@@ -16,6 +16,8 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>Type</th>
+                                        <th>Expertise</th>
+                                        <th>Agency</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -24,6 +26,8 @@
                                         <tr>
                                             <td>{{ $trainer->name }}</td>
                                             <td>{{ $trainer->type }}</td>
+                                            <td>{{ $trainer->expertise }}</td>
+                                            <td>{{ $trainer->agency_name }}</td>
                                             <td>
                                                 <a href="{{ route('trainer.edit', $trainer->id) }}" class="btn btn-sm btn-success">Edit</a>
                                                 <form class="form-horizontal" style="display: inline;" method="POST" action="{{ route('trainer.destroy', $trainer->id) }}">

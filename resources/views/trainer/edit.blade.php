@@ -17,6 +17,12 @@
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" class="form-control underlined" name="name" id="name" value="{{ $trainer->name }}" placeholder="Trainer's name" required> </div>
+                        <div class="form-group">
+                            <label for="expertise">Expertise</label>
+                            <input type="text" class="form-control underlined" name="expertise" id="expertise" value="{{ $trainer->expertise }}" placeholder="Trainer's field of expertise" required> </div>
+                        <div class="form-group">
+                            <label for="agency_name">Agency</label>
+                            <input type="text" class="form-control underlined" name="agency_name" id="agency_name" value="{{ $trainer->agency_name }}" placeholder="Trainer's agency" required> </div>
 
                         <div class="form-group">
                             <label for="type">Type</label>
