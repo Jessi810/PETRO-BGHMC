@@ -50,9 +50,9 @@
                                         <td>{{ $education->school }}</td>
                                         <td>{{ $education->year_graduated }}</td>
                                         <td>
-                                            <a href="{{ route('education.edit', $trainer->id) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit Education">
+                                            <a href="{{ route('education.edit', [$education->id, $trainer->id]) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit Education">
                                                 <i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                            <form class="form-horizontal" style="display: inline;" method="POST" action="{{ route('education.destroy', $trainer->id) }}" data-toggle="tooltip" data-placement="top" title="Delete Education">
+                                            <form class="form-horizontal" style="display: inline;" method="POST" action="{{ route('education.destroy', $education->id) }}" data-toggle="tooltip" data-placement="top" title="Delete Education">
                                                 {{ csrf_field() }}
 
                                                 <input type="hidden" name="_method" value="delete">
