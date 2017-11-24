@@ -13,6 +13,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/vendor.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/site.css') }}" rel="stylesheet">
 
     <!-- Theme initialization -->
     {{--  <script>
@@ -73,6 +74,11 @@
 </script>
 <script src="{{ asset('js/vendor.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
 @yield('scripts')
 </body>
 </html>

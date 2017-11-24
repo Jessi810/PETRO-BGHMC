@@ -5,6 +5,9 @@
         <div class="col-md-6">
             <div class="card card-info">
                 <div class="card-header">
+                    <div class="header-block" style="padding-right: 0;">
+                        <p class="title"> <a href="{{ route('trainer.index') }}" class="btn btn-primary btn-sm rounded" data-toggle="tooltip" data-placement="top" title="Go back"><i class="fa fa-arrow-left" aria-hidden="true"></i></a> </p>
+                    </div>
                     <div class="header-block">
                         <p class="title"> Create Trainer </p>
                     </div>
