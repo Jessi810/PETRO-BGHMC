@@ -64,19 +64,19 @@
                         <div class="form-group">
                             <div>
                                 <label>
-                                    <input class="radio" name="type" type="radio">
+                                    <input id="typeAll" class="radio" name="type" type="radio" value="All">
                                     <span>Show all</span>
                                 </label>
                             </div>
                             <div>
                                 <label>
-                                    <input class="radio" name="type" type="radio">
+                                    <input id="typeInternal" class="radio" name="type" type="radio" value="Internal">
                                     <span>Internal only</span>
                                 </label>
                             </div>
                             <div>
                                 <label>
-                                    <input class="radio" name="type" type="radio">
+                                    <input id="typeExternal" class="radio" name="type" type="radio" value="External">
                                     <span>External only</span>
                                 </label>
                             </div>
