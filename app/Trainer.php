@@ -13,4 +13,8 @@ class Trainer extends Model
     public function cv() {
         return $this->hasOne('App\Cv');
     }
+
+    public function educations() {
+        return $this->hasMany(Education::class);
+    }
 }
