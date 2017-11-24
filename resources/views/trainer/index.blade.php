@@ -62,22 +62,22 @@
                         {{ csrf_field() }}
 
                         <div class="form-group">
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="type" id="typeAll" value="All">
-                                    Show all
+                            <div>
+                                <label>
+                                    <input class="radio" name="type" type="radio">
+                                    <span>Show all</span>
                                 </label>
                             </div>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="type" id="typeInternal" value="Internal">
-                                    Internal only
+                            <div>
+                                <label>
+                                    <input class="radio" name="type" type="radio">
+                                    <span>Internal only</span>
                                 </label>
                             </div>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="type" id="typeExternal" value="External">
-                                    External only
+                            <div>
+                                <label>
+                                    <input class="radio" name="type" type="radio">
+                                    <span>External only</span>
                                 </label>
                             </div>
                         </div>
