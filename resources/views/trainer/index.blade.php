@@ -31,7 +31,7 @@
                                     <td>{{ $trainer->expertise }}</td>
                                     <td>{{ $trainer->agency_name }}</td>
                                     <td>
-                                        <a href="{{ route('trainer.edit', $trainer->id) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Show CV">
+                                        <a href="{{ route('cv', $trainer->id) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Show CV">
                                             <i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
                                         <a href="{{ route('trainer.edit', $trainer->id) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit Trainer">
                                             <i class="fa fa-pencil" aria-hidden="true"></i></a>
