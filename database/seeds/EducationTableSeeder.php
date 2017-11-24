@@ -21,6 +21,11 @@ class EducationTableSeeder extends Seeder
         $edu1->year_graduated = 2017;
         $edu1->trainer()->associate($trainer1)->save();
         
+        $edu1 = new Education();
+        $edu1->school = 'University of the Philippines';
+        $edu1->year_graduated = 2018;
+        $edu1->trainer()->associate($trainer1)->save();
+        
         $edu2 = new Education();
         $edu2->school = 'University of Baguio';
         $edu2->year_graduated = 2018;
