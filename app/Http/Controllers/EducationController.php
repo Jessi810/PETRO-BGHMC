@@ -24,7 +24,9 @@ class EducationController extends Controller
      */
     public function create(Request $request)
     {
-        //
+        $request->user()->authorizeRoles(['Admin']);
+
+        return view('education.create');
     }
 
     /**
@@ -35,7 +37,11 @@ class EducationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->user()->authorizeRoles(['Admin']);
+
+        $input = $request->all();
+        Education::create($input);
+        return redirect('education');
     }
 
     /**
@@ -83,8 +89,12 @@ class EducationController extends Controller
      * @param  \App\Education  $education
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Education $education)
+    public function destroy(Request $request, Education $education)
     {
-        //
+        $request->user()->authorizeRoles(['Admin']);
+        
+        $edu = Education::find($education->id);
+        $edu->delete();
+        return redirect()->route('education.index')->with('success','Education deleted successfully');
     }
 }
