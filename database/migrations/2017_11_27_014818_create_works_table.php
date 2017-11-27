@@ -15,6 +15,14 @@ class CreateWorksTable extends Migration
     {
         Schema::create('works', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('company_name');
+            $table->string('position');
+            $table->date('yearfrom');
+            $table->date('yearto');
+
+            $table->integer('trainer_id')->unsigned()->index()->nullable();
+            $table->foreign('trainer_id')->references('id')->on('trainers');
+            
             $table->timestamps();
         });
     }

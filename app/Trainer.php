@@ -17,4 +17,8 @@ class Trainer extends Model
     public function educations() {
         return $this->hasMany(Education::class);
     }
+    
+    public function works() {
+        return $this->hasMany(Work::class);
+    }
 }
