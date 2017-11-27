@@ -41,6 +41,8 @@
                                 <tr>
                                     <th>School</th>
                                     <th>Year</th>
+                                    <th>Major</th>
+                                    <th>Minor</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -49,6 +51,8 @@
                                     <tr>
                                         <td>{{ $education->school }}</td>
                                         <td>{{ $education->year_graduated }}</td>
+                                        <td>{{ $education->major }}</td>
+                                        <td>{{ $education->minor }}</td>
                                         <td>
                                             <a href="{{ route('education.edit', [$education->id, $trainer->id]) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit Education">
                                                 <i class="fa fa-pencil" aria-hidden="true"></i></a>

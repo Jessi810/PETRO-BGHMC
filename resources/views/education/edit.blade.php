@@ -23,7 +23,13 @@
                             <input type="text" class="form-control underlined" name="school" id="school" value="{{ $education->school }}" placeholder="School name" required> </div>
                         <div class="form-group">
                             <label for="year_graduated">Year Graduated</label>
-                            <input type="text" class="form-control underlined" name="year_graduated" id="year_graduated" value="{{ $education->year_graduated }}" placeholder="Year graduated in this school" required> </div>
+                            <input type="text" class="form-control underlined" name="year_graduated" id="year_graduated" value="{{ $education->year_graduated }}" placeholder="Year graduated, Optional" required> </div>
+                        <div class="form-group">
+                            <label for="major">Major</label>
+                            <input type="text" class="form-control underlined" name="major" id="major" value="{{ $education->major }}" placeholder="Major, Optional" required> </div>
+                        <div class="form-group">
+                            <label for="minor">Minor</label>
+                            <input type="text" class="form-control underlined" name="minor" id="minor" value="{{ $education->minor }}" placeholder="Minor, Optional" required> </div>
                         
                         <div class="form-group">
                             <input type="submit" class="btn btn-success btn-block" />
