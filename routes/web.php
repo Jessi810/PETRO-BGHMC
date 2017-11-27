@@ -26,4 +26,14 @@ Route::resource('certification', 'CertificationController');
 Route::resource('reference', 'ReferenceController');
 Route::resource('skill', 'SkillController');
 
+/*
+
+   Curriculum Vitae
+*/
 Route::get('cv/{id}', 'CvController@show')->name('cv');
+
+/*
+
+   Portfolio
+*/
+Route::get('portfolio/{id}', 'CvController@portfolio')->name('portfolio');

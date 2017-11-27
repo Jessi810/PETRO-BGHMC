@@ -22,4 +22,15 @@ class CvController extends Controller
 
         return view('trainer/cv', ['educations' => $educations, 'trainer' => $trainer, 'works' => $works, 'certifications' => $certifications, 'references' => $references, 'skills' => $skills]);
     }
+
+    public function portfolio(Request $request, $id) {
+        $trainer = Trainer::where('id', '=', $id)->first();
+        $educations = Education::where('trainer_id', '=', $id)->get();
+        $works = Work::where('trainer_id', '=', $id)->get();
+        $certifications = Certification::where('trainer_id', '=', $id)->get();
+        $references = Reference::where('trainer_id', '=', $id)->get();
+        $skills = Skill::where('trainer_id', '=', $id)->get();
+
+        return view('portfolio/index', ['educations' => $educations, 'trainer' => $trainer, 'works' => $works, 'certifications' => $certifications, 'references' => $references, 'skills' => $skills]);
+    }
 }
