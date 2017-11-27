@@ -21,13 +21,13 @@
                             <input type="text" class="form-control underlined" name="school" id="school" placeholder="School name" required> </div>
                         <div class="form-group">
                             <label for="year_graduated">Year</label>
-                            <input type="text" class="form-control underlined" name="year_graduated" id="year_graduated" placeholder="Year graduated, Optional" required> </div>
+                            <input type="text" class="form-control underlined" name="year_graduated" id="year_graduated" placeholder="Year graduated, Optional"> </div>
                         <div class="form-group">
                             <label for="major">Major</label>
-                            <input type="text" class="form-control underlined" name="major" id="major" placeholder="Major, Optional" required> </div>
+                            <input type="text" class="form-control underlined" name="major" id="major" placeholder="Major, Optional"> </div>
                         <div class="form-group">
                             <label for="minor">Minor</label>
-                            <input type="text" class="form-control underlined" name="minor" id="minor" placeholder="Minor, Optional" required> </div>
+                            <input type="text" class="form-control underlined" name="minor" id="minor" placeholder="Minor, Optional"> </div>
                         
                         <div class="form-group">
                             <input type="submit" class="btn btn-success btn-block" />
