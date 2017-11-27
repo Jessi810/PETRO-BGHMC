@@ -21,4 +21,8 @@ class Trainer extends Model
     public function works() {
         return $this->hasMany(Work::class);
     }
+    
+    public function certifications() {
+        return $this->hasMany(Certification::class);
+    }
 }
