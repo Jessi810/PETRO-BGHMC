@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Work extends Model
 {
     protected $fillable = [
-        'company_name', 'position', 'yearfrom', 'yearto',
+        'company_name', 'position', 'datefrom', 'dateto',
     ];
 
     public function trainer() {

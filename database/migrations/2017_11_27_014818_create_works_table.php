@@ -17,12 +17,12 @@ class CreateWorksTable extends Migration
             $table->increments('id');
             $table->string('company_name');
             $table->string('position');
-            $table->date('yearfrom');
-            $table->date('yearto');
+            $table->date('datefrom');
+            $table->date('dateto');
 
             $table->integer('trainer_id')->unsigned()->index()->nullable();
             $table->foreign('trainer_id')->references('id')->on('trainers');
-            
+
             $table->timestamps();
         });
     }
