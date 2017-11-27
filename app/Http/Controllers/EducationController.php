@@ -83,7 +83,7 @@ class EducationController extends Controller
         $request->user()->authorizeRoles(['Admin']);
         
         $education->update($request->all());
-        return redirect()->route('education.index')->with('success','Education updated successfully');
+        return redirect()->route('cv', ['id' => $education->trainer_id])->with('success','Education updated successfully');
     }
 
     /**
@@ -96,8 +96,10 @@ class EducationController extends Controller
     {
         $request->user()->authorizeRoles(['Admin']);
         
+
         $edu = Education::find($education->id);
+        $trainer_id = $edu->trainer_id;
         $edu->delete();
-        return redirect()->route('education.index')->with('success','Education deleted successfully');
+        return redirect()->route('cv', ['id' => $trainer_id])->with('success','Education deleted successfully');
     }
 }
