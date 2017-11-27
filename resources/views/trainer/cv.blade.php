@@ -83,7 +83,35 @@
                         </div>
                     </div>
                     <div class="card-block">
-                        
+                        <table class="table table-sm">
+                            <thead class="thead-default">
+                                <tr>
+                                    <th>Company</th>
+                                    <th>Position</th>
+                                    <th>Date</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($works as $work)
+                                    <tr>
+                                        <td>{{ $work->company_name }}</td>
+                                        <td>{{ $work->position }}</td>
+                                        <td>{{ $work->datefrom }} to {{ $work->dateto }}</td>
+                                        <td>
+                                            <a href="{{ route('education.edit', [$education->id, $trainer->id]) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit Education">
+                                                <i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                            <form class="form-horizontal" style="display: inline;" method="POST" action="{{ route('education.destroy', $education->id) }}" data-toggle="tooltip" data-placement="top" title="Delete Education">
+                                                {{ csrf_field() }}
+
+                                                <input type="hidden" name="_method" value="delete">
+                                                <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
