@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Work;
+use App\Trainer;
 use Illuminate\Http\Request;
 
 class WorkController extends Controller
@@ -24,7 +25,9 @@ class WorkController extends Controller
      */
     public function create(Request $request)
     {
-        //
+        $request->user()->authorizeRoles(['Admin']);
+        
+        return view('work.create', ['trainer' => $request->get('trainer')]);
     }
 
     /**
@@ -35,7 +38,13 @@ class WorkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->user()->authorizeRoles(['Admin']);
+        
+        $input = $request->all();
+        $work = Work::create($input);
+        $trainer = Trainer::find($request->trainer);
+        $work->trainer()->associate($trainer)->save();
+        return redirect()->route('cv', ['id' => $trainer->id]);
     }
 
     /**
@@ -83,8 +92,13 @@ class WorkController extends Controller
      * @param  \App\Work  $work
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Work $work)
+    public function destroy(Request $request, Work $work)
     {
-        //
+        $request->user()->authorizeRoles(['Admin']);
+        
+        $work = Work::find($work->id);
+        $trainer_id = $work->trainer_id;
+        $work->delete();
+        return redirect()->route('cv', ['id' => $trainer_id])->with('success','Work deleted successfully');
     }
 }

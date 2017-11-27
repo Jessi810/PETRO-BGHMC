@@ -75,7 +75,7 @@
                         </div>
                         <div class="header-block pull-right">
                             <p class="title">
-                                <a href="{{ route('education.create', $trainer->id) }}" class="btn btn-primary btn-sm rounded" data-toggle="tooltip" data-placement="top" title="Add Education">
+                                <a href="{{ route('work.create', ['trainer' => $trainer]) }}" class="btn btn-primary btn-sm rounded" data-toggle="tooltip" data-placement="top" title="Add Work">
                                     {{--  <i class="fa fa-pencil" aria-hidden="true"></i>  --}}
                                     Add
                                 </a>

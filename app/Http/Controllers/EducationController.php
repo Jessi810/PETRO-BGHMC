@@ -96,7 +96,6 @@ class EducationController extends Controller
     {
         $request->user()->authorizeRoles(['Admin']);
         
-
         $edu = Education::find($education->id);
         $trainer_id = $edu->trainer_id;
         $edu->delete();
