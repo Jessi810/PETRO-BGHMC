@@ -25,4 +25,8 @@ class Trainer extends Model
     public function certifications() {
         return $this->hasMany(Certification::class);
     }
+
+    public function references() {
+        return $this->hasMany(Reference::class);
+    }
 }
