@@ -169,11 +169,11 @@
                 <div class="card card-info">
                     <div class="card-header">
                         <div class="header-block">
-                            <p class="title"> Recent Relevant Work </p>
+                            <p class="title"> References </p>
                         </div>
                         <div class="header-block pull-right">
                             <p class="title">
-                                <a href="{{ route('education.create', $trainer->id) }}" class="btn btn-primary btn-sm rounded" data-toggle="tooltip" data-placement="top" title="Add Education">
+                                <a href="{{ route('reference.create', ['trainer' => $trainer]) }}" class="btn btn-primary btn-sm rounded" data-toggle="tooltip" data-placement="top" title="Add Reference">
                                     {{--  <i class="fa fa-pencil" aria-hidden="true"></i>  --}}
                                     Add
                                 </a>
@@ -181,7 +181,39 @@
                         </div>
                     </div>
                     <div class="card-block">
-                        
+                        <table class="table table-sm">
+                            <thead class="thead-default">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Company</th>
+                                    <th>Position</th>
+                                    <th>Mobile</th>
+                                    <th>Email</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($references as $reference)
+                                    <tr>
+                                        <td>{{ $reference->name }}</td>
+                                        <td>{{ $reference->company_name }}</td>
+                                        <td>{{ $reference->position }}</td>
+                                        <td>{{ $reference->mobile }}</td>
+                                        <td>{{ $reference->email }}</td>
+                                        <td>
+                                            <a href="{{ route('reference.edit', [$reference->id, $trainer->id]) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit Reference">
+                                                <i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                            <form class="form-horizontal" style="display: inline;" method="POST" action="{{ route('reference.destroy', $reference->id) }}" data-toggle="tooltip" data-placement="top" title="Delete Reference">
+                                                {{ csrf_field() }}
+
+                                                <input type="hidden" name="_method" value="delete">
+                                                <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

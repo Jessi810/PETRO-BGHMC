@@ -23,5 +23,6 @@ Route::resource('trainer', 'TrainerController');
 Route::resource('education', 'EducationController');
 Route::resource('work', 'WorkController');
 Route::resource('certification', 'CertificationController');
+Route::resource('reference', 'ReferenceController');
 
 Route::get('cv/{id}', 'CvController@show')->name('cv');
