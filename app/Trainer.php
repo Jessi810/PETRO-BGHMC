@@ -29,4 +29,8 @@ class Trainer extends Model
     public function references() {
         return $this->hasMany(Reference::class);
     }
+    
+    public function skills() {
+        return $this->hasMany(Skill::class);
+    }
 }
