@@ -222,6 +222,61 @@
                 <div class="card card-info">
                     <div class="card-header">
                         <div class="header-block">
+                            <p class="title"> Skill </p>
+                        </div>
+                        <div class="header-block pull-right">
+                            <p class="title">
+                                <a href="{{ route('skill.create', ['trainer' => $trainer]) }}" class="btn btn-primary btn-sm rounded" data-toggle="tooltip" data-placement="top" title="Add Reference">
+                                    {{--  <i class="fa fa-pencil" aria-hidden="true"></i>  --}}
+                                    Add
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-block">
+                        <table class="table table-sm">
+                            <thead class="thead-default">
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($skills as $skill)
+                                    <tr>
+                                        <td>{{ $skill->title }}</td>
+                                        <td>{{ $skill->description }}</td>
+                                        <td>
+                                            <a href="{{ route('skill.edit', [$skill->id, $trainer->id]) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit Skill">
+                                                <i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                            <form class="form-horizontal" style="display: inline;" method="POST" action="{{ route('skill.destroy', $skill->id) }}" data-toggle="tooltip" data-placement="top" title="Delete Skill">
+                                                {{ csrf_field() }}
+
+                                                <input type="hidden" name="_method" value="delete">
+                                                <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ $skill->proficiency }}%" aria-valuenow="{{ $skill->proficiency }}" aria-valuemin="0" aria-valuemax="100">{{ $skill->proficiency }}</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="card card-info">
+                    <div class="card-header">
+                        <div class="header-block">
                             <p class="title"> Recent Relevant Work </p>
                         </div>
                         <div class="header-block pull-right">

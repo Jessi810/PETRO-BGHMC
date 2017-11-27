@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Skill;
+use App\Trainer;
 use Illuminate\Http\Request;
 
 class SkillController extends Controller
