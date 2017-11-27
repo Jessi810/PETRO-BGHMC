@@ -16,7 +16,10 @@ class CreateEducationTable extends Migration
         Schema::create('education', function (Blueprint $table) {
             $table->increments('id');
             $table->string('school');
-            $table->integer('year_graduated');
+            $table->integer('year_graduated')->nullable();
+            $table->string('major')->nullable();
+            $table->string('minor')->nullable();
+            
             $table->integer('trainer_id')->unsigned()->index()->nullable();
             $table->foreign('trainer_id')->references('id')->on('trainers');
 
