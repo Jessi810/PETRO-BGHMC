@@ -27,6 +27,9 @@
                         <div class="form-group">
                             <label for="agency_name">Agency</label>
                             <input type="text" class="form-control underlined" name="agency_name" id="agency_name" value="{{ $trainer->agency_name }}" placeholder="Trainer's agency" required> </div>
+                        <div class="form-group">
+                            <label for="current_position">Position</label>
+                            <input type="text" class="form-control underlined" name="current_position" id="current_position" value="{{ $trainer->current_position }}" placeholder="Current position" required> </div>
 
                         <div class="form-group">
                             <label for="type">Type</label>

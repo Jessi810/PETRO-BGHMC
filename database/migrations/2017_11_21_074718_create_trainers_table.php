@@ -17,8 +17,9 @@ class CreateTrainersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->enum('type', array('Internal', 'External'));
-            $table->string('expertise');
-            $table->string('agency_name');
+            $table->string('expertise')->nullable();
+            $table->string('agency_name')->nullable();
+            $table->string('current_position')->nullable();
             $table->timestamps();
         });
     }

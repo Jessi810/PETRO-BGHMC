@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Trainer extends Model
 {
     protected $fillable = [
-        'name', 'type', 'expertise', 'agency_name',
+        'name', 'type', 'expertise', 'agency_name', 'current_position',
     ];
 
     public function cv() {

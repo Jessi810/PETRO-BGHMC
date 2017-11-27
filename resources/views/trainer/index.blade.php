@@ -17,6 +17,7 @@
                         <thead class="thead-default">
                             <tr>
                                 <th>Name</th>
+                                <th>Position</th>
                                 <th>Type</th>
                                 <th>Expertise</th>
                                 <th>Agency</th>
@@ -27,6 +28,7 @@
                             @foreach ($trainers as $trainer)
                                 <tr>
                                     <td>{{ $trainer->name }}</td>
+                                    <td>{{ $trainer->current_position }}</td>
                                     <td>{{ $trainer->type }}</td>
                                     <td>{{ $trainer->expertise }}</td>
                                     <td>{{ $trainer->agency_name }}</td>

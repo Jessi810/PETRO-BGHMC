@@ -24,10 +24,13 @@
                             <input type="text" class="form-control underlined" name="type" id="type" placeholder="Trainer's name" required> </div>  --}}
                         <div class="form-group">
                             <label for="expertise">Expertise</label>
-                            <input type="text" class="form-control underlined" name="expertise" id="expertise" placeholder="Trainer's field of expertise" required> </div>
+                            <input type="text" class="form-control underlined" name="expertise" id="expertise" placeholder="Trainer's field of expertise"> </div>
                         <div class="form-group">
                             <label for="agency_name">Agency</label>
-                            <input type="text" class="form-control underlined" name="agency_name" id="agency_name" placeholder="Trainer's agency" required> </div>
+                            <input type="text" class="form-control underlined" name="agency_name" id="agency_name" placeholder="Trainer's agency"> </div>
+                        <div class="form-group">
+                            <label for="current_position">Position</label>
+                            <input type="text" class="form-control underlined" name="current_position" id="current_position" placeholder="Current position"> </div>
                         
                         <div class="form-group">
                             <label for="type">Type</label>

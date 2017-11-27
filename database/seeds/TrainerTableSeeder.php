@@ -17,6 +17,7 @@ class TrainerTableSeeder extends Seeder
         $trainer->type = 'Internal';
         $trainer->expertise = 'Programmer';
         $trainer->agency_name = 'BGH';
+        $trainer->current_position = 'CTO';
         $trainer->save();
 
         $trainer = new Trainer();
@@ -24,6 +25,7 @@ class TrainerTableSeeder extends Seeder
         $trainer->type = 'Internal';
         $trainer->expertise = 'Technician';
         $trainer->agency_name = 'BGH';
+        $trainer->current_position = 'Senior Tech';
         $trainer->save();
 
         $trainer = new Trainer();
@@ -31,6 +33,7 @@ class TrainerTableSeeder extends Seeder
         $trainer->type = 'External';
         $trainer->expertise = 'Programmer';
         $trainer->agency_name = 'BGH';
+        $trainer->current_position = 'Programmer';
         $trainer->save();
     }
 }
