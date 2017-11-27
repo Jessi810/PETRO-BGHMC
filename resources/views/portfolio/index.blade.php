@@ -45,7 +45,7 @@
             <img src="{{ asset('ResumeX/img/img-profile.jpg') }}" class="img-responsive" alt=""/>
         </div>
         <div class="content">
-            <h1>Leon Weiß</h1>
+            <h1>{{ $trainer->name }}</h1>
             <span class="lead">Marketing Consultant</span>
 
             <div class="about-text">
@@ -152,66 +152,19 @@
             <div class="col-md-12">
                 <div class="progress-wrapper">
 
-                    <div class="progress-item">
-                        <span class="progress-title">Marketing</span>
+                    @foreach ($skills as $skill)
+                        <div class="progress-item">
+                            <span class="progress-title">{{ $skill->title }}</span>
 
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="62" aria-valuemin="0"
-                                 aria-valuemax="100" style="width: 62%"><span class="progress-percent"> 62%</span>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="{{ $skill->proficiency }}" aria-valuemin="0"
+                                    aria-valuemax="100" style="width: {{ $skill->proficiency }}%"><span class="progress-percent"> {{ $skill->proficiency }}%</span>
+                                </div>
                             </div>
+                            <!-- .progress -->
                         </div>
-                        <!-- .progress -->
-                    </div>
-                    <!-- .skill-progress -->
-
-
-                    <div class="progress-item">
-                        <span class="progress-title">Market Research</span>
-
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
-                                 aria-valuemax="100" style="width: 90%"><span class="progress-percent"> 90%</span>
-                            </div>
-                        </div>
-                        <!-- /.progress -->
-                    </div>
-                    <!-- /.skill-progress -->
-
-
-                    <div class="progress-item">
-                        <span class="progress-title">Organisational Skills</span>
-
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0"
-                                 aria-valuemax="100" style="width: 75%;"><span class="progress-percent"> 75%</span>
-                            </div>
-                        </div>
-                        <!-- /.progress -->
-                    </div>
-                    <!-- /.skill-progress -->
-
-                    <div class="progress-item">
-                        <span class="progress-title">Communtcation Skills</span>
-
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0"
-                                 aria-valuemax="100" style="width: 55%;"><span class="progress-percent"> 55%</span>
-                            </div>
-                        </div>
-                        <!-- /.progress -->
-                    </div>
-                    <!-- /.skill-progress -->
-                    <div class="progress-item">
-                        <span class="progress-title">Project Management</span>
-
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0"
-                                 aria-valuemax="100" style="width: 80%;"><span class="progress-percent"> 80%</span>
-                            </div>
-                        </div>
-                        <!-- .progress -->
-                    </div>
-                    <!-- .skill-progress -->
+                        <!-- .skill-progress -->
+                    @endforeach
 
                 </div>
                 <!-- /.progress-wrapper -->
@@ -233,30 +186,21 @@
         <!--.row-->
         <div class="row">
             <div class="col-md-12">
-                <div class="content-item">
-                    <small>2015 - Present</small>
-                    <h3>Head of market research</h3>
-                    <h4>Computer & Motor Ltd.</h4>
 
-                    <p>United Kingdom, London</p>
-                </div>
-                <!-- .experience-item -->
-                <div class="content-item">
-                    <small>2012 - 2015</small>
-                    <h3>Media Analyst</h3>
-                    <h4>BizzNiss</h4>
+                @foreach ($works as $work)
+                    <div class="hide">
+                        {{ $from = new Carbon\Carbon($work->datefrom) }}
+                        {{ $to = new Carbon\Carbon($work->dateto) }}
+                    </div>
+                    <div class="content-item">
+                        <small>{{ $from->year }} - {{  $to->year }}</small>
+                        <h3>{{ $work->position }}</h3>
+                        <h4>{{ $work->company_name }}</h4>
 
-                    <p>United Kingdom, London</p>
-                </div>
-                <!-- .experience-item -->
-                <div class="content-item">
-                    <small>2010 - 2012</small>
-                    <h3>Budget Administrator</h3>
-                    <h4>Somsom LLC</h4>
-
-                    <p>United Kingdom, London</p>
-                </div>
-                <!-- .experience-item -->
+                        {{--  <p>United Kingdom, London</p>  --}}
+                    </div>
+                @endforeach
+                
             </div>
         </div>
         <!--.row-->
@@ -276,30 +220,17 @@
         <!--.row-->
         <div class="row">
             <div class="col-md-12">
-                <div class="content-item">
-                    <small>2010 - 2012</small>
-                    <h3>MA Product Design</h3>
-                    <h4>University of California</h4>
 
-                    <p>United Kingdom, London</p>
-                </div>
-                <!-- .experience-item -->
-                <div class="content-item">
-                    <small>2007 - 2010</small>
-                    <h3>Business marketing course</h3>
-                    <h4>Royal Academy of Business</h4>
+                @foreach ($educations as $education)
+                    <div class="content-item">
+                        <small>{{ $education->year_graduated }}</small>
+                        <h3>{{ $education->major }}</h3>
+                        <h4>{{ $education->school }}</h4>
 
-                    <p>United Kingdom, London</p>
-                </div>
-                <!-- .experience-item -->
-                <div class="content-item">
-                    <small>2002 - 2006</small>
-                    <h3>BA (Hons) Design</h3>
-                    <h4>University of Michigan</h4>
+                        {{--  <p>United Kingdom, London</p>  --}}
+                    </div>
+                @endforeach
 
-                    <p>United Kingdom, London</p>
-                </div>
-                <!-- .experience-item -->
             </div>
         </div>
         <!--.row-->
