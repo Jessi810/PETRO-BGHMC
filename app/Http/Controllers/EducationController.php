@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Education;
+use App\Trainer;
 use Illuminate\Http\Request;
 
 class EducationController extends Controller
@@ -26,7 +27,7 @@ class EducationController extends Controller
     {
         $request->user()->authorizeRoles(['Admin']);
 
-        return view('education.create');
+        return view('education.create', ['trainer' => $request->get('trainer')]);
     }
 
     /**
@@ -40,8 +41,10 @@ class EducationController extends Controller
         $request->user()->authorizeRoles(['Admin']);
 
         $input = $request->all();
-        Education::create($input);
-        return redirect('education');
+        $edu = Education::create($input);
+        $trainer = Trainer::find($request->trainer);
+        $edu->trainer()->associate($trainer)->save();
+        return redirect()->route('cv', ['id' => $trainer->id]);
     }
 
     /**
