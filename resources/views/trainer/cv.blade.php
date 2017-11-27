@@ -142,11 +142,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($certifications as $cert)
+                                @foreach ($certifications as $certification)
                                     <tr>
-                                        <td>{{ $cert->title }}</td>
-                                        <td>{{ $cert->description }}</td>
-                                        <td>{{ $cert->date }}</td>
+                                        <td>{{ $certification->title }}</td>
+                                        <td>{{ $certification->description }}</td>
+                                        <td>{{ $certification->date }}</td>
                                         <td>
                                             <a href="{{ route('certification.edit', [$certification->id, $trainer->id]) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit Certification">
                                                 <i class="fa fa-pencil" aria-hidden="true"></i></a>
