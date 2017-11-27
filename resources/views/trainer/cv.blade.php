@@ -93,6 +93,7 @@
                                     <th>Company</th>
                                     <th>Position</th>
                                     <th>Date</th>
+                                    <th>Description</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -102,6 +103,7 @@
                                         <td>{{ $work->company_name }}</td>
                                         <td>{{ $work->position }}</td>
                                         <td>{{ $work->datefrom }} to {{ $work->dateto }}</td>
+                                        <td>{{ $work->description }}</td>
                                         <td>
                                             <a href="{{ route('work.edit', [$work->id, $trainer->id]) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit Work">
                                                 <i class="fa fa-pencil" aria-hidden="true"></i></a>

@@ -19,6 +19,7 @@ class CreateWorksTable extends Migration
             $table->string('position');
             $table->date('datefrom');
             $table->date('dateto');
+            $table->string('description')->nullable();
 
             $table->integer('trainer_id')->unsigned()->index()->nullable();
             $table->foreign('trainer_id')->references('id')->on('trainers');

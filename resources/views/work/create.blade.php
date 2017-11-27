@@ -24,9 +24,12 @@
                             <input type="text" class="form-control underlined" name="position" id="position" placeholder="Position in company" required> </div>
                         <div class="form-group">
                             <label for="datefrom">Date</label>
-                            <input type="text" class="form-control underlined" name="datefrom" id="datefrom" placeholder="Date started" required> </div>
+                            <input type="text" class="form-control underlined" name="datefrom" id="datefrom" placeholder="Date started"> </div>
                         <div class="form-group">
-                            <input type="text" class="form-control underlined" name="dateto" id="dateto" placeholder="Date ended" required> </div>
+                            <input type="text" class="form-control underlined" name="dateto" id="dateto" placeholder="Date ended"> </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <input type="text" class="form-control underlined" name="description" id="description" placeholder="Accomplisments, job you've done, etc."> </div>
                         
                         <div class="form-group">
                             <input type="submit" class="btn btn-success btn-block" />
