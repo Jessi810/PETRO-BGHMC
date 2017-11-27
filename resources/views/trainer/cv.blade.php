@@ -99,9 +99,9 @@
                                         <td>{{ $work->position }}</td>
                                         <td>{{ $work->datefrom }} to {{ $work->dateto }}</td>
                                         <td>
-                                            <a href="{{ route('education.edit', [$education->id, $trainer->id]) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit Education">
+                                            <a href="{{ route('work.edit', [$work->id, $trainer->id]) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit Work">
                                                 <i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                            <form class="form-horizontal" style="display: inline;" method="POST" action="{{ route('education.destroy', $education->id) }}" data-toggle="tooltip" data-placement="top" title="Delete Education">
+                                            <form class="form-horizontal" style="display: inline;" method="POST" action="{{ route('work.destroy', $work->id) }}" data-toggle="tooltip" data-placement="top" title="Delete Work">
                                                 {{ csrf_field() }}
 
                                                 <input type="hidden" name="_method" value="delete">

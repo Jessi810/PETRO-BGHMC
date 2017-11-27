@@ -21,5 +21,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('trainer', 'TrainerController');
 Route::resource('education', 'EducationController');
+Route::resource('work', 'WorkController');
 
 Route::get('cv/{id}', 'CvController@show')->name('cv');

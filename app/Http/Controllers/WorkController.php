@@ -22,7 +22,7 @@ class WorkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         //
     }
@@ -55,9 +55,11 @@ class WorkController extends Controller
      * @param  \App\Work  $work
      * @return \Illuminate\Http\Response
      */
-    public function edit(Work $work)
+    public function edit(Request $request, Work $work)
     {
-        //
+        $request->user()->authorizeRoles(['Admin']);
+        
+        return view('work.edit', compact('work'));
     }
 
     /**
@@ -69,7 +71,10 @@ class WorkController extends Controller
      */
     public function update(Request $request, Work $work)
     {
-        //
+        $request->user()->authorizeRoles(['Admin']);
+        
+        $work->update($request->all());
+        return redirect()->route('cv', ['id' => $work->trainer_id])->with('success','Work updated successfully');
     }
 
     /**
