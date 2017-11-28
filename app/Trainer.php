@@ -8,6 +8,7 @@ class Trainer extends Model
 {
     protected $fillable = [
         'name', 'type', 'expertise', 'agency_name', 'current_position',
+        'address', 'mobile', 'phone', 'about',
     ];
 
     public function cv() {

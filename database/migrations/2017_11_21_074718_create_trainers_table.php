@@ -20,6 +20,10 @@ class CreateTrainersTable extends Migration
             $table->string('expertise')->nullable();
             $table->string('agency_name')->nullable();
             $table->string('current_position')->nullable();
+            $table->string('address')->nullable();
+            $table->string('mobile')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('about')->nullable();
             $table->timestamps();
         });
     }
