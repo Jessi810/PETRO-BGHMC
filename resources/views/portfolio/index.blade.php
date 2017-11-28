@@ -205,6 +205,36 @@
 </section>
 <!-- .section-education -->
 
+<section class="expertise-wrapper section-wrapper gray-bg">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h2>Certifications</h2>
+                </div>
+            </div>
+        </div>
+        <!-- .row -->
+
+        <div class="row">
+            
+            @foreach ($certifications as $cert)
+                <div class="col-md-6">
+                    <div class="expertise-item">
+                        <h3>{{ $cert->title }}</h3>
+
+                        <p>
+                            {{ $cert->description }}
+                        </p>
+                    </div>
+                </div>
+            @endforeach
+
+        </div>
+    </div>
+</section>
+<!-- .certification-wrapper -->
+
 <section class="section-wrapper section-interest gray-bg">
     <div class="container-fluid">
         <div class="row">
@@ -248,7 +278,7 @@
 </section>
 <!-- .section-publications -->
 
-<section class="section-wrapper portfolio-section">
+{{--  <section class="section-wrapper portfolio-section">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -318,10 +348,10 @@
         </div>
         <!-- /.row -->
     </div>
-</section>
+</section>  --}}
 <!-- .portfolio -->
 
-<section class="section-contact section-wrapper gray-bg">
+{{--  <section class="section-contact section-wrapper gray-bg">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -393,7 +423,7 @@
         </div>
     </div>
     <!--.container-fluid-->
-</section>
+</section>  --}}
 <!--.section-contact-->
 
 <footer class="footer">
