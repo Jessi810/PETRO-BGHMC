@@ -34,4 +34,8 @@ class Trainer extends Model
     public function skills() {
         return $this->hasMany(Skill::class);
     }
+    
+    public function expertises() {
+        return $this->hasMany(Expertise::class);
+    }
 }
