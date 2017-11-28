@@ -16,18 +16,23 @@
                     <form class="form-horizontal" method="POST" action="{{ route('education.store', ['trainer' => $trainer]) }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group">
-                            <label for="school">School</label>
-                            <input type="text" class="form-control underlined" name="school" id="school" placeholder="School name" required> </div>
-                        <div class="form-group">
-                            <label for="year_graduated">Year</label>
-                            <input type="text" class="form-control underlined" name="year_graduated" id="year_graduated" placeholder="Year graduated, Optional"> </div>
-                        <div class="form-group">
-                            <label for="major">Major</label>
-                            <input type="text" class="form-control underlined" name="major" id="major" placeholder="Major, Optional"> </div>
-                        <div class="form-group">
-                            <label for="minor">Minor</label>
-                            <input type="text" class="form-control underlined" name="minor" id="minor" placeholder="Minor, Optional"> </div>
+                        <div class="row form-group">
+                            <div class="col-md-8">
+                                <label for="school">School <span class="badge badge-secondary">required</span></label>
+                                <input type="text" class="form-control underlined" name="school" id="school" placeholder="School name" required> </div>
+                            <div class="col-md-4">
+                                <label for="year_graduated">Year</label>
+                                <input type="text" class="form-control underlined" name="year_graduated" id="year_graduated" placeholder="Year graduated"> </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-md-6">
+                                <label for="major">Major</label>
+                                <input type="text" class="form-control underlined" name="major" id="major" placeholder="Major"> </div>
+                            <div class="col-md-6">
+                                <label for="minor">Minor</label>
+                            <input type="text" class="form-control underlined" name="minor" id="minor" placeholder="Minor"> </div>
+                        </div>
                         
                         <div class="form-group">
                             <input type="submit" class="btn btn-success btn-block" />
@@ -42,5 +47,18 @@
 @section('scripts')
     <script>
         $('#sidebar-item-trainer').addClass('active');
+
+        $(document).ready(function() {
+ 
+            $(".add-more").click(function() { 
+                var html = $(".copy-fields").html();
+                $(".after-add-more").after(html);
+            });
+            
+            $("body").on("click",".remove",function() {
+                $(this).parents(".control-group").remove();
+            });
+
+        });
     </script>
 @endsection

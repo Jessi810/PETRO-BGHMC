@@ -24,11 +24,14 @@
                         <div class="form-group">
                             <label for="position">Position</label>
                             <input type="text" class="form-control underlined" name="position" id="position" value="{{ $work->position }}" placeholder="Position in company" required> </div>
-                        <div class="form-group">
-                            <label for="datefrom">Date</label>
-                            <input type="text" class="form-control underlined" name="datefrom" id="datefrom" value="{{ $work->datefrom }}" placeholder="Date started"> </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control underlined" name="dateto" id="dateto" value="{{ $work->dateto }}" placeholder="Date ended"> </div>
+                        <div class="row form-group">
+                            <div class="col-md-6">
+                                <label for="datefrom">Date</label>
+                                <input type="text" class="form-control underlined" name="datefrom" id="datefrom" value="{{ $work->datefrom }}" placeholder="Date started"> </div>
+                            <div class="col-md-6">
+                                <label for="datefrom" class="invisible">Date</label>
+                                <input type="text" class="form-control underlined" name="dateto" id="dateto" value="{{ $work->dateto }}" placeholder="Date ended"> </div>
+                        </div>
                         <div class="form-group">
                             <label for="description">Description</label>
                             <input type="text" class="form-control underlined" name="description" id="description" value="{{ $work->description }}" placeholder="Accomplisments, job you've done, etc."> </div>

@@ -22,11 +22,14 @@
                         <div class="form-group">
                             <label for="position">Position</label>
                             <input type="text" class="form-control underlined" name="position" id="position" placeholder="Position in company" required> </div>
-                        <div class="form-group">
-                            <label for="datefrom">Date</label>
-                            <input type="text" class="form-control underlined" name="datefrom" id="datefrom" placeholder="Date started"> </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control underlined" name="dateto" id="dateto" placeholder="Date ended"> </div>
+                        <div class="row form-group">
+                            <div class="col-md-8">
+                                <label for="datefrom">Date</label>
+                                <input type="text" class="form-control underlined" name="datefrom" id="datefrom" placeholder="Date started"> </div>
+                            <div class="col-md-4">
+                                <label for="datefrom">Date</label>
+                                <input type="text" class="form-control underlined" name="dateto" id="dateto" placeholder="Date ended"> </div>
+                        </div>
                         <div class="form-group">
                             <label for="description">Description</label>
                             <input type="text" class="form-control underlined" name="description" id="description" placeholder="Accomplisments, job you've done, etc."> </div>

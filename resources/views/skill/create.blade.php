@@ -16,15 +16,17 @@
                     <form class="form-horizontal" method="POST" action="{{ route('skill.store', ['trainer' => $trainer]) }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group">
-                            <label for="title">Skill</label>
+                        <div class="row form-group">
+                            <div class="col-md-8">
+                                <label for="title">Skill</label>
                             <input type="text" class="form-control underlined" name="title" id="title" placeholder="Skill" required> </div>
+                            <div class="col-md-4">
+                                <label for="proficiency">Proficiency</label>
+                                <input type="text" class="form-control underlined" name="proficiency" id="proficiency" placeholder="Skill level 1-100" required> </div>
+                        </div>
                         <div class="form-group">
                             <label for="description">Description</label>
                             <input type="text" class="form-control underlined" name="description" id="description" placeholder="Description" required> </div>
-                        <div class="form-group">
-                            <label for="proficiency">Proficiency</label>
-                            <input type="text" class="form-control underlined" name="proficiency" id="proficiency" placeholder="Skill level" required> </div>
                         
                         <div class="form-group">
                             <input type="submit" class="btn btn-success btn-block" />

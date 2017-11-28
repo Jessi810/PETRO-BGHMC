@@ -18,18 +18,23 @@
 
                         <input type="hidden" name="_method" value="put">
 
-                        <div class="form-group">
-                            <label for="school">School</label>
-                            <input type="text" class="form-control underlined" name="school" id="school" value="{{ $education->school }}" placeholder="School name" required> </div>
-                        <div class="form-group">
-                            <label for="year_graduated">Year Graduated</label>
-                            <input type="text" class="form-control underlined" name="year_graduated" id="year_graduated" value="{{ $education->year_graduated }}" placeholder="Year graduated, Optional"> </div>
-                        <div class="form-group">
-                            <label for="major">Major</label>
-                            <input type="text" class="form-control underlined" name="major" id="major" value="{{ $education->major }}" placeholder="Major, Optional"> </div>
-                        <div class="form-group">
-                            <label for="minor">Minor</label>
-                            <input type="text" class="form-control underlined" name="minor" id="minor" value="{{ $education->minor }}" placeholder="Minor, Optional"> </div>
+                        <div class="row form-group">
+                            <div class="col-md-8">
+                                <label for="school">School <span class="badge badge-secondary">required</span></label>
+                                <input type="text" class="form-control underlined" name="school" id="school" value="{{ $education->school }}" placeholder="School name" required> </div>
+                            <div class="col-md-4">
+                                <label for="year_graduated">Year</label>
+                                <input type="text" class="form-control underlined" name="year_graduated" id="year_graduated" value="{{ $education->year_graduated }}" placeholder="Year graduated"> </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-md-8">
+                                <label for="major">Major</label>
+                                <input type="text" class="form-control underlined" name="major" id="major" value="{{ $education->major }}" placeholder="Major"> </div>
+                            <div class="col-md-4">
+                                <label for="minor">Minor</label>
+                                <input type="text" class="form-control underlined" name="minor" id="minor" value="{{ $education->minor }}" placeholder="Minor"> </div>
+                        </div>                            
                         
                         <div class="form-group">
                             <input type="submit" class="btn btn-success btn-block" />

@@ -17,16 +17,18 @@
                         {{ csrf_field() }}
 
                         <input type="hidden" name="_method" value="put">
-
-                        <div class="form-group">
-                            <label for="title">Skill</label>
-                            <input type="text" class="form-control underlined" name="title" id="title" value="{{ $skill->title }}" placeholder="Skill" required> </div>
+                        
+                        <div class="row form-group">
+                            <div class="col-md-8">
+                                <label for="title">Skill</label>
+                                <input type="text" class="form-control underlined" name="title" id="title" value="{{ $skill->title }}" placeholder="Skill" required> </div>
+                            <div class="col-md-4">
+                                <label for="proficiency">Proficiency</label>
+                                <input type="text" class="form-control underlined" name="proficiency" id="proficiency" value="{{ $skill->proficiency }}" placeholder="Skill level" required> </div>
+                        </div>
                         <div class="form-group">
                             <label for="description">Description</label>
                             <input type="text" class="form-control underlined" name="description" id="description" value="{{ $skill->description }}" placeholder="Description" required> </div>
-                        <div class="form-group">
-                            <label for="proficiency">Proficiency</label>
-                            <input type="text" class="form-control underlined" name="proficiency" id="proficiency" value="{{ $skill->proficiency }}" placeholder="Skill level" required> </div>
                         
                         <div class="form-group">
                             <input type="submit" class="btn btn-success btn-block" />
