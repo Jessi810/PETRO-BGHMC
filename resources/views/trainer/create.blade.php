@@ -17,29 +17,43 @@
                         {{ csrf_field() }}
 
                         <div class="form-group">
-                            <label for="name">Name</label>
+                            <label for="name">Name <span class="badge badge-secondary">required</span></label>
                             <input type="text" class="form-control underlined" name="name" id="name" placeholder="Trainer's name" required> </div>
-                        {{--  <div class="form-group">
-                            <label for="type">Type</label>
-                            <input type="text" class="form-control underlined" name="type" id="type" placeholder="Trainer's name" required> </div>  --}}
                         <div class="form-group">
-                            <label for="expertise">Expertise</label>
+                            <label for="expertise">Expertise <span class="badge badge-secondary">required</span></label>
                             <input type="text" class="form-control underlined" name="expertise" id="expertise" placeholder="Trainer's field of expertise"> </div>
-                        <div class="form-group">
-                            <label for="agency_name">Agency</label>
-                            <input type="text" class="form-control underlined" name="agency_name" id="agency_name" placeholder="Trainer's agency"> </div>
+                        <div class="row form-group">
+                            <div class="col-md-8">
+                                <label for="agency_name">Agency <span class="badge badge-secondary">required</span></label>
+                                <input type="text" class="form-control underlined" name="agency_name" id="agency_name" placeholder="Trainer's agency"> </div>
+                            <div class="col-md-4">
+                                <label for="type">Type <span class="badge badge-secondary">required</span></label>
+                                <select id="type" name="type" class="form-control">
+                                    <option value="Internal">Internal</option>
+                                    <option value="External">External</option>
+                                </select> </div>
+                        </div>
                         <div class="form-group">
                             <label for="current_position">Position</label>
                             <input type="text" class="form-control underlined" name="current_position" id="current_position" placeholder="Current position"> </div>
-                        
                         <div class="form-group">
-                            <label for="type">Type</label>
-                            <select id="type" name="type" class="form-control">
-                                <option value="Internal">Internal</option>
-                                <option value="External">External</option>
-                            </select>
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control underlined" name="email" id="email" placeholder="Trainer email address"> </div>
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <input type="text" class="form-control underlined" name="address" id="address" placeholder="Current address"> </div>
+                        <div class="row form-group">
+                            <div class="col-md-6">
+                                <label for="mobile">Mobile Number</label>
+                                <input type="text" class="form-control underlined" name="mobile" id="mobile" placeholder="Mobile number"> </div>
+                            <div class="col-md-6">
+                                <label for="phone">Phone Number</label>
+                                <input type="text" class="form-control underlined" name="phone" id="phone" placeholder="Phone number"> </div>
                         </div>
-
+                        <div class="form-group">
+                            <label for="about">About</label>
+                            <textarea rows="10" cols="30" class="form-control underlined" name="about" id="about" placeholder="Trainer short description"></textarea> </div>
+                        
                         <div class="form-group">
                             <input type="submit" class="btn btn-success btn-block" />
                         </div>
