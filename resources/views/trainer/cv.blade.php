@@ -126,6 +126,53 @@
                 <div class="card card-info">
                     <div class="card-header">
                         <div class="header-block">
+                            <p class="title"> Field of Expertise </p>
+                        </div>
+                        <div class="header-block pull-right">
+                            <p class="title">
+                                <a href="{{ route('expertise.create', ['trainer' => $trainer]) }}" class="btn btn-primary btn-sm rounded" data-toggle="tooltip" data-placement="top" title="Add Expertise">
+                                    {{--  <i class="fa fa-pencil" aria-hidden="true"></i>  --}}
+                                    Add
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-block">
+                        <table class="table table-sm">
+                            <thead class="thead-default">
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($expertises as $expertise)
+                                    <tr>
+                                        <td>{{ $expertise->title }}</td>
+                                        <td>{{ $expertise->description }}</td>
+                                        <td>
+                                            <a href="{{ route('expertise.edit', [$expertise->id, $trainer->id]) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit Expertise">
+                                                <i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                            <form class="form-horizontal" style="display: inline;" method="POST" action="{{ route('expertise.destroy', $expertise->id) }}" data-toggle="tooltip" data-placement="top" title="Delete Expertise">
+                                                {{ csrf_field() }}
+
+                                                <input type="hidden" name="_method" value="delete">
+                                                <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="card card-info">
+                    <div class="card-header">
+                        <div class="header-block">
                             <p class="title"> Certifications </p>
                         </div>
                         <div class="header-block pull-right">
