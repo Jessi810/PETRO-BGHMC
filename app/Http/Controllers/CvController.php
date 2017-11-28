@@ -27,9 +27,9 @@ class CvController extends Controller
 
     public function portfolio(Request $request, $id) {
         $trainer = Trainer::where('id', '=', $id)->first();
-        $educations = Education::where('trainer_id', '=', $id)->get();
-        $works = Work::where('trainer_id', '=', $id)->get();
-        $certifications = Certification::where('trainer_id', '=', $id)->get();
+        $educations = Education::where('trainer_id', '=', $id)->orderBy('year_graduated', 'desc')->get();
+        $works = Work::where('trainer_id', '=', $id)->orderBy('dateto', 'desc')->get();
+        $certifications = Certification::where('trainer_id', '=', $id)->orderBy('date', 'desc')->get();
         $references = Reference::where('trainer_id', '=', $id)->get();
         $skills = Skill::where('trainer_id', '=', $id)->get();
         $expertises = Expertise::where('trainer_id', '=', $id)->get();
