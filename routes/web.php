@@ -25,6 +25,7 @@ Route::resource('work', 'WorkController');
 Route::resource('certification', 'CertificationController');
 Route::resource('reference', 'ReferenceController');
 Route::resource('skill', 'SkillController');
+Route::resource('expertise', 'ExpertiseController');
 
 /*
 
