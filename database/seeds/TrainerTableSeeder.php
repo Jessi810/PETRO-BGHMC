@@ -14,10 +14,15 @@ class TrainerTableSeeder extends Seeder
     {
         $trainer = new Trainer();
         $trainer->name = 'Jessi';
+        $trainer->email = 'trainer@mail.com';
         $trainer->type = 'Internal';
         $trainer->expertise = 'Programmer';
         $trainer->agency_name = 'BGH';
-        $trainer->current_position = 'CTO';
+        $trainer->current_position = 'Chief Technology Officer';
+        $trainer->address = 'Baguio City, Philippines';
+        $trainer->mobile = '+63 912 3123 123';
+        $trainer->phone = '+777 7777';
+        $trainer->about = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
         $trainer->save();
 
         $trainer = new Trainer();

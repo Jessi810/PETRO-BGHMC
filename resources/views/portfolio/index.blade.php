@@ -46,19 +46,12 @@
         </div>
         <div class="content">
             <h1>{{ $trainer->name }}</h1>
-            <span class="lead">Marketing Consultant</span>
+            <span class="lead">{{ $trainer->current_position }}</span>
 
             <div class="about-text">
                 <p>
-                    Credibly embrace visionary internal or "organic" sources and business benefits. Collaboratively
-                    integrate efficient portals rather than customized customer service. Assertively deliver
-                    frictionless services via leveraged interfaces. Conveniently evisculate accurate sources and
-                    process-centric expertise.
+                    {{ $trainer->about }}
                 </p>
-
-                <p>Energistically fabricate customized imperatives through cooperative catalysts for change.</p>
-
-
                 <p><img src="{{ asset('ResumeX/img/Signature.png') }}" alt="" class="img-responsive"/></p>
             </div>
 
@@ -92,48 +85,20 @@
         <!-- .row -->
 
         <div class="row">
-            <div class="col-md-6">
-                <div class="expertise-item">
-                    <h3>Professionally drive</h3>
+            
+            @foreach ($expertises as $expertise)
+                <div class="col-md-6">
+                    <div class="expertise-item">
+                        <h3>{{ $expertise->title }}</h3>
 
-                    <p>
-                        Synergistically strategize customer directed resources rather than principle.
-                    </p>
+                        <p>
+                            {{ $expertise->description }}
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="expertise-item">
-                    <h3>Seamlessly leverage </h3>
-
-                    <p>
-                        Quickly repurpose reliable customer service with orthogonal ideas. Competently.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="expertise-item">
-                    <h3>Interactively incubate</h3>
-
-                    <p>
-                        Interactively myocardinate high standards in initiatives rather than next-generation.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="expertise-item">
-                    <h3>Globally streamline</h3>
-
-                    <p>
-                        Dynamically initiate client-based convergence vis-a-vis performance based. </p>
-                </div>
-            </div>
+            @endforeach
 
         </div>
-
-
     </div>
 </section>
 <!-- .expertise-wrapper -->
@@ -370,24 +335,23 @@
             <div class="col-md-12">
                 <address>
                     <strong>Address</strong><br>
-                    1355 Market Street, Suite 900<br>
-                    San Francisco, CA 94103
+                    {{ $trainer->address }}
 
                 </address>
                 <address>
                     <strong>Phone Number</strong><br>
-                    +61 3 8376 6284
+                    {{ $trainer->phone }}
                 </address>
 
                 <address>
                     <strong>Mobile Number</strong><br>
-                    987 654 321
+                    {{ $trainer->mobile }}
                 </address>
 
 
                 <address>
                     <strong>Email</strong><br>
-                    <a href="mailto:#">coffee@amelie.me</a>
+                    <a href="mailto:{{ $trainer->email }}">{{ $trainer->email }}</a>
                 </address>
             </div>
         </div>

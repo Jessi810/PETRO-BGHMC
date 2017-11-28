@@ -16,6 +16,7 @@ class CreateTrainersTable extends Migration
         Schema::create('trainers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('email')->nullable();
             $table->enum('type', array('Internal', 'External'));
             $table->string('expertise')->nullable();
             $table->string('agency_name')->nullable();
