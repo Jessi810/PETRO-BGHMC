@@ -20,7 +20,7 @@ class CreateSkillsTable extends Migration
             $table->integer('proficiency')->unsigned();
 
             $table->integer('trainer_id')->unsigned()->index()->nullable();
-            $table->foreign('trainer_id')->references('id')->on('trainers');
+            $table->foreign('trainer_id')->references('id')->on('trainers')->onDelete('cascade');
             
             $table->timestamps();
         });

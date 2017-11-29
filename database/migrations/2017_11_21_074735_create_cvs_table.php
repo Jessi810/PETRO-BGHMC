@@ -15,7 +15,7 @@ class CreateCvsTable extends Migration
     {
         Schema::create('cvs', function (Blueprint $table) {
             $table->integer('trainer_id')->unsigned()->nullable();
-            $table->foreign('trainer_id')->references('id')->on('trainers');
+            $table->foreign('trainer_id')->references('id')->on('trainers')->onDelete('cascade');
             $table->timestamps();
         });
     }
