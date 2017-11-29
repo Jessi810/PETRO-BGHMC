@@ -17,9 +17,7 @@
                         <thead class="thead-default">
                             <tr>
                                 <th>Name</th>
-                                <th>Position</th>
                                 <th>Type</th>
-                                <th>Expertise</th>
                                 <th>Agency</th>
                                 <th></th>
                             </tr>
@@ -28,9 +26,7 @@
                             @foreach ($trainers as $trainer)
                                 <tr>
                                     <td>{{ $trainer->name }}</td>
-                                    <td>{{ $trainer->current_position }}</td>
                                     <td>{{ $trainer->type }}</td>
-                                    <td>{{ $trainer->expertise }}</td>
                                     <td>{{ $trainer->agency_name }}</td>
                                     <td>
                                         <a href="{{ route('portfolio', $trainer->id) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Show CV">

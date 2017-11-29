@@ -21,9 +21,9 @@
                         <div class="form-group">
                             <label for="name">Name <span class="badge badge-secondary">required</span></label>
                             <input type="text" class="form-control underlined" name="name" id="name" value="{{ $trainer->name }}" placeholder="Trainer's name" required> </div>
-                        <div class="form-group">
+                        {{--  <div class="form-group">
                             <label for="expertise">Expertise <span class="badge badge-secondary">required</span></label>
-                            <input type="text" class="form-control underlined" name="expertise" id="expertise" value="{{ $trainer->expertise }}" placeholder="Trainer's field of expertise" required> </div>
+                            <input type="text" class="form-control underlined" name="expertise" id="expertise" value="{{ $trainer->expertise }}" placeholder="Trainer's field of expertise" required> </div>  --}}
                         <div class="row form-group">
                             <div class="col-md-8">
                                 <label for="agency_name">Agency <span class="badge badge-secondary">required</span></label>
