@@ -16,8 +16,8 @@ class CreateCertificationsTable extends Migration
         Schema::create('certifications', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('description');
-            $table->date('date');
+            $table->date('date')->nullable();
+            $table->string('description')->nullable();
 
             $table->integer('trainer_id')->unsigned()->index()->nullable();
             $table->foreign('trainer_id')->references('id')->on('trainers')->onDelete('cascade');

@@ -6,6 +6,7 @@ use App\Trainer;
 use App\Expertise;
 use App\Education;
 use App\Skill;
+use App\Certification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
@@ -45,6 +46,16 @@ class TrainerController extends Controller
                 $skill->proficiency = Input::get("skill_proficiency.$key");
                 $skill->description = Input::get("skill_description.$key");
                 $trainer->skills()->save($skill);
+            }
+        }
+        
+        if (count(Input::get('cert_title')) > 0) {
+            foreach (Input::get('cert_title') as $key => $val) {
+                $cert = new Certification();
+                $cert->title = Input::get("cert_title.$key");
+                $cert->date = Input::get("cert_date.$key");
+                $cert->description = Input::get("cert_description.$key");
+                $trainer->certifications()->save($cert);
             }
         }
 

@@ -112,6 +112,26 @@
             </div> {{--  End card-info  --}}
         </div> {{--  End col-md-12  --}}
 
+        <div class="col-md-12">
+            <div class="card card-info">
+                <div class="card-header">
+                    <div class="header-block">
+                        <p class="title"> Certifications </p>
+                    </div>
+                    <div class="header-block pull-right">
+                        <p class="title">
+                            <a href="javascript:void(0)" class="btn btn-primary btn-sm rounded add_cert" data-toggle="tooltip" data-placement="top" title="Add Certification">
+                                Add
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <div class="wrapper_cert"></div>
+                </div> {{--  End card-block  --}}
+            </div> {{--  End card-info  --}}
+        </div> {{--  End col-md-12  --}}
+
     </form> {{--  End form  --}}
 @endsection
 
@@ -161,9 +181,9 @@
                             '<div class="col-md-3">' +
                                 '<input type="text" class="form-control underlined" name="skill_title[' + index_skill + ']" id="skill_title[' + index_skill + ']" placeholder="Skill" required> </div>' +
                             '<div class="col-md-2">' +
-                                '<input type="text" class="form-control underlined" name="skill_proficiency[' + index_skill + ']" id="skill_proficiency[' + index_skill + ']" placeholder="Skill level 1-100" required> </div>' +
+                                '<input type="text" class="form-control underlined" name="skill_proficiency[' + index_skill + ']" id="skill_proficiency[' + index_skill + ']" placeholder="Skill level 1-100"> </div>' +
                             '<div class="col-md-6">' +
-                                '<input type="text" class="form-control underlined" name="skill_description[' + index_skill + ']" id="skill_description[' + index_skill + ']" placeholder="Description" required> </div>' +
+                                '<input type="text" class="form-control underlined" name="skill_description[' + index_skill + ']" id="skill_description[' + index_skill + ']" placeholder="Description"> </div>' +
                             '<div class="col-md-1">' +
                                 '<button class="btn btn-danger remove_skill" type="button">-</button>' +
                         '</div>';
@@ -173,6 +193,33 @@
                 }
             });
             $(wrapper_skill).on('click', '.remove_skill', function(e) {
+                e.preventDefault();
+                $(this).parents('div.form-group').remove();
+            });
+
+            var max_cert = 10;
+            var add_cert = $('.add_cert');
+            var wrapper_cert = $('.wrapper_cert');
+            var index_cert = 0;
+            $(add_cert).click(function() {
+                if(index_cert < max_cert) {
+                    var fieldHTML =
+                        '<div class="row form-group">' +
+                            '<div class="col-md-3">' +
+                                '<input type="text" class="form-control underlined" name="cert_title[' + index_cert + ']" id="cert_title[' + index_cert + ']" placeholder="Certification title" required> </div>' +
+                            '<div class="col-md-2">' +
+                                '<input type="text" class="form-control underlined" name="cert_date[' + index_cert + ']" id="cert_date[' + index_cert + ']" placeholder="Date"> </div>' +
+                            '<div class="col-md-6">' +
+                                '<input type="text" class="form-control underlined" name="cert_description[' + index_cert + ']" id="cert_description[' + index_cert + ']" placeholder="Description"> </div>' +
+                            '<div class="col-md-1">' +
+                                '<button class="btn btn-danger remove_cert" type="button">-</button>' +
+                        '</div>';
+                    $(wrapper_cert).append(fieldHTML);
+
+                    index_cert++; console.log('Add cert: ' + index_cert);
+                }
+            });
+            $(wrapper_cert).on('click', '.remove_cert', function(e) {
                 e.preventDefault();
                 $(this).parents('div.form-group').remove();
             });
@@ -193,17 +240,15 @@
                 if(x < maxField) {
                     x++; console.log('Add: ' + x);
                     fieldHTML =
-                        '<div class="row form-group">' +
-                            '<div class="col-md-3">' +
-                                '<input type="text" class="form-control underlined" name="title[' + index_skill + ']" id="title[' + index_skill + ']" placeholder="Skill" required> </div>' +
-                            '<div class="col-md-1">' +
-                                '<input type="text" class="form-control underlined" name="proficiency[' + index_skill + ']" id="proficiency[' + index_skill + ']" placeholder="Skill level 1-100" required> </div>' +
-                            '<div class="col-md-8">' +
-                                '<input type="text" class="form-control underlined" name="description[' + index_skill + ']" id="description[' + index_skill + ']" placeholder="Description" required> </div>' +
-                        '</div>';
+                        '<div class="input-group">' +
+                            '<input type="text" class="form-control underlined" name="expertise[' + x + ']" id="expertise[' + x + ']" placeholder="Trainer\'s field of expertise">' +
+                            '<span class="input-group-btn">' +
+                                '<button class="btn btn-danger remove_button" type="button">-</button>' +
+                            '</span> </div>';
                     $(wrapper).append(fieldHTML);
                 }
             });
+
             $(wrapper).on('click', '.remove_button', function(e) {
                 e.preventDefault();
                 $(this).parents('div.input-group').remove();
