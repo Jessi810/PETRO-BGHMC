@@ -22,6 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('trainer/create-all', function() {
     return view('trainer/create-all');
 });
+Route::post('trainer/create-all', 'TrainerController@create_all');
 Route::resource('trainer', 'TrainerController');
 Route::resource('education', 'EducationController');
 Route::resource('work', 'WorkController');

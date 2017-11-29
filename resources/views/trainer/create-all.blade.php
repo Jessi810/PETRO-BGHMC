@@ -1,7 +1,7 @@
 @extends('layouts.modular')
 
 @section('content')
-    <form class="form-horizontal row" method="POST" action="{{ route('trainer.store') }}">
+    <form class="form-horizontal row" method="POST" action="{{ url('trainer/create-all') }}">
         {{ csrf_field() }}
 
         <div class="col-md-6">
@@ -159,11 +159,11 @@
                     var fieldHTML =
                         '<div class="row form-group">' +
                             '<div class="col-md-3">' +
-                                '<input type="text" class="form-control underlined" name="title[' + index_skill + ']" id="title[' + index_skill + ']" placeholder="Skill" required> </div>' +
+                                '<input type="text" class="form-control underlined" name="skill_title[' + index_skill + ']" id="skill_title[' + index_skill + ']" placeholder="Skill" required> </div>' +
                             '<div class="col-md-2">' +
-                                '<input type="text" class="form-control underlined" name="proficiency[' + index_skill + ']" id="proficiency[' + index_skill + ']" placeholder="Skill level 1-100" required> </div>' +
+                                '<input type="text" class="form-control underlined" name="skill_proficiency[' + index_skill + ']" id="skill_proficiency[' + index_skill + ']" placeholder="Skill level 1-100" required> </div>' +
                             '<div class="col-md-6">' +
-                                '<input type="text" class="form-control underlined" name="description[' + index_skill + ']" id="description[' + index_skill + ']" placeholder="Description" required> </div>' +
+                                '<input type="text" class="form-control underlined" name="skill_description[' + index_skill + ']" id="skill_description[' + index_skill + ']" placeholder="Description" required> </div>' +
                             '<div class="col-md-1">' +
                                 '<button class="btn btn-danger remove_skill" type="button">-</button>' +
                         '</div>';
