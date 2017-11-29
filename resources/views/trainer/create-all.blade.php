@@ -152,6 +152,26 @@
             </div> {{--  End card-info  --}}
         </div> {{--  End col-md-12  --}}
 
+        <div class="col-md-12">
+            <div class="card card-info">
+                <div class="card-header">
+                    <div class="header-block">
+                        <p class="title"> Work Experience </p>
+                    </div>
+                    <div class="header-block pull-right">
+                        <p class="title">
+                            <a href="javascript:void(0)" class="btn btn-primary btn-sm rounded add_work" data-toggle="tooltip" data-placement="top" title="Add Work Experience">
+                                Add
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <div class="wrapper_work"></div>
+                </div> {{--  End card-block  --}}
+            </div> {{--  End card-info  --}}
+        </div> {{--  End col-md-12  --}}
+
     </form> {{--  End form  --}}
 @endsection
 
@@ -271,6 +291,37 @@
                 }
             });
             $(wrapper_ref).on('click', '.remove_ref', function(e) {
+                e.preventDefault();
+                $(this).parents('div.form-group').remove();
+            });
+
+            var max_work = 10;
+            var add_work = $('.add_work');
+            var wrapper_work = $('.wrapper_work');
+            var index_work = 0;
+            $(add_work).click(function() {
+                if(index_work < max_work) {
+                    var fieldHTML =
+                        '<div class="row form-group">' +
+                            '<div class="col-md-3">' +
+                                '<input type="text" class="form-control underlined" name="work_company_name[' + index_work + ']" id="work_company_name[' + index_work + ']" placeholder="Company name" required> </div>' +
+                            '<div class="col-md-3">' +
+                                '<input type="text" class="form-control underlined" name="work_position[' + index_work + ']" id="work_position[' + index_work + ']" placeholder="Position in company"> </div>' +
+                            '<div class="col-md-3">' +
+                                '<input type="text" class="form-control underlined" name="work_datefrom[' + index_work + ']" id="work_datefrom[' + index_work + ']" placeholder="Date started"> </div>' +
+                            '<div class="col-md-3">' +
+                                '<input type="text" class="form-control underlined" name="work_dateto[' + index_work + ']" id="work_dateto[' + index_work + ']" placeholder="Date ended"> </div>' +
+                            '<div class="col-md-3">' +
+                                '<input type="text" class="form-control underlined" name="work_description[' + index_work + ']" id="work_description[' + index_work + ']" placeholder="Accomplisments, job you\'ve done, etc."> </div>' +
+                            '<div class="col-md-1">' +
+                                '<button class="btn btn-danger remove_work" type="button">-</div>' +
+                        '</div>';
+                    $(wrapper_work).append(fieldHTML);
+
+                    index_work++; console.log('Add cert: ' + index_work);
+                }
+            });
+            $(wrapper_work).on('click', '.remove_work', function(e) {
                 e.preventDefault();
                 $(this).parents('div.form-group').remove();
             });

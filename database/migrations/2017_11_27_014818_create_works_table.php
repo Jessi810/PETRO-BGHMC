@@ -16,9 +16,9 @@ class CreateWorksTable extends Migration
         Schema::create('works', function (Blueprint $table) {
             $table->increments('id');
             $table->string('company_name');
-            $table->string('position');
-            $table->date('datefrom');
-            $table->date('dateto');
+            $table->string('position')->nullable();
+            $table->date('datefrom')->nullable();
+            $table->date('dateto')->nullable();
             $table->string('description')->nullable();
 
             $table->integer('trainer_id')->unsigned()->index()->nullable();
