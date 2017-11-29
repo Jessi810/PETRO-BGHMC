@@ -29,6 +29,14 @@ class TrainerController extends Controller
         $trainer->phone = $request->get('phone');
         $trainer->about = $request->get('about');
         $trainer->save();
+        
+        if (count(Input::get('exp_title')) > 0) {
+            foreach (Input::get('exp_title') as $key => $val) {
+                $exp = new Expertise();
+                $exp->title = Input::get("exp_title.$key");
+                $trainer->expertises()->save($exp);
+            }
+        }
 
         if (count(Input::get('school')) > 0) {
             foreach (Input::get('school') as $key => $val) {
@@ -41,8 +49,8 @@ class TrainerController extends Controller
             }
         }
         
-        if (count(Input::get('skill')) > 0) {
-            foreach (Input::get('skill') as $key => $val) {
+        if (count(Input::get('skill_title')) > 0) {
+            foreach (Input::get('skill_title') as $key => $val) {
                 $skill = new Skill();
                 $skill->title = Input::get("skill_title.$key");
                 $skill->proficiency = Input::get("skill_proficiency.$key");
