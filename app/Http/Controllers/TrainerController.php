@@ -105,21 +105,22 @@ class TrainerController extends Controller
     {
         $request->user()->authorizeRoles(['Admin', 'User']);
 
+        $exps = DB::table('expertises')->get();
+        
         // Filter
         if ($request->has('type')) {
             switch ($request->get('type')) {
                 case 'Internal':
                     $trainers = DB::table('trainers')->where('type', '=', 'Internal')->get();
-                    return view('trainer.index', ['trainers' => $trainers]);
+                    return view('trainer.index', ['trainers' => $trainers, 'expertises' => $exps]);
                 case 'External':
                     $trainers = DB::table('trainers')->where('type', '=', 'External')->get();
-                    return view('trainer.index', ['trainers' => $trainers]);
+                    return view('trainer.index', ['trainers' => $trainers, 'expertises' => $exps]);
             }
         }
 
         // Get all row in trainers table
         $trainers = DB::table('trainers')->get();
-        $exps = DB::table('expertises')->get();
         
         return view('trainer.index', ['trainers' => $trainers, 'expertises' => $exps]);
     }
