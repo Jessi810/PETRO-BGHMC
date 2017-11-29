@@ -36,8 +36,8 @@
                             </p>
                         </div>
                     </div>
-                    <div class="card-block">
-                        <table class="table table-sm">
+                    <div class="card-block pt-sm-0 px-sm-0">
+                        <table class="table">
                             <thead class="thead-default">
                                 <tr>
                                     <th>School</th>
@@ -87,8 +87,8 @@
                             </p>
                         </div>
                     </div>
-                    <div class="card-block">
-                        <table class="table table-sm">
+                    <div class="card-block pt-sm-0 px-sm-0">
+                        <table class="table">
                             <thead class="thead-default">
                                 <tr>
                                     <th>Company</th>
@@ -138,8 +138,8 @@
                             </p>
                         </div>
                     </div>
-                    <div class="card-block">
-                        <table class="table table-sm">
+                    <div class="card-block pt-sm-0 px-sm-0">
+                        <table class="table">
                             <thead class="thead-default">
                                 <tr>
                                     <th>Title</th>
@@ -185,8 +185,8 @@
                             </p>
                         </div>
                     </div>
-                    <div class="card-block">
-                        <table class="table table-sm">
+                    <div class="card-block pt-sm-0 px-sm-0">
+                        <table class="table">
                             <thead class="thead-default">
                                 <tr>
                                     <th>Title</th>
@@ -234,8 +234,8 @@
                             </p>
                         </div>
                     </div>
-                    <div class="card-block">
-                        <table class="table table-sm">
+                    <div class="card-block pt-sm-0 px-sm-0">
+                        <table class="table">
                             <thead class="thead-default">
                                 <tr>
                                     <th>Name</th>
@@ -287,8 +287,8 @@
                             </p>
                         </div>
                     </div>
-                    <div class="card-block">
-                        <table class="table table-sm">
+                    <div class="card-block pt-sm-0 px-sm-0">
+                        <table class="table">
                             <thead class="thead-default">
                                 <tr>
                                     <th>Title</th>
@@ -342,7 +342,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="card-block">
+                    <div class="card-block pt-sm-0 px-sm-0">
                         
                     </div>
                 </div>
