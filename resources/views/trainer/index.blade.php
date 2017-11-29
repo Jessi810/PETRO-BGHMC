@@ -9,7 +9,7 @@
                         <p class="title"> Trainers </p>
                     </div>
                     <div class="header-block pull-right">
-                        <p class="title"> <a href="{{ route('trainer.create') }}" class="btn btn-primary btn-sm rounded">New trainer</a> </p>
+                        <p class="title"> <a href="{{ url('trainer/create-all') }}" class="btn btn-primary btn-sm rounded">New trainer</a> </p>
                     </div>
                 </div>
                 <div class="card-block">
