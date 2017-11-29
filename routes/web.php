@@ -21,24 +21,24 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('trainer/create-all', function() {
     return view('trainer/create-all');
-});
+})->middleware('auth');;
 Route::post('trainer/create-all', 'TrainerController@create_all');
-Route::resource('trainer', 'TrainerController');
-Route::resource('education', 'EducationController');
-Route::resource('work', 'WorkController');
-Route::resource('certification', 'CertificationController');
-Route::resource('reference', 'ReferenceController');
-Route::resource('skill', 'SkillController');
-Route::resource('expertise', 'ExpertiseController');
+Route::resource('trainer', 'TrainerController')->middleware('auth');
+Route::resource('education', 'EducationController')->middleware('auth');
+Route::resource('work', 'WorkController')->middleware('auth');
+Route::resource('certification', 'CertificationController')->middleware('auth');
+Route::resource('reference', 'ReferenceController')->middleware('auth');
+Route::resource('skill', 'SkillController')->middleware('auth');
+Route::resource('expertise', 'ExpertiseController')->middleware('auth');
 
 /*
 
    Curriculum Vitae
 */
-Route::get('cv/{id}', 'CvController@show')->name('cv');
+Route::get('cv/{id}', 'CvController@show')->name('cv')->middleware('auth');
 
 /*
 
    Portfolio
 */
-Route::get('portfolio/{id}', 'CvController@portfolio')->name('portfolio');
+Route::get('portfolio/{id}', 'CvController@portfolio')->name('portfolio')->middleware('auth');
