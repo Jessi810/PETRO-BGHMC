@@ -16,7 +16,6 @@ class TrainerTableSeeder extends Seeder
         $trainer->name = 'Jessi';
         $trainer->email = 'trainer@mail.com';
         $trainer->type = 'Internal';
-        $trainer->expertise = 'Programmer';
         $trainer->agency_name = 'BGH';
         $trainer->current_position = 'Chief Technology Officer';
         $trainer->address = 'Baguio City, Philippines';
@@ -28,7 +27,6 @@ class TrainerTableSeeder extends Seeder
         $trainer = new Trainer();
         $trainer->name = 'Alfred';
         $trainer->type = 'Internal';
-        $trainer->expertise = 'Technician';
         $trainer->agency_name = 'BGH';
         $trainer->current_position = 'Senior Tech';
         $trainer->save();
@@ -36,7 +34,6 @@ class TrainerTableSeeder extends Seeder
         $trainer = new Trainer();
         $trainer->name = 'Justin';
         $trainer->type = 'External';
-        $trainer->expertise = 'Programmer';
         $trainer->agency_name = 'BGH';
         $trainer->current_position = 'Programmer';
         $trainer->save();
