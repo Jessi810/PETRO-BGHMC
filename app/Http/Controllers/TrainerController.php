@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Input;
 
 class TrainerController extends Controller
 {
+    public function create_all(Request $request) {
+        
+    }
+    
     /**
      * Display a listing of the resource.
      *
