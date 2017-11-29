@@ -7,6 +7,7 @@ use App\Expertise;
 use App\Education;
 use App\Skill;
 use App\Certification;
+use App\Reference;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
@@ -56,6 +57,18 @@ class TrainerController extends Controller
                 $cert->date = Input::get("cert_date.$key");
                 $cert->description = Input::get("cert_description.$key");
                 $trainer->certifications()->save($cert);
+            }
+        }
+        
+        if (count(Input::get('ref_name')) > 0) {
+            foreach (Input::get('ref_name') as $key => $val) {
+                $ref = new Reference();
+                $ref->name = Input::get("ref_name.$key");
+                $ref->company_name = Input::get("ref_company_name.$key");
+                $ref->position = Input::get("ref_position.$key");
+                $ref->mobile = Input::get("ref_mobile.$key");
+                $ref->email = Input::get("ref_email.$key");
+                $trainer->references()->save($ref);
             }
         }
 

@@ -132,6 +132,26 @@
             </div> {{--  End card-info  --}}
         </div> {{--  End col-md-12  --}}
 
+        <div class="col-md-12">
+            <div class="card card-info">
+                <div class="card-header">
+                    <div class="header-block">
+                        <p class="title"> References </p>
+                    </div>
+                    <div class="header-block pull-right">
+                        <p class="title">
+                            <a href="javascript:void(0)" class="btn btn-primary btn-sm rounded add_ref" data-toggle="tooltip" data-placement="top" title="Add Reference">
+                                Add
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <div class="wrapper_ref"></div>
+                </div> {{--  End card-block  --}}
+            </div> {{--  End card-info  --}}
+        </div> {{--  End col-md-12  --}}
+
     </form> {{--  End form  --}}
 @endsection
 
@@ -220,6 +240,37 @@
                 }
             });
             $(wrapper_cert).on('click', '.remove_cert', function(e) {
+                e.preventDefault();
+                $(this).parents('div.form-group').remove();
+            });
+
+            var max_ref = 10;
+            var add_ref = $('.add_ref');
+            var wrapper_ref = $('.wrapper_ref');
+            var index_ref = 0;
+            $(add_ref).click(function() {
+                if(index_ref < max_ref) {
+                    var fieldHTML =
+                        '<div class="row form-group">' +
+                            '<div class="col-md-3">' +
+                                '<input type="text" class="form-control underlined" name="ref_name[' + index_ref + ']" id="ref_name[' + index_ref + ']" placeholder="Name of reference" required> </div>' +
+                            '<div class="col-md-3">' +
+                                '<input type="text" class="form-control underlined" name="ref_company_name[' + index_ref + ']" id="ref_company_name[' + index_ref + ']" placeholder="Company name"> </div>' +
+                            '<div class="col-md-3">' +
+                                '<input type="text" class="form-control underlined" name="ref_position[' + index_ref + ']" id="ref_position[' + index_ref + ']" placeholder="Position"> </div>' +
+                            '<div class="col-md-3">' +
+                                '<input type="text" class="form-control underlined" name="ref_mobile[' + index_ref + ']" id="ref_mobile[' + index_ref + ']" placeholder="Mobile number"> </div>' +
+                            '<div class="col-md-3">' +
+                                '<input type="email" class="form-control underlined" name="ref_email[' + index_ref + ']" id="ref_email[' + index_ref + ']" placeholder="Email address"> </div>' +
+                            '<div class="col-md-1">' +
+                                '<button class="btn btn-danger remove_ref" type="button">-</button>' +
+                        '</div>';
+                    $(wrapper_ref).append(fieldHTML);
+
+                    index_ref++; console.log('Add cert: ' + index_ref);
+                }
+            });
+            $(wrapper_ref).on('click', '.remove_ref', function(e) {
                 e.preventDefault();
                 $(this).parents('div.form-group').remove();
             });
