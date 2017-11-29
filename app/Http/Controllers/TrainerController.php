@@ -119,8 +119,9 @@ class TrainerController extends Controller
 
         // Get all row in trainers table
         $trainers = DB::table('trainers')->get();
+        $exps = DB::table('expertises')->get();
         
-        return view('trainer.index', ['trainers' => $trainers]);
+        return view('trainer.index', ['trainers' => $trainers, 'expertises' => $exps]);
     }
 
     /**

@@ -19,6 +19,7 @@
                                 <th>Name</th>
                                 <th>Type</th>
                                 <th>Agency</th>
+                                <th>Expertise</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -28,6 +29,13 @@
                                     <td>{{ $trainer->name }}</td>
                                     <td>{{ $trainer->type }}</td>
                                     <td>{{ $trainer->agency_name }}</td>
+                                    <td>
+                                        @foreach ($expertises as $exp)
+                                            @if ($trainer->id == $exp->trainer_id)
+                                                {{ $exp->title }}<br />
+                                            @endif
+                                        @endforeach
+                                    </td>
                                     <td>
                                         <a href="{{ route('portfolio', $trainer->id) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Show CV">
                                             <i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
