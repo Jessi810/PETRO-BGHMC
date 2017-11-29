@@ -16,7 +16,7 @@ class CreateExpertisesTable extends Migration
         Schema::create('expertises', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('description');
+            $table->string('description')->nullable();
 
             $table->integer('trainer_id')->unsigned()->index()->nullable();
             $table->foreign('trainer_id')->references('id')->on('trainers');

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Trainer;
+use App\Expertise;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 class TrainerController extends Controller
 {
@@ -55,8 +57,25 @@ class TrainerController extends Controller
     public function store(Request $request)
     {
         $request->user()->authorizeRoles(['Admin']);
-        $input = $request->all();
-        Trainer::create($input);
+
+        $trainer = new Trainer();
+        $trainer->name = $request->get('name');
+        $trainer->email = $request->get('email');
+        $trainer->type = $request->get('type');
+        $trainer->agency_name = $request->get('agency_name');
+        $trainer->current_position = $request->get('current_position');
+        $trainer->address = $request->get('address');
+        $trainer->mobile = $request->get('mobile');
+        $trainer->phone = $request->get('phone');
+        $trainer->about = $request->get('about');
+        $trainer->save();
+        
+        foreach (Input::get('expertise') as $key => $val) {
+            $expertise = new Expertise();
+            $expertise->title = Input::get("expertise.$key");
+            $trainer->expertises()->save($expertise);
+        }
+
         return redirect('trainer');
     }
 
