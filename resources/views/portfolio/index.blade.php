@@ -235,7 +235,7 @@
 </section>
 <!-- .certification-wrapper -->
 
-<section class="section-wrapper section-interest gray-bg">
+{{--  <section class="section-wrapper section-interest gray-bg">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -275,8 +275,40 @@
         <!-- .row -->
 
     </div>
-</section>
+</section>  --}}
 <!-- .section-publications -->
+
+<section class="expertise-wrapper section-wrapper gray-bg">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h2>Reference</h2>
+                </div>
+            </div>
+        </div>
+        <!-- .row -->
+
+        <div class="row">
+            
+            @foreach ($references as $ref)
+                <div class="col-md-6">
+                    <div class="expertise-item">
+                        <h3>{{ $ref->name }}</h3>
+                        <h4>{{ $ref->position }} <small>{{ $ref->company_name }}</small></h4>
+
+                        <p>
+                            Email: <a href="mailto:{{ $ref->email }}">{{ $ref->email }}</a> <br />
+                            Mobile: {{ $ref->mobile }}
+                        </p>
+                    </div>
+                </div>
+            @endforeach
+
+        </div>
+    </div>
+</section>
+<!-- .expertise-wrapper -->
 
 {{--  <section class="section-wrapper portfolio-section">
     <div class="container-fluid">
