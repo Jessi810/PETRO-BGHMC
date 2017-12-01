@@ -71,7 +71,7 @@
                                 {{--  Form for adding education  --}}
                                 <tr>
                                     <td colspan="5">
-                                        <form id="edu_form" class="d-none" formtype="education" formshown="false">
+                                        <form id="edu_form" class="d-none" formtype="education" formshown="false" formroute="{{ route('education.store') }}">
                                             <div class="row form-group">
                                                 <div class="col-md-8">
                                                     <label for="school">School <span class="badge badge-secondary">required</span></label>
@@ -91,7 +91,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <button type="button" class="btn btn-success btn-block add_edu">Add Education</button>
+                                                <button type="button" class="btn btn-success btn-block save_form">Add Education</button>
                                             </div>
                                         </form>
                                     </td>
@@ -148,7 +148,7 @@
                                 {{--  Form for adding relevant works  --}}
                                 <tr>
                                     <td colspan="5">
-                                        <form id="work_form" class="d-none" formtype="work" formshown="false">
+                                        <form id="work_form" class="d-none" formtype="work" formshown="false" formroute="{{ route('work.store') }}">
                                             <div class="row form-group">
                                                 <div class="col-md-6">
                                                     <label for="company">Company</label>
@@ -170,7 +170,7 @@
                                                 <input type="text" class="form-control underlined" name="description" id="description" placeholder="Accomplisments, job you've done, etc."> </div>
                         
                                             <div class="form-group">
-                                                <button type="button" class="btn btn-success btn-block add_work">Add Work</button>
+                                                <button type="button" class="btn btn-success btn-block save_form">Add Work</button>
                                             </div>
                                         </form>
                                     </td>
@@ -223,7 +223,7 @@
                                 {{--  Form for adding relevant expertise  --}}
                                 <tr>
                                     <td colspan="5">
-                                        <form id="expertise_form" class="d-none" formtype="expertise" formshown="false">
+                                        <form id="expertise_form" class="d-none" formtype="expertise" formshown="false" formroute="{{ route('expertise.store') }}">
                                             <div class="form-group">
                                                 <label for="title">Title</label>
                                                 <input type="text" class="form-control underlined" name="title" id="title" placeholder="Field of expertise" required> </div>
@@ -232,7 +232,7 @@
                                                 <input type="text" class="form-control underlined" name="description" id="description" placeholder="Description" required> </div>
 
                                             <div class="form-group">
-                                                <button type="button" class="btn btn-success btn-block add_work">Add Expertise</button>
+                                                <button type="button" class="btn btn-success btn-block save_form">Add Expertise</button>
                                             </div>
                                         </form>
                                     </td>
@@ -289,7 +289,7 @@
                                 {{--  Form for adding relevant certification  --}}
                                 <tr>
                                     <td colspan="5">
-                                        <form id="certification_form" class="d-none" formtype="certification" formshown="false">
+                                        <form id="certification_form" class="d-none" formtype="certification" formshown="false" formroute="{{ route('certification.store') }}">
                                             <div class="form-group">
                                                 <label for="title">Title</label>
                                                 <input type="text" class="form-control underlined" name="title" id="title" placeholder="Certification title" required> </div>
@@ -301,7 +301,7 @@
                                                 <input type="text" class="form-control underlined" name="date" id="date" placeholder="Date" required> </div>
 
                                             <div class="form-group">
-                                                <button type="button" class="btn btn-success btn-block add_work">Add Certification</button>
+                                                <button type="button" class="btn btn-success btn-block save_form">Add Certification</button>
                                             </div>
                                         </form>
                                     </td>
@@ -360,7 +360,7 @@
                                 {{--  Form for adding relevant references  --}}
                                 <tr>
                                     <td colspan="6">
-                                        <form id="reference_form" class="d-none" formtype="reference" formshown="false">
+                                        <form id="reference_form" class="d-none" formtype="reference" formshown="false" formroute="{{ route('reference.store') }}">
                                             <div class="form-group">
                                                 <label for="name">Name</label>
                                                 <input type="text" class="form-control underlined" name="name" id="name" placeholder="Name of reference" required> </div>
@@ -382,7 +382,7 @@
                                             </div>
                                             
                                             <div class="form-group">
-                                                <button type="button" class="btn btn-success btn-block add_work">Add Reference</button>
+                                                <button type="button" class="btn btn-success btn-block save_form">Add Reference</button>
                                             </div>
                                         </form>
                                     </td>
@@ -445,7 +445,7 @@
                                 {{--  Form for adding relevant skills  --}}
                                 <tr>
                                     <td colspan="5">
-                                        <form id="skill_form" class="d-none" formtype="skill" formshown="false">
+                                        <form id="skill_form" class="d-none" formtype="skill" formshown="false" formroute="{{ route('skill.store') }}">
                                             <div class="row form-group">
                                                 <div class="col-md-8">
                                                     <label for="title">Skill</label>
@@ -459,7 +459,7 @@
                                                 <input type="text" class="form-control underlined" name="description" id="description" placeholder="Description" required> </div>
 
                                             <div class="form-group">
-                                                <button type="button" class="btn btn-success btn-block add_work">Add Skill</button>
+                                                <button type="button" class="btn btn-success btn-block save_form">Add Skill</button>
                                             </div>
                                         </form>
                                     </td>
@@ -496,6 +496,7 @@
 
 @section('scripts')
     <script>
+        console.log('trainer_id ' + '{{ $trainer->id }}');
         $('#sidebar-item-trainer').addClass('active');
 
         $('.add_more').click(function(e) {
@@ -519,19 +520,24 @@
             }
         });
         
-        $(document).on('click', '.add_edu', function (e) {
+        $(document).on('click', '.save_form', function (e) {
             e.preventDefault();
-            
+            var form_type = $(this).closest('form').attr('formtype');  // formtype attribute of parent form
+            var form_route = $(this).closest('form').attr('formroute'); 
+            var data = $("form[formtype='" + form_type +"']").serializeArray();
+            data.push({name: 'trainer_id', value: '{{ $trainer->id }}'});
+            console.log(data);
+
             $.ajax({
                 type        : 'POST',
-                url         : '{{ route("education.store") }}',
+                url         : form_route,
                 datType     : 'json',
-                data        : $('#edu_form').serialize(),
+                data        : data,
                 success     : function (data) {
-                    alert("SUCCESS " + data.success);
+                    console.log("SUCCESS " + data.success);
                 },
                 error    : function (data) {
-                    alert("ERROR   " + data.success);
+                    console.log("ERROR   " + data.success);
                 }
             });
         });

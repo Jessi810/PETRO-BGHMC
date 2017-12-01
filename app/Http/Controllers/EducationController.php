@@ -42,7 +42,7 @@ class EducationController extends Controller
 
         $input = $request->all();
         $edu = Education::create($input);
-        $trainer = Trainer::find($request->trainer);
+        $trainer = Trainer::find($request->get('trainer_id'));
         $edu->trainer()->associate($trainer)->save();
         return response()->json(['success' => 'LOL']);
         return redirect()->route('cv', ['id' => $trainer->id]);
