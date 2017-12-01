@@ -42,3 +42,12 @@ Route::get('cv/{id}', 'CvController@show')->name('cv')->middleware('auth');
    Portfolio
 */
 Route::get('portfolio/{id}', 'CvController@portfolio')->name('portfolio')->middleware('auth');
+
+/*
+
+   Profile
+*/
+Route::prefix('user')->group(function () {
+    Route::get('profile', 'ProfileController@showProfile')->name('profile.index');
+    Route::put('update', 'ProfileController@updateProfile')->name('profile.update');
+});
