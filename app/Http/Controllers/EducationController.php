@@ -43,8 +43,11 @@ class EducationController extends Controller
         $input = $request->all();
         $edu = Education::create($input);
         $trainer = Trainer::find($request->get('trainer_id'));
-        $edu->trainer()->associate($trainer)->save();
-        return response()->json(['success' => 'LOL']);
+        $saved = $edu->trainer()->associate($trainer)->save();
+        return $saved == true
+            ? response()->json(['status' => 'success', 'title' => 'Success', 'msg' => 'Save successfully!'])
+            : response()->json(['status' => 'danger', 'title' => 'Error', 'msg' => 'Error saving. Try again later']);
+
         return redirect()->route('cv', ['id' => $trainer->id]);
     }
 

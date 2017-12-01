@@ -1,1 +1,8 @@
 /* Custom styles */
+.myAlert-top {
+    position: fixed;
+    top: 25px; 
+    left: 20%;
+    width: 60%;
+    z-index: 10000;
+}

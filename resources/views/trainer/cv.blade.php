@@ -1,6 +1,9 @@
 @extends('layouts.modular')
 
 @section('content')
+    <div class="myAlert-top alert alert-dismissible fade" role="alert">
+        
+    </div>
     <div class="row">
         <div class="col-md-3">
             <div class="card">
@@ -514,6 +517,13 @@
             }
         });
 
+        function myAlertTop(status) {
+            $(".myAlert-top").addClass('show');
+            setTimeout(function() {
+                $(".myAlert-top").removeClass('show alert-' + status); 
+            }, 3000);
+        }
+
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -535,9 +545,25 @@
                 data        : data,
                 success     : function (data) {
                     console.log("SUCCESS " + data.success);
+                    var docu = 
+                        '<strong>' + data.title + '</strong> ' + data.msg +
+                            '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+                            '<span aria-hidden="true">&times;</span>' +
+                        '</button>';
+                    $('.myAlert-top').append(docu);
+                    $('.myAlert-top').addClass('alert-' + data.status);
+                    myAlertTop(data.status);
                 },
                 error    : function (data) {
                     console.log("ERROR   " + data.success);
+                    var docu = 
+                        '<strong>' + data.title + '</strong> ' + data.msg +
+                            '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+                            '<span aria-hidden="true">&times;</span>' +
+                        '</button>';
+                    $('.myAlert-top').append(docu);
+                    $('.myAlert-top').addClass('alert-' + data.status);
+                    myAlertTop(data.status);
                 }
             });
         });
