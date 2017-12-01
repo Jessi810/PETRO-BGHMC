@@ -110,10 +110,7 @@
                         </div>
                         <div class="header-block pull-right">
                             <p class="title">
-                                <a href="{{ route('work.create', ['trainer' => $trainer]) }}" class="btn btn-primary btn-sm rounded" data-toggle="tooltip" data-placement="top" title="Add Work">
-                                    {{--  <i class="fa fa-pencil" aria-hidden="true"></i>  --}}
-                                    Add
-                                </a>
+                                <a href="javascript:void(0)" class="btn btn-primary btn-sm rounded add_more" formtype="work" data-toggle="tooltip" data-placement="top" title="Add">Add</a>
                             </p>
                         </div>
                     </div>
@@ -147,6 +144,37 @@
                                         </td>
                                     </tr>
                                 @endforeach
+
+                                {{--  Form for adding relevant works  --}}
+                                <tr>
+                                    <td colspan="5">
+                                        <form id="work_form" class="d-none" formtype="work" formshown="false">
+                                            <div class="row form-group">
+                                                <div class="col-md-6">
+                                                    <label for="company">Company</label>
+                                                    <input type="text" class="form-control underlined" name="company_name" id="company_name" placeholder="Company name" required> </div>
+                                                <div class="col-md-6">
+                                                    <label for="position">Position</label>
+                                                <input type="text" class="form-control underlined" name="position" id="position" placeholder="Position in company" required> </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col-md-6">
+                                                    <label for="datefrom">Date</label>
+                                                    <input type="text" class="form-control underlined" name="datefrom" id="datefrom" placeholder="Date started"> </div>
+                                                <div class="col-md-6">
+                                                    <label for="datefrom" class="invisible">Date</label>
+                                                    <input type="text" class="form-control underlined" name="dateto" id="dateto" placeholder="Date ended"> </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="description">Description</label>
+                                                <input type="text" class="form-control underlined" name="description" id="description" placeholder="Accomplisments, job you've done, etc."> </div>
+                        
+                                            <div class="form-group">
+                                                <button type="button" class="btn btn-success btn-block add_work">Add Work</button>
+                                            </div>
+                                        </form>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -161,10 +189,7 @@
                         </div>
                         <div class="header-block pull-right">
                             <p class="title">
-                                <a href="{{ route('expertise.create', ['trainer' => $trainer]) }}" class="btn btn-primary btn-sm rounded" data-toggle="tooltip" data-placement="top" title="Add Expertise">
-                                    {{--  <i class="fa fa-pencil" aria-hidden="true"></i>  --}}
-                                    Add
-                                </a>
+                                <a href="javascript:void(0)" class="btn btn-primary btn-sm rounded add_more" formtype="expertise" data-toggle="tooltip" data-placement="top" title="Add">Add</a>
                             </p>
                         </div>
                     </div>
@@ -194,6 +219,24 @@
                                         </td>
                                     </tr>
                                 @endforeach
+
+                                {{--  Form for adding relevant expertise  --}}
+                                <tr>
+                                    <td colspan="5">
+                                        <form id="expertise_form" class="d-none" formtype="expertise" formshown="false">
+                                            <div class="form-group">
+                                                <label for="title">Title</label>
+                                                <input type="text" class="form-control underlined" name="title" id="title" placeholder="Field of expertise" required> </div>
+                                            <div class="form-group">
+                                                <label for="description">Description</label>
+                                                <input type="text" class="form-control underlined" name="description" id="description" placeholder="Description" required> </div>
+
+                                            <div class="form-group">
+                                                <button type="button" class="btn btn-success btn-block add_work">Add Expertise</button>
+                                            </div>
+                                        </form>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -208,10 +251,9 @@
                         </div>
                         <div class="header-block pull-right">
                             <p class="title">
-                                <a href="{{ route('certification.create', ['trainer' => $trainer]) }}" class="btn btn-primary btn-sm rounded" data-toggle="tooltip" data-placement="top" title="Add Certification">
-                                    {{--  <i class="fa fa-pencil" aria-hidden="true"></i>  --}}
-                                    Add
-                                </a>
+                                <p class="title">
+                                    <a href="javascript:void(0)" class="btn btn-primary btn-sm rounded add_more" formtype="certification" data-toggle="tooltip" data-placement="top" title="Add">Add</a>
+                                </p>
                             </p>
                         </div>
                     </div>
@@ -243,6 +285,27 @@
                                         </td>
                                     </tr>
                                 @endforeach
+
+                                {{--  Form for adding relevant certification  --}}
+                                <tr>
+                                    <td colspan="5">
+                                        <form id="certification_form" class="d-none" formtype="certification" formshown="false">
+                                            <div class="form-group">
+                                                <label for="title">Title</label>
+                                                <input type="text" class="form-control underlined" name="title" id="title" placeholder="Certification title" required> </div>
+                                            <div class="form-group">
+                                                <label for="position">Description</label>
+                                                <input type="text" class="form-control underlined" name="description" id="description" placeholder="Description" required> </div>
+                                            <div class="form-group">
+                                                <label for="date">Date</label>
+                                                <input type="text" class="form-control underlined" name="date" id="date" placeholder="Date" required> </div>
+
+                                            <div class="form-group">
+                                                <button type="button" class="btn btn-success btn-block add_work">Add Certification</button>
+                                            </div>
+                                        </form>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -257,10 +320,7 @@
                         </div>
                         <div class="header-block pull-right">
                             <p class="title">
-                                <a href="{{ route('reference.create', ['trainer' => $trainer]) }}" class="btn btn-primary btn-sm rounded" data-toggle="tooltip" data-placement="top" title="Add Reference">
-                                    {{--  <i class="fa fa-pencil" aria-hidden="true"></i>  --}}
-                                    Add
-                                </a>
+                                <a href="javascript:void(0)" class="btn btn-primary btn-sm rounded add_more" formtype="reference" data-toggle="tooltip" data-placement="top" title="Add">Add</a>
                             </p>
                         </div>
                     </div>
@@ -296,6 +356,37 @@
                                         </td>
                                     </tr>
                                 @endforeach
+
+                                {{--  Form for adding relevant references  --}}
+                                <tr>
+                                    <td colspan="6">
+                                        <form id="reference_form" class="d-none" formtype="reference" formshown="false">
+                                            <div class="form-group">
+                                                <label for="name">Name</label>
+                                                <input type="text" class="form-control underlined" name="name" id="name" placeholder="Name of reference" required> </div>
+                                            <div class="row form-group">
+                                                <div class="col-md-7">
+                                                    <label for="company_name">Company</label>
+                                                    <input type="text" class="form-control underlined" name="company_name" id="company_name" placeholder="Company name" required> </div>
+                                                <div class="col-md-5">
+                                                    <label for="position">Position</label>
+                                                    <input type="text" class="form-control underlined" name="position" id="position" placeholder="Position" required> </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col-md-7">
+                                                    <label for="email">Email</label>
+                                                    <input type="email" class="form-control underlined" name="email" id="email" placeholder="Email address" required> </div>
+                                                <div class="col-md-5">
+                                                    <label for="mobile">Mobile</label>
+                                                    <input type="text" class="form-control underlined" name="mobile" id="mobile" placeholder="Mobile number" required> </div>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <button type="button" class="btn btn-success btn-block add_work">Add Reference</button>
+                                            </div>
+                                        </form>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -310,10 +401,9 @@
                         </div>
                         <div class="header-block pull-right">
                             <p class="title">
-                                <a href="{{ route('skill.create', ['trainer' => $trainer]) }}" class="btn btn-primary btn-sm rounded" data-toggle="tooltip" data-placement="top" title="Add Reference">
-                                    {{--  <i class="fa fa-pencil" aria-hidden="true"></i>  --}}
-                                    Add
-                                </a>
+                                <p class="title">
+                                    <a href="javascript:void(0)" class="btn btn-primary btn-sm rounded add_more" formtype="skill" data-toggle="tooltip" data-placement="top" title="Add">Add</a>
+                                </p>
                             </p>
                         </div>
                     </div>
@@ -351,6 +441,29 @@
                                         </td>
                                     </tr>
                                 @endforeach
+
+                                {{--  Form for adding relevant skills  --}}
+                                <tr>
+                                    <td colspan="5">
+                                        <form id="skill_form" class="d-none" formtype="skill" formshown="false">
+                                            <div class="row form-group">
+                                                <div class="col-md-8">
+                                                    <label for="title">Skill</label>
+                                                    <input type="text" class="form-control underlined" name="title" id="title" placeholder="Skill" required> </div>
+                                                <div class="col-md-4">
+                                                    <label for="proficiency">Proficiency</label>
+                                                    <input type="text" class="form-control underlined" name="proficiency" id="proficiency" placeholder="Skill level 1-100" required> </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="description">Description</label>
+                                                <input type="text" class="form-control underlined" name="description" id="description" placeholder="Description" required> </div>
+
+                                            <div class="form-group">
+                                                <button type="button" class="btn btn-success btn-block add_work">Add Skill</button>
+                                            </div>
+                                        </form>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
