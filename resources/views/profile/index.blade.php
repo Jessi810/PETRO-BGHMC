@@ -16,6 +16,8 @@
                     </div>
                 </div>
                 <div class="card-block">
+                    @include('includes.alert-message')
+
                     <form class="form-horizontal" method="POST" action="{{ route('profile.update') }}">
                         {{ csrf_field() }}
 
@@ -43,10 +45,35 @@
         {{--  $('#sidebar-item-trainer').addClass('active');  --}}
 
         $(document).ready(function () {
+            // User details
+            var def_name = '{{ $user->name }}'; console.log(def_name);
+            var def_email = '{{ $user->email }}'; console.log(def_email);
+
             $('#edit_profile_button').on('click', function () {
-                $('#name').attr("readonly", false);
-                $('#email').attr("readonly", false);
-                $('#edit_profile_submit').removeClass('invisible');
+                // Edit profile
+                if ($('#edit_profile_button').text() == 'Edit') {
+                    // Change edit button properties
+                    $('#edit_profile_button').removeClass('btn-primary');
+                    $('#edit_profile_button').addClass('btn-danger').text('Cancel');
+                    
+                    // Make form inputs editable
+                    $('#name').attr("readonly", false);
+                    $('#email').attr("readonly", false);
+
+                    // Show submit button
+                    $('#edit_profile_submit').removeClass('invisible');
+                } else { // Cancel edit of profile
+                    // Change edit button properties
+                    $('#edit_profile_button').removeClass('btn-danger');
+                    $('#edit_profile_button').addClass('btn-primary').text('Edit');
+
+                    // Return back all data to original
+                    $('#name').attr("readonly", true).text(def_name).val(def_name);
+                    $('#email').attr("readonly", true).text(def_email).val(def_email);
+
+                    // Remove submit button
+                    $('#edit_profile_submit').addClass('invisible');
+                }
             });
         });
     </script>
