@@ -29,10 +29,11 @@
                         </div>
                         <div class="header-block pull-right">
                             <p class="title">
-                                <a href="{{ route('education.create', ['trainer' => $trainer]) }}" class="btn btn-primary btn-sm rounded" data-toggle="tooltip" data-placement="top" title="Add Education">
-                                    {{--  <i class="fa fa-pencil" aria-hidden="true"></i>  --}}
+                                <a href="javascript:void(0)" class="btn btn-primary btn-sm rounded add_more" formtype="education" data-toggle="tooltip" data-placement="top" title="Add Education">Add</a>
+                                {{--  <a href="{{ route('education.create', ['trainer' => $trainer]) }}" class="btn btn-primary btn-sm rounded" data-toggle="tooltip" data-placement="top" title="Add Education">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
                                     Add
-                                </a>
+                                </a>  --}}
                             </p>
                         </div>
                     </div>
@@ -66,6 +67,35 @@
                                         </td>
                                     </tr>
                                 @endforeach
+
+                                {{--  Form for adding education  --}}
+                                <tr>
+                                    <td colspan="5">
+                                        <form id="edu_form" class="d-none" formtype="education" formshown="false">
+                                            <div class="row form-group">
+                                                <div class="col-md-8">
+                                                    <label for="school">School <span class="badge badge-secondary">required</span></label>
+                                                    <input type="text" class="form-control underlined" name="school" id="school" placeholder="School name" required> </div>
+                                                <div class="col-md-4">
+                                                    <label for="year_graduated">Year</label>
+                                                    <input type="text" class="form-control underlined" name="year_graduated" id="year_graduated" placeholder="Year graduated"> </div>
+                                            </div>
+
+                                            <div class="row form-group">
+                                                <div class="col-md-6">
+                                                    <label for="major">Major</label>
+                                                    <input type="text" class="form-control underlined" name="major" id="major" placeholder="Major"> </div>
+                                                <div class="col-md-6">
+                                                    <label for="minor">Minor</label>
+                                                <input type="text" class="form-control underlined" name="minor" id="minor" placeholder="Minor"> </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <button type="button" class="btn btn-success btn-block add_edu">Add Education</button>
+                                            </div>
+                                        </form>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -354,5 +384,43 @@
 @section('scripts')
     <script>
         $('#sidebar-item-trainer').addClass('active');
+
+        $('.add_more').click(function(e) {
+            var form_type = $(this).attr('formtype');
+            
+            if ($("form[formtype='" + form_type +"']").attr('formshown') == 'false') {
+                $("form[formtype='" + form_type +"']").removeClass('d-none');
+                $("form[formtype='" + form_type +"']").attr('formshown', true);
+
+                $(this).removeClass('btn-primary').addClass('btn-danger').text('Cancel');
+            } else {
+                $("form[formtype='" + form_type +"']").addClass('d-none');
+                $("form[formtype='" + form_type +"']").attr('formshown', false);
+                $(this).removeClass('btn-danger').addClass('btn-primary').text('Add');
+            }
+        });
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        
+        $(document).on('click', '.add_edu', function (e) {
+            e.preventDefault();
+            
+            $.ajax({
+                type        : 'POST',
+                url         : '{{ route("education.store") }}',
+                datType     : 'json',
+                data        : $('#edu_form').serialize(),
+                success     : function (data) {
+                    alert("SUCCESS " + data.success);
+                },
+                error    : function (data) {
+                    alert("ERROR   " + data.success);
+                }
+            });
+        });
     </script>
 @endsection

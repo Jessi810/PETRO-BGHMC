@@ -44,6 +44,7 @@ class EducationController extends Controller
         $edu = Education::create($input);
         $trainer = Trainer::find($request->trainer);
         $edu->trainer()->associate($trainer)->save();
+        return response()->json(['success' => 'LOL']);
         return redirect()->route('cv', ['id' => $trainer->id]);
     }
 
