@@ -520,7 +520,8 @@
         function myAlertTop(status) {
             $(".myAlert-top").addClass('show');
             setTimeout(function() {
-                $(".myAlert-top").removeClass('show alert-' + status); 
+                $(".myAlert-top").removeClass('show alert-' + status);
+                $(".myAlert-top").empty();
             }, 3000);
         }
 
