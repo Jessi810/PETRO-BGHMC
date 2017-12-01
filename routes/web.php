@@ -47,7 +47,7 @@ Route::get('portfolio/{id}', 'CvController@portfolio')->name('portfolio')->middl
 
    Profile
 */
-Route::prefix('user')->group(function () {
-    Route::get('profile', 'ProfileController@showProfile')->name('profile.index');
+Route::prefix('profile')->group(function () {
+    Route::get('/', 'ProfileController@showProfile')->name('profile.index');
     Route::put('update', 'ProfileController@updateProfile')->name('profile.update');
 });

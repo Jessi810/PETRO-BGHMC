@@ -14,6 +14,9 @@ class ProfileController extends Controller
     }
 
     public function updateProfile(Request $request) {
-        
+        $user = Auth::user();
+        $user->update($request->all());
+
+        return redirect()->route('profile.index');
     }
 }
