@@ -80,7 +80,7 @@
                                 {{--  Form for adding education  --}}
                                 <tr>
                                     <td colspan="5">
-                                        <form id="edu_form" class="d-none" formtype="education" formshown="false" formroute="{{ route('education.store') }}">
+                                        <form id="education_template" class="d-none" formtype="education" formshown="false" formroute="{{ route('education.store') }}">
                                             <div class="row form-group">
                                                 <div class="col-md-8">
                                                     <label for="school">School <span class="badge badge-secondary">required</span></label>
@@ -157,7 +157,7 @@
                                 {{--  Form for adding relevant works  --}}
                                 <tr>
                                     <td colspan="5">
-                                        <form id="work_form" class="d-none" formtype="work" formshown="false" formroute="{{ route('work.store') }}">
+                                        <form id="work_template" class="d-none" formtype="work" formshown="false" formroute="{{ route('work.store') }}">
                                             <div class="row form-group">
                                                 <div class="col-md-6">
                                                     <label for="company">Company</label>
@@ -232,7 +232,7 @@
                                 {{--  Form for adding relevant expertise  --}}
                                 <tr>
                                     <td colspan="5">
-                                        <form id="expertise_form" class="d-none" formtype="expertise" formshown="false" formroute="{{ route('expertise.store') }}">
+                                        <form id="expertise_template" class="d-none" formtype="expertise" formshown="false" formroute="{{ route('expertise.store') }}">
                                             <div class="form-group">
                                                 <label for="title">Title</label>
                                                 <input type="text" class="form-control underlined" name="title" id="title" placeholder="Field of expertise" required> </div>
@@ -298,7 +298,7 @@
                                 {{--  Form for adding relevant certification  --}}
                                 <tr>
                                     <td colspan="5">
-                                        <form id="certification_form" class="d-none" formtype="certification" formshown="false" formroute="{{ route('certification.store') }}">
+                                        <form id="certification_template" class="d-none" formtype="certification" formshown="false" formroute="{{ route('certification.store') }}">
                                             <div class="form-group">
                                                 <label for="title">Title</label>
                                                 <input type="text" class="form-control underlined" name="title" id="title" placeholder="Certification title" required> </div>
@@ -369,7 +369,7 @@
                                 {{--  Form for adding relevant references  --}}
                                 <tr>
                                     <td colspan="6">
-                                        <form id="reference_form" class="d-none" formtype="reference" formshown="false" formroute="{{ route('reference.store') }}">
+                                        <form id="reference_template" class="d-none" formtype="reference" formshown="false" formroute="{{ route('reference.store') }}">
                                             <div class="form-group">
                                                 <label for="name">Name</label>
                                                 <input type="text" class="form-control underlined" name="name" id="name" placeholder="Name of reference" required> </div>
@@ -454,7 +454,7 @@
                                 {{--  Form for adding relevant skills  --}}
                                 <tr>
                                     <td colspan="5">
-                                        <form id="skill_form" class="d-none" formtype="skill" formshown="false" formroute="{{ route('skill.store') }}">
+                                        <form id="skill_template" class="d-none" formtype="skill" formshown="false" formroute="{{ route('skill.store') }}">
                                             <div class="row form-group">
                                                 <div class="col-md-8">
                                                     <label for="title">Skill</label>
@@ -510,15 +510,15 @@
         $(document).ready(function () {
             $('.add_more').click(function(e) {
                 var form_type = $(this).attr('formtype');
+                var form = $('form[formtype="' + form_type + '"][id="' + form_type + '_template"]');
+                console.log(form);
                 
-                if ($("form[formtype='" + form_type + "']").attr('formshown') == 'false') {
-                    $("form[formtype='" + form_type + "']").removeClass('d-none')
-                                                        .attr('formshown', true);
+                if ($(form).attr('formshown') == 'false') {
+                    $(form).removeClass('d-none').attr('formshown', true);
 
                     $(this).removeClass('btn-primary').addClass('btn-danger').text('Cancel');
                 } else {
-                    $("form[formtype='" + form_type + "']").addClass('d-none')
-                                                        .attr('formshown', false);
+                    $(form).addClass('d-none').attr('formshown', false);
 
                     $(this).removeClass('btn-danger').addClass('btn-primary').text('Add');
                 }
@@ -550,7 +550,8 @@
                 e.preventDefault();
                 var form_type = $(this).closest('form').attr('formtype');  // formtype attribute of parent form
                 var form_route = $(this).closest('form').attr('formroute'); 
-                var data = $("form[formtype='" + form_type +"']").serializeArray(); // Get all form's field value
+                var form = $('form[formtype="' + form_type + '"][id="' + form_type + '_template"]');
+                var data = $(form).serializeArray(); // Get all form's field value
                 data.push({name: 'trainer_id', value: '{{ $trainer->id }}'});   // Add trainer id to post
 
                 $.ajax({
@@ -597,6 +598,7 @@
                     'trainer'
                 ];
                 var newdata_template = '<tr>';
+                var form = $('form[formtype="' + form_type + '"][id="' + form_type + '_template"]');
 
                 for (var key in data) {
                     if (data.hasOwnProperty(key) && !filter.includes(key)) {
@@ -606,7 +608,7 @@
                 }
 
                 newdata_template += '</tr>';
-                $(newdata_template).insertBefore($('form[formtype="' + form_type + '"]').closest('tr'));
+                $(newdata_template).insertBefore($(form).closest('tr'));
             }
         });
     </script>
