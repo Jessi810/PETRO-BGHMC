@@ -553,11 +553,36 @@
                 data        : data,
                 success     : function (data) {
                     showAlert(data);
+                    temp_name(data.data, form_type, form_route);   // Pass newly saved data
                 },
                 error       : function (data) {
                     showAlert(data);
                 }
             });
         });
+
+        function temp_name(data, form_type, form_route) {
+            console.log(form_type);
+            var filter = [
+                'updated_at',
+                'created_at',
+                'id',
+                'trainer_id',
+                'trainer'
+            ];
+            var newdata_template = '<tr>';
+
+            for (var key in data) {
+                if (data.hasOwnProperty(key) && !filter.includes(key)) {
+                    var nonNullPrint = data[key] == null ? '' : data[key];
+                    newdata_template += '<td>' + nonNullPrint + '</td>';
+                }
+            }
+
+            newdata_template += '</tr>';
+            console.log($('form[formtype="' + form_type + '"]').closest('tr'));
+            
+            $(newdata_template).insertBefore($('form[formtype="' + form_type + '"]').closest('tr'));
+        }
     </script>
 @endsection
