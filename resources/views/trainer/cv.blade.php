@@ -499,31 +499,36 @@
 
 @section('scripts')
     <script>
-        console.log('trainer_id ' + '{{ $trainer->id }}');
         $('#sidebar-item-trainer').addClass('active');
 
         $('.add_more').click(function(e) {
             var form_type = $(this).attr('formtype');
             
             if ($("form[formtype='" + form_type + "']").attr('formshown') == 'false') {
-                console.log('False');
-                $("form[formtype='" + form_type + "']").removeClass('d-none');
-                $("form[formtype='" + form_type + "']").attr('formshown', true);
+                $("form[formtype='" + form_type + "']").removeClass('d-none')
+                                                       .attr('formshown', true);
 
                 $(this).removeClass('btn-primary').addClass('btn-danger').text('Cancel');
             } else {
-                console.log('True');
-                $("form[formtype='" + form_type +"']").addClass('d-none');
-                $("form[formtype='" + form_type +"']").attr('formshown', false);
+                $("form[formtype='" + form_type + "']").addClass('d-none')
+                                                       .attr('formshown', false);
 
                 $(this).removeClass('btn-danger').addClass('btn-primary').text('Add');
             }
         });
 
-        function myAlertTop(status) {
-            $(".myAlert-top").addClass('show');
+        function showAlert(data) {
+            var alert_template =
+                '<strong>' + data.title + '</strong> ' + data.msg +
+                    '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+                    '<span aria-hidden="true">&times;</span>' +
+                '</button>';
+            
+            $('.myAlert-top').append(alert_template)
+                             .addClass('alert-' + data.status)
+                             .addClass('show');
             setTimeout(function() {
-                $(".myAlert-top").removeClass('show alert-' + status);
+                $(".myAlert-top").removeClass('show alert-' + data.status);
                 $(".myAlert-top").empty();
             }, 3000);
         }
@@ -535,14 +540,11 @@
         });
         
         $(document).on('click', '.save_form', function (e) {
-        
-            console.log('Ajax:before');
             e.preventDefault();
             var form_type = $(this).closest('form').attr('formtype');  // formtype attribute of parent form
             var form_route = $(this).closest('form').attr('formroute'); 
-            var data = $("form[formtype='" + form_type +"']").serializeArray();
-            data.push({name: 'trainer_id', value: '{{ $trainer->id }}'});
-            console.log(data);
+            var data = $("form[formtype='" + form_type +"']").serializeArray(); // Get all form's field value
+            data.push({name: 'trainer_id', value: '{{ $trainer->id }}'});   // Add trainer id to post
 
             $.ajax({
                 type        : 'POST',
@@ -550,29 +552,12 @@
                 datType     : 'json',
                 data        : data,
                 success     : function (data) {
-                    console.log("SUCCESS " + data.success);
-                    var docu = 
-                        '<strong>' + data.title + '</strong> ' + data.msg +
-                            '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
-                            '<span aria-hidden="true">&times;</span>' +
-                        '</button>';
-                    $('.myAlert-top').append(docu);
-                    $('.myAlert-top').addClass('alert-' + data.status);
-                    myAlertTop(data.status);
+                    showAlert(data);
                 },
-                error    : function (data) {
-                    console.log("ERROR   " + data.success);
-                    var docu = 
-                        '<strong>' + data.title + '</strong> ' + data.msg +
-                            '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
-                            '<span aria-hidden="true">&times;</span>' +
-                        '</button>';
-                    $('.myAlert-top').append(docu);
-                    $('.myAlert-top').addClass('alert-' + data.status);
-                    myAlertTop(data.status);
+                error       : function (data) {
+                    showAlert(data);
                 }
             });
-            console.log('Ajax:After');
         });
     </script>
 @endsection
