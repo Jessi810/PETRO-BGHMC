@@ -49,8 +49,8 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="card-block p-0 pa-sm-0">
-                                    <table class="table table-responsive-md">
+                                <div class="card-block table-responsive p-0 pa-sm-0">
+                                    <table class="table">
                                         <thead class="thead-default">
                                             <tr>
                                                 <th>School</th>
@@ -131,7 +131,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="card-block pt-sm-0 px-sm-0">
+                                <div class="card-block table-responsive p-0 pa-sm-0">
                                     <table class="table">
                                         <thead class="thead-default">
                                             <tr>
@@ -209,7 +209,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="card-block pt-sm-0 px-sm-0">
+                                <div class="card-block table-responsive p-0 pa-sm-0">
                                     <table class="table">
                                         <thead class="thead-default">
                                             <tr>
@@ -272,7 +272,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="card-block pt-sm-0 px-sm-0">
+                                <div class="card-block table-responsive p-0 pa-sm-0">
                                     <table class="table">
                                         <thead class="thead-default">
                                             <tr>
@@ -340,7 +340,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="card-block pt-sm-0 px-sm-0">
+                                <div class="card-block table-responsive p-0 pa-sm-0">
                                     <table class="table">
                                         <thead class="thead-default">
                                             <tr>
@@ -414,7 +414,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="card-block pt-sm-0 px-sm-0">
+                                <div class="card-block table-responsive p-0 pa-sm-0">
                                     <table class="table">
                                         <thead class="thead-default">
                                             <tr>
