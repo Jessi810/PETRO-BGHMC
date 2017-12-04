@@ -16,10 +16,10 @@ class CreateReferencesTable extends Migration
         Schema::create('references', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('company_name');
-            $table->string('position');
-            $table->string('mobile');
-            $table->string('email');
+            $table->string('company_name')->nullable();
+            $table->string('position')->nullable();
+            $table->string('mobile')->nullable();
+            $table->string('email')->nullable();
 
             $table->integer('trainer_id')->unsigned()->index()->nullable();
             $table->foreign('trainer_id')->references('id')->on('trainers')->onDelete('cascade');

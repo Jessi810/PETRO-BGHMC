@@ -43,7 +43,7 @@ class SkillController extends Controller
         $input = $request->all();
         $skill = Skill::create($input);
         $trainer = Trainer::find($request->get('trainer_id'));
-        $skill->trainer()->associate($trainer)->save();
+        $saved = $skill->trainer()->associate($trainer)->save();
         return $saved == true
             ? response()->json(['status' => 'success', 'title' => 'Success', 'msg' => 'Save successfully!'])
             : response()->json(['status' => 'danger', 'title' => 'Error', 'msg' => 'Error saving. Try again later']);

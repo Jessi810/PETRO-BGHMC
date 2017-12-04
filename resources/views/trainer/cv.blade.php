@@ -505,14 +505,17 @@
         $('.add_more').click(function(e) {
             var form_type = $(this).attr('formtype');
             
-            if ($("form[formtype='" + form_type +"']").attr('formshown') == 'false') {
-                $("form[formtype='" + form_type +"']").removeClass('d-none');
-                $("form[formtype='" + form_type +"']").attr('formshown', true);
+            if ($("form[formtype='" + form_type + "']").attr('formshown') == 'false') {
+                console.log('False');
+                $("form[formtype='" + form_type + "']").removeClass('d-none');
+                $("form[formtype='" + form_type + "']").attr('formshown', true);
 
                 $(this).removeClass('btn-primary').addClass('btn-danger').text('Cancel');
             } else {
+                console.log('True');
                 $("form[formtype='" + form_type +"']").addClass('d-none');
                 $("form[formtype='" + form_type +"']").attr('formshown', false);
+
                 $(this).removeClass('btn-danger').addClass('btn-primary').text('Add');
             }
         });
@@ -532,6 +535,8 @@
         });
         
         $(document).on('click', '.save_form', function (e) {
+        
+            console.log('Ajax:before');
             e.preventDefault();
             var form_type = $(this).closest('form').attr('formtype');  // formtype attribute of parent form
             var form_route = $(this).closest('form').attr('formroute'); 
@@ -567,6 +572,7 @@
                     myAlertTop(data.status);
                 }
             });
+            console.log('Ajax:After');
         });
     </script>
 @endsection

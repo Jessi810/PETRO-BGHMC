@@ -16,8 +16,8 @@ class CreateSkillsTable extends Migration
         Schema::create('skills', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('description');
-            $table->integer('proficiency')->unsigned();
+            $table->string('description')->nullable();
+            $table->integer('proficiency')->nullable()->unsigned();
 
             $table->integer('trainer_id')->unsigned()->index()->nullable();
             $table->foreign('trainer_id')->references('id')->on('trainers')->onDelete('cascade');
