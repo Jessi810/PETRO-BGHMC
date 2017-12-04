@@ -102,6 +102,7 @@ class WorkController extends Controller
         $work = Work::find($work->id);
         $trainer_id = $work->trainer_id;
         $work->delete();
+        return response()->json(['status' => 'success', 'title' => 'Success', 'msg' => 'Delete successfully!']);
         return redirect()->route('cv', ['id' => $trainer_id])->with('success','Work deleted successfully');
     }
 }

@@ -102,6 +102,7 @@ class ExpertiseController extends Controller
         $expertise = Expertise::find($expertise->id);
         $trainer_id = $expertise->trainer_id;
         $expertise->delete();
+        return response()->json(['status' => 'success', 'title' => 'Success', 'msg' => 'Delete successfully!']);
         return redirect()->route('cv', ['id' => $trainer_id])->with('success','Expertise deleted successfully');
     }
 }

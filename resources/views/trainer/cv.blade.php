@@ -61,11 +61,17 @@
                                         <td>
                                             <a href="{{ route('education.edit', [$education->id, $trainer->id]) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit Education">
                                                 <i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                            <form class="form-horizontal" style="display: inline;" method="POST" action="{{ route('education.destroy', $education->id) }}" data-toggle="tooltip" data-placement="top" title="Delete Education">
+                                            {{--  <form class="form-horizontal" style="display: inline;" method="POST" action="{{ route('education.destroy', $education->id) }}" data-toggle="tooltip" data-placement="top" title="Delete Education">
                                                 {{ csrf_field() }}
 
                                                 <input type="hidden" name="_method" value="delete">
                                                 <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                            </form>  --}}
+                                            <form formtype="education" formroute="{{ route('education.destroy', $education->id) }}" class="form-horizontal" style="display: inline;" data-toggle="tooltip" data-placement="top" title="Delete Education">
+                                                {{ csrf_field() }}
+
+                                                <input type="hidden" name="_method" value="delete">
+                                                <button type="button" class="btn btn-sm btn-success delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                             </form>
                                         </td>
                                     </tr>
@@ -138,11 +144,11 @@
                                         <td>
                                             <a href="{{ route('work.edit', [$work->id, $trainer->id]) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit Work">
                                                 <i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                            <form class="form-horizontal" style="display: inline;" method="POST" action="{{ route('work.destroy', $work->id) }}" data-toggle="tooltip" data-placement="top" title="Delete Work">
+                                            <form class="form-horizontal" style="display: inline;" formtype="work" formroute="{{ route('work.destroy', $work->id) }}" data-toggle="tooltip" data-placement="top" title="Delete Work">
                                                 {{ csrf_field() }}
 
                                                 <input type="hidden" name="_method" value="delete">
-                                                <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                                <button type="button" class="btn btn-sm btn-success delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                             </form>
                                         </td>
                                     </tr>
@@ -213,11 +219,11 @@
                                         <td>
                                             <a href="{{ route('expertise.edit', [$expertise->id, $trainer->id]) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit Expertise">
                                                 <i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                            <form class="form-horizontal" style="display: inline;" method="POST" action="{{ route('expertise.destroy', $expertise->id) }}" data-toggle="tooltip" data-placement="top" title="Delete Expertise">
+                                            <form class="form-horizontal" style="display: inline;" formtype="expertise" formroute="{{ route('expertise.destroy', $expertise->id) }}" data-toggle="tooltip" data-placement="top" title="Delete Expertise">
                                                 {{ csrf_field() }}
 
                                                 <input type="hidden" name="_method" value="delete">
-                                                <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                                <button type="button" class="btn btn-sm btn-success delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                             </form>
                                         </td>
                                     </tr>
@@ -279,11 +285,11 @@
                                         <td>
                                             <a href="{{ route('certification.edit', [$certification->id, $trainer->id]) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit Certification">
                                                 <i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                            <form class="form-horizontal" style="display: inline;" method="POST" action="{{ route('certification.destroy', $certification->id) }}" data-toggle="tooltip" data-placement="top" title="Delete Certification">
+                                            <form class="form-horizontal" style="display: inline;" formtype="certification" formroute="{{ route('certification.destroy', $certification->id) }}" data-toggle="tooltip" data-placement="top" title="Delete Certification">
                                                 {{ csrf_field() }}
 
                                                 <input type="hidden" name="_method" value="delete">
-                                                <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                                <button type="button" class="btn btn-sm btn-success delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                             </form>
                                         </td>
                                     </tr>
@@ -350,11 +356,11 @@
                                         <td>
                                             <a href="{{ route('reference.edit', [$reference->id, $trainer->id]) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit Reference">
                                                 <i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                            <form class="form-horizontal" style="display: inline;" method="POST" action="{{ route('reference.destroy', $reference->id) }}" data-toggle="tooltip" data-placement="top" title="Delete Reference">
+                                            <form class="form-horizontal" style="display: inline;" formtype="reference" formroute="{{ route('reference.destroy', $reference->id) }}" data-toggle="tooltip" data-placement="top" title="Delete Reference">
                                                 {{ csrf_field() }}
 
                                                 <input type="hidden" name="_method" value="delete">
-                                                <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                                <button type="button" class="btn btn-sm btn-success delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                             </form>
                                         </td>
                                     </tr>
@@ -428,11 +434,11 @@
                                         <td>
                                             <a href="{{ route('skill.edit', [$skill->id, $trainer->id]) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit Skill">
                                                 <i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                            <form class="form-horizontal" style="display: inline;" method="POST" action="{{ route('skill.destroy', $skill->id) }}" data-toggle="tooltip" data-placement="top" title="Delete Skill">
+                                            <form class="form-horizontal" style="display: inline;" formtype="skill" formroute="{{ route('skill.destroy', $skill->id) }}" data-toggle="tooltip" data-placement="top" title="Delete Skill">
                                                 {{ csrf_field() }}
 
                                                 <input type="hidden" name="_method" value="delete">
-                                                <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                                <button type="button" class="btn btn-sm btn-success delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                             </form>
                                         </td>
                                     </tr>
@@ -501,88 +507,107 @@
     <script>
         $('#sidebar-item-trainer').addClass('active');
 
-        $('.add_more').click(function(e) {
-            var form_type = $(this).attr('formtype');
-            
-            if ($("form[formtype='" + form_type + "']").attr('formshown') == 'false') {
-                $("form[formtype='" + form_type + "']").removeClass('d-none')
-                                                       .attr('formshown', true);
+        $(document).ready(function () {
+            $('.add_more').click(function(e) {
+                var form_type = $(this).attr('formtype');
+                
+                if ($("form[formtype='" + form_type + "']").attr('formshown') == 'false') {
+                    $("form[formtype='" + form_type + "']").removeClass('d-none')
+                                                        .attr('formshown', true);
 
-                $(this).removeClass('btn-primary').addClass('btn-danger').text('Cancel');
-            } else {
-                $("form[formtype='" + form_type + "']").addClass('d-none')
-                                                       .attr('formshown', false);
+                    $(this).removeClass('btn-primary').addClass('btn-danger').text('Cancel');
+                } else {
+                    $("form[formtype='" + form_type + "']").addClass('d-none')
+                                                        .attr('formshown', false);
 
-                $(this).removeClass('btn-danger').addClass('btn-primary').text('Add');
-            }
-        });
-
-        function showAlert(data) {
-            var alert_template =
-                '<strong>' + data.title + '</strong> ' + data.msg +
-                    '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
-                    '<span aria-hidden="true">&times;</span>' +
-                '</button>';
-            
-            $('.myAlert-top').append(alert_template)
-                             .addClass('alert-' + data.status)
-                             .addClass('show');
-            setTimeout(function() {
-                $(".myAlert-top").removeClass('show alert-' + data.status);
-                $(".myAlert-top").empty();
-            }, 3000);
-        }
-
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        
-        $(document).on('click', '.save_form', function (e) {
-            e.preventDefault();
-            var form_type = $(this).closest('form').attr('formtype');  // formtype attribute of parent form
-            var form_route = $(this).closest('form').attr('formroute'); 
-            var data = $("form[formtype='" + form_type +"']").serializeArray(); // Get all form's field value
-            data.push({name: 'trainer_id', value: '{{ $trainer->id }}'});   // Add trainer id to post
-
-            $.ajax({
-                type        : 'POST',
-                url         : form_route,
-                datType     : 'json',
-                data        : data,
-                success     : function (data) {
-                    showAlert(data);
-                    temp_name(data.data, form_type, form_route);   // Pass newly saved data
-                },
-                error       : function (data) {
-                    showAlert(data);
+                    $(this).removeClass('btn-danger').addClass('btn-primary').text('Add');
                 }
             });
-        });
 
-        function temp_name(data, form_type, form_route) {
-            console.log(form_type);
-            var filter = [
-                'updated_at',
-                'created_at',
-                'id',
-                'trainer_id',
-                'trainer'
-            ];
-            var newdata_template = '<tr>';
-
-            for (var key in data) {
-                if (data.hasOwnProperty(key) && !filter.includes(key)) {
-                    var nonNullPrint = data[key] == null ? '' : data[key];
-                    newdata_template += '<td>' + nonNullPrint + '</td>';
-                }
+            function showAlert(data) {
+                var alert_template =
+                    '<strong>' + data.title + '</strong> ' + data.msg +
+                        '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+                        '<span aria-hidden="true">&times;</span>' +
+                    '</button>';
+                
+                $('.myAlert-top').append(alert_template)
+                                .addClass('alert-' + data.status)
+                                .addClass('show');
+                setTimeout(function() {
+                    $(".myAlert-top").removeClass('show alert-' + data.status);
+                    $(".myAlert-top").empty();
+                }, 3000);
             }
 
-            newdata_template += '</tr>';
-            console.log($('form[formtype="' + form_type + '"]').closest('tr'));
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
             
-            $(newdata_template).insertBefore($('form[formtype="' + form_type + '"]').closest('tr'));
-        }
+            $(document).on('click', '.save_form', function (e) {
+                e.preventDefault();
+                var form_type = $(this).closest('form').attr('formtype');  // formtype attribute of parent form
+                var form_route = $(this).closest('form').attr('formroute'); 
+                var data = $("form[formtype='" + form_type +"']").serializeArray(); // Get all form's field value
+                data.push({name: 'trainer_id', value: '{{ $trainer->id }}'});   // Add trainer id to post
+
+                $.ajax({
+                    type        : 'POST',
+                    url         : form_route,
+                    dataType    : 'json',
+                    data        : data,
+                    success     : function (data) {
+                        showAlert(data);
+                        temp_name(data.data, form_type, form_route);   // Pass newly saved data
+                    },
+                    error       : function (data) {
+                        showAlert(data);
+                    }
+                });
+            });
+
+            $(document).on('click', '.delete', function (e) {
+                var callingButton = $(this);
+                var form_type = $(this).closest('form').attr('formtype');  // formtype attribute of parent form
+                var form_route = $(this).closest('form').attr('formroute');
+                
+                $.ajax({
+                    type        : 'POST',
+                    url         : form_route,
+                    dataType    : 'json',
+                    data        : {_method: 'delete'},
+                    success     : function (data) {
+                        showAlert(data);
+                        $(callingButton).closest('tr').remove();
+                    },
+                    error       : function (data) {
+                        showAlert(data);
+                    }
+                });
+            });
+
+            function temp_name(data, form_type, form_route) {
+                var filter = [
+                    'updated_at',
+                    'created_at',
+                    'id',
+                    'trainer_id',
+                    'trainer'
+                ];
+                var newdata_template = '<tr>';
+
+                for (var key in data) {
+                    if (data.hasOwnProperty(key) && !filter.includes(key)) {
+                        var nonNullPrint = data[key] == null ? '' : data[key];
+                        newdata_template += '<td>' + nonNullPrint + '</td>';
+                    }
+                }
+
+                newdata_template += '</tr>';
+                $(newdata_template).insertBefore($('form[formtype="' + form_type + '"]').closest('tr'));
+            }
+        });
     </script>
 @endsection

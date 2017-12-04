@@ -102,6 +102,7 @@ class CertificationController extends Controller
         $cert = Certification::find($certification->id);
         $trainer_id = $cert->trainer_id;
         $cert->delete();
+        return response()->json(['status' => 'success', 'title' => 'Success', 'msg' => 'Delete successfully!']);
         return redirect()->route('cv', ['id' => $trainer_id])->with('success','Certification deleted successfully');
     }
 }

@@ -102,6 +102,7 @@ class SkillController extends Controller
         $skill = Skill::find($skill->id);
         $trainer_id = $skill->trainer_id;
         $skill->delete();
+        return response()->json(['status' => 'success', 'title' => 'Success', 'msg' => 'Delete successfully!']);
         return redirect()->route('cv', ['id' => $trainer_id])->with('success','Skill deleted successfully');
     }
 }

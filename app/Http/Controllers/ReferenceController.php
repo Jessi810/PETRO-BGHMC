@@ -102,6 +102,7 @@ class ReferenceController extends Controller
         $reference = Reference::find($reference->id);
         $trainer_id = $reference->trainer_id;
         $reference->delete();
+        return response()->json(['status' => 'success', 'title' => 'Success', 'msg' => 'Delete successfully!']);
         return redirect()->route('cv', ['id' => $trainer_id])->with('success','Reference deleted successfully');
     }
 }

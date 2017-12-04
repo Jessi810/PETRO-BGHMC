@@ -103,6 +103,7 @@ class EducationController extends Controller
         $edu = Education::find($education->id);
         $trainer_id = $edu->trainer_id;
         $edu->delete();
+        return response()->json(['status' => 'success', 'title' => 'Success', 'msg' => 'Delete successfully!']);
         return redirect()->route('cv', ['id' => $trainer_id])->with('success','Education deleted successfully');
     }
 }
