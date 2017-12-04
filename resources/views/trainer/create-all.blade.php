@@ -188,169 +188,150 @@
         $('#sidebar-item-trainer').addClass('active');
 
         $(document).ready(function() {
-            var max_edu = 10;
             var add_edu = $('.add_edu');
             var wrapper_edu = $('.wrapper_edu');
             var index_edu = 0;
             $(add_edu).click(function() {
-                if(index_edu < max_edu) {
-                    var fieldHTML =
-                        '<div class="row form-group">' +
-                            '<div class="col-md-5">' +
-                                '<input type="text" class="form-control underlined" name="school[' + index_edu + ']" id="school[' + index_edu + ']" placeholder="School name" required> </div>' +
-                            '<div class="col-md-2">' +
-                                '<input type="text" class="form-control underlined" name="year_graduated[' + index_edu + ']" id="year_graduated[' + index_edu + ']" placeholder="Year graduated"> </div>' +
-                            '<div class="col-md-2">' +
-                                '<input type="text" class="form-control underlined" name="major[' + index_edu + ']" id="major[' + index_edu + ']" placeholder="Major"> </div>' +
-                            '<div class="col-md-2">' +
-                                '<input type="text" class="form-control underlined" name="minor[' + index_edu + ']" id="minor[' + index_edu + ']" placeholder="Minor"> </div>' +
-                            '<div class="col-md-1">' +
-                                '<button class="btn btn-danger remove_edu" type="button">-</button>' +
-                        '</div>';
-                    $(wrapper_edu).append(fieldHTML);
+                var fieldHTML =
+                    '<div class="row form-group">' +
+                        '<div class="col-md-5">' +
+                            '<input type="text" class="form-control underlined" name="school[' + index_edu + ']" id="school[' + index_edu + ']" placeholder="School name" required> </div>' +
+                        '<div class="col-md-2">' +
+                            '<input type="text" class="form-control underlined" name="year_graduated[' + index_edu + ']" id="year_graduated[' + index_edu + ']" placeholder="Year graduated"> </div>' +
+                        '<div class="col-md-2">' +
+                            '<input type="text" class="form-control underlined" name="major[' + index_edu + ']" id="major[' + index_edu + ']" placeholder="Major"> </div>' +
+                        '<div class="col-md-2">' +
+                            '<input type="text" class="form-control underlined" name="minor[' + index_edu + ']" id="minor[' + index_edu + ']" placeholder="Minor"> </div>' +
+                        '<div class="col-md-1">' +
+                            '<button class="btn btn-danger remove_edu" type="button">-</button>' +
+                    '</div>';
+                $(wrapper_edu).append(fieldHTML);
 
-                    index_edu++; console.log('Add edu: ' + index_edu);
-                }
+                index_edu++; console.log('Add edu: ' + index_edu);
             });
             $(wrapper_edu).on('click', '.remove_edu', function(e) {
                 e.preventDefault();
                 $(this).parents('div.form-group').remove();
             });
 
-            
-            var max_skill = 10;
             var add_skill = $('.add_skill');
             var wrapper_skill = $('.wrapper_skill');
             var index_skill = 0;
             $(add_skill).click(function() {
-                if(index_skill < max_skill) {
-                    var fieldHTML =
-                        '<div class="row form-group">' +
-                            '<div class="col-md-3">' +
-                                '<input type="text" class="form-control underlined" name="skill_title[' + index_skill + ']" id="skill_title[' + index_skill + ']" placeholder="Skill" required> </div>' +
-                            '<div class="col-md-2">' +
-                                '<input type="text" class="form-control underlined" name="skill_proficiency[' + index_skill + ']" id="skill_proficiency[' + index_skill + ']" placeholder="Skill level (1-100)"> </div>' +
-                            '<div class="col-md-6">' +
-                                '<input type="text" class="form-control underlined" name="skill_description[' + index_skill + ']" id="skill_description[' + index_skill + ']" placeholder="Description"> </div>' +
-                            '<div class="col-md-1">' +
-                                '<button class="btn btn-danger remove_skill" type="button">-</button>' +
-                        '</div>';
-                    $(wrapper_skill).append(fieldHTML);
+                var fieldHTML =
+                    '<div class="row form-group">' +
+                        '<div class="col-md-3">' +
+                            '<input type="text" class="form-control underlined" name="skill_title[' + index_skill + ']" id="skill_title[' + index_skill + ']" placeholder="Skill" required> </div>' +
+                        '<div class="col-md-2">' +
+                            '<input type="text" class="form-control underlined" name="skill_proficiency[' + index_skill + ']" id="skill_proficiency[' + index_skill + ']" placeholder="Skill level (1-100)"> </div>' +
+                        '<div class="col-md-6">' +
+                            '<input type="text" class="form-control underlined" name="skill_description[' + index_skill + ']" id="skill_description[' + index_skill + ']" placeholder="Description"> </div>' +
+                        '<div class="col-md-1">' +
+                            '<button class="btn btn-danger remove_skill" type="button">-</button>' +
+                    '</div>';
+                $(wrapper_skill).append(fieldHTML);
 
-                    index_skill++; console.log('Add skill: ' + index_skill);
-                }
+                index_skill++; console.log('Add skill: ' + index_skill);
             });
             $(wrapper_skill).on('click', '.remove_skill', function(e) {
                 e.preventDefault();
                 $(this).parents('div.form-group').remove();
             });
 
-            var max_cert = 10;
             var add_cert = $('.add_cert');
             var wrapper_cert = $('.wrapper_cert');
             var index_cert = 0;
             $(add_cert).click(function() {
-                if(index_cert < max_cert) {
-                    var fieldHTML =
-                        '<div class="row form-group">' +
-                            '<div class="col-md-3">' +
-                                '<input type="text" class="form-control underlined" name="cert_title[' + index_cert + ']" id="cert_title[' + index_cert + ']" placeholder="Certification title" required> </div>' +
-                            '<div class="col-md-2">' +
-                                '<input type="text" class="form-control underlined" name="cert_date[' + index_cert + ']" id="cert_date[' + index_cert + ']" placeholder="Date"> </div>' +
-                            '<div class="col-md-6">' +
-                                '<input type="text" class="form-control underlined" name="cert_description[' + index_cert + ']" id="cert_description[' + index_cert + ']" placeholder="Description"> </div>' +
-                            '<div class="col-md-1">' +
-                                '<button class="btn btn-danger remove_cert" type="button">-</button>' +
-                        '</div>';
-                    $(wrapper_cert).append(fieldHTML);
+                var fieldHTML =
+                    '<div class="row form-group">' +
+                        '<div class="col-md-3">' +
+                            '<input type="text" class="form-control underlined" name="cert_title[' + index_cert + ']" id="cert_title[' + index_cert + ']" placeholder="Certification title" required> </div>' +
+                        '<div class="col-md-2">' +
+                            '<input type="text" class="form-control underlined" name="cert_date[' + index_cert + ']" id="cert_date[' + index_cert + ']" placeholder="Date"> </div>' +
+                        '<div class="col-md-6">' +
+                            '<input type="text" class="form-control underlined" name="cert_description[' + index_cert + ']" id="cert_description[' + index_cert + ']" placeholder="Description"> </div>' +
+                        '<div class="col-md-1">' +
+                            '<button class="btn btn-danger remove_cert" type="button">-</button>' +
+                    '</div>';
+                $(wrapper_cert).append(fieldHTML);
 
-                    index_cert++; console.log('Add cert: ' + index_cert);
-                }
+                index_cert++; console.log('Add cert: ' + index_cert);
             });
             $(wrapper_cert).on('click', '.remove_cert', function(e) {
                 e.preventDefault();
                 $(this).parents('div.form-group').remove();
             });
 
-            var max_ref = 10;
             var add_ref = $('.add_ref');
             var wrapper_ref = $('.wrapper_ref');
             var index_ref = 0;
             $(add_ref).click(function() {
-                if(index_ref < max_ref) {
-                    var fieldHTML =
-                        '<div class="row form-group">' +
-                            '<div class="col-md-3">' +
-                                '<input type="text" class="form-control underlined" name="ref_name[' + index_ref + ']" id="ref_name[' + index_ref + ']" placeholder="Name of reference" required> </div>' +
-                            '<div class="col-md-3">' +
-                                '<input type="text" class="form-control underlined" name="ref_company_name[' + index_ref + ']" id="ref_company_name[' + index_ref + ']" placeholder="Company name"> </div>' +
-                            '<div class="col-md-3">' +
-                                '<input type="text" class="form-control underlined" name="ref_position[' + index_ref + ']" id="ref_position[' + index_ref + ']" placeholder="Position"> </div>' +
-                            '<div class="col-md-3">' +
-                                '<input type="text" class="form-control underlined" name="ref_mobile[' + index_ref + ']" id="ref_mobile[' + index_ref + ']" placeholder="Mobile number"> </div>' +
-                            '<div class="col-md-3">' +
-                                '<input type="email" class="form-control underlined" name="ref_email[' + index_ref + ']" id="ref_email[' + index_ref + ']" placeholder="Email address"> </div>' +
-                            '<div class="col-md-1">' +
-                                '<button class="btn btn-danger remove_ref" type="button">-</button>' +
-                        '</div>';
-                    $(wrapper_ref).append(fieldHTML);
+                var fieldHTML =
+                    '<div class="row form-group">' +
+                        '<div class="col-md-3">' +
+                            '<input type="text" class="form-control underlined" name="ref_name[' + index_ref + ']" id="ref_name[' + index_ref + ']" placeholder="Name of reference" required> </div>' +
+                        '<div class="col-md-3">' +
+                            '<input type="text" class="form-control underlined" name="ref_company_name[' + index_ref + ']" id="ref_company_name[' + index_ref + ']" placeholder="Company name"> </div>' +
+                        '<div class="col-md-3">' +
+                            '<input type="text" class="form-control underlined" name="ref_position[' + index_ref + ']" id="ref_position[' + index_ref + ']" placeholder="Position"> </div>' +
+                        '<div class="col-md-3">' +
+                            '<input type="text" class="form-control underlined" name="ref_mobile[' + index_ref + ']" id="ref_mobile[' + index_ref + ']" placeholder="Mobile number"> </div>' +
+                        '<div class="col-md-3">' +
+                            '<input type="email" class="form-control underlined" name="ref_email[' + index_ref + ']" id="ref_email[' + index_ref + ']" placeholder="Email address"> </div>' +
+                        '<div class="col-md-1">' +
+                            '<button class="btn btn-danger remove_ref" type="button">-</button>' +
+                    '</div>';
+                $(wrapper_ref).append(fieldHTML);
 
-                    index_ref++; console.log('Add cert: ' + index_ref);
-                }
+                index_ref++; console.log('Add ref: ' + index_ref);
             });
             $(wrapper_ref).on('click', '.remove_ref', function(e) {
                 e.preventDefault();
                 $(this).parents('div.form-group').remove();
             });
 
-            var max_work = 10;
             var add_work = $('.add_work');
             var wrapper_work = $('.wrapper_work');
             var index_work = 0;
             $(add_work).click(function() {
-                if(index_work < max_work) {
-                    var fieldHTML =
-                        '<div class="row form-group">' +
-                            '<div class="col-md-3">' +
-                                '<input type="text" class="form-control underlined" name="work_company_name[' + index_work + ']" id="work_company_name[' + index_work + ']" placeholder="Company name" required> </div>' +
-                            '<div class="col-md-3">' +
-                                '<input type="text" class="form-control underlined" name="work_position[' + index_work + ']" id="work_position[' + index_work + ']" placeholder="Position in company"> </div>' +
-                            '<div class="col-md-3">' +
-                                '<input type="text" class="form-control underlined" name="work_datefrom[' + index_work + ']" id="work_datefrom[' + index_work + ']" placeholder="Date started"> </div>' +
-                            '<div class="col-md-3">' +
-                                '<input type="text" class="form-control underlined" name="work_dateto[' + index_work + ']" id="work_dateto[' + index_work + ']" placeholder="Date ended"> </div>' +
-                            '<div class="col-md-3">' +
-                                '<input type="text" class="form-control underlined" name="work_description[' + index_work + ']" id="work_description[' + index_work + ']" placeholder="Description"> </div>' +
-                            '<div class="col-md-1">' +
-                                '<button class="btn btn-danger remove_work" type="button">-</div>' +
-                        '</div>';
-                    $(wrapper_work).append(fieldHTML);
+                var fieldHTML =
+                    '<div class="row form-group">' +
+                        '<div class="col-md-3">' +
+                            '<input type="text" class="form-control underlined" name="work_company_name[' + index_work + ']" id="work_company_name[' + index_work + ']" placeholder="Company name" required> </div>' +
+                        '<div class="col-md-3">' +
+                            '<input type="text" class="form-control underlined" name="work_position[' + index_work + ']" id="work_position[' + index_work + ']" placeholder="Position in company"> </div>' +
+                        '<div class="col-md-3">' +
+                            '<input type="text" class="form-control underlined" name="work_datefrom[' + index_work + ']" id="work_datefrom[' + index_work + ']" placeholder="Date started"> </div>' +
+                        '<div class="col-md-3">' +
+                            '<input type="text" class="form-control underlined" name="work_dateto[' + index_work + ']" id="work_dateto[' + index_work + ']" placeholder="Date ended"> </div>' +
+                        '<div class="col-md-3">' +
+                            '<input type="text" class="form-control underlined" name="work_description[' + index_work + ']" id="work_description[' + index_work + ']" placeholder="Description"> </div>' +
+                        '<div class="col-md-1">' +
+                            '<button class="btn btn-danger remove_work" type="button">-</div>' +
+                    '</div>';
+                $(wrapper_work).append(fieldHTML);
 
-                    index_work++; console.log('Add cert: ' + index_work);
-                }
+                index_work++; console.log('Add work: ' + index_work);
             });
             $(wrapper_work).on('click', '.remove_work', function(e) {
                 e.preventDefault();
                 $(this).parents('div.form-group').remove();
             });
 
-            var max_exp = 10;
             var add_exp = $('.add_exp');
             var wrapper_exp = $('.wrapper_exp');
             var index_exp = 1;
             $(add_exp).click(function() {
-                if(index_exp < max_exp) {
-                    var fieldHTML =
-                        '<div class="input-group">' +
-                            '<input type="text" class="form-control underlined" name="exp_title[' + index_exp + ']" id="exp_title[' + index_exp + ']" placeholder="Trainer\'s field of expertise" required>' +
-                            '<span class="input-group-btn">' +
-                                '<button class="btn btn-danger remove_exp" type="button">-</button>' +
-                            '</span>' +
-                        '</div>';
-                    $(wrapper_exp).append(fieldHTML);
+                var fieldHTML =
+                    '<div class="input-group">' +
+                        '<input type="text" class="form-control underlined" name="exp_title[' + index_exp + ']" id="exp_title[' + index_exp + ']" placeholder="Trainer\'s field of expertise" required>' +
+                        '<span class="input-group-btn">' +
+                            '<button class="btn btn-danger remove_exp" type="button">-</button>' +
+                        '</span>' +
+                    '</div>';
+                $(wrapper_exp).append(fieldHTML);
 
-                    index_exp++; console.log('Add exp: ' + index_exp);
-                }
+                index_exp++; console.log('Add exp: ' + index_exp);
             });
             $(wrapper_exp).on('click', '.remove_exp', function(e) {
                 e.preventDefault();
