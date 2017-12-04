@@ -24,7 +24,7 @@
                         <label for="exp_title[0]">Expertise <span class="badge badge-secondary">required</span></label>
                         <div class="wrapper_exp">
                             <div class="input-group">
-                                <input type="text" class="form-control underlined" name="exp_title[0]" id="exp_title[0]" placeholder="Trainer's field of expertise">
+                                <input type="text" class="form-control underlined" name="exp_title[0]" id="exp_title[0]" placeholder="Trainer's field of expertise" required>
                                 <span class="input-group-btn">
                                     <button class="btn btn-success add_exp" type="button">+</button>
                                 </span>
@@ -34,7 +34,7 @@
                     <div class="row form-group">
                         <div class="col-md-8">
                             <label for="agency_name">Agency <span class="badge badge-secondary">required</span></label>
-                            <input type="text" class="form-control underlined" name="agency_name" id="agency_name" placeholder="Trainer's agency"> </div>
+                            <input type="text" class="form-control underlined" name="agency_name" id="agency_name" placeholder="Trainer's agency" required> </div>
                         <div class="col-md-4">
                             <label for="type">Type <span class="badge badge-secondary">required</span></label>
                             <select id="type" name="type" class="form-control">
@@ -59,7 +59,7 @@
                         <input type="text" class="form-control underlined" name="current_position" id="current_position" placeholder="Current position"> </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="text" class="form-control underlined" name="email" id="email" placeholder="Trainer email address"> </div>
+                        <input type="text" class="form-control underlined" name="email" id="email" placeholder="Email address"> </div>
                     <div class="form-group">
                         <label for="address">Address</label>
                         <input type="text" class="form-control underlined" name="address" id="address" placeholder="Current address"> </div>
@@ -196,13 +196,13 @@
                 if(index_edu < max_edu) {
                     var fieldHTML =
                         '<div class="row form-group">' +
-                            '<div class="col-md-4">' +
+                            '<div class="col-md-5">' +
                                 '<input type="text" class="form-control underlined" name="school[' + index_edu + ']" id="school[' + index_edu + ']" placeholder="School name" required> </div>' +
-                            '<div class="col-md-1">' +
+                            '<div class="col-md-2">' +
                                 '<input type="text" class="form-control underlined" name="year_graduated[' + index_edu + ']" id="year_graduated[' + index_edu + ']" placeholder="Year graduated"> </div>' +
-                            '<div class="col-md-3">' +
+                            '<div class="col-md-2">' +
                                 '<input type="text" class="form-control underlined" name="major[' + index_edu + ']" id="major[' + index_edu + ']" placeholder="Major"> </div>' +
-                            '<div class="col-md-3">' +
+                            '<div class="col-md-2">' +
                                 '<input type="text" class="form-control underlined" name="minor[' + index_edu + ']" id="minor[' + index_edu + ']" placeholder="Minor"> </div>' +
                             '<div class="col-md-1">' +
                                 '<button class="btn btn-danger remove_edu" type="button">-</button>' +
@@ -229,7 +229,7 @@
                             '<div class="col-md-3">' +
                                 '<input type="text" class="form-control underlined" name="skill_title[' + index_skill + ']" id="skill_title[' + index_skill + ']" placeholder="Skill" required> </div>' +
                             '<div class="col-md-2">' +
-                                '<input type="text" class="form-control underlined" name="skill_proficiency[' + index_skill + ']" id="skill_proficiency[' + index_skill + ']" placeholder="Skill level 1-100"> </div>' +
+                                '<input type="text" class="form-control underlined" name="skill_proficiency[' + index_skill + ']" id="skill_proficiency[' + index_skill + ']" placeholder="Skill level (1-100)"> </div>' +
                             '<div class="col-md-6">' +
                                 '<input type="text" class="form-control underlined" name="skill_description[' + index_skill + ']" id="skill_description[' + index_skill + ']" placeholder="Description"> </div>' +
                             '<div class="col-md-1">' +
@@ -320,7 +320,7 @@
                             '<div class="col-md-3">' +
                                 '<input type="text" class="form-control underlined" name="work_dateto[' + index_work + ']" id="work_dateto[' + index_work + ']" placeholder="Date ended"> </div>' +
                             '<div class="col-md-3">' +
-                                '<input type="text" class="form-control underlined" name="work_description[' + index_work + ']" id="work_description[' + index_work + ']" placeholder="Accomplisments, job you\'ve done, etc."> </div>' +
+                                '<input type="text" class="form-control underlined" name="work_description[' + index_work + ']" id="work_description[' + index_work + ']" placeholder="Description"> </div>' +
                             '<div class="col-md-1">' +
                                 '<button class="btn btn-danger remove_work" type="button">-</div>' +
                         '</div>';
@@ -342,7 +342,7 @@
                 if(index_exp < max_exp) {
                     var fieldHTML =
                         '<div class="input-group">' +
-                            '<input type="text" class="form-control underlined" name="exp_title[' + index_exp + ']" id="exp_title[' + index_exp + ']" placeholder="Trainer\'s field of expertise">' +
+                            '<input type="text" class="form-control underlined" name="exp_title[' + index_exp + ']" id="exp_title[' + index_exp + ']" placeholder="Trainer\'s field of expertise" required>' +
                             '<span class="input-group-btn">' +
                                 '<button class="btn btn-danger remove_exp" type="button">-</button>' +
                             '</span>' +
