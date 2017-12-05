@@ -78,7 +78,7 @@
 
 @section('scripts')
     <script>
-        $('#sidebar-item-trainer').addClass('active');
+        $('#sidebar-item-trainer').addClass('open active');
 
         $(document).ready(function() {
             var maxField = 10;

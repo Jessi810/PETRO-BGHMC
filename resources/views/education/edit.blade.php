@@ -48,6 +48,6 @@
 
 @section('scripts')
     <script>
-        $('#sidebar-item-trainer').addClass('active open');
+        $('#sidebar-item-trainer').addClass('open active');
     </script>
 @endsection

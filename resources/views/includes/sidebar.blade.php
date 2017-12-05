@@ -32,7 +32,7 @@
                             <a href="{{ route('trainer.index', ['type' => 'External']) }}"> External </a>
                         </li>
                         <li>
-                            <a href="{{ route('trainer.create') }}"> Create <span class="badge badge-secondary">Admin only</span> </a>
+                            <a href="{{ url('trainer/create-all') }}"> Create </a>
                         </li>
                     </ul>
                 </li>

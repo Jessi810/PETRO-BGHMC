@@ -73,6 +73,6 @@
 
 @section('scripts')
     <script>
-        $('#sidebar-item-trainer').addClass('active');
+        $('#sidebar-item-trainer').addClass('open active');
     </script>
 @endsection
