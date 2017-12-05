@@ -41,11 +41,17 @@ class ReferenceController extends Controller
         $request->user()->authorizeRoles(['Admin']);
         
         $input = $request->all();
-        $ref = Reference::create($input);
+        $reference = Reference::create($input);
         $trainer = Trainer::find($request->get('trainer_id'));
-        $saved = $ref->trainer()->associate($trainer)->save();
+        $saved = $reference->trainer()->associate($trainer)->save();
         return $saved == true
-            ? response()->json(['status' => 'success', 'title' => 'Success', 'msg' => 'Save successfully!', 'data' => $ref])
+            ? response()->json([
+                'status' => 'success',
+                'title' => 'Success',
+                'msg' => 'Save successfully!',
+                'data' => $reference,
+                'routeEdit' => route('reference.edit', [$reference->id, $trainer->id]),
+                'routeDelete' => route('reference.destroy', $reference->id)])
             : response()->json(['status' => 'danger', 'title' => 'Error', 'msg' => 'Error saving. Try again later']);
         return redirect()->route('cv', ['id' => $trainer->id]);
     }

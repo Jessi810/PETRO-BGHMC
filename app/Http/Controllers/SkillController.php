@@ -45,7 +45,13 @@ class SkillController extends Controller
         $trainer = Trainer::find($request->get('trainer_id'));
         $saved = $skill->trainer()->associate($trainer)->save();
         return $saved == true
-            ? response()->json(['status' => 'success', 'title' => 'Success', 'msg' => 'Save successfully!', 'data' => $skill])
+            ? response()->json([
+                'status' => 'success',
+                'title' => 'Success',
+                'msg' => 'Save successfully!',
+                'data' => $skill,
+                'routeEdit' => route('skill.edit', [$skill->id, $trainer->id]),
+                'routeDelete' => route('skill.destroy', $skill->id)])
             : response()->json(['status' => 'danger', 'title' => 'Error', 'msg' => 'Error saving. Try again later']);
         return redirect()->route('cv', ['id' => $trainer->id]);
     }

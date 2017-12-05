@@ -45,7 +45,13 @@ class EducationController extends Controller
         $trainer = Trainer::find($request->get('trainer_id'));
         $saved = $edu->trainer()->associate($trainer)->save();
         return $saved == true
-            ? response()->json(['status' => 'success', 'title' => 'Success', 'msg' => 'Save successfully!', 'data' => $edu])
+            ? response()->json([
+                'status' => 'success',
+                'title' => 'Success',
+                'msg' => 'Save successfully!',
+                'data' => $edu,
+                'routeEdit' => route('education.edit', [$edu->id, $trainer->id]),
+                'routeDelete' => route('education.destroy', $edu->id)])
             : response()->json(['status' => 'danger', 'title' => 'Error', 'msg' => 'Error saving. Try again later']);
 
         return redirect()->route('cv', ['id' => $trainer->id]);

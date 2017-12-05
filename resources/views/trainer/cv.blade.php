@@ -552,7 +552,7 @@
                     data        : data,
                     success     : function (data) {
                         showAlert(data);
-                        temp_name(data.data, form_type, form_route);   // Pass newly saved data
+                        temp_name(data.data, data, form_type, form_route);   // Pass newly saved data
                     },
                     error       : function (data) {
                         showAlert(data);
@@ -580,7 +580,7 @@
                 });
             });
 
-            function temp_name(data, form_type, form_route) {
+            function temp_name(newData, data, form_type, form_route) {
                 var filter = [
                     'updated_at',
                     'created_at',
@@ -590,14 +590,26 @@
                 ];
                 var newdata_template = '<tr>';
                 var form = $('form[formtype="' + form_type + '"][id="' + form_type + '_template"]');
-
-                for (var key in data) {
-                    if (data.hasOwnProperty(key) && !filter.includes(key)) {
-                        var nonNullPrint = data[key] == null ? '' : data[key];
+                
+                for (var key in newData) {
+                    if (newData.hasOwnProperty(key) && !filter.includes(key)) {
+                        var nonNullPrint = newData[key] == null ? '' : newData[key];
                         newdata_template += '<td>' + nonNullPrint + '</td>';
                     }
                 }
+                
+                newdata_template +=
+                    '<td>' +
+                        '<a href="' + data.routeEdit + '" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit">' +
+                            '<i class="fa fa-pencil" aria-hidden="true"></i></a>' +
+                        
+                        '<form formtype="' + form_type + '" formroute="' + data.routeDelete + '" class="form-horizontal" style="display: inline;">' +
+                            '{{ csrf_field() }}' +
 
+                            '<input type="hidden" name="_method" value="delete">' +
+                            '<button type="button" class="btn btn-sm btn-success delete"><i class="fa fa-trash" aria-hidden="true"></i></a>' +
+                        '</form>' +
+                    '</td>';
                 newdata_template += '</tr>';
                 $(newdata_template).insertBefore($(form).closest('tr'));
             }
