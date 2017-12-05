@@ -137,7 +137,8 @@
                                             <tr>
                                                 <th>Company</th>
                                                 <th>Position</th>
-                                                <th>Date</th>
+                                                <th>Date Started</th>
+                                                <th>Date Ended</th>
                                                 <th>Description</th>
                                                 <th></th>
                                             </tr>
@@ -147,7 +148,8 @@
                                                 <tr>
                                                     <td>{{ $work->company_name }}</td>
                                                     <td>{{ $work->position }}</td>
-                                                    <td>{{ $work->datefrom }} to {{ $work->dateto }}</td>
+                                                    <td>{{ $work->datefrom }}</td>
+                                                    <td>{{ $work->dateto }}</td>
                                                     <td>{{ $work->description }}</td>
                                                     <td>
                                                         <a href="{{ route('work.edit', [$work->id, $trainer->id]) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit Work">
@@ -164,7 +166,7 @@
 
                                             {{--  Form for adding relevant works  --}}
                                             <tr>
-                                                <td colspan="5">
+                                                <td colspan="6">
                                                     <form id="work_template" class="d-none" formtype="work" formshown="false" formroute="{{ route('work.store') }}">
                                                         <div class="row form-group">
                                                             <div class="col-md-6">
@@ -346,7 +348,7 @@
                                             <tr>
                                                 <th>Title</th>
                                                 <th>Description</th>
-                                                <th></th>
+                                                <th>Proficiency</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -356,6 +358,11 @@
                                                     <td>{{ $skill->title }}</td>
                                                     <td>{{ $skill->description }}</td>
                                                     <td>
+                                                        <div class="progress">
+                                                            <div class="progress-bar" role="progressbar" style="width: {{ $skill->proficiency }}%" aria-valuenow="{{ $skill->proficiency }}" aria-valuemin="0" aria-valuemax="100">{{ $skill->proficiency }}</div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
                                                         <a href="{{ route('skill.edit', [$skill->id, $trainer->id]) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit Skill">
                                                             <i class="fa fa-pencil" aria-hidden="true"></i></a>
                                                         <form class="form-horizontal" style="display: inline;" formtype="skill" formroute="{{ route('skill.destroy', $skill->id) }}" data-toggle="tooltip" data-placement="top" title="Delete Skill">
@@ -364,13 +371,6 @@
                                                             <input type="hidden" name="_method" value="delete">
                                                             <button type="button" class="btn btn-sm btn-success delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                                         </form>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="3">
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar" style="width: {{ $skill->proficiency }}%" aria-valuenow="{{ $skill->proficiency }}" aria-valuemin="0" aria-valuemax="100">{{ $skill->proficiency }}</div>
-                                                        </div>
                                                     </td>
                                                 </tr>
                                             @endforeach
