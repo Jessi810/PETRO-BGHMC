@@ -12,9 +12,9 @@
                         <p class="title"> <a href="{{ url('trainer/create-all') }}" class="btn btn-primary btn-sm rounded">New trainer</a> </p>
                     </div>
                 </div>
-                <div class="card-block">
-                    <table class="table table-sm">
-                        <thead class="thead-default">
+                <div class="card-block table-responsive p-0 p-sm-0">
+                    <table class="table">
+                        <thead class="">
                             <tr>
                                 <th>Name</th>
                                 <th>Type</th>
