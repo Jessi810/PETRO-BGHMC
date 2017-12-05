@@ -35,7 +35,28 @@
                     <!-- Tab panes -->
                     <div class="tab-content tabs-bordered p-0 pa-sm-0">
                         <div class="tab-pane fade in active" id="personal_tab">
-                            <p>Coming soon: Personal details here</p>
+                            <div class="card card-info">
+                                <div class="card-block">
+                                    <dl>
+                                        <dt>Name</dt>
+                                        <dd>{{ $trainer->name }}</dd>
+                                        <dt>Email</dt>
+                                        <dd>{{ $trainer->email }}</dd>
+                                        <dt>Agency</dt>
+                                        <dd>{{ $trainer->agency_name }}</dd>
+                                        <dt>Position</dt>
+                                        <dd>{{ $trainer->current_position }}</dd>
+                                        <dt>Address</dt>
+                                        <dd>{{ $trainer->address }}</dd>
+                                        <dt>Mobile</dt>
+                                        <dd>{{ $trainer->mobile }}</dd>
+                                        <dt>Phone</dt>
+                                        <dd>{{ $trainer->phone }}</dd>
+                                        <dt>CV</dt>
+                                        <dd><a href="{{ url('portfolio', ['id' => $trainer->id]) }}">Curriculum Vitae</a></dd>
+                                    </dl>
+                                </div>
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="education_tab">
                             <div class="card card-info">
@@ -491,7 +512,7 @@
 
 @section('scripts')
     <script>
-        $('#sidebar-item-trainer').addClass('active');
+        $('#sidebar-item-trainer').addClass('active open');
 
         $(document).ready(function () {
 
