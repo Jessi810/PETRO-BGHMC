@@ -174,7 +174,7 @@
                                                                 <input type="text" class="form-control underlined" name="company_name" id="company_name" placeholder="Company name" required> </div>
                                                             <div class="col-md-6">
                                                                 <label for="position">Position</label>
-                                                            <input type="text" class="form-control underlined" name="position" id="position" placeholder="Position in company" required> </div>
+                                                            <input type="text" class="form-control underlined" name="position" id="position" placeholder="Position in company"> </div>
                                                         </div>
                                                         <div class="row form-group">
                                                             <div class="col-md-6">
@@ -247,7 +247,7 @@
                                                             <input type="text" class="form-control underlined" name="title" id="title" placeholder="Field of expertise" required> </div>
                                                         <div class="form-group">
                                                             <label for="description">Description</label>
-                                                            <input type="text" class="form-control underlined" name="description" id="description" placeholder="Description" required> </div>
+                                                            <input type="text" class="form-control underlined" name="description" id="description" placeholder="Description"> </div>
 
                                                         <div class="form-group">
                                                             <button type="button" class="btn btn-success btn-block save_form">Add Expertise</button>
@@ -312,10 +312,10 @@
                                                             <input type="text" class="form-control underlined" name="title" id="title" placeholder="Certification title" required> </div>
                                                         <div class="form-group">
                                                             <label for="position">Description</label>
-                                                            <input type="text" class="form-control underlined" name="description" id="description" placeholder="Description" required> </div>
+                                                            <input type="text" class="form-control underlined" name="description" id="description" placeholder="Description"> </div>
                                                         <div class="form-group">
                                                             <label for="date">Date</label>
-                                                            <input type="text" class="form-control underlined" name="date" id="date" placeholder="Date" required> </div>
+                                                            <input type="text" class="form-control underlined" name="date" id="date" placeholder="Date"> </div>
 
                                                         <div class="form-group">
                                                             <button type="button" class="btn btn-success btn-block save_form">Add Certification</button>
@@ -385,11 +385,11 @@
                                                                 <input type="text" class="form-control underlined" name="title" id="title" placeholder="Skill" required> </div>
                                                             <div class="col-md-4">
                                                                 <label for="proficiency">Proficiency</label>
-                                                                <input type="text" class="form-control underlined" name="proficiency" id="proficiency" placeholder="Skill level 1-100" required> </div>
+                                                                <input type="text" class="form-control underlined" name="proficiency" id="proficiency" placeholder="Skill level 1-100"> </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="description">Description</label>
-                                                            <input type="text" class="form-control underlined" name="description" id="description" placeholder="Description" required> </div>
+                                                            <input type="text" class="form-control underlined" name="description" id="description" placeholder="Description"> </div>
 
                                                         <div class="form-group">
                                                             <button type="button" class="btn btn-success btn-block save_form">Add Skill</button>
@@ -457,18 +457,18 @@
                                                         <div class="row form-group">
                                                             <div class="col-md-7">
                                                                 <label for="company_name">Company</label>
-                                                                <input type="text" class="form-control underlined" name="company_name" id="company_name" placeholder="Company name" required> </div>
+                                                                <input type="text" class="form-control underlined" name="company_name" id="company_name" placeholder="Company name"> </div>
                                                             <div class="col-md-5">
                                                                 <label for="position">Position</label>
-                                                                <input type="text" class="form-control underlined" name="position" id="position" placeholder="Position" required> </div>
+                                                                <input type="text" class="form-control underlined" name="position" id="position" placeholder="Position"> </div>
                                                         </div>
                                                         <div class="row form-group">
                                                             <div class="col-md-7">
                                                                 <label for="email">Email</label>
-                                                                <input type="email" class="form-control underlined" name="email" id="email" placeholder="Email address" required> </div>
+                                                                <input type="email" class="form-control underlined" name="email" id="email" placeholder="Email address"> </div>
                                                             <div class="col-md-5">
                                                                 <label for="mobile">Mobile</label>
-                                                                <input type="text" class="form-control underlined" name="mobile" id="mobile" placeholder="Mobile number" required> </div>
+                                                                <input type="text" class="form-control underlined" name="mobile" id="mobile" placeholder="Mobile number"> </div>
                                                         </div>
                                                         
                                                         <div class="form-group">
