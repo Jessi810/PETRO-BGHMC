@@ -9,13 +9,15 @@ use App\Skill;
 use App\Certification;
 use App\Reference;
 use App\Work;
+use App\Http\Requests\TrainerRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
 
 class TrainerController extends Controller
 {
-    public function create_all(Request $request) {
+    public function create_all(TrainerRequest $request) {
         $request->user()->authorizeRoles(['Admin']);
         
         $trainer = new Trainer();

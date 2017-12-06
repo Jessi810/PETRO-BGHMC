@@ -1,6 +1,15 @@
 @extends('layouts.modular')
 
 @section('content')
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <form class="form-horizontal row" method="POST" action="{{ url('trainer/create-all') }}">
         {{ csrf_field() }}
 
