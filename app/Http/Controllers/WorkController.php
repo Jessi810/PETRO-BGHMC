@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Work;
 use App\Trainer;
+use App\Http\Requests\WorkRequest;
 use Illuminate\Http\Request;
 
 class WorkController extends Controller
@@ -36,7 +37,7 @@ class WorkController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(WorkRequest $request)
     {
         $request->user()->authorizeRoles(['Admin']);
         
@@ -87,7 +88,7 @@ class WorkController extends Controller
      * @param  \App\Work  $work
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Work $work)
+    public function update(WorkRequest $request, Work $work)
     {
         $request->user()->authorizeRoles(['Admin']);
         

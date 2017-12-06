@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Education;
 use App\Trainer;
+use App\Http\Requests\EducationRequest;
 use Illuminate\Http\Request;
 
 class EducationController extends Controller
@@ -36,7 +37,7 @@ class EducationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EducationRequest $request)
     {
         $request->user()->authorizeRoles(['Admin']);
 
@@ -88,7 +89,7 @@ class EducationController extends Controller
      * @param  \App\Education  $education
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Education $education)
+    public function update(EducationRequest $request, Education $education)
     {
         $request->user()->authorizeRoles(['Admin']);
         

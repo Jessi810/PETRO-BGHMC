@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Skill;
 use App\Trainer;
+use App\Http\Requests\SkillRequest;
 use Illuminate\Http\Request;
 
 class SkillController extends Controller
@@ -36,7 +37,7 @@ class SkillController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SkillRequest $request)
     {
         $request->user()->authorizeRoles(['Admin']);
         
@@ -87,7 +88,7 @@ class SkillController extends Controller
      * @param  \App\Skill  $skill
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Skill $skill)
+    public function update(SkillRequest $request, Skill $skill)
     {
         $request->user()->authorizeRoles(['Admin']);
         

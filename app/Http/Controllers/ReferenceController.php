@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Reference;
 use App\Trainer;
+use App\Http\Requests\ReferenceRequest;
 use Illuminate\Http\Request;
 
 class ReferenceController extends Controller
@@ -36,7 +37,7 @@ class ReferenceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ReferenceRequest $request)
     {
         $request->user()->authorizeRoles(['Admin']);
         
@@ -87,7 +88,7 @@ class ReferenceController extends Controller
      * @param  \App\Reference  $reference
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Reference $reference)
+    public function update(ReferenceRequest $request, Reference $reference)
     {
         $request->user()->authorizeRoles(['Admin']);
         

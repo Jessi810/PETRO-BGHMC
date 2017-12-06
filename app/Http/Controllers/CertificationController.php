@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Certification;
 use App\Trainer;
+use App\Http\Requests\CertificationRequest;
 use Illuminate\Http\Request;
 
 class CertificationController extends Controller
@@ -36,7 +37,7 @@ class CertificationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CertificationRequest $request)
     {
         $request->user()->authorizeRoles(['Admin']);
 
@@ -87,7 +88,7 @@ class CertificationController extends Controller
      * @param  \App\Certification  $certification
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Certification $certification)
+    public function update(CertificationRequest $request, Certification $certification)
     {
         $request->user()->authorizeRoles(['Admin']);
         

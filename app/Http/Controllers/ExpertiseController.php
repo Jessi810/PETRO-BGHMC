@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Expertise;
 use App\Trainer;
+use App\Http\Requests\ExpertiseRequest;
 use Illuminate\Http\Request;
 
 class ExpertiseController extends Controller
@@ -36,7 +37,7 @@ class ExpertiseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ExpertiseRequest $request)
     {
         $request->user()->authorizeRoles(['Admin']);
         
@@ -87,7 +88,7 @@ class ExpertiseController extends Controller
      * @param  \App\Expertise  $expertise
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Expertise $expertise)
+    public function update(ExpertiseRequest $request, Expertise $expertise)
     {
         $request->user()->authorizeRoles(['Admin']);
         
