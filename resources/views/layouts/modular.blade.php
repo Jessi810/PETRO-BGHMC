@@ -76,9 +76,9 @@
 <script src="{{ asset('js/app.js') }}"></script>
 {{--  <script src="{{ asset('js/jquery-3.2.1.slim.min.js') }}"></script>  --}}
 <script>
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-    })
+    //$(function () {
+    //    $('[data-toggle="tooltip"]').tooltip()
+    //})
 </script>
 @yield('scripts')
 </body>
