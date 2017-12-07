@@ -48,14 +48,14 @@ class ExpertiseController extends Controller
         return $saved == true
             ? response()->json([
                 'status' => 'success',
-                'title' => 'Success',
+                'title' => 'Save Success',
                 'msg' => 'Data has been added to the database.',
                 'data' => $expertise,
                 'routeEdit' => route('expertise.edit', [$expertise->id, $trainer->id]),
                 'routeDelete' => route('expertise.destroy', $expertise->id)])
             : response()->json([
                 'status' => 'danger',
-                'title' => 'Error',
+                'title' => 'Save Error',
                 'msg' => 'Data cannot be save. Refresh the page and try again']);
         return redirect()->route('cv', ['id' => $trainer->id]);
     }
@@ -114,7 +114,7 @@ class ExpertiseController extends Controller
         $expertise->delete();
         return response()->json([
             'status' => 'success',
-            'title' => 'Success',
+            'title' => 'Delete Success',
             'msg' => 'Data has been deleted from the database']);
         return redirect()->route('cv', ['id' => $trainer_id])->with('success','Expertise deleted successfully');
     }
