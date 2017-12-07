@@ -49,11 +49,14 @@ class WorkController extends Controller
             ? response()->json([
                 'status' => 'success',
                 'title' => 'Success',
-                'msg' => 'Save successfully!',
+                'msg' => 'Data has been added to the database.',
                 'data' => $work,
                 'routeEdit' => route('work.edit', [$work->id, $trainer->id]),
                 'routeDelete' => route('work.destroy', $work->id)])
-            : response()->json(['status' => 'danger', 'title' => 'Error', 'msg' => 'Error saving. Try again later']);
+            : response()->json([
+                'status' => 'danger',
+                'title' => 'Error',
+                'msg' => 'Data cannot be save. Refresh the page and try again']);
         return redirect()->route('cv', ['id' => $trainer->id]);
     }
 
@@ -109,7 +112,10 @@ class WorkController extends Controller
         $work = Work::find($work->id);
         $trainer_id = $work->trainer_id;
         $work->delete();
-        return response()->json(['status' => 'success', 'title' => 'Success', 'msg' => 'Delete successfully!']);
+        return response()->json([
+            'status' => 'success',
+            'title' => 'Success',
+            'msg' => 'Data has been deleted from the database']);
         return redirect()->route('cv', ['id' => $trainer_id])->with('success','Work deleted successfully');
     }
 }

@@ -49,11 +49,14 @@ class EducationController extends Controller
             ? response()->json([
                 'status' => 'success',
                 'title' => 'Success',
-                'msg' => 'Save successfully!',
+                'msg' => 'Data has been added to the database.',
                 'data' => $edu,
                 'routeEdit' => route('education.edit', [$edu->id, $trainer->id]),
                 'routeDelete' => route('education.destroy', $edu->id)])
-            : response()->json(['status' => 'danger', 'title' => 'Error', 'msg' => 'Error saving. Try again later']);
+            : response()->json([
+                'status' => 'danger',
+                'title' => 'Error',
+                'msg' => 'Data cannot be save. Refresh the page and try again']);
 
         return redirect()->route('cv', ['id' => $trainer->id]);
     }
@@ -110,7 +113,10 @@ class EducationController extends Controller
         $edu = Education::find($education->id);
         $trainer_id = $edu->trainer_id;
         $edu->delete();
-        return response()->json(['status' => 'success', 'title' => 'Success', 'msg' => 'Delete successfully!']);
+        return response()->json([
+            'status' => 'success',
+            'title' => 'Success',
+            'msg' => 'Data has been deleted from the database']);
         return redirect()->route('cv', ['id' => $trainer_id])->with('success','Education deleted successfully');
     }
 }

@@ -49,11 +49,14 @@ class CertificationController extends Controller
             ? response()->json([
                 'status' => 'success',
                 'title' => 'Success',
-                'msg' => 'Save successfully!',
+                'msg' => 'Data has been added to the database.',
                 'data' => $certification,
                 'routeEdit' => route('certification.edit', [$certification->id, $trainer->id]),
                 'routeDelete' => route('certification.destroy', $certification->id)])
-            : response()->json(['status' => 'danger', 'title' => 'Error', 'msg' => 'Error saving. Try again later']);
+            : response()->json([
+                'status' => 'danger',
+                'title' => 'Error',
+                'msg' => 'Data cannot be save. Refresh the page and try again']);
         return redirect()->route('cv', ['id' => $trainer->id]);
     }
 
@@ -109,7 +112,10 @@ class CertificationController extends Controller
         $cert = Certification::find($certification->id);
         $trainer_id = $cert->trainer_id;
         $cert->delete();
-        return response()->json(['status' => 'success', 'title' => 'Success', 'msg' => 'Delete successfully!']);
+        return response()->json([
+            'status' => 'success',
+            'title' => 'Success',
+            'msg' => 'Data has been deleted from the database']);
         return redirect()->route('cv', ['id' => $trainer_id])->with('success','Certification deleted successfully');
     }
 }

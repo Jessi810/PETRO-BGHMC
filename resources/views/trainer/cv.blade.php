@@ -523,31 +523,36 @@
             $('.add_more').click(function(e) {
                 var form_type = $(this).attr('formtype');
                 var form = $('form[formtype="' + form_type + '"][id="' + form_type + '_template"]');
-                console.log(form);
                 
                 if ($(form).attr('formshown') == 'false') {
                     $(form).removeClass('d-none').attr('formshown', true);
-
                     $(this).removeClass('btn-primary').addClass('btn-danger').text('Cancel');
                 } else {
                     $(form).addClass('d-none').attr('formshown', false);
-
                     $(this).removeClass('btn-danger').addClass('btn-primary').text('Add');
                 }
             });
 
+            var timeout;
+            /**
+             * @param {object} data
+             */
             function showAlert(data) {
+                clearTimeout(timeout);
+                $('.myAlert-top').empty();
+
                 var alert_template =
-                    '<strong>' + data.title + '</strong> ' + data.msg +
-                        '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
-                        '<span aria-hidden="true">&times;</span>' +
-                    '</button>';
+                    '<h4 class="alert-heading">' + data.title + '</h4>' +
+                    '<p>' + data.msg + '</p>';
                 
                 $('.myAlert-top').append(alert_template)
                                 .addClass('alert-' + data.status)
-                                .addClass('show');
-                setTimeout(function() {
-                    $(".myAlert-top").removeClass('show alert-' + data.status);
+                                .addClass('show')
+                                .css('z-index', 5000);
+
+                timeout = setTimeout(function() {
+                    $(".myAlert-top").removeClass('show alert-' + data.status)
+                                    .css('z-index', -5000);
                     $(".myAlert-top").empty();
                 }, 3000);
             }

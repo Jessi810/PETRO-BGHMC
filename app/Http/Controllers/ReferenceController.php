@@ -49,11 +49,14 @@ class ReferenceController extends Controller
             ? response()->json([
                 'status' => 'success',
                 'title' => 'Success',
-                'msg' => 'Save successfully!',
+                'msg' => 'Data has been added to the database.',
                 'data' => $reference,
                 'routeEdit' => route('reference.edit', [$reference->id, $trainer->id]),
                 'routeDelete' => route('reference.destroy', $reference->id)])
-            : response()->json(['status' => 'danger', 'title' => 'Error', 'msg' => 'Error saving. Try again later']);
+            : response()->json([
+                'status' => 'danger',
+                'title' => 'Error',
+                'msg' => 'Data cannot be save. Refresh the page and try again']);
         return redirect()->route('cv', ['id' => $trainer->id]);
     }
 
@@ -109,7 +112,10 @@ class ReferenceController extends Controller
         $reference = Reference::find($reference->id);
         $trainer_id = $reference->trainer_id;
         $reference->delete();
-        return response()->json(['status' => 'success', 'title' => 'Success', 'msg' => 'Delete successfully!']);
+        return response()->json([
+            'status' => 'success',
+            'title' => 'Success',
+            'msg' => 'Data has been deleted from the database']);
         return redirect()->route('cv', ['id' => $trainer_id])->with('success','Reference deleted successfully');
     }
 }
