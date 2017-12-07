@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Education;
 use App\Trainer;
+use \Carbon\Carbon;
 use App\Http\Requests\EducationRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class EducationController extends Controller
 {
@@ -37,9 +39,23 @@ class EducationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EducationRequest $request)
+    public function store(Request $request)
     {
         $request->user()->authorizeRoles(['Admin']);
+        $rules = [
+            'school'         => 'required|string',
+            'year_graduated' => 'nullable|integer|min:1900|max:' . Carbon::now()->year,
+            'major'          => 'nullable|integer',
+            'minor'          => 'nullable|integer'
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'danger',
+                'title' => 'Validation Failed',
+                'msg' => 'One or more fields has an invalid data.',
+                'errors' => $validator->errors()]);
+        }
 
         $input = $request->all();
         $edu = Education::create($input);

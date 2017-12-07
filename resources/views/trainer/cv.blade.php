@@ -544,6 +544,17 @@
                 var alert_template =
                     '<h4 class="alert-heading">' + data.title + '</h4>' +
                     '<p>' + data.msg + '</p>';
+
+                if (data.errors) {
+                    var errors = data.errors;
+                    alert_template += '<ul>';
+                    for (var key in errors) {
+                        if (errors.hasOwnProperty(key)) {
+                            alert_template += '<li>' + errors[key] + '</li>';
+                        }
+                    }
+                    alert_template += '</ul>';
+                }
                 
                 $('.myAlert-top').append(alert_template)
                                 .addClass('alert-' + data.status)
@@ -577,10 +588,17 @@
                     dataType    : 'json',
                     data        : data,
                     success     : function (data) {
+                        console.log('SUCCESS');
+
                         showAlert(data);
-                        temp_name(data.data, data, form_type, form_route);   // Pass newly saved data
+
+                        if (!data.errors) {
+                            temp_name(data.data, data, form_type, form_route);   // Pass newly saved data
+                        }
                     },
                     error       : function (data) {
+                        console.log('FAILED');
+
                         showAlert(data);
                     }
                 });
