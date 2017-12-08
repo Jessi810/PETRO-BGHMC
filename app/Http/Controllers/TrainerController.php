@@ -9,6 +9,7 @@ use App\Skill;
 use App\Certification;
 use App\Reference;
 use App\Work;
+use Carbon\Carbon;
 use App\Http\Requests\TrainerRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,8 +18,56 @@ use Illuminate\Support\Facades\Validator;
 
 class TrainerController extends Controller
 {
-    public function create_all(TrainerRequest $request) {
+    public function create_all(Request $request) {
         $request->user()->authorizeRoles(['Admin']);
+
+        $rules = [
+            'name'        => 'required|string',
+            'agency_name' => 'required|string',
+            'type'        => 'required|string',
+    
+            // Personal details
+            'current_position' => 'nullable|string',
+            'email'            => 'nullable|email',
+            'address'          => 'nullable|string',
+            'mobile'           => 'nullable|string',
+            'phone'            => 'nullable|string',
+            
+            // Certification
+            'cert_title.*'       => 'sometimes|required|string',
+            'cert_date.*'        => 'sometimes|nullable|date|before_or_equal:' . Carbon::now(),
+            'cert_description.*' => 'sometimes|nullable|string',
+    
+            // Education
+            'school.*'         => 'sometimes|required|string',
+            'year_graduated.*' => 'sometimes|nullable|integer|min:1900|max:' . Carbon::now()->year,
+            'major.*'          => 'sometimes|nullable|integer',
+            'minor.*'          => 'sometimes|nullable|integer',
+    
+            // Expertise
+            'exp_title.*'       => 'sometimes|required|string',
+            // 'exp_description' => 'sometimes|nullable|string',
+    
+            // Skill
+            'skill_title.*'       => 'sometimes|required|string',
+            'skill_proficiency.*' => 'sometimes|nullable|integer|min:1|max:100',
+            'skill_description.*' => 'sometimes|nullable|string',
+    
+            // Work
+            'work_name.*'         => 'sometimes|required|string',
+            'work_company_name.*' => 'sometimes|required|string',
+            'work_position.*'     => 'sometimes|nullable|string',
+            'work_datefrom.*'     => 'sometimes|nullable|date|before_or_equal:dateto',
+            'work_dateto.*'       => 'sometimes|nullable|date|after_or_equal:datefrom',
+            'work_description.*'  => 'sometimes|nullable|string',
+        ];
+        
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return response()->json([
+                'errors' => $validator->errors()
+            ]);
+        }
         
         $trainer = new Trainer();
         $trainer->name = $request->get('name');
@@ -95,7 +144,9 @@ class TrainerController extends Controller
             }
         }
 
-        return redirect('trainer');
+        return response()->json([
+            'redirect' => route("trainer.index")
+        ]);
     }
     
     /**
