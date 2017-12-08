@@ -18,12 +18,12 @@ class ExpertiseTableSeeder extends Seeder
 
         $exp = new Expertise();
         $exp->title = 'Web Development';
-        $exp->description = 'Description here';
+        $exp->description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictumst quisque sagittis purus sit amet volutpat consequat.';
         $exp->trainer()->associate($trainer1)->save();
         
         $exp = new Expertise();
         $exp->title = 'Software Development';
-        $exp->description = 'Description here';
+        $exp->description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictumst quisque sagittis purus sit amet volutpat consequat.';
         $exp->trainer()->associate($trainer1)->save();
     }
 }

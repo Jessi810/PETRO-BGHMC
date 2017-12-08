@@ -13,7 +13,7 @@ class TrainerTableSeeder extends Seeder
     public function run()
     {
         $trainer = new Trainer();
-        $trainer->name = 'Jessi';
+        $trainer->name = 'Jessi Sibayan';
         $trainer->email = 'trainer@mail.com';
         $trainer->type = 'Internal';
         $trainer->agency_name = 'BGH';

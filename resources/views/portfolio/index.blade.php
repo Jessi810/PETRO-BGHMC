@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Resumex - Professional HTML CSS Resume Website Template</title>
+    <title>{{ $trainer->name }} | Portfolio</title>
 
     <!-- favicon -->
     <link href="favicon.png" rel=icon>
@@ -121,11 +121,13 @@
                         <div class="progress-item">
                             <span class="progress-title">{{ $skill->title }}</span>
 
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="{{ $skill->proficiency }}" aria-valuemin="0"
-                                    aria-valuemax="100" style="width: {{ $skill->proficiency }}%"><span class="progress-percent"> {{ $skill->proficiency }}%</span>
+                            @if ($skill->proficiency)
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="{{ $skill->proficiency }}" aria-valuemin="0"
+                                        aria-valuemax="100" style="width: {{ $skill->proficiency }}%"><span class="progress-percent"> {{ $skill->proficiency }}%</span>
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
                             <!-- .progress -->
                         </div>
                         <!-- .skill-progress -->
@@ -189,8 +191,13 @@
                 @foreach ($educations as $education)
                     <div class="content-item">
                         <small>{{ $education->year_graduated }}</small>
-                        <h3>{{ $education->major }}</h3>
-                        <h4>{{ $education->school }}</h4>
+                        <h3>{{ $education->school }}</h3>
+                        @if ($education->major)
+                            <h4>Major: {{ $education->major }}</h4>
+                        @endif
+                        @if ($education->minor)
+                            <h4>Minor: {{ $education->minor }}</h4>
+                        @endif
 
                         {{--  <p>United Kingdom, London</p>  --}}
                     </div>

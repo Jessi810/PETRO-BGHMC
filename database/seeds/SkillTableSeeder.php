@@ -18,13 +18,13 @@ class SkillTableSeeder extends Seeder
 
         $skill = new Skill();
         $skill->title = 'Microsoft Office';
-        $skill->description = 'Word, PowerPoint, Excel';
+        $skill->description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictumst quisque sagittis purus sit amet volutpat consequat.';
         $skill->proficiency = 85;
         $skill->trainer()->associate($trainer1)->save();
         
         $skill = new Skill();
         $skill->title = 'English';
-        $skill->description = 'English';
+        $skill->description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictumst quisque sagittis purus sit amet volutpat consequat.';
         $skill->proficiency = 95;
         $skill->trainer()->associate($trainer1)->save();
         

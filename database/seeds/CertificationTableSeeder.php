@@ -18,7 +18,13 @@ class CertificationTableSeeder extends Seeder
 
         $cert = new Certification();
         $cert->title = 'Hackathon';
-        $cert->description = 'Hackathon';
+        $cert->description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictumst quisque sagittis purus sit amet volutpat consequat.';
+        $cert->date = date('2016-11-11');
+        $cert->trainer()->associate($trainer1)->save();
+        
+        $cert = new Certification();
+        $cert->title = 'C# Tournament';
+        $cert->description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictumst quisque sagittis purus sit amet volutpat consequat.';
         $cert->date = date('2017-11-11');
         $cert->trainer()->associate($trainer1)->save();
         
