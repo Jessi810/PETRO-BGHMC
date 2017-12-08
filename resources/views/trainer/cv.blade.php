@@ -545,6 +545,7 @@
             function showAlert(data) {
                 clearTimeout(timeout);
                 $('.myAlert-top').empty();
+                $('.myAlert-top').removeClass('alert-primary alert-secondary alert-success alert-danger alert-info alert-warning alert-light alert-dark');
 
                 var alert_template =
                     '<button type="button" class="close" data-hide="alert" aria-label="Close">' +
@@ -570,11 +571,14 @@
                                 .css('z-index', 5000)
                                 .css('display', '');
 
-                timeout = setTimeout(function() {
-                    $(".myAlert-top").removeClass('show alert-' + data.status)
-                                    .css('z-index', -5000);
-                    $(".myAlert-top").empty();
-                }, 3000);
+                // Set timeout only when alert message is not an error or on validation fail
+                if (!data.errors) {
+                    timeout = setTimeout(function() {
+                        $(".myAlert-top").removeClass('show alert-' + data.status)
+                                        .css('z-index', -5000);
+                        $(".myAlert-top").empty();
+                    }, 5000);
+                }
             }
 
             $.ajaxSetup({
