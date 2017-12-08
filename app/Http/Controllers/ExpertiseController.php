@@ -6,6 +6,7 @@ use App\Expertise;
 use App\Trainer;
 use App\Http\Requests\ExpertiseRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ExpertiseController extends Controller
 {
@@ -37,9 +38,21 @@ class ExpertiseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ExpertiseRequest $request)
+    public function store(Request $request)
     {
         $request->user()->authorizeRoles(['Admin']);
+        $rules = [
+            'title' => 'required|string',
+            'description' => 'nullable|string',
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'danger',
+                'title' => 'Validation Failed',
+                'msg' => 'One or more fields has an invalid data.',
+                'errors' => $validator->errors()]);
+        }
         
         $input = $request->all();
         $expertise = Expertise::create($input);

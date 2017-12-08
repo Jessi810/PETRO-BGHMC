@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Certification;
 use App\Trainer;
+use \Carbon\Carbon;
 use App\Http\Requests\CertificationRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CertificationController extends Controller
 {
@@ -37,9 +39,22 @@ class CertificationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CertificationRequest $request)
+    public function store(Request $request)
     {
         $request->user()->authorizeRoles(['Admin']);
+        $rules = [
+            'title' => 'required|string',
+            'date' => 'nullable|date|before_or_equal:' . Carbon::now(),
+            'description' => 'nullable|string',
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'danger',
+                'title' => 'Validation Failed',
+                'msg' => 'One or more fields has an invalid data.',
+                'errors' => $validator->errors()]);
+        }
 
         $input = $request->all();
         $certification = Certification::create($input);

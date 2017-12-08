@@ -6,6 +6,7 @@ use App\Reference;
 use App\Trainer;
 use App\Http\Requests\ReferenceRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ReferenceController extends Controller
 {
@@ -37,9 +38,24 @@ class ReferenceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ReferenceRequest $request)
+    public function store(Request $request)
     {
         $request->user()->authorizeRoles(['Admin']);
+        $rules = [
+            'name'         => 'required|string',
+            'company_name' => 'nullable|string',
+            'position'     => 'nullable|string',
+            'mobile'       => 'nullable|string',
+            'email'        => 'nullable|email',
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'danger',
+                'title' => 'Validation Failed',
+                'msg' => 'One or more fields has an invalid data.',
+                'errors' => $validator->errors()]);
+        }
         
         $input = $request->all();
         $reference = Reference::create($input);

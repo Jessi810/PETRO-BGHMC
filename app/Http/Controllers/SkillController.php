@@ -6,6 +6,7 @@ use App\Skill;
 use App\Trainer;
 use App\Http\Requests\SkillRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class SkillController extends Controller
 {
@@ -37,9 +38,22 @@ class SkillController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SkillRequest $request)
+    public function store(Request $request)
     {
         $request->user()->authorizeRoles(['Admin']);
+        $rules = [
+            'title' => 'required|string',
+            'proficiency' => 'nullable|integer|min:1|max:100',
+            'description' => 'nullable|string',
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'danger',
+                'title' => 'Validation Failed',
+                'msg' => 'One or more fields has an invalid data.',
+                'errors' => $validator->errors()]);
+        }
         
         $input = $request->all();
         $skill = Skill::create($input);

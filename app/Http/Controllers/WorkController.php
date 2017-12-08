@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Work;
 use App\Trainer;
+use Carbon\Carbon;
 use App\Http\Requests\WorkRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class WorkController extends Controller
 {
@@ -37,9 +39,24 @@ class WorkController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(WorkRequest $request)
+    public function store(Request $request)
     {
         $request->user()->authorizeRoles(['Admin']);
+        $rules = [
+            'company_name' => 'required|string',
+            'position' => 'nullable|string',
+            'datefrom' => 'nullable|date|before_or_equal:dateto',
+            'dateto' => 'nullable|date|after_or_equal:datefrom',
+            'description' => 'nullable|string',
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'danger',
+                'title' => 'Validation Failed',
+                'msg' => 'One or more fields has an invalid data.',
+                'errors' => $validator->errors()]);
+        }
         
         $input = $request->all();
         $work = Work::create($input);
