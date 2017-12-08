@@ -60,6 +60,13 @@ class TrainerController extends Controller
             'work_datefrom.*'     => 'sometimes|nullable|date|before_or_equal:dateto',
             'work_dateto.*'       => 'sometimes|nullable|date|after_or_equal:datefrom',
             'work_description.*'  => 'sometimes|nullable|string',
+
+            // Reference
+            'ref_name.*'         => 'sometimes|required|string',
+            'ref_company_name.*' => 'sometimes|nullable|string',
+            'ref_position.*'     => 'sometimes|nullable|string',
+            'ref_mobile.*'       => 'sometimes|nullable|string',
+            'ref_email.*'        => 'sometimes|nullable|email',
         ];
         
         $validator = Validator::make($request->all(), $rules);
