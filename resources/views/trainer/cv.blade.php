@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="myAlert-top alert alert-dismissible fade" role="alert">
-        
+
     </div>
     <div class="row">
         <div class="col-md-12">
@@ -533,6 +533,11 @@
                 }
             });
 
+            // Bootstrap 4 Alert: Hides only when closed instead of removing it in DOM
+            $(document).on('click', '[data-hide]', function() {
+                $(this).closest(".alert").hide();
+            });
+
             var timeout;
             /**
              * @param {object} data
@@ -542,6 +547,9 @@
                 $('.myAlert-top').empty();
 
                 var alert_template =
+                    '<button type="button" class="close" data-hide="alert" aria-label="Close">' +
+                        '<span aria-hidden="true">&times;</span>' +
+                    '</button>' +
                     '<h4 class="alert-heading">' + data.title + '</h4>' +
                     '<p>' + data.msg + '</p>';
 
@@ -559,7 +567,8 @@
                 $('.myAlert-top').append(alert_template)
                                 .addClass('alert-' + data.status)
                                 .addClass('show')
-                                .css('z-index', 5000);
+                                .css('z-index', 5000)
+                                .css('display', '');
 
                 timeout = setTimeout(function() {
                     $(".myAlert-top").removeClass('show alert-' + data.status)
