@@ -263,14 +263,41 @@ class TrainerController extends Controller
     public function update(Request $request, Trainer $trainer)
     {
         $request->user()->authorizeRoles(['Admin']);
+
+        $rules = [
+            'name'             => 'required|string',
+            'current_position' => 'nullable|string',
+            'email'            => 'nullable|email',
+            'address'          => 'nullable|string',
+            'mobile'           => 'nullable|string',
+            'phone'            => 'nullable|string',
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'danger',
+                'title' => 'Validation Failed',
+                'msg' => 'One or more fields has an invalid data.',
+                'errors' => $validator->errors()]);
+        }
+        
+        $updated_at = $request->get('updated_at');
         
         $trainer->update($request->all());
 
         if ($request->ajax()) {
+            if ($trainer->updated_at > $updated_at) {
+                return response()->json([
+                    'status' => 'success',
+                    'title' => 'Edit Success',
+                    'msg' => 'Data has been updated to the database.',
+                ]);
+            }
+
             return response()->json([
-                'status' => 'success',
-                'title' => 'Edit Success',
-                'msg' => 'Data has been updated to the database.',
+                'status' => 'danger',
+                'title' => 'Edit Error',
+                'msg' => 'Error updating data to database. Refresh the page and try again.',
             ]);
         }
 
