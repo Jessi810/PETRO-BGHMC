@@ -280,7 +280,7 @@ class TrainerController extends Controller
                 'msg' => 'One or more fields has an invalid data.',
                 'errors' => $validator->errors()]);
         }
-        
+
         $updated_at = $request->get('updated_at');
         
         $trainer->update($request->all());
@@ -291,6 +291,7 @@ class TrainerController extends Controller
                     'status' => 'success',
                     'title' => 'Edit Success',
                     'msg' => 'Data has been updated to the database.',
+                    'data' => $trainer,
                 ]);
             }
 

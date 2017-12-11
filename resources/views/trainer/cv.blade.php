@@ -741,6 +741,13 @@
 
                         showAlert(data);
 
+                        $('#trainer_form').find('input[id=name]').data('default', data.data.name);
+                        $('#trainer_form').find('input[id=current_position]').data('default', data.data.current_position);
+                        $('#trainer_form').find('input[id=email]').data('default', data.data.email);
+                        $('#trainer_form').find('input[id=mobile]').data('default', data.data.mobile);
+                        $('#trainer_form').find('input[id=phone]').data('default', data.data.phone);
+                        $('#trainer_form').find('input[id=address]').data('default', data.data.address);
+
                         if (!data.errors) {
                             $('#submit_trainer').addClass('d-none').attr('js-visible', false);
                             $('#submit_trainer').closest('form').find('input').attr('readonly', true);
