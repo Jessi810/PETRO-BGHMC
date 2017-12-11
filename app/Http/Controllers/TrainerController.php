@@ -57,8 +57,10 @@ class TrainerController extends Controller
             'work_name.*'         => 'sometimes|required|string',
             'work_company_name.*' => 'sometimes|required|string',
             'work_position.*'     => 'sometimes|nullable|string',
-            'work_datefrom.*'     => 'sometimes|nullable|date|before_or_equal:dateto',
-            'work_dateto.*'       => 'sometimes|nullable|date|after_or_equal:datefrom',
+            // 'work_datefrom.*'     => 'sometimes|nullable|date|before_or_equal:dateto',
+            // 'work_dateto.*'       => 'sometimes|nullable|date|after_or_equal:datefrom',
+            'work_datefrom.*'     => 'sometimes|nullable|date',
+            'work_dateto.*'       => 'sometimes|nullable|date',
             'work_description.*'  => 'sometimes|nullable|string',
 
             // Reference

@@ -103,6 +103,49 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'school.*' => [
+            'required' => 'The school field is required.'
+        ],
+        'year_graduated.*' => [
+            'integer' => 'The year must be an integer.',
+            'min' => 'The year must be at least :min',
+            'max' => 'The year may not be greater than :max'
+        ],
+        'skill_title.*' => [
+            'required' => 'The skill field is required.'
+        ],
+        'skill_proficiency.*' => [
+            'integer' => 'The proficiency must be an integer.',
+            'min' => 'The proficiency must be at least :min',
+            'max' => 'The proficiency may not be greater than :max'
+        ],
+        'cert_title.*' => [
+            'required' => 'The certification field is required.'
+        ],
+        'cert_date.*' => [
+            'date' => 'The date is not a valid date.',
+            'before_or_equal' => 'The date must be before or equal to :date.'
+        ],
+        'ref_name.*' => [
+            'required' => 'The reference name field is required.'
+        ],
+        'ref_email.*' => [
+            'email' => 'The email must be a valid email address.'
+        ],
+        'work_company_name.*' => [
+            'required' => 'The company field is required.'
+        ],
+        'work_datefrom.*' => [
+            'date' => 'The date is not a valid date.',
+            'before_or_equal' => 'The date must be before or equal to date ended.'
+        ],
+        'work_dateto.*' => [
+            'date' => 'The date is not a valid date.',
+            'after_or_equal' => 'The date must be after or equal to date started.'
+        ],
+        'exp_title.*' => [
+            'required' => 'The expertise field is required.'
+        ]
     ],
 
     /*
