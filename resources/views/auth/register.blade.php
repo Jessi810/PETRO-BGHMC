@@ -7,7 +7,7 @@
         
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control underlined" name="name" id="name" placeholder="Enter your name" required="">
+            <input type="text" class="form-control underlined" name="name" id="name" value="{{ old('name') }}" placeholder="Enter your name" required="">
             @if ($errors->has('name'))
                 <span class="help-block">
                     <sub class="text-danger">{{ $errors->first('name') }}</label>
@@ -16,7 +16,7 @@
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control underlined" name="email" id="email" placeholder="Enter email address" required="">
+            <input type="email" class="form-control underlined" name="email" id="email" value="{{ old('email') }}" placeholder="Enter email address" required="">
             @if ($errors->has('email'))
                 <span class="help-block">
                     <sub class="text-danger">{{ $errors->first('email') }}</label>
