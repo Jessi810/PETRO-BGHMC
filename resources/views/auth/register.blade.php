@@ -2,31 +2,42 @@
 
 @section('content')
     <p class="text-center">SIGNUP TO GET ACCESS</p>
-    <form id="signup-form" action="{{ route('register') }}" method="POST" novalidate="">
+    <form id="" action="{{ route('register') }}" method="POST" novalidate="">
         {{ csrf_field() }}
-        {{--  <div class="form-group">
-            <label for="firstname">Name</label>
-            <div class="row">
-                <div class="col-sm-6">
-                    <input type="text" class="form-control underlined" name="firstname" id="firstname" placeholder="Enter firstname" required=""> </div>
-                <div class="col-sm-6">
-                    <input type="text" class="form-control underlined" name="lastname" id="lastname" placeholder="Enter lastname" required=""> </div>
-            </div>
-        </div>  --}}
+        
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control underlined" name="name" id="name" placeholder="Enter your name" required=""> </div>
+            <input type="text" class="form-control underlined" name="name" id="name" placeholder="Enter your name" required="">
+            @if ($errors->has('name'))
+                <span class="help-block">
+                    <sub class="text-danger">{{ $errors->first('name') }}</label>
+                </span>
+            @endif
+        </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control underlined" name="email" id="email" placeholder="Enter email address" required=""> </div>
+            <input type="email" class="form-control underlined" name="email" id="email" placeholder="Enter email address" required="">
+            @if ($errors->has('email'))
+                <span class="help-block">
+                    <sub class="text-danger">{{ $errors->first('email') }}</label>
+                </span>
+            @endif
+        </div>
         <div class="form-group">
             <label for="password">Password</label>
             <div class="row">
                 <div class="col-sm-6">
-                    <input type="password" class="form-control underlined" name="password" id="password" placeholder="Enter password" required=""> </div>
+                    <input type="password" class="form-control underlined" name="password" id="password" placeholder="Enter password" required="">
+                </div>
                 <div class="col-sm-6">
-                    <input type="password" class="form-control underlined" name="password_confirmation" id="password-confirm" placeholder="Re-type password" required=""> </div>
+                    <input type="password" class="form-control underlined" name="password_confirmation" id="password-confirm" placeholder="Re-type password" required="">
+                </div>
             </div>
+                    @if ($errors->has('password'))
+                        <span class="help-block">
+                            <sub class="text-danger">{{ $errors->first('password') }}</label>
+                        </span>
+                    @endif
         </div>
         {{--  <div class="form-group">
             <label for="agree">
