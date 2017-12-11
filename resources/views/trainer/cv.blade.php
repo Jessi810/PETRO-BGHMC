@@ -52,25 +52,25 @@
                                         <div class="row form-group">
                                             <div class="col-md-7">
                                                 <label for="name">Name</label>
-                                                <input type="text" readonly class="form-control underlined" name="name" id="name" value="{{ $trainer->name }}" placeholder="Name" required> </div>
+                                                <input type="text" readonly class="form-control underlined" name="name" id="name" data-default="{{ $trainer->name }}" value="{{ $trainer->name }}" placeholder="Name" required> </div>
                                             <div class="col-md-5">
                                                 <label for="current_position">Position</label>
-                                                <input type="text" readonly class="form-control underlined" name="current_position" id="current_position" value="{{ $trainer->current_position }}" placeholder="Current position"> </div>
+                                                <input type="text" readonly class="form-control underlined" name="current_position" id="current_position" data-default="{{ $trainer->current_position }}" value="{{ $trainer->current_position }}" placeholder="Current position"> </div>
                                         </div>
                                         <div class="row form-group">
                                             <div class="col-md-4">
                                                 <label for="email">Email</label>
-                                                <input type="text" readonly class="form-control underlined" name="email" id="email" value="{{ $trainer->email }}" placeholder="Email address"> </div>
+                                                <input type="text" readonly class="form-control underlined" name="email" id="email" data-default="{{ $trainer->email }}" value="{{ $trainer->email }}" placeholder="Email address"> </div>
                                             <div class="col-md-4">
                                                 <label for="mobile">Mobile</label>
-                                                <input type="text" readonly class="form-control underlined" name="mobile" id="mobile" value="{{ $trainer->mobile }}" placeholder="Mobile number"> </div>
+                                                <input type="text" readonly class="form-control underlined" name="mobile" id="mobile" data-default="{{ $trainer->mobile }}" value="{{ $trainer->mobile }}" placeholder="Mobile number"> </div>
                                             <div class="col-md-4">
                                                 <label for="phone">Phone</label>
-                                                <input type="text" readonly class="form-control underlined" name="phone" id="phone" value="{{ $trainer->phone }}" placeholder="Phone number"> </div>
+                                                <input type="text" readonly class="form-control underlined" name="phone" id="phone" data-default="{{ $trainer->phone }}" value="{{ $trainer->phone }}" placeholder="Phone number"> </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="address">Address</label>
-                                            <input type="text" readonly class="form-control underlined" name="address" id="address" value="{{ $trainer->address }}" placeholder="Address"> </div>
+                                            <input type="text" readonly class="form-control underlined" name="address" id="address" data-default="{{ $trainer->address }}" value="{{ $trainer->address }}" placeholder="Address"> </div>
                                         
                                         <div class="form-group">
                                             <button type="button" id="submit_trainer" class="btn btn-success btn-block d-none" js-visible="false">Submit</button>
@@ -707,6 +707,11 @@
                     // Form inputs
                     var form = $($(this).attr('toggle-readonly'));
                     $(form).find('input').attr('readonly', true);
+
+                    $(form).find('input').each(function() {
+                        var defaultVal = $(this).data('default');
+                        $(this).val(defaultVal);
+                    });
                 }
                 else
                 {
