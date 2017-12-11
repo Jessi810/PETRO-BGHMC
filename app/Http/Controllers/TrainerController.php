@@ -263,8 +263,17 @@ class TrainerController extends Controller
     public function update(Request $request, Trainer $trainer)
     {
         $request->user()->authorizeRoles(['Admin']);
-
+        
         $trainer->update($request->all());
+
+        if ($request->ajax()) {
+            return response()->json([
+                'status' => 'success',
+                'title' => 'Edit Success',
+                'msg' => 'Data has been updated to the database.',
+            ]);
+        }
+
         return redirect()->route('trainer.index')->with('success','Trainer updated successfully');
     }
 

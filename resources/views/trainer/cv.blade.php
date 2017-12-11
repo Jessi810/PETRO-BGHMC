@@ -36,25 +36,46 @@
                     <div class="tab-content tabs-bordered p-0 pa-sm-0">
                         <div class="tab-pane fade in active" id="personal_tab">
                             <div class="card card-info">
+                                <div class="card-header">
+                                    <div class="header-block pull-right">
+                                        <p class="title">
+                                            <a id="edit_trainer" href="javascript: void(0)" class="btn btn-primary btn-sm rounded" js-toggle="submit" toggle-visibility="#submit_trainer" toggle-readonly="#trainer_form">Edit</a>
+                                        </p>
+                                    </div>
+                                </div>
                                 <div class="card-block">
-                                    <dl>
-                                        <dt>Name</dt>
-                                        <dd>{{ $trainer->name }}</dd>
-                                        <dt>Email</dt>
-                                        <dd>{{ $trainer->email }}</dd>
-                                        <dt>Agency</dt>
-                                        <dd>{{ $trainer->agency_name }}</dd>
-                                        <dt>Position</dt>
-                                        <dd>{{ $trainer->current_position }}</dd>
-                                        <dt>Address</dt>
-                                        <dd>{{ $trainer->address }}</dd>
-                                        <dt>Mobile</dt>
-                                        <dd>{{ $trainer->mobile }}</dd>
-                                        <dt>Phone</dt>
-                                        <dd>{{ $trainer->phone }}</dd>
-                                        <dt>CV</dt>
-                                        <dd><a href="{{ url('portfolio', ['id' => $trainer->id]) }}">Curriculum Vitae</a></dd>
-                                    </dl>
+                                    <form id="trainer_form" class="form-horizontal" method="POST" action="">
+                                        {{ csrf_field() }}
+
+                                        <input type="hidden" name="_method" value="PUT">
+
+                                        <div class="row form-group">
+                                            <div class="col-md-7">
+                                                <label for="name">Name</label>
+                                                <input type="text" readonly class="form-control underlined" name="name" id="name" value="{{ $trainer->name }}" placeholder="Name" required> </div>
+                                            <div class="col-md-5">
+                                                <label for="current_position">Position</label>
+                                                <input type="text" readonly class="form-control underlined" name="current_position" id="current_position" value="{{ $trainer->current_position }}" placeholder="Current position"> </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col-md-4">
+                                                <label for="email">Email</label>
+                                                <input type="text" readonly class="form-control underlined" name="email" id="email" value="{{ $trainer->email }}" placeholder="Email address"> </div>
+                                            <div class="col-md-4">
+                                                <label for="mobile">Mobile</label>
+                                                <input type="text" readonly class="form-control underlined" name="mobile" id="mobile" value="{{ $trainer->mobile }}" placeholder="Mobile number"> </div>
+                                            <div class="col-md-4">
+                                                <label for="phone">Phone</label>
+                                                <input type="text" readonly class="form-control underlined" name="phone" id="phone" value="{{ $trainer->phone }}" placeholder="Phone number"> </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="address">Address</label>
+                                            <input type="text" readonly class="form-control underlined" name="address" id="address" value="{{ $trainer->address }}" placeholder="Address"> </div>
+                                        
+                                        <div class="form-group">
+                                            <button type="button" id="submit_trainer" class="btn btn-success btn-block d-none" js-visible="false">Submit</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -670,6 +691,62 @@
                 newdata_template += '</tr>';
                 $(newdata_template).insertBefore($(form).closest('tr'));
             }
+
+            $('[js-toggle=submit]').on('click', function() {
+                var toggle = $($(this).attr('toggle-visibility'));
+
+                if ($(toggle).attr('js-visible') == 'true')
+                {
+                    // Submit button
+                    $(toggle).attr('js-visible', 'false');
+                    $(toggle).addClass('d-none');
+
+                    // Edit/Cancel button
+                    $(this).text('Edit');
+
+                    // Form inputs
+                    var form = $($(this).attr('toggle-readonly'));
+                    $(form).find('input').attr('readonly', true);
+                }
+                else
+                {
+                    // Submit button
+                    $(toggle).attr('js-visible', 'true');
+                    $(toggle).removeClass('d-none invisible');
+
+                    // Edit/Cancel button
+                    $(this).text('Cancel');
+
+                    // Form inputs
+                    var form = $($(this).attr('toggle-readonly'));
+                    $(form).find('input').attr('readonly', false);
+                }
+            });
+
+            $('#submit_trainer').on('click', function() {
+                var data = $('#trainer_form').serializeArray(); // Get all form's field value
+
+                $.ajax({
+                    type        : 'POST',
+                    url         : '{{ route("trainer.update", $trainer->id) }}',
+                    dataType    : 'json',
+                    data        : data,
+                    success     : function (data) {
+                        console.log(data.status);
+
+                        showAlert(data);
+
+                        $('#submit_trainer').addClass('d-none').attr('js-visible', false);
+                        $('#submit_trainer').closest('form').find('input').attr('readonly', true);
+                        $('#edit_trainer').text('Edit');
+                    },
+                    error       : function (data) {
+                        console.log(data.status);
+
+                        showAlert(data);
+                    }
+                });
+            });
         });
     </script>
 @endsection
