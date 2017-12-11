@@ -79,6 +79,16 @@
     //$(function () {
     //    $('[data-toggle="tooltip"]').tooltip()
     //})
+
+    $('.stop-accordion').on('click', function(e){
+        $(this).find('.dropdown-toggle').dropdown('toggle');
+        e.stopPropagation();
+    });
+
+    // Only one collapsible to show
+    $('.collapse').on('show.bs.collapse', function () {
+        $('.collapse.show').collapse('hide');
+    });
 </script>
 @yield('scripts')
 </body>

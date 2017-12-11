@@ -25,7 +25,7 @@
                         </thead>
                         <tbody>
                             @foreach ($trainers as $trainer)
-                                <tr>
+                                <tr data-toggle="collapse" data-target="#accordion{{ $trainer->id }}" class="clickable collapse-row collapsed">
                                     <td>{{ $trainer->name }}</td>
                                     <td>{{ $trainer->type }}</td>
                                     <td>{{ $trainer->agency_name }}</td>
@@ -37,18 +37,40 @@
                                         @endforeach
                                     </td>
                                     <td>
-                                        <a href="{{ route('portfolio', $trainer->id) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Show CV">
+                                        <a href="{{ route('portfolio', $trainer->id) }}" class="btn btn-sm btn-success stop-accordion" data-toggle="tooltip" data-placement="top" title="Show CV">
                                             <i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
-                                        <a href="{{ route('cv', $trainer->id) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Show Trainer Info">
+                                        <a href="{{ route('cv', $trainer->id) }}" class="btn btn-sm btn-success stop-accordion" data-toggle="tooltip" data-placement="top" title="Show Trainer Info">
                                             <i class="fa fa-info-circle" aria-hidden="true"></i></a>
-                                        <a href="{{ route('trainer.edit', $trainer->id) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit Trainer">
+                                        <a href="{{ route('trainer.edit', $trainer->id) }}" class="btn btn-sm btn-success stop-accordion" data-toggle="tooltip" data-placement="top" title="Edit Trainer">
                                             <i class="fa fa-pencil" aria-hidden="true"></i></a>
                                         <form class="form-horizontal" style="display: inline;" method="POST" action="{{ route('trainer.destroy', $trainer->id) }}">
                                             {{ csrf_field() }}
 
                                             <input type="hidden" name="_method" value="delete">
-                                            <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-trash" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Delete Trainer"></i></a>
+                                            <button type="submit" class="btn btn-sm btn-success stop-accordion"><i class="fa fa-trash" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Delete Trainer"></i></a>
                                         </form>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">
+                                        <div id="accordion{{ $trainer->id }}" class="collapse">
+                                            <dl>
+                                                <dt class="d-inline">Email</dt>
+                                                <dd class="d-inline">{{ $trainer->email }}</dd>
+                                                <br>
+                                                <dt class="d-inline">Position</dt>
+                                                <dd class="d-inline">{{ $trainer->current_position }}</dd>
+                                                <br>
+                                                <dt class="d-inline">Address</dt>
+                                                <dd class="d-inline">{{ $trainer->address }}</dd>
+                                                <br>
+                                                <dt class="d-inline">Mobile</dt>
+                                                <dd class="d-inline">{{ $trainer->mobile }}</dd>
+                                                <br>
+                                                <dt class="d-inline">Phone</dt>
+                                                <dd class="d-inline">{{ $trainer->phone }}</dd>
+                                            </dl>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach
