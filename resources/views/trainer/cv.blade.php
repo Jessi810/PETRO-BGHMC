@@ -741,9 +741,11 @@
 
                         showAlert(data);
 
-                        $('#submit_trainer').addClass('d-none').attr('js-visible', false);
-                        $('#submit_trainer').closest('form').find('input').attr('readonly', true);
-                        $('#edit_trainer').text('Edit');
+                        if (!data.errors) {
+                            $('#submit_trainer').addClass('d-none').attr('js-visible', false);
+                            $('#submit_trainer').closest('form').find('input').attr('readonly', true);
+                            $('#edit_trainer').text('Edit');
+                        }
                     },
                     error       : function (data) {
                         console.log(data.status);
