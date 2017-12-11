@@ -2,6 +2,7 @@
 
 @section('content')
     <p class="text-center">LOGIN TO CONTINUE</p>
+    @include('includes.alert-message')
     <form id="login-form" action="{{ route('login') }}" method="POST" novalidate="">
         {{ csrf_field() }}
         <div class="form-group">
