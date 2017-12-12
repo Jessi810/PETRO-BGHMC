@@ -8,7 +8,9 @@
         <form role="search">
             <div class="input-container">
                 <i class="fa fa-search"></i>
-                <input type="search" placeholder="Search">
+                <form method="GET" action="{{ route('trainer.index') }}">
+                    <input name="q" type="search" placeholder="Search">
+                </form>
                 <div class="underline"></div>
             </div>
         </form>

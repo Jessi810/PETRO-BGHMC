@@ -167,24 +167,29 @@ class TrainerController extends Controller
     {
         $request->user()->authorizeRoles(['Admin', 'User']);
 
-        $exps = DB::table('expertises')->get();
+        $trainers = Trainer::query();
+
+        // Search
+        if ($request->has('q')) {
+            $search = $request->get('q');
+
+            $trainers->whereHas('expertises', function($query) use ($search) {
+                $query->where('title', 'LIKE', '%'.$search.'%');
+            })->orWhere('name', 'LIKE', '%'.$search.'%')->orderBy('name', 'asc');
+            
+            //return view('trainer.index', ['trainers' => $trainers, 'expertises' => $exps]);
+        }
         
         // Filter
         if ($request->has('type')) {
-            switch ($request->get('type')) {
-                case 'Internal':
-                    $trainers = DB::table('trainers')->where('type', '=', 'Internal')->get();
-                    return view('trainer.index', ['trainers' => $trainers, 'expertises' => $exps]);
-                case 'External':
-                    $trainers = DB::table('trainers')->where('type', '=', 'External')->get();
-                    return view('trainer.index', ['trainers' => $trainers, 'expertises' => $exps]);
-            }
-        }
+            $type = $request->get('type');
 
-        // Get all row in trainers table
-        $trainers = DB::table('trainers')->get();
+            $trainers->where('type', 'LIKE', $type);
+        }
         
-        return view('trainer.index', ['trainers' => $trainers, 'expertises' => $exps]);
+        $exps = Expertise::has('trainer')->get();
+        
+        return view('trainer.index', ['trainers' => $trainers->get(), 'expertises' => $exps]);
     }
 
     /**
