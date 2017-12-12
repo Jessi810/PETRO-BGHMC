@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Petro\Http\Controllers;
 
-use App\Work;
-use App\Trainer;
+use Petro\Work;
+use Petro\Trainer;
 use Carbon\Carbon;
-use App\Http\Requests\WorkRequest;
+use Petro\Http\Requests\WorkRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -80,7 +80,7 @@ class WorkController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Work  $work
+     * @param  \Petro\Work  $work
      * @return \Illuminate\Http\Response
      */
     public function show(Work $work)
@@ -91,7 +91,7 @@ class WorkController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Work  $work
+     * @param  \Petro\Work  $work
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request, Work $work)
@@ -105,7 +105,7 @@ class WorkController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Work  $work
+     * @param  \Petro\Work  $work
      * @return \Illuminate\Http\Response
      */
     public function update(WorkRequest $request, Work $work)
@@ -119,7 +119,7 @@ class WorkController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Work  $work
+     * @param  \Petro\Work  $work
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, Work $work)

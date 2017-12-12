@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace Petro\Http\Requests;
 
 use \Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;

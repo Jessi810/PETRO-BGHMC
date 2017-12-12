@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Petro\Http\Controllers;
 
-use App\Education;
-use App\Trainer;
+use Petro\Education;
+use Petro\Trainer;
 use \Carbon\Carbon;
-use App\Http\Requests\EducationRequest;
+use Petro\Http\Requests\EducationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -80,7 +80,7 @@ class EducationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Education  $education
+     * @param  \Petro\Education  $education
      * @return \Illuminate\Http\Response
      */
     public function show(Education $education)
@@ -91,7 +91,7 @@ class EducationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Education  $education
+     * @param  \Petro\Education  $education
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request, Education $education)
@@ -105,7 +105,7 @@ class EducationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Education  $education
+     * @param  \Petro\Education  $education
      * @return \Illuminate\Http\Response
      */
     public function update(EducationRequest $request, Education $education)
@@ -119,7 +119,7 @@ class EducationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Education  $education
+     * @param  \Petro\Education  $education
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, Education $education)

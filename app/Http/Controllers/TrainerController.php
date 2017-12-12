@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Petro\Http\Controllers;
 
-use App\Trainer;
-use App\Expertise;
-use App\Education;
-use App\Skill;
-use App\Certification;
-use App\Reference;
-use App\Work;
+use Petro\Trainer;
+use Petro\Expertise;
+use Petro\Education;
+use Petro\Skill;
+use Petro\Certification;
+use Petro\Reference;
+use Petro\Work;
 use Carbon\Carbon;
-use App\Http\Requests\TrainerRequest;
+use Petro\Http\Requests\TrainerRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
@@ -237,7 +237,7 @@ class TrainerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Trainer  $trainer
+     * @param  \Petro\Trainer  $trainer
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request, Trainer $trainer)
@@ -248,7 +248,7 @@ class TrainerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Trainer  $trainer
+     * @param  \Petro\Trainer  $trainer
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request, Trainer $trainer)
@@ -262,7 +262,7 @@ class TrainerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Trainer  $trainer
+     * @param  \Petro\Trainer  $trainer
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Trainer $trainer)
@@ -313,7 +313,7 @@ class TrainerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Trainer  $trainer
+     * @param  \Petro\Trainer  $trainer
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, Trainer $trainer)

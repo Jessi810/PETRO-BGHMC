@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
-use App\Education;
-use App\Trainer;
-use App\Work;
-use App\Certification;
-use App\Reference;
-use App\Skill;
-use App\Expertise;
+namespace Petro\Http\Controllers;
+use Petro\Education;
+use Petro\Trainer;
+use Petro\Work;
+use Petro\Certification;
+use Petro\Reference;
+use Petro\Skill;
+use Petro\Expertise;
 
 use Illuminate\Http\Request;
 

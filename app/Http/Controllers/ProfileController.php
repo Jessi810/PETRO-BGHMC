@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Petro\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;

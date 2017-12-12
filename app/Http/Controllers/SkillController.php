@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Petro\Http\Controllers;
 
-use App\Skill;
-use App\Trainer;
-use App\Http\Requests\SkillRequest;
+use Petro\Skill;
+use Petro\Trainer;
+use Petro\Http\Requests\SkillRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -77,7 +77,7 @@ class SkillController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Skill  $skill
+     * @param  \Petro\Skill  $skill
      * @return \Illuminate\Http\Response
      */
     public function show(Skill $skill)
@@ -88,7 +88,7 @@ class SkillController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Skill  $skill
+     * @param  \Petro\Skill  $skill
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request, Skill $skill)
@@ -102,7 +102,7 @@ class SkillController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Skill  $skill
+     * @param  \Petro\Skill  $skill
      * @return \Illuminate\Http\Response
      */
     public function update(SkillRequest $request, Skill $skill)
@@ -116,7 +116,7 @@ class SkillController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Skill  $skill
+     * @param  \Petro\Skill  $skill
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, Skill $skill)

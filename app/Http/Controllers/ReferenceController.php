@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Petro\Http\Controllers;
 
-use App\Reference;
-use App\Trainer;
-use App\Http\Requests\ReferenceRequest;
+use Petro\Reference;
+use Petro\Trainer;
+use Petro\Http\Requests\ReferenceRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -79,7 +79,7 @@ class ReferenceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Reference  $reference
+     * @param  \Petro\Reference  $reference
      * @return \Illuminate\Http\Response
      */
     public function show(Reference $reference)
@@ -90,7 +90,7 @@ class ReferenceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Reference  $reference
+     * @param  \Petro\Reference  $reference
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request, Reference $reference)
@@ -104,7 +104,7 @@ class ReferenceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Reference  $reference
+     * @param  \Petro\Reference  $reference
      * @return \Illuminate\Http\Response
      */
     public function update(ReferenceRequest $request, Reference $reference)
@@ -118,7 +118,7 @@ class ReferenceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Reference  $reference
+     * @param  \Petro\Reference  $reference
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, Reference $reference)

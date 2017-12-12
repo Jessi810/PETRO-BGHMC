@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Petro\Http\Controllers;
 
-use App\Certification;
-use App\Trainer;
+use Petro\Certification;
+use Petro\Trainer;
 use \Carbon\Carbon;
-use App\Http\Requests\CertificationRequest;
+use Petro\Http\Requests\CertificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -78,7 +78,7 @@ class CertificationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Certification  $certification
+     * @param  \Petro\Certification  $certification
      * @return \Illuminate\Http\Response
      */
     public function show(Certification $certification)
@@ -89,7 +89,7 @@ class CertificationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Certification  $certification
+     * @param  \Petro\Certification  $certification
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request, Certification $certification)
@@ -103,7 +103,7 @@ class CertificationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Certification  $certification
+     * @param  \Petro\Certification  $certification
      * @return \Illuminate\Http\Response
      */
     public function update(CertificationRequest $request, Certification $certification)
@@ -117,7 +117,7 @@ class CertificationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Certification  $certification
+     * @param  \Petro\Certification  $certification
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, Certification $certification)

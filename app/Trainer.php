@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Petro;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,7 +12,7 @@ class Trainer extends Model
     ];
 
     public function cv() {
-        return $this->hasOne('App\Cv');
+        return $this->hasOne('Petro\Cv');
     }
 
     public function educations() {

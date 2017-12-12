@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Petro\Http\Controllers;
 
-use App\Expertise;
-use App\Trainer;
-use App\Http\Requests\ExpertiseRequest;
+use Petro\Expertise;
+use Petro\Trainer;
+use Petro\Http\Requests\ExpertiseRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -76,7 +76,7 @@ class ExpertiseController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Expertise  $expertise
+     * @param  \Petro\Expertise  $expertise
      * @return \Illuminate\Http\Response
      */
     public function show(Expertise $expertise)
@@ -87,7 +87,7 @@ class ExpertiseController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Expertise  $expertise
+     * @param  \Petro\Expertise  $expertise
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request, Expertise $expertise)
@@ -101,7 +101,7 @@ class ExpertiseController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Expertise  $expertise
+     * @param  \Petro\Expertise  $expertise
      * @return \Illuminate\Http\Response
      */
     public function update(ExpertiseRequest $request, Expertise $expertise)
@@ -115,7 +115,7 @@ class ExpertiseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Expertise  $expertise
+     * @param  \Petro\Expertise  $expertise
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, Expertise $expertise)
