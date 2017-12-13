@@ -18,6 +18,8 @@ class CreateTrainersTable extends Migration
             $table->string('name');
             $table->string('email')->nullable();
             $table->enum('type', array('Internal', 'External'));
+            $table->enum('division', ['MIS', 'ABC']);
+            $table->enum('sub_division', ['DEF', 'GHI']);
             $table->string('agency_name')->nullable();
             $table->string('current_position')->nullable();
             $table->string('address')->nullable();
