@@ -30,472 +30,468 @@
     <![endif]-->
 </head>
 <body id="page-top" data-spy="scroll" data-target=".navbar">
-<div id="main-wrapper">
-<!-- Page Preloader -->
-<div id="preloader">
-    <div id="status">
-        <div class="status-mes"></div>
-    </div>
-</div>
-
-<div class="columns-block container">
-<div class="left-col-block blocks">
-    <header class="header theiaStickySidebar">
-        <div class="profile-img">
-            <img src="{{ asset('ResumeX/img/img-profile.jpg') }}" class="img-responsive" alt=""/>
-        </div>
-        <div class="content">
-            <h1>{{ $trainer->name }}</h1>
-            <span class="lead">{{ $trainer->current_position }}</span>
-
-            <div class="about-text">
-                <p>
-                    {{ $trainer->about }}
-                </p>
-                <p><img src="{{ asset('ResumeX/img/Signature.png') }}" alt="" class="img-responsive"/></p>
-            </div>
-
-
-            <ul class="social-icon">
-                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-slack" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-            </ul>
-        </div>
-
-    </header>
-    <!-- .header-->
-</div>
-<!-- .left-col-block -->
-
-
-<div class="right-col-block blocks">
-<div class="theiaStickySidebar">
-<section class="expertise-wrapper section-wrapper gray-bg">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="section-title">
-                    <h2>Expertise</h2>
-                </div>
+    <div id="main-wrapper">
+        <!-- Page Preloader -->
+        <div id="preloader">
+            <div id="status">
+                <div class="status-mes"></div>
             </div>
         </div>
-        <!-- .row -->
 
-        <div class="row">
-            
-            @foreach ($expertises as $expertise)
-                <div class="col-md-6">
-                    <div class="expertise-item">
-                        <h3>{{ $expertise->title }}</h3>
+        <div class="columns-block container">
 
-                        <p>
-                            {{ $expertise->description }}
-                        </p>
+            <div class="left-col-block blocks">
+                <header class="header theiaStickySidebar">
+                    <div class="profile-img">
+                        <img src="{{ asset('ResumeX/img/img-profile.jpg') }}" class="img-responsive" alt=""/>
                     </div>
-                </div>
-            @endforeach
+                    <div class="content">
+                        <h1>{{ $trainer->name }}</h1>
+                        <span class="lead">{{ $trainer->current_position }}</span>
 
-        </div>
-    </div>
-</section>
-<!-- .expertise-wrapper -->
+                        <div class="about-text">
+                            <p>
+                                {{ $trainer->about }}
+                            </p>
+                            <p><img src="{{ asset('ResumeX/img/Signature.png') }}" alt="" class="img-responsive"/></p>
+                        </div>
 
-<section class="section-wrapper skills-wrapper">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="section-title">
-                    <h2>Skills</h2>
-                </div>
+
+                        <ul class="social-icon">
+                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-slack" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+
+                </header>
+                <!-- .header-->
             </div>
+            <!-- .left-col-block -->
 
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="progress-wrapper">
+            <div class="right-col-block blocks">
+                <div class="theiaStickySidebar">
+                    <section class="section-wrapper section-experience gray-bg">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="section-title"><h2>Work Experience</h2></div>
+                                </div>
+                            </div>
+                            <!--.row-->
+                            <div class="row">
+                                <div class="col-md-12">
 
-                    @foreach ($skills as $skill)
-                        <div class="progress-item">
-                            <span class="progress-title">{{ $skill->title }}</span>
+                                    @foreach ($works as $work)
+                                        <div class="hide">
+                                            {{ $from = new Carbon\Carbon($work->datefrom) }}
+                                            {{ $to = new Carbon\Carbon($work->dateto) }}
+                                        </div>
+                                        <div class="content-item">
+                                            <small>{{ $from->year }} - {{  $to->year }}</small>
+                                            <h3>{{ $work->position }}</h3>
+                                            <h4>{{ $work->company_name }}</h4>
 
-                            @if ($skill->proficiency)
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="{{ $skill->proficiency }}" aria-valuemin="0"
-                                        aria-valuemax="100" style="width: {{ $skill->proficiency }}%"><span class="progress-percent"> {{ $skill->proficiency }}%</span>
+                                            {{--  <p>United Kingdom, London</p>  --}}
+                                        </div>
+                                    @endforeach
+                                    
+                                </div>
+                            </div>
+                            <!--.row-->
+                        </div>
+                        <!-- .container-fluid -->
+
+                    </section>
+                    <!-- .section-experience -->
+
+                    <section class="expertise-wrapper section-wrapper gray-bg">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="section-title">
+                                        <h2>Expertise</h2>
                                     </div>
                                 </div>
-                            @endif
-                            <!-- .progress -->
+                            </div>
+                            <!-- .row -->
+
+                            <div class="row">
+                                
+                                @foreach ($expertises as $expertise)
+                                    <div class="col-md-6">
+                                        <div class="expertise-item">
+                                            <h3>{{ $expertise->title }}</h3>
+
+                                            <p>
+                                                {{ $expertise->description }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                @endforeach
+
+                            </div>
                         </div>
-                        <!-- .skill-progress -->
-                    @endforeach
+                    </section>
+                    <!-- .section-expertise -->
 
-                </div>
-                <!-- /.progress-wrapper -->
-            </div>
-        </div>
-        <!--.row -->
-    </div>
-    <!-- .container-fluid -->
-</section>
-<!-- .skills-wrapper -->
+                    <section class="section-wrapper section-education">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="section-title"><h2>Education</h2></div>
+                                </div>
+                            </div>
+                            <!--.row-->
+                            <div class="row">
+                                <div class="col-md-12">
 
-<section class="section-wrapper section-experience gray-bg">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="section-title"><h2>Work Experience</h2></div>
-            </div>
-        </div>
-        <!--.row-->
-        <div class="row">
-            <div class="col-md-12">
+                                    @foreach ($educations as $education)
+                                        <div class="content-item">
+                                            <small>{{ $education->year_graduated }}</small>
+                                            <h3>{{ $education->school }}</h3>
+                                            @if ($education->major)
+                                                <h4>Major: {{ $education->major }}</h4>
+                                            @endif
+                                            @if ($education->minor)
+                                                <h4>Minor: {{ $education->minor }}</h4>
+                                            @endif
 
-                @foreach ($works as $work)
-                    <div class="hide">
-                        {{ $from = new Carbon\Carbon($work->datefrom) }}
-                        {{ $to = new Carbon\Carbon($work->dateto) }}
-                    </div>
-                    <div class="content-item">
-                        <small>{{ $from->year }} - {{  $to->year }}</small>
-                        <h3>{{ $work->position }}</h3>
-                        <h4>{{ $work->company_name }}</h4>
+                                            {{--  <p>United Kingdom, London</p>  --}}
+                                        </div>
+                                    @endforeach
 
-                        {{--  <p>United Kingdom, London</p>  --}}
-                    </div>
-                @endforeach
-                
-            </div>
-        </div>
-        <!--.row-->
-    </div>
-    <!-- .container-fluid -->
-
-</section>
-<!-- .section-experience -->
-
-<section class="section-wrapper section-education">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="section-title"><h2>Education</h2></div>
-            </div>
-        </div>
-        <!--.row-->
-        <div class="row">
-            <div class="col-md-12">
-
-                @foreach ($educations as $education)
-                    <div class="content-item">
-                        <small>{{ $education->year_graduated }}</small>
-                        <h3>{{ $education->school }}</h3>
-                        @if ($education->major)
-                            <h4>Major: {{ $education->major }}</h4>
-                        @endif
-                        @if ($education->minor)
-                            <h4>Minor: {{ $education->minor }}</h4>
-                        @endif
-
-                        {{--  <p>United Kingdom, London</p>  --}}
-                    </div>
-                @endforeach
-
-            </div>
-        </div>
-        <!--.row-->
-    </div>
-    <!-- .container-fluid -->
-
-</section>
-<!-- .section-education -->
-
-<section class="expertise-wrapper section-wrapper gray-bg">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="section-title">
-                    <h2>Certifications</h2>
-                </div>
-            </div>
-        </div>
-        <!-- .row -->
-
-        <div class="row">
-            
-            @foreach ($certifications as $cert)
-                <div class="col-md-6">
-                    <div class="expertise-item">
-                        <h3>{{ $cert->title }}</h3>
-
-                        <p>
-                            {{ $cert->description }}
-                        </p>
-                    </div>
-                </div>
-            @endforeach
-
-        </div>
-    </div>
-</section>
-<!-- .certification-wrapper -->
-
-{{--  <section class="section-wrapper section-interest gray-bg">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="section-title">
-                    <h2>Interest</h2>
-                </div>
-            </div>
-        </div>
-        <!-- .row -->
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="content-item">
-                    <h3>Books</h3>
-
-                    <p>Proactively extend market-driven e-tailers rather than enterprise-wide supply chains.
-                        Collaboratively embrace 24/7 processes rather than adaptive users. Seamlessly monetize
-                        alternative e-business.</p>
-                </div>
-                <div class="content-item">
-                    <h3>Sports</h3>
-
-                    <p>Assertively grow optimal methodologies after viral technologies. Appropriately develop
-                        frictionless technology for adaptive functionalities. Competently iterate functionalized
-                        networks for best-of-breed services.</p>
-
-                </div>
-                <div class="content-item">
-                    <h3>Art</h3>
-
-                    <p>Dramatically utilize superior infomediaries whereas functional core competencies.
-                        Enthusiastically repurpose synergistic vortals for customer directed portals. Interactively
-                        pursue sustainable leadership via.</p>
-                </div>
-            </div>
-        </div>
-        <!-- .row -->
-
-    </div>
-</section>  --}}
-<!-- .section-publications -->
-
-<section class="expertise-wrapper section-wrapper gray-bg">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="section-title">
-                    <h2>Reference</h2>
-                </div>
-            </div>
-        </div>
-        <!-- .row -->
-
-        <div class="row">
-            
-            @foreach ($references as $ref)
-                <div class="col-md-6">
-                    <div class="expertise-item">
-                        <h3>{{ $ref->name }}</h3>
-                        <h4>{{ $ref->position }} <small>{{ $ref->company_name }}</small></h4>
-
-                        <p>
-                            Email: <a href="mailto:{{ $ref->email }}">{{ $ref->email }}</a> <br />
-                            Mobile: {{ $ref->mobile }}
-                        </p>
-                    </div>
-                </div>
-            @endforeach
-
-        </div>
-    </div>
-</section>
-<!-- .expertise-wrapper -->
-
-{{--  <section class="section-wrapper portfolio-section">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="section-title">
-                    <h2>Portfolio</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <a class="portfolio-item" href="#">
-                    <div class="portfolio-thumb">
-                        <img src="{{ asset('ResumeX/img/portfolio-1.jpg') }}" alt="">
-                    </div>
-
-                    <div class="portfolio-info">
-                        <h3>Creative concepts</h3>
-                        <small>domain.com</small>
-                    </div>
-                    <!-- portfolio-info -->
-                </a>
-                <!-- .portfolio-item -->
-            </div>
-            <div class="col-md-6">
-                <a class="portfolio-item" href="#">
-                    <div class="portfolio-thumb">
-                        <img src="{{ asset('ResumeX/img/portfolio-2.jpg') }}" alt="">
-                    </div>
-
-                    <div class="portfolio-info">
-                        <h3>Customer focused</h3>
-                        <small>domain.com</small>
-                    </div>
-                    <!-- portfolio-info -->
-                </a>
-                <!-- .portfolio-item -->
-            </div>
-            <div class="col-md-6">
-                <a class="portfolio-item" href="#">
-                    <div class="portfolio-thumb">
-                        <img src="{{ asset('ResumeX/img/portfolio-3.jpg') }}" alt="">
-                    </div>
-
-                    <div class="portfolio-info">
-                        <h3>Management methodology</h3>
-                        <small>domain.com</small>
-                    </div>
-                    <!-- portfolio-info -->
-                </a>
-                <!-- .portfolio-item -->
-            </div>
-            <div class="col-md-6">
-                <a class="portfolio-item" href="#">
-                    <div class="portfolio-thumb">
-                        <img src="{{ asset('ResumeX/img/portfolio-4.jpg') }}" alt="">
-                    </div>
-
-                    <div class="portfolio-info">
-                        <h3>Market research</h3>
-                        <small>domain.com</small>
-                    </div>
-                    <!-- portfolio-info -->
-                </a>
-                <!-- .portfolio-item -->
-            </div>
-
-        </div>
-        <!-- /.row -->
-    </div>
-</section>  --}}
-<!-- .portfolio -->
-
-{{--  <section class="section-contact section-wrapper gray-bg">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="section-title">
-                    <h2>Contact</h2>
-                </div>
-            </div>
-        </div>
-        <!--.row-->
-        <div class="row">
-            <div class="col-md-12">
-                <address>
-                    <strong>Address</strong><br>
-                    {{ $trainer->address }}
-
-                </address>
-                <address>
-                    <strong>Phone Number</strong><br>
-                    {{ $trainer->phone }}
-                </address>
-
-                <address>
-                    <strong>Mobile Number</strong><br>
-                    {{ $trainer->mobile }}
-                </address>
-
-
-                <address>
-                    <strong>Email</strong><br>
-                    <a href="mailto:{{ $trainer->email }}">{{ $trainer->email }}</a>
-                </address>
-            </div>
-        </div>
-        <!--.row-->
-        <div class="row">
-            <div class="col-md-12">
-                <div class="feedback-form">
-                    <h2>Get in touch</h2>
-
-                    <form id="contactForm" action="sendemail.php" method="POST">
-                        <div class="form-group">
-                            <label for="InputName">Name</label>
-                            <input type="text" name="name" required="" class="form-control" id="InputName"
-                                   placeholder="Full Name">
+                                </div>
+                            </div>
+                            <!--.row-->
                         </div>
-                        <div class="form-group">
-                            <label for="InputEmail">Email address</label>
-                            <input type="email" name="email" required="" class="form-control" id="InputEmail"
-                                   placeholder="Email">
+                        <!-- .container-fluid -->
+
+                    </section>
+                    <!-- .section-education -->
+
+                    <section class="section-wrapper skills-wrapper">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="section-title">
+                                        <h2>Skills</h2>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="progress-wrapper">
+
+                                        @foreach ($skills as $skill)
+                                            <div class="progress-item">
+                                                <span class="progress-title">{{ $skill->title }}</span>
+
+                                                @if ($skill->proficiency)
+                                                    <div class="progress">
+                                                        <div class="progress-bar" role="progressbar" aria-valuenow="{{ $skill->proficiency }}" aria-valuemin="0"
+                                                            aria-valuemax="100" style="width: {{ $skill->proficiency }}%"><span class="progress-percent"> {{ $skill->proficiency }}%</span>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                                <!-- .progress -->
+                                            </div>
+                                            <!-- .skill-progress -->
+                                        @endforeach
+
+                                    </div>
+                                    <!-- /.progress-wrapper -->
+                                </div>
+                            </div>
+                            <!--.row -->
                         </div>
-                        <div class="form-group">
-                            <label for="InputSubject">Subject</label>
-                            <input type="text" name="subject" class="form-control" id="InputSubject"
-                                   placeholder="Subject">
+                        <!-- .container-fluid -->
+                    </section>
+                    <!-- .section-skill -->
+
+                    <section class="expertise-wrapper section-wrapper gray-bg">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="section-title">
+                                        <h2>Certifications</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- .row -->
+
+                            <div class="row">
+                                
+                                @foreach ($certifications as $cert)
+                                    <div class="col-md-6">
+                                        <div class="expertise-item">
+                                            <h3>{{ $cert->title }}</h3>
+
+                                            <p>
+                                                {{ $cert->description }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                @endforeach
+
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="message-text" class="control-label">Message</label>
-                            <textarea class="form-control" rows="4" required="" name="message" id="message-text"
-                                      placeholder="Write message"></textarea>
+                    </section>
+                    <!-- .section-certification -->
+
+                    <section class="expertise-wrapper section-wrapper gray-bg">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="section-title">
+                                        <h2>Reference</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- .row -->
+
+                            <div class="row">
+                                
+                                @foreach ($references as $ref)
+                                    <div class="col-md-6">
+                                        <div class="expertise-item">
+                                            <h3>{{ $ref->name }}</h3>
+                                            <h4>{{ $ref->position }} <small>{{ $ref->company_name }}</small></h4>
+
+                                            <p>
+                                                Email: <a href="mailto:{{ $ref->email }}">{{ $ref->email }}</a> <br />
+                                                Mobile: {{ $ref->mobile }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                @endforeach
+
+                            </div>
                         </div>
+                    </section>
+                    <!-- .section-reference -->
 
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
-                <!-- .feedback-form -->
+                    {{--  <section class="section-wrapper section-interest gray-bg">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="section-title">
+                                        <h2>Interest</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- .row -->
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="content-item">
+                                        <h3>Books</h3>
+
+                                        <p>Proactively extend market-driven e-tailers rather than enterprise-wide supply chains.
+                                            Collaboratively embrace 24/7 processes rather than adaptive users. Seamlessly monetize
+                                            alternative e-business.</p>
+                                    </div>
+                                    <div class="content-item">
+                                        <h3>Sports</h3>
+
+                                        <p>Assertively grow optimal methodologies after viral technologies. Appropriately develop
+                                            frictionless technology for adaptive functionalities. Competently iterate functionalized
+                                            networks for best-of-breed services.</p>
+
+                                    </div>
+                                    <div class="content-item">
+                                        <h3>Art</h3>
+
+                                        <p>Dramatically utilize superior infomediaries whereas functional core competencies.
+                                            Enthusiastically repurpose synergistic vortals for customer directed portals. Interactively
+                                            pursue sustainable leadership via.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- .row -->
+
+                        </div>
+                    </section>  --}}
+                    <!-- .section-publications -->
+
+                    {{--  <section class="section-wrapper portfolio-section">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="section-title">
+                                        <h2>Portfolio</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <a class="portfolio-item" href="#">
+                                        <div class="portfolio-thumb">
+                                            <img src="{{ asset('ResumeX/img/portfolio-1.jpg') }}" alt="">
+                                        </div>
+
+                                        <div class="portfolio-info">
+                                            <h3>Creative concepts</h3>
+                                            <small>domain.com</small>
+                                        </div>
+                                        <!-- portfolio-info -->
+                                    </a>
+                                    <!-- .portfolio-item -->
+                                </div>
+                                <div class="col-md-6">
+                                    <a class="portfolio-item" href="#">
+                                        <div class="portfolio-thumb">
+                                            <img src="{{ asset('ResumeX/img/portfolio-2.jpg') }}" alt="">
+                                        </div>
+
+                                        <div class="portfolio-info">
+                                            <h3>Customer focused</h3>
+                                            <small>domain.com</small>
+                                        </div>
+                                        <!-- portfolio-info -->
+                                    </a>
+                                    <!-- .portfolio-item -->
+                                </div>
+                                <div class="col-md-6">
+                                    <a class="portfolio-item" href="#">
+                                        <div class="portfolio-thumb">
+                                            <img src="{{ asset('ResumeX/img/portfolio-3.jpg') }}" alt="">
+                                        </div>
+
+                                        <div class="portfolio-info">
+                                            <h3>Management methodology</h3>
+                                            <small>domain.com</small>
+                                        </div>
+                                        <!-- portfolio-info -->
+                                    </a>
+                                    <!-- .portfolio-item -->
+                                </div>
+                                <div class="col-md-6">
+                                    <a class="portfolio-item" href="#">
+                                        <div class="portfolio-thumb">
+                                            <img src="{{ asset('ResumeX/img/portfolio-4.jpg') }}" alt="">
+                                        </div>
+
+                                        <div class="portfolio-info">
+                                            <h3>Market research</h3>
+                                            <small>domain.com</small>
+                                        </div>
+                                        <!-- portfolio-info -->
+                                    </a>
+                                    <!-- .portfolio-item -->
+                                </div>
+
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                    </section>  --}}
+                    <!-- .portfolio -->
+
+                    {{--  <section class="section-contact section-wrapper gray-bg">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="section-title">
+                                        <h2>Contact</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--.row-->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <address>
+                                        <strong>Address</strong><br>
+                                        {{ $trainer->address }}
+
+                                    </address>
+                                    <address>
+                                        <strong>Phone Number</strong><br>
+                                        {{ $trainer->phone }}
+                                    </address>
+
+                                    <address>
+                                        <strong>Mobile Number</strong><br>
+                                        {{ $trainer->mobile }}
+                                    </address>
 
 
-            </div>
-        </div>
-    </div>
-    <!--.container-fluid-->
-</section>  --}}
-<!--.section-contact-->
+                                    <address>
+                                        <strong>Email</strong><br>
+                                        <a href="mailto:{{ $trainer->email }}">{{ $trainer->email }}</a>
+                                    </address>
+                                </div>
+                            </div>
+                            <!--.row-->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="feedback-form">
+                                        <h2>Get in touch</h2>
 
-<footer class="footer">
-    <div class="copyright-section">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="copytext">&copy; Resumex. All rights reserved | Design By: <a
-                            href="https://themehippo.com">themehippo</a></div>
-                </div>
-            </div>
-            <!--.row-->
-        </div>
-        <!-- .container-fluid -->
-    </div>
-    <!-- .copyright-section -->
-</footer>
-<!-- .footer -->
-</div>
-<!-- Sticky -->
-</div>
-<!-- .right-col-block -->
-</div>
-<!-- .columns-block -->
-</div>
-<!-- #main-wrapper -->
+                                        <form id="contactForm" action="sendemail.php" method="POST">
+                                            <div class="form-group">
+                                                <label for="InputName">Name</label>
+                                                <input type="text" name="name" required="" class="form-control" id="InputName"
+                                                    placeholder="Full Name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="InputEmail">Email address</label>
+                                                <input type="email" name="email" required="" class="form-control" id="InputEmail"
+                                                    placeholder="Email">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="InputSubject">Subject</label>
+                                                <input type="text" name="subject" class="form-control" id="InputSubject"
+                                                    placeholder="Subject">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="message-text" class="control-label">Message</label>
+                                                <textarea class="form-control" rows="4" required="" name="message" id="message-text"
+                                                        placeholder="Write message"></textarea>
+                                            </div>
 
-<!-- jquery -->
-<script src="{{ asset('Resumex/js/jquery-2.1.4.min.js') }}"></script>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </form>
+                                    </div>
+                                    <!-- .feedback-form -->
 
-<!-- Bootstrap -->
-<script src="{{ asset('Resumex/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('Resumex/js/theia-sticky-sidebar.js') }}"></script>
-<script src="{{ asset('Resumex/js/scripts.js') }}"></script>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--.container-fluid-->
+                    </section>  --}}
+                    <!--.section-contact-->
+
+                    <footer class="footer">
+                        <div class="copyright-section">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="copytext">&copy; Resumex. All rights reserved | Design By: <a
+                                                href="https://themehippo.com">themehippo</a></div>
+                                    </div>
+                                </div>
+                                <!--.row-->
+                            </div>
+                            <!-- .container-fluid -->
+                        </div>
+                        <!-- .copyright-section -->
+                    </footer> <!-- .footer -->
+
+                </div> <!-- Sticky -->
+            </div> <!-- .right-col-block -->
+        </div> <!-- .columns-block -->
+    </div> <!-- #main-wrapper -->
+
+    <!-- jquery -->
+    <script src="{{ asset('Resumex/js/jquery-2.1.4.min.js') }}"></script>
+
+    <!-- Bootstrap -->
+    <script src="{{ asset('Resumex/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('Resumex/js/theia-sticky-sidebar.js') }}"></script>
+    <script src="{{ asset('Resumex/js/scripts.js') }}"></script>
 </body>
 </html>
