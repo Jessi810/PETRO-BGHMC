@@ -40,7 +40,11 @@ class Trainer extends Model
         return $this->hasMany(Expertise::class);
     }
     
-    public function training() {
+    public function trainings() {
         return $this->hasMany(Training::class);
+    }
+    
+    public function subdivision() {
+        return $this->belongsTo(Subdivision::class);
     }
 }

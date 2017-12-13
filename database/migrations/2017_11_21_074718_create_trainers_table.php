@@ -15,17 +15,20 @@ class CreateTrainersTable extends Migration
     {
         Schema::create('trainers', function (Blueprint $table) {
             $table->increments('id');
+            
+            $table->integer('subdivision_id')->unsigned()->index()->nullable();
+            $table->foreign('subdivision_id')->references('id')->on('subdivisions')->onDelete('cascade');
+
             $table->string('name');
-            $table->string('email')->nullable();
             $table->enum('type', array('Internal', 'External'));
-            $table->enum('division', ['MIS', 'ABC']);
-            $table->enum('sub_division', ['DEF', 'GHI']);
             $table->string('agency_name')->nullable();
             $table->string('current_position')->nullable();
+            $table->string('email')->nullable();
             $table->string('address')->nullable();
             $table->string('mobile')->nullable();
             $table->string('phone')->nullable();
             $table->string('about')->nullable();
+            
             $table->timestamps();
         });
     }
