@@ -24,7 +24,7 @@ class TrainerController extends Controller
         $rules = [
             'name'        => 'required|string',
             'agency_name' => 'required|string',
-            'type'        => 'required|string',
+            'type'        => 'required|string|in:Internal, External',
     
             // Personal details
             'current_position' => 'nullable|string',
