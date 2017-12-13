@@ -57,15 +57,17 @@
                             <label for="division">Division <span class="badge badge-secondary">required</span></label>
                             <select id="division" name="division" class="form-control">
                                 <option value="">Select...</option>
-                                <option value="Internal">Internal</option>
-                                <option value="External">External</option>
+                                @foreach ($divisions as $division)
+                                    <option value="division{{ $division->id }}">{{ $division->name }}</option>
+                                @endforeach
                             </select> </div>
                         <div class="col-md-6">
                             <label for="sub_division">Section/Dept/etc. <span class="badge badge-secondary">required</span></label>
                             <select id="sub_division" name="sub_division" class="form-control">
                                 <option value="">Select...</option>
-                                <option value="Internal">Internal</option>
-                                <option value="External">External</option>
+                                @foreach ($sub_divisions as $sub_division)
+                                    <option value="sub_division{{ $sub_division->id }}">{{ $sub_division->name }}</option>
+                                @endforeach
                             </select> </div>
                     </div>
                 </div>  {{--  End card-block  --}}
