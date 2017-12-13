@@ -390,7 +390,7 @@
                     </section>  --}}
                     <!-- .portfolio -->
 
-                    {{--  <section class="section-contact section-wrapper gray-bg">
+                    <section class="section-contact section-wrapper gray-bg">
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-12">
@@ -425,7 +425,7 @@
                                 </div>
                             </div>
                             <!--.row-->
-                            <div class="row">
+                            {{--  <div class="row">
                                 <div class="col-md-12">
                                     <div class="feedback-form">
                                         <h2>Get in touch</h2>
@@ -456,13 +456,11 @@
                                         </form>
                                     </div>
                                     <!-- .feedback-form -->
-
-
                                 </div>
-                            </div>
+                            </div>  --}}
                         </div>
                         <!--.container-fluid-->
-                    </section>  --}}
+                    </section>
                     <!--.section-contact-->
 
                     <footer class="footer">
