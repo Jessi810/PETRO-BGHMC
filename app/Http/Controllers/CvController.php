@@ -8,6 +8,7 @@ use Petro\Certification;
 use Petro\Reference;
 use Petro\Skill;
 use Petro\Expertise;
+use Petro\Training;
 
 use Illuminate\Http\Request;
 
@@ -21,8 +22,9 @@ class CvController extends Controller
         $references = Reference::where('trainer_id', '=', $id)->get();
         $skills = Skill::where('trainer_id', '=', $id)->get();
         $expertises = Expertise::where('trainer_id', '=', $id)->get();
+        $trainings = Training::where('trainer_id', '=', $id)->get();
 
-        return view('trainer/cv', ['educations' => $educations, 'trainer' => $trainer, 'works' => $works, 'certifications' => $certifications, 'references' => $references, 'skills' => $skills, 'expertises' => $expertises]);
+        return view('trainer/cv', ['educations' => $educations, 'trainer' => $trainer, 'works' => $works, 'certifications' => $certifications, 'references' => $references, 'skills' => $skills, 'expertises' => $expertises, 'trainings' => $trainings]);
     }
 
     public function portfolio(Request $request, $id) {
@@ -33,7 +35,8 @@ class CvController extends Controller
         $references = Reference::where('trainer_id', '=', $id)->get();
         $skills = Skill::where('trainer_id', '=', $id)->get();
         $expertises = Expertise::where('trainer_id', '=', $id)->get();
+        $trainings = Training::where('trainer_id', '=', $id)->get();
 
-        return view('portfolio/index', ['educations' => $educations, 'trainer' => $trainer, 'works' => $works, 'certifications' => $certifications, 'references' => $references, 'skills' => $skills, 'expertises' => $expertises]);
+        return view('portfolio/index', ['educations' => $educations, 'trainer' => $trainer, 'works' => $works, 'certifications' => $certifications, 'references' => $references, 'skills' => $skills, 'expertises' => $expertises, 'trainings' => $trainings]);
     }
 }

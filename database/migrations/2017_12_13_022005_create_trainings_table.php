@@ -16,7 +16,7 @@ class CreateTrainingsTable extends Migration
         Schema::create('trainings', function (Blueprint $table) {
             $table->increments('id');
             $table->string('topic');
-            $table->date('date')->nullable();
+            $table->date('datefrom')->nullable();
             $table->string('agency_name')->nullable();
 
             $table->integer('trainer_id')->unsigned()->index()->nullable();

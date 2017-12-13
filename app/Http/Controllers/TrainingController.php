@@ -40,7 +40,7 @@ class TrainingController extends Controller
         $request->user()->authorizeRoles(['Admin']);
         $rules = [
             'topic'       => 'required|string',
-            'date'        => 'nullable|date',
+            'datefrom'        => 'nullable|date',
             'agency_name' => 'nullable|string',
         ];
         $validator = Validator::make($request->all(), $rules);
@@ -122,7 +122,7 @@ class TrainingController extends Controller
     {
         $request->user()->authorizeRoles(['Admin']);
         
-        $training = Training::find($education->id);
+        $training = Training::find($training->id);
         $trainer_id = $training->trainer_id;
         $training->delete();
         return response()->json([

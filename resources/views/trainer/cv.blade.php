@@ -29,6 +29,9 @@
                             <a href="#skill_tab" class="nav-link" data-target="#skill_tab" data-toggle="tab" aria-controls="skill_tab" role="tab">Skills</a>
                         </li>
                         <li class="nav-item">
+                            <a href="#training_tab" class="nav-link" data-target="#training_tab" aria-controls="training_tab" data-toggle="tab" role="tab">Training Conducted</a>
+                        </li>
+                        <li class="nav-item">
                             <a href="#reference_tab" class="nav-link" data-target="#reference_tab" data-toggle="tab" aria-controls="reference_tab" role="tab">References</a>
                         </li>
                     </ul>
@@ -435,6 +438,81 @@
 
                                                         <div class="form-group">
                                                             <button type="button" class="btn btn-success btn-block save_form">Add Skill</button>
+                                                        </div>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="training_tab">
+                            <div class="card card-info">
+                                <div class="card-header">
+                                    <div class="header-block">
+                                        <p class="title"> Recent Training Conducted </p>
+                                    </div>
+                                    <div class="header-block pull-right">
+                                        <p class="title">
+                                            <a href="javascript:void(0)" class="btn btn-primary btn-sm rounded add_more" formtype="training" data-toggle="tooltip" data-placement="top" title="Add Training">Add</a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="card-block table-responsive p-0 pa-sm-0">
+                                    <table class="table">
+                                        <thead class="thead-default">
+                                            <tr>
+                                                <th>Topic</th>
+                                                <th>Date</th>
+                                                <th>Agency</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($trainings as $training)
+                                                <tr>
+                                                    <td>{{ $training->topic }}</td>
+                                                    <td>{{ $training->datefrom }}</td>
+                                                    <td>{{ $training->agency_name }}</td>
+                                                    <td>
+                                                        <a href="{{ route('training.edit', [$training->id, $trainer->id]) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit Training">
+                                                            <i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                                        {{--  <form class="form-horizontal" style="display: inline;" method="POST" action="{{ route('education.destroy', $education->id) }}" data-toggle="tooltip" data-placement="top" title="Delete Education">
+                                                            {{ csrf_field() }}
+
+                                                            <input type="hidden" name="_method" value="delete">
+                                                            <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                                        </form>  --}}
+                                                        <form formtype="training" formroute="{{ route('training.destroy', $training->id) }}" class="form-horizontal" style="display: inline;" data-toggle="tooltip" data-placement="top" title="Delete Training">
+                                                            {{ csrf_field() }}
+
+                                                            <input type="hidden" name="_method" value="delete">
+                                                            <button type="button" class="btn btn-sm btn-success delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+
+                                            {{--  Form for adding education  --}}
+                                            <tr>
+                                                <td colspan="4">
+                                                    <form id="training_template" class="d-none" formtype="training" formshown="false" formroute="{{ route('training.store') }}">
+                                                        <div class="row form-group">
+                                                            <div class="col-md-8">
+                                                                <label for="topic">Topic <span class="badge badge-secondary">required</span></label>
+                                                                <input type="text" class="form-control underlined" name="topic" id="topic" placeholder="Topic" required> </div>
+                                                            <div class="col-md-4">
+                                                                <label for="datefrom">Date</label>
+                                                                <input type="text" class="form-control underlined" name="datefrom" id="datefrom" placeholder="Date conducted"> </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="major">Agency</label>
+                                                            <input type="text" class="form-control underlined" name="agency_name" id="agency_name" placeholder="Agency name"> </div>
+
+                                                        <div class="form-group">
+                                                            <button type="button" class="btn btn-success btn-block save_form">Add Training</button>
                                                         </div>
                                                     </form>
                                                 </td>
