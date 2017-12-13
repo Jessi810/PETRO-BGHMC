@@ -20,7 +20,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('trainer/create-all', function() {
-    return view('trainer/create-all');
+    $divisions = DB::table('divisions')->get();
+    $sub_divisions = DB::table('sub_divisions')->get();
+    return view('trainer/create-all', ['divisions' => $divisions, 'sub_divisions' => $sub_divisions]);
 })->middleware('auth');;
 Route::post('trainer/create-all', 'TrainerController@create_all');
 Route::resource('trainer', 'TrainerController')->middleware('auth');
