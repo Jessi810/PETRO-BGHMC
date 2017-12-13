@@ -45,6 +45,6 @@ class Trainer extends Model
     }
     
     public function subDivision() {
-        return $this->hasOne(SubDivision::class);
+        return $this->belongsTo(SubDivision::class);
     }
 }

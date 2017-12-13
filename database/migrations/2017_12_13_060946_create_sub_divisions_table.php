@@ -16,9 +16,6 @@ class CreateSubDivisionsTable extends Migration
         Schema::create('sub_divisions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-
-            $table->integer('trainer_id')->unsigned()->nullable();
-            $table->foreign('trainer_id')->references('id')->on('trainers')->onDelete('cascade');
             
             $table->integer('division_id')->unsigned()->nullable();
             $table->foreign('division_id')->references('id')->on('divisions')->onDelete('cascade');

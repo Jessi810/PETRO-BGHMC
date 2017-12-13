@@ -14,7 +14,7 @@ class SubDivision extends Model
         return $this->belongsTo(Division::class);
     }
     
-        public function trainer() {
-            return $this->belongsTo(Trainer::class);
-        }
+    public function trainer() {
+        return $this->hasOne(Trainer::class);
+    }
 }

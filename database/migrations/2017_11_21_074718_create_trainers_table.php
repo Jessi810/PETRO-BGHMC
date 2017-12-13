@@ -26,6 +26,10 @@ class CreateTrainersTable extends Migration
             $table->string('mobile')->nullable();
             $table->string('phone')->nullable();
             $table->string('about')->nullable();
+            
+            $table->integer('subdivisions_id')->unsigned()->nullable();
+            $table->foreign('subdivisions_id')->references('id')->on('sub_divisions')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
