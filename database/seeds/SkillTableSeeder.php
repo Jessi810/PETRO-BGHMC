@@ -1,7 +1,7 @@
 <?php
 
-use App\Trainer;
-use App\Skill;
+use Petro\Trainer;
+use Petro\Skill;
 use Illuminate\Database\Seeder;
 
 class SkillTableSeeder extends Seeder

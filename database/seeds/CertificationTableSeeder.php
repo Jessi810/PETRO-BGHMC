@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Trainer;
-use App\Certification;
+use Petro\Trainer;
+use Petro\Certification;
 
 class CertificationTableSeeder extends Seeder
 {

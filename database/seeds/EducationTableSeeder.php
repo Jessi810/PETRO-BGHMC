@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Trainer;
-use App\Education;
+use Petro\Trainer;
+use Petro\Education;
 
 class EducationTableSeeder extends Seeder
 {

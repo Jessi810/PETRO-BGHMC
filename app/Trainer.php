@@ -38,4 +38,8 @@ class Trainer extends Model
     public function expertises() {
         return $this->hasMany(Expertise::class);
     }
+    
+    public function training() {
+        return $this->hasMany(Training::class);
+    }
 }

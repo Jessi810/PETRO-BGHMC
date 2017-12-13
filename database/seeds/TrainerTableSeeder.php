@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Trainer;
+use Petro\Trainer;
 
 class TrainerTableSeeder extends Seeder
 {

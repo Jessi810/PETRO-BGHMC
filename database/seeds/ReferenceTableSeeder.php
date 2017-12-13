@@ -1,7 +1,7 @@
 <?php
 
-use App\Trainer;
-use App\Reference;
+use Petro\Trainer;
+use Petro\Reference;
 use Illuminate\Database\Seeder;
 
 class ReferenceTableSeeder extends Seeder

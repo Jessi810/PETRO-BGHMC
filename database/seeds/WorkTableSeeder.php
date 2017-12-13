@@ -1,7 +1,7 @@
 <?php
 
-use App\Trainer;
-use App\Work;
+use Petro\Trainer;
+use Petro\Work;
 use Illuminate\Database\Seeder;
 
 class WorkTableSeeder extends Seeder

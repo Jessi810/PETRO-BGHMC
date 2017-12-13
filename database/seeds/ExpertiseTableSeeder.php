@@ -1,7 +1,7 @@
 <?php
 
-use App\Expertise;
-use App\Trainer;
+use Petro\Expertise;
+use Petro\Trainer;
 use Illuminate\Database\Seeder;
 
 class ExpertiseTableSeeder extends Seeder
