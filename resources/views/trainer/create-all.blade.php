@@ -47,6 +47,23 @@
                         <div class="col-md-4">
                             <label for="type">Type <span class="badge badge-secondary">required</span></label>
                             <select id="type" name="type" class="form-control">
+                                <option value="">Select...</option>
+                                <option value="Internal">Internal</option>
+                                <option value="External">External</option>
+                            </select> </div>
+                    </div>
+                    <div class="row form-group has-error">
+                        <div class="col-md-6">
+                            <label for="division">Division <span class="badge badge-secondary">required</span></label>
+                            <select id="division" name="division" class="form-control">
+                                <option value="">Select...</option>
+                                <option value="Internal">Internal</option>
+                                <option value="External">External</option>
+                            </select> </div>
+                        <div class="col-md-6">
+                            <label for="sub_division">Section/Dept/etc. <span class="badge badge-secondary">required</span></label>
+                            <select id="sub_division" name="sub_division" class="form-control">
+                                <option value="">Select...</option>
                                 <option value="Internal">Internal</option>
                                 <option value="External">External</option>
                             </select> </div>
