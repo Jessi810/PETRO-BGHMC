@@ -43,4 +43,8 @@ class Trainer extends Model
     public function training() {
         return $this->hasMany(Training::class);
     }
+    
+    public function subDivision() {
+        return $this->hasOne(SubDivision::class);
+    }
 }
