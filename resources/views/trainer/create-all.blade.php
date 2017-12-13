@@ -62,11 +62,7 @@
                                 @endforeach
                             </select> </div>
                         <div class="col-md-6">
-<<<<<<< HEAD
                             <label for="sub_division">Section/Dept</label>
-=======
-                            <label for="sub_division">Section/Dept <span class="badge badge-secondary">required</span></label>
->>>>>>> c77c0cef770bd4753c36a5073950f6cff2f556d7
                             <select id="sub_division" name="sub_division" class="form-control">
                                 <option value="">Select...</option>
                                 @foreach ($sub_divisions as $sub_division)

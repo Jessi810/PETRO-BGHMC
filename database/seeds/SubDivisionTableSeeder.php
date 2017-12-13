@@ -17,9 +17,19 @@ class SubDivisionTableSeeder extends Seeder
         $trainer = Trainer::find(1);
         $division = Division::find(1);
 
-        $sub = new SubDivision();
-        $sub->name = 'Technical';
+        $sub;
+        for ($i = 0; $i < 5; $i++) {
+            $sub = new SubDivision();
+            $sub->name = 'MIS_' . $i;
+            $sub->division()->associate($division)->save();
+        }
         $sub->trainer()->associate($trainer)->save();
-        $sub->division()->associate($division)->save();
+        
+        $division = Division::find(2);
+        for ($i = 0; $i < 5; $i++) {
+            $sub = new SubDivision();
+            $sub->name = 'PETRO_' . $i;
+            $sub->division()->associate($division)->save();
+        }
     }
 }

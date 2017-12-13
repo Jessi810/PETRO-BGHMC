@@ -17,11 +17,11 @@ class DivisionTableSeeder extends Seeder
         $division->save();
 
         $division = new Division();
-        $division->name = 'ABC';
+        $division->name = 'PETRO';
         $division->save();
         
         $division = new Division();
-        $division->name = 'DEF';
+        $division->name = 'NONAME';
         $division->save();
     }
 }
