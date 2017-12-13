@@ -20,8 +20,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('trainer/create-all', function() {
-    return view('trainer/create-all');
-})->middleware('auth');;
+    $divisions = DB::table('divisions')->get();
+    $subdivisions = DB::table('subdivisions')->get();
+    
+    return view('trainer/create-all', compact([$divisions, $subdivisions]));
+})->middleware('auth');
 Route::post('trainer/create-all', 'TrainerController@create_all');
 Route::resource('trainer', 'TrainerController')->middleware('auth');
 Route::resource('education', 'EducationController')->middleware('auth');
