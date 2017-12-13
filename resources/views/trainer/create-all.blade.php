@@ -27,10 +27,10 @@
                 </div>
                 <div class="card-block">
                     <div class="form-group has-error">
-                        <label for="name">Name <span class="badge badge-secondary">required</span></label>
+                        <label for="name">Name</label>
                         <input type="text" class="form-control underlined" name="name" id="name" placeholder="Trainer's name" required> </div>
                     <div class="form-group has-error">
-                        <label for="exp_title[0]">Expertise <span class="badge badge-secondary">required</span></label>
+                        <label for="exp_title[0]">Expertise</label>
                         <div class="wrapper_exp">
                             <div class="input-group">
                                 <input type="text" class="form-control underlined" name="exp_title[0]" id="exp_title[0]" placeholder="Trainer's field of expertise" required>
@@ -42,13 +42,31 @@
                     </div>
                     <div class="row form-group has-error">
                         <div class="col-md-8">
-                            <label for="agency_name">Agency <span class="badge badge-secondary">required</span></label>
+                            <label for="agency_name">Agency</label>
                             <input type="text" class="form-control underlined" name="agency_name" id="agency_name" placeholder="Trainer's agency" required> </div>
                         <div class="col-md-4">
-                            <label for="type">Type <span class="badge badge-secondary">required</span></label>
+                            <label for="type">Type</label>
                             <select id="type" name="type" class="form-control">
                                 <option value="Internal">Internal</option>
                                 <option value="External">External</option>
+                            </select> </div>
+                    </div>
+                    <div class="row form-group has-error">
+                        <div class="col-md-6">
+                            <label for="division">Division</label>
+                            <select id="division" name="division" class="form-control">
+                                <option value="">Select</option>
+                                @foreach ($divisions as $division)
+                                    <option value="{{ $division->id }}">{{ $division->name }}</option>
+                                @endforeach
+                            </select> </div>
+                        <div class="col-md-6">
+                            <label for="subdivision">Sub-division</label>
+                            <select id="subdivision" name="subdivision" class="form-control">
+                                <option value="">Select</option>
+                                @foreach ($subdivisions as $subdivision)
+                                    <option value="{{ $subdivision->id }}">{{ $subdivision->name }}</option>
+                                @endforeach
                             </select> </div>
                     </div>
                 </div>  {{--  End card-block  --}}

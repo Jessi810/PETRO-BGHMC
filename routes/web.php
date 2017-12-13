@@ -23,7 +23,7 @@ Route::get('trainer/create-all', function() {
     $divisions = DB::table('divisions')->get();
     $subdivisions = DB::table('subdivisions')->get();
     
-    return view('trainer/create-all', compact([$divisions, $subdivisions]));
+    return view('trainer/create-all', ['divisions' => $divisions, 'subdivisions' => $subdivisions]);
 })->middleware('auth');
 Route::post('trainer/create-all', 'TrainerController@create_all');
 Route::resource('trainer', 'TrainerController')->middleware('auth');
