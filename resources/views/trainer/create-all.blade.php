@@ -47,25 +47,26 @@
                         <div class="col-md-4">
                             <label for="type">Type</label>
                             <select id="type" name="type" class="form-control">
+                                <option value="">SELECT</option>
                                 <option value="Internal">Internal</option>
                                 <option value="External">External</option>
                             </select> </div>
                     </div>
-                    <div class="row form-group has-error">
+                    <div id="internal_division" class="row form-group has-error d-none">
                         <div class="col-md-6">
                             <label for="division">Division</label>
                             <select id="division" name="division" class="form-control">
-                                <option value="">Select</option>
+                                <option value="">SELECT</option>
                                 @foreach ($divisions as $division)
-                                    <option value="{{ $division->id }}">{{ $division->name }}</option>
+                                    <option id="division{{ $division->id }}" value="{{ $division->name }}">{{ $division->name }}</option>
                                 @endforeach
                             </select> </div>
                         <div class="col-md-6">
                             <label for="subdivision">Sub-division</label>
                             <select id="subdivision" name="subdivision" class="form-control">
-                                <option value="">Select</option>
+                                <option value="">SELECT</option>
                                 @foreach ($subdivisions as $subdivision)
-                                    <option value="{{ $subdivision->id }}">{{ $subdivision->name }}</option>
+                                    <option class="division{{ $subdivision->division_id }} d-none" value="{{ $subdivision->id }}">{{ $subdivision->name }}</option>
                                 @endforeach
                             </select> </div>
                     </div>
@@ -219,6 +220,23 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
+            });
+
+            $(document).on('change', '#type', function () {
+                var type = $(this).val();
+
+                if (type == 'Internal') {
+                    $('#internal_division').removeClass('d-none');
+                } else {
+                    $('#internal_division').addClass('d-none');
+                }
+            });
+            $(document).on('change', '#division', function () {
+                var id = $(this).find(':selected').attr('id');
+                
+                $('#subdivision').find('option').not('.division' + id).addClass('d-none');
+                $('#subdivision').val('');
+                $('option.' + id).removeClass('d-none');
             });
             
             $(document).on('click', '.save_form', function (e) {
