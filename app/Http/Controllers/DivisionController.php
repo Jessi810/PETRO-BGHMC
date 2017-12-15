@@ -103,6 +103,25 @@ class DivisionController extends Controller
             }
         }
         
+        if (count(Input::get('new_subdivision')) > 0) {
+            foreach (Input::get('new_subdivision') as $key => $val) {
+                $subdivision = new Subdivision();
+                $subdivision->name = Input::get("new_subdivision.$key");
+                $division = Division::find($division->id);
+                $subdivision->division()->associate($division)->save();
+
+                // $subdivision = Subdivision::create(Input::get("new_subdivision".$key));
+                // $subdivision->division()->associate($division)->save();
+            }
+        }
+
+        if (count(Input::get('delete_subdivision')) > 0) {
+            foreach (Input::get('delete_subdivision') as $key => $val) {
+                $subdivision = Subdivision::find($key);
+                $subdivision->delete();
+            }
+        }
+
         return redirect()->route('division.index')->with('success','Division updated successfully');
     }
 

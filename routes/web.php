@@ -56,3 +56,7 @@ Route::prefix('profile')->group(function () {
     Route::get('/', 'ProfileController@showProfile')->name('profile.index');
     Route::put('update', 'ProfileController@updateProfile')->name('profile.update');
 });
+
+Route::get('/debug', function () {
+    return view('debug');
+});

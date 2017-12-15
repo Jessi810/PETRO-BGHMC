@@ -21,17 +21,17 @@
                         
                         <div id="subdivision_group" class="form-group">
                             <label for="">Sub-division</label>
-                            {{--  <a href="javascript:void(0)" class="btn btn-primary btn-sm rounded pull-right add_subdivision" data-toggle="tooltip" data-placement="top" title="Add Sub-division">
+                            <a href="javascript:void(0)" class="btn btn-primary btn-sm rounded pull-right add_subdivision" data-toggle="tooltip" data-placement="top" title="Add Sub-division">
                                 Add
-                            </a>  --}}
+                            </a>
                             @foreach ($subdivisions as $subdivision)
-                                {{--  <div class="input-group">  --}}
+                                <div class="input-group">
                                     <input type="text" class="form-control underlined" name="subdivision[{{ $subdivision->id }}]" id="subdivision[{{ $subdivision->id }}]" value="{{ $subdivision->name }}" placeholder="Sub-division name" required>
-                                    {{--  <span class="input-group-btn">
+                                    <span class="input-group-btn">
                                         <button class="btn btn-secondary delete-subdivision" type="button">
                                             <i class="fa fa-trash-o" aria-hidden="true"></i> </button>
-                                    </span>  --}}
-                                {{--  </div>  --}}
+                                    </span>
+                                </div>
                             @endforeach
                         </div>
 
@@ -57,7 +57,7 @@
                 if ($(this).find('i').attr('class') == 'fa ' + fa_delete) {
                     var new_name = $(this).closest('div.input-group').find('input').attr('name').replace('subdivision', 'delete_subdivision');
                     $(this).closest('div.input-group').find('input')
-                        .attr('disabled', 'disabled')
+                        .attr('readonly', 'readonly')
                         .attr('name', new_name);
                     $(this).find('i').removeClass(fa_delete).addClass(fa_undo);
                 } else {
@@ -69,14 +69,14 @@
                 }
             });
 
-            var index = 9999;
+            var index = 1;
             var used_index = [];
             $('.add_subdivision').on('click', function () {
-                $('#division_form').find('#subdivision_group > input').each(function (index) {
+                {{--  $('#division_form').find('#subdivision_group > input').each(function (index) {
                     used_index.push($(this).attr('name'));
-                });
+                });  --}}
 
-                var name = '';
+                {{--  var name = '';
                 for (;;) {
                     name = 'subdivision[' + index + ']';
                     if (used_index.includes(name)) {
@@ -87,9 +87,9 @@
                         used_index.push(name);
                         break;
                     }
-                }
+                }  --}}
                 $('#subdivision_group').append(
-                    '<input type="text" class="form-control underlined" name="' + name + '" id="' + name + '" value="" placeholder="Sub-division name" required>'
+                    '<input type="text" class="form-control underlined" name="new_subdivision[' + name + ']" id="new_subdivision[' + name + ']" value="" placeholder="Sub-division name" required>'
                 );
             });
         });
