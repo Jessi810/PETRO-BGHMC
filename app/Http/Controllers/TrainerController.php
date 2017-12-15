@@ -24,7 +24,9 @@ class TrainerController extends Controller
         $rules = [
             'name'        => 'required|string',
             'agency_name' => 'required|string',
-            'type'        => 'required|string',
+            'type'        => 'required|in:Internal,External',
+            // 'division'    => 'required_if:type|string|exists:divisions',
+            // 'subdivision' => 'required_if:type|string|exists:subdivisions',
     
             // Personal details
             'current_position' => 'nullable|string',
@@ -88,6 +90,7 @@ class TrainerController extends Controller
         $trainer->mobile = $request->get('mobile');
         $trainer->phone = $request->get('phone');
         $trainer->about = $request->get('about');
+        $trainer->subdivision_id = $request->get('subdivision');
         $trainer->save();
         
         if (count(Input::get('exp_title')) > 0) {
