@@ -9,6 +9,8 @@ use Petro\Skill;
 use Petro\Certification;
 use Petro\Reference;
 use Petro\Work;
+use Petro\Division;
+use Petro\Subdivision;
 use Carbon\Carbon;
 use Petro\Http\Requests\TrainerRequest;
 use Illuminate\Http\Request;
@@ -24,7 +26,9 @@ class TrainerController extends Controller
         $rules = [
             'name'        => 'required|string',
             'agency_name' => 'required|string',
-            'type'        => 'required|string|in:Internal, External',
+            'type'        => 'required|in:Internal,External',
+            // 'division'    => 'required_if:type|string|exists:divisions',
+            // 'subdivision' => 'required_if:type|string|exists:subdivisions',
     
             // Personal details
             'current_position' => 'nullable|string',
@@ -88,6 +92,7 @@ class TrainerController extends Controller
         $trainer->mobile = $request->get('mobile');
         $trainer->phone = $request->get('phone');
         $trainer->about = $request->get('about');
+        $trainer->subdivision_id = $request->get('subdivision');
         $trainer->save();
         
         if (count(Input::get('exp_title')) > 0) {
@@ -188,8 +193,15 @@ class TrainerController extends Controller
         }
         
         $exps = Expertise::has('trainer')->get();
+        $subdivisions = Subdivision::get();
+        $divisions = Division::get();
         
-        return view('trainer.index', ['trainers' => $trainers->get(), 'expertises' => $exps]);
+        return view('trainer.index', [
+            'trainers' => $trainers->get(),
+            'expertises' => $exps,  
+            'divisions' => $divisions,
+            'subdivisions' => $subdivisions
+        ]);
     }
 
     /**

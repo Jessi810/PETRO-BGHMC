@@ -47,26 +47,26 @@
                         <div class="col-md-4">
                             <label for="type">Type</label>
                             <select id="type" name="type" class="form-control">
-                                <option value="">Select...</option>
+                                <option value="">SELECT</option>
                                 <option value="Internal">Internal</option>
                                 <option value="External">External</option>
                             </select> </div>
                     </div>
-                    <div id="div_subdiv_options" class="row form-group has-error d-none">
+                    <div id="internal_division" class="row form-group has-error d-none">
                         <div class="col-md-6">
                             <label for="division">Division</label>
-                            <select id="division" name="division" class="form-control">
-                                <option value="">Select...</option>
+                            <select id="division" name="division" class="form-control" disabled>
+                                <option value="">SELECT</option>
                                 @foreach ($divisions as $division)
-                                    <option value="{{ $division->name }}" js-division="division{{ $division->id }}">{{ $division->name }}</option>
+                                    <option id="division{{ $division->id }}" value="{{ $division->name }}">{{ $division->name }}</option>
                                 @endforeach
                             </select> </div>
                         <div class="col-md-6">
-                            <label for="sub_division">Section/Dept</label>
-                            <select id="sub_division" name="sub_division" class="form-control">
-                                <option value="">Select...</option>
-                                @foreach ($sub_divisions as $sub_division)
-                                    <option value="{{ $sub_division->name }}" class="d-none" js-division="division{{ $sub_division->division_id }}">{{ $sub_division->name }}</option>
+                            <label for="subdivision">Sub-division</label>
+                            <select id="subdivision" name="subdivision" class="form-control" disabled>
+                                <option value="">SELECT</option>
+                                @foreach ($subdivisions as $subdivision)
+                                    <option class="division{{ $subdivision->division_id }} d-none" value="{{ $subdivision->id }}">{{ $subdivision->name }}</option>
                                 @endforeach
                             </select> </div>
                     </div>
@@ -222,25 +222,23 @@
                 }
             });
 
-            $(document).on('change', '#type', function() {
-                var selected = $(this).val();
-                console.log($(this));
+            $(document).on('change', '#type', function () {
+                var type = $(this).val();
 
-                if (selected == 'Internal') {
-                    $('#div_subdiv_options').removeClass('d-none');
-                } else if (selected == 'External') {
-                    $('#div_subdiv_options').addClass('d-none');
+                if (type == 'Internal') {
+                    $('#internal_division').removeClass('d-none');
+                    $('#internal_division').find('select').removeAttr('disabled');
                 } else {
-                    $('#div_subdiv_options').addClass('d-none');
+                    $('#internal_division').addClass('d-none');
+                    $('#internal_division').find('select').attr('disabled', 'disabled');
                 }
-            })
-
-            $(document).on('change', '#division', function() {
-                var selected = $(this).find(":selected");
-                var division = $(selected).attr('js-division');
+            });
+            $(document).on('change', '#division', function () {
+                var id = $(this).find(':selected').attr('id');
                 
-                $('#sub_division').find('option[js-division]').addClass('d-none');
-                $('#sub_division').find('[js-division=' + division + ']').removeClass('d-none');
+                $('#subdivision').find('option').not('.division' + id).addClass('d-none');
+                $('#subdivision').val('');
+                $('option.' + id).removeClass('d-none');
             });
             
             $(document).on('click', '.save_form', function (e) {

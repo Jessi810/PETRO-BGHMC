@@ -35,6 +35,10 @@
                             <a href="{{ url('trainer/create-all') }}"> Create </a>
                         </li>
                     </ul>
+                    <li id="sidebar-item-division">
+                        <a href="{{ route('division.index') }}">
+                            <i class="fa fa-pencil-square-o"></i> Divisions </a>
+                    </li>
                 </li>
                 {{--  <li>
                     <a href="">

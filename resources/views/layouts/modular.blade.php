@@ -80,6 +80,7 @@
     //    $('[data-toggle="tooltip"]').tooltip()
     //})
 
+    // Stops buttons from opening accordion
     $('.stop-accordion').on('click', function(e){
         $(this).find('.dropdown-toggle').dropdown('toggle');
         e.stopPropagation();

@@ -22,6 +22,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ExpertiseTableSeeder::class);
         $this->call(TrainingTableSeeder::class);
         $this->call(DivisionTableSeeder::class);
-        $this->call(SubDivisionTableSeeder::class);
+        $this->call(SubdivisionTableSeeder::class);
     }
 }

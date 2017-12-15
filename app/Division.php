@@ -9,8 +9,8 @@ class Division extends Model
     protected $fillable = [
         'name',
     ];
-
-    public function subDivisions() {
-        return $this->hasMany(SubDivision::class);
+    
+    public function subdivisions() {
+        return $this->hasMany(Subdivision::class);
     }
 }

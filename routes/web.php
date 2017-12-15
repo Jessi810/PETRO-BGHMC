@@ -21,9 +21,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('trainer/create-all', function() {
     $divisions = DB::table('divisions')->get();
-    $sub_divisions = DB::table('sub_divisions')->get();
-    return view('trainer/create-all', ['divisions' => $divisions, 'sub_divisions' => $sub_divisions]);
-})->middleware('auth');;
+    $subdivisions = DB::table('subdivisions')->get();
+    
+    return view('trainer/create-all', ['divisions' => $divisions, 'subdivisions' => $subdivisions]);
+})->middleware('auth');
 Route::post('trainer/create-all', 'TrainerController@create_all');
 Route::resource('trainer', 'TrainerController')->middleware('auth');
 Route::resource('education', 'EducationController')->middleware('auth');
@@ -33,6 +34,7 @@ Route::resource('reference', 'ReferenceController')->middleware('auth');
 Route::resource('skill', 'SkillController')->middleware('auth');
 Route::resource('expertise', 'ExpertiseController')->middleware('auth');
 Route::resource('training', 'TrainingController')->middleware('auth');
+Route::resource('division', 'DivisionController')->middleware('auth');
 
 /*
 
@@ -53,4 +55,8 @@ Route::get('portfolio/{id}', 'CvController@portfolio')->name('portfolio')->middl
 Route::prefix('profile')->group(function () {
     Route::get('/', 'ProfileController@showProfile')->name('profile.index');
     Route::put('update', 'ProfileController@updateProfile')->name('profile.update');
+});
+
+Route::get('/debug', function () {
+    return view('debug');
 });

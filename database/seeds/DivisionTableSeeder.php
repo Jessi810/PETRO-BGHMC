@@ -15,13 +15,9 @@ class DivisionTableSeeder extends Seeder
         $division = new Division();
         $division->name = 'MIS';
         $division->save();
-
-        $division = new Division();
-        $division->name = 'PETRO';
-        $division->save();
         
         $division = new Division();
-        $division->name = 'NONAME';
+        $division->name = 'PETRO';
         $division->save();
     }
 }
