@@ -63,7 +63,7 @@
                 } else {
                     var new_name = $(this).closest('div.input-group').find('input').attr('name').replace('delete_subdivision', 'subdivision');
                     $(this).closest('div.input-group').find('input')
-                        .removeAttr('disabled')
+                        .removeAttr('readonly')
                         .attr('name', new_name);
                     $(this).find('i').removeClass(fa_undo).addClass(fa_delete);
                 }
