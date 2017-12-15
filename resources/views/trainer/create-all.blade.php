@@ -55,7 +55,7 @@
                     <div id="internal_division" class="row form-group has-error d-none">
                         <div class="col-md-6">
                             <label for="division">Division</label>
-                            <select id="division" name="division" class="form-control">
+                            <select id="division" name="division" class="form-control" disabled>
                                 <option value="">SELECT</option>
                                 @foreach ($divisions as $division)
                                     <option id="division{{ $division->id }}" value="{{ $division->name }}">{{ $division->name }}</option>
@@ -63,7 +63,7 @@
                             </select> </div>
                         <div class="col-md-6">
                             <label for="subdivision">Sub-division</label>
-                            <select id="subdivision" name="subdivision" class="form-control">
+                            <select id="subdivision" name="subdivision" class="form-control" disabled>
                                 <option value="">SELECT</option>
                                 @foreach ($subdivisions as $subdivision)
                                     <option class="division{{ $subdivision->division_id }} d-none" value="{{ $subdivision->id }}">{{ $subdivision->name }}</option>
@@ -227,8 +227,10 @@
 
                 if (type == 'Internal') {
                     $('#internal_division').removeClass('d-none');
+                    $('#internal_division').find('select').removeAttr('disabled');
                 } else {
                     $('#internal_division').addClass('d-none');
+                    $('#internal_division').find('select').attr('disabled', 'disabled');
                 }
             });
             $(document).on('change', '#division', function () {
