@@ -34,6 +34,7 @@ Route::resource('reference', 'ReferenceController')->middleware('auth');
 Route::resource('skill', 'SkillController')->middleware('auth');
 Route::resource('expertise', 'ExpertiseController')->middleware('auth');
 Route::resource('training', 'TrainingController')->middleware('auth');
+Route::resource('division', 'DivisionController')->middleware('auth');
 
 /*
 

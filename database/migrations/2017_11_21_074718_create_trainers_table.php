@@ -17,7 +17,7 @@ class CreateTrainersTable extends Migration
             $table->increments('id');
             
             $table->integer('subdivision_id')->unsigned()->index()->nullable();
-            $table->foreign('subdivision_id')->references('id')->on('subdivisions')->onDelete('cascade');
+            $table->foreign('subdivision_id')->references('id')->on('subdivisions')->onDelete('set null');
 
             $table->string('name');
             $table->enum('type', array('Internal', 'External'));
