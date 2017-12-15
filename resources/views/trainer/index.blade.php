@@ -55,6 +55,28 @@
                                     <td colspan="5">
                                         <div id="accordion{{ $trainer->id }}" class="collapse">
                                             <dl>
+                                                <dt class="d-inline">Division</dt>
+                                                <dd class="d-inline">
+                                                    {{--  TODO: Change loop to only get subdivision of trainer instead of looping.  --}}
+                                                    @foreach ($divisions as $division)
+                                                        @foreach ($subdivisions as $subdivision)
+                                                            @if ($division->id == $subdivision->division_id && $trainer->subdivision_id == $subdivision->id)
+                                                                {{ $division->name }}
+                                                            @endif
+                                                        @endforeach
+                                                    @endforeach
+                                                </dd>
+                                                <br>
+                                                <dt class="d-inline">Sub-division</dt>
+                                                <dd class="d-inline">
+                                                    {{--  TODO: Change loop to only get subdivision of trainer instead of looping.  --}}
+                                                    @foreach ($subdivisions as $subdivision)
+                                                        @if ($subdivision->id == $trainer->subdivision_id)
+                                                            {{ $subdivision->name }}
+                                                        @endif
+                                                    @endforeach
+                                                </dd>
+                                                <br>
                                                 <dt class="d-inline">Email</dt>
                                                 <dd class="d-inline">{{ $trainer->email }}</dd>
                                                 <br>

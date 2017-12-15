@@ -9,6 +9,8 @@ use Petro\Skill;
 use Petro\Certification;
 use Petro\Reference;
 use Petro\Work;
+use Petro\Division;
+use Petro\Subdivision;
 use Carbon\Carbon;
 use Petro\Http\Requests\TrainerRequest;
 use Illuminate\Http\Request;
@@ -191,8 +193,15 @@ class TrainerController extends Controller
         }
         
         $exps = Expertise::has('trainer')->get();
+        $subdivisions = Subdivision::get();
+        $divisions = Division::get();
         
-        return view('trainer.index', ['trainers' => $trainers->get(), 'expertises' => $exps]);
+        return view('trainer.index', [
+            'trainers' => $trainers->get(),
+            'expertises' => $exps,  
+            'divisions' => $divisions,
+            'subdivisions' => $subdivisions
+        ]);
     }
 
     /**
