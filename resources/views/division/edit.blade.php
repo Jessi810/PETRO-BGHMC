@@ -47,7 +47,7 @@
 
 @section('scripts')
     <script>
-        $('#sidebar-item-trainer').addClass('open active');
+        $('#sidebar-item-division').addClass('active');
 
         var fa_undo = 'fa-undo';
         var fa_delete = 'fa-trash-o';

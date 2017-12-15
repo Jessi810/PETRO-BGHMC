@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="card-block table-responsive p-0 p-sm-0">
-                    <table class="table table-sm">
+                    <table class="table">
                         <thead class="">
                             <tr>
                                 <th>Division</th>
@@ -96,7 +96,7 @@
 
 @section('scripts')
     <script>
-        $('#sidebar-item-trainer').addClass('open active');
+        $('#sidebar-item-division').addClass('active');
 
         $(document).ready(function () {
             $('#modal_submit').on('click', function () {
