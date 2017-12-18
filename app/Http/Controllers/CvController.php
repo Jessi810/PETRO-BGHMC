@@ -9,6 +9,8 @@ use Petro\Reference;
 use Petro\Skill;
 use Petro\Expertise;
 use Petro\Training;
+use Petro\Division;
+use Petro\Subdivision;
 
 use Illuminate\Http\Request;
 
@@ -23,8 +25,27 @@ class CvController extends Controller
         $skills = Skill::where('trainer_id', '=', $id)->get();
         $expertises = Expertise::where('trainer_id', '=', $id)->get();
         $trainings = Training::where('trainer_id', '=', $id)->get();
+        $divisions = Division::get();
+        $subdivisions = Subdivision::get();
+        //dd($trainer_div); return view('debug');
+        $trainer_subdiv = Subdivision::find($trainer->subdivision_id);
+        $trainer_div = Subdivision::find($trainer_subdiv->division_id);
 
-        return view('trainer/cv', ['educations' => $educations, 'trainer' => $trainer, 'works' => $works, 'certifications' => $certifications, 'references' => $references, 'skills' => $skills, 'expertises' => $expertises, 'trainings' => $trainings]);
+        //return view('trainer/cv', ['educations' => $educations, 'trainer' => $trainer, 'works' => $works, 'certifications' => $certifications, 'references' => $references, 'skills' => $skills, 'expertises' => $expertises, 'trainings' => $trainings]);
+        return view('trainer/cv', compact([
+            'trainer',
+            'educations',
+            'works',
+            'certifications',
+            'references',
+            'skills',
+            'expertises',
+            'trainings',
+            'divisions',
+            'subdivisions',
+            'trainer_div',
+            'trainer_subdiv',
+        ]));
     }
 
     public function portfolio(Request $request, $id) {

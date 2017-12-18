@@ -288,6 +288,7 @@ class TrainerController extends Controller
             'address'          => 'nullable|string',
             'mobile'           => 'nullable|string',
             'phone'            => 'nullable|string',
+            'subdivision_id'   => 'nullable|int',
         ];
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
@@ -301,6 +302,8 @@ class TrainerController extends Controller
         $updated_at = $request->get('updated_at');
         
         $trainer->update($request->all());
+        $trainer->subdivision_id = $request->get('subdivision');
+        $trainer->save();
 
         if ($request->ajax()) {
             if ($trainer->updated_at > $updated_at) {

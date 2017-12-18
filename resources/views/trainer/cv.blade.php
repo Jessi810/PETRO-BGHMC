@@ -68,8 +68,22 @@
                                                     <option value="Internal" {{ $trainer->type == 'Internal' ? 'selected' : '' }}>Internal</option>
                                                     <option value="External" {{ $trainer->type == 'External' ? 'selected' : '' }}>External</option>
                                                 </select> </div>
-                                            <div class="col-md-4"></div>
-                                            <div class="col-md-4"></div>
+                                            <div class="col-md-4">
+                                                <label for="division">Division</label>
+                                                <select id="division" name="" class="form-control" disabled>
+                                                    <option value="">SELECT</option>
+                                                    @foreach ($divisions as $division)
+                                                        <option id="division{{ $division->id }}" value="{{ $division->id }}" {{ $trainer_div->id == $division->id ? 'selected' : '' }}>{{ $division->name }}</option>
+                                                    @endforeach
+                                                </select> </div>
+                                            <div class="col-md-4">
+                                                <label for="subdivision">Sub-division</label>
+                                                <select id="subdivision" name="subdivision" class="form-control" disabled>
+                                                    <option value="">SELECT</option>
+                                                    @foreach ($subdivisions as $subdivision)
+                                                        <option class="division{{ $subdivision->division_id }} d-none" value="{{ $subdivision->id }}" {{ $subdivision->id == $trainer_subdiv->id ? 'selected' : '' }}>{{ $subdivision->name }}</option>
+                                                    @endforeach
+                                                </select> </div>
                                         </div>
                                         <div class="row form-group">
                                             <div class="col-md-4">
@@ -626,9 +640,31 @@
 
         $(document).ready(function () {
 
+            $('.' + $('#division').find(':selected').attr('id')).removeClass('d-none');
+            console.log($('.' + $('#division').find(':selected').attr('id')));
+
             // Fixes 'active tab contents' not showing on first load
             $('.nav-item').tab('show');
             $('.nav-tabs li a:first').trigger('click');
+
+            $(document).on('change', '#type', function () {
+                var type = $(this).val();
+
+                if (type == 'Internal') {
+                    $('#internal_division').removeClass('d-none');
+                    $('#internal_division').find('select').removeAttr('disabled');
+                } else {
+                    $('#internal_division').addClass('d-none');
+                    $('#internal_division').find('select').attr('disabled', 'disabled');
+                }
+            });
+            $(document).on('change', '#division', function () {
+                var id = $(this).find(':selected').attr('id');
+                
+                $('#subdivision').find('option').not('.division' + id).addClass('d-none');
+                $('#subdivision').val('');
+                $('option.' + id).removeClass('d-none');
+            });
 
             $('.add_more').click(function(e) {
                 var form_type = $(this).attr('formtype');
