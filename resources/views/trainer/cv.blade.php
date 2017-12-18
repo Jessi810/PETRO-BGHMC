@@ -62,6 +62,17 @@
                                         </div>
                                         <div class="row form-group">
                                             <div class="col-md-4">
+                                                <label for="type">Type</label>
+                                                <select id="type" name="type" class="form-control" disabled>
+                                                    <option value="">SELECT</option>
+                                                    <option value="Internal" {{ $trainer->type == 'Internal' ? 'selected' : '' }}>Internal</option>
+                                                    <option value="External" {{ $trainer->type == 'External' ? 'selected' : '' }}>External</option>
+                                                </select> </div>
+                                            <div class="col-md-4"></div>
+                                            <div class="col-md-4"></div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col-md-4">
                                                 <label for="email">Email</label>
                                                 <input type="text" readonly class="form-control underlined" name="email" id="email" data-default="{{ $trainer->email }}" value="{{ $trainer->email }}" placeholder="Email address"> </div>
                                             <div class="col-md-4">
@@ -785,6 +796,7 @@
                     // Form inputs
                     var form = $($(this).attr('toggle-readonly'));
                     $(form).find('input').attr('readonly', true);
+                    $(form).find('select').attr('disabled', true);
 
                     $(form).find('input').each(function() {
                         var defaultVal = $(this).data('default');
@@ -803,6 +815,7 @@
                     // Form inputs
                     var form = $($(this).attr('toggle-readonly'));
                     $(form).find('input').attr('readonly', false);
+                    $(form).find('select').attr('disabled', false);
                 }
             });
 
