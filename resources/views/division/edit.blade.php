@@ -26,7 +26,7 @@
                             </a>
                             @foreach ($subdivisions as $subdivision)
                                 <div class="input-group">
-                                    <input type="text" class="form-control underlined" name="subdivision[{{ $subdivision->id }}]" id="subdivision[{{ $subdivision->id }}]" value="{{ $subdivision->name }}" placeholder="Sub-division name" required>
+                                    <input type="text" class="form-control underlined" name="subdivision[{{ $subdivision->id }}]" id="subdivision[{{ $subdivision->id }}]" value="{{ $subdivision->name }}" placeholder="Sub-division name">
                                     <span class="input-group-btn">
                                         <button class="btn btn-secondary delete-subdivision" type="button">
                                             <i class="fa fa-trash-o" aria-hidden="true"></i> </button>
@@ -89,7 +89,7 @@
                     }
                 }  --}}
                 $('#subdivision_group').append(
-                    '<input type="text" class="form-control underlined" name="new_subdivision[' + name + ']" id="new_subdivision[' + name + ']" value="" placeholder="Sub-division name" required>'
+                    '<input type="text" class="form-control underlined" name="new_subdivision[' + name + ']" id="new_subdivision[' + name + ']" value="" placeholder="Sub-division name">'
                 );
             });
         });

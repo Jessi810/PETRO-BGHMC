@@ -105,6 +105,9 @@ class DivisionController extends Controller
         
         if (count(Input::get('new_subdivision')) > 0) {
             foreach (Input::get('new_subdivision') as $key => $val) {
+                if (Input::get("new_subdivision.$key") == null) {
+                    continue;
+                }
                 $subdivision = new Subdivision();
                 $subdivision->name = Input::get("new_subdivision.$key");
                 $division = Division::find($division->id);
