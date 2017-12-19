@@ -27,11 +27,24 @@ class CvController extends Controller
         $trainings = Training::where('trainer_id', '=', $id)->get();
         $divisions = Division::get();
         $subdivisions = Subdivision::get();
-        //dd($trainer_div); return view('debug');
-        $trainer_subdiv = Subdivision::find($trainer->subdivision_id);
-        $trainer_div = Subdivision::find($trainer_subdiv->division_id);
+        if ($trainer->subdivision_id == null) {
+            return view('trainer/cv', compact([
+                'trainer',
+                'educations',
+                'works',
+                'certifications',
+                'references',
+                'skills',
+                'expertises',
+                'trainings',
+                'divisions',
+                'subdivisions',
+            ]));
+        }
 
-        //return view('trainer/cv', ['educations' => $educations, 'trainer' => $trainer, 'works' => $works, 'certifications' => $certifications, 'references' => $references, 'skills' => $skills, 'expertises' => $expertises, 'trainings' => $trainings]);
+        $trainer_subdiv = Subdivision::find($trainer->subdivision_id);
+        $trainer_div = Division::find($trainer_subdiv->division_id);
+
         return view('trainer/cv', compact([
             'trainer',
             'educations',

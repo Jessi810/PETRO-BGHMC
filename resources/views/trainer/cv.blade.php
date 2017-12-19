@@ -73,7 +73,7 @@
                                                 <select id="division" name="" class="form-control" disabled>
                                                     <option value="">SELECT</option>
                                                     @foreach ($divisions as $division)
-                                                        <option id="division{{ $division->id }}" value="{{ $division->id }}" {{ $trainer_div->id == $division->id ? 'selected' : '' }}>{{ $division->name }}</option>
+                                                        <option id="division{{ $division->id }}" value="{{ $division->id }}" {{ (isset($trainer_div) ? $trainer_div->id : '') == $division->id ? 'selected' : '' }}>{{ $division->name }}</option>
                                                     @endforeach
                                                 </select> </div>
                                             <div class="col-md-4">
@@ -81,7 +81,7 @@
                                                 <select id="subdivision" name="subdivision" class="form-control" disabled>
                                                     <option value="">SELECT</option>
                                                     @foreach ($subdivisions as $subdivision)
-                                                        <option class="division{{ $subdivision->division_id }} d-none" value="{{ $subdivision->id }}" {{ $subdivision->id == $trainer_subdiv->id ? 'selected' : '' }}>{{ $subdivision->name }}</option>
+                                                        <option class="division{{ $subdivision->division_id }} d-none" value="{{ $subdivision->id }}" {{ (isset($trainer_subdiv) ? $trainer_subdiv->id : '') == $subdivision->id ? 'selected' : '' }}>{{ $subdivision->name }}</option>
                                                     @endforeach
                                                 </select> </div>
                                         </div>
