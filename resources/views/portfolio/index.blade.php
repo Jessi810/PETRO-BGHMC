@@ -172,6 +172,39 @@
                     </section>
                     <!-- .section-education -->
 
+                    <section class="section-wrapper section-experience gray-bg">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="section-title"><h2>Training Conducted</h2></div>
+                                </div>
+                            </div>
+                            <!--.row-->
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    @foreach ($trainings as $training)
+                                        <div class="hide">
+                                            {{ $date = new Carbon\Carbon($training->date) }}
+                                        </div>
+                                        <div class="content-item">
+                                            <small>{{ $date->year }}</small>
+                                            <h3>{{ $training->topic }}</h3>
+                                            <h4>{{ $training->agency }}</h4>
+
+                                            {{--  <p>United Kingdom, London</p>  --}}
+                                        </div>
+                                    @endforeach
+                                    
+                                </div>
+                            </div>
+                            <!--.row-->
+                        </div>
+                        <!-- .container-fluid -->
+
+                    </section>
+                    <!-- .section-training -->
+
                     <section class="section-wrapper skills-wrapper">
                         <div class="container-fluid">
                             <div class="row">
