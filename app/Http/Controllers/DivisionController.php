@@ -2,6 +2,7 @@
 
 namespace Petro\Http\Controllers;
 
+use DataTables;
 use Petro\Division;
 use Petro\Subdivision;
 use Illuminate\Http\Request;
@@ -10,6 +11,22 @@ use Illuminate\Support\Facades\Validator;
 
 class DivisionController extends Controller
 {
+    public function getEmployee(Request $request)
+    {
+        $employee = \DB::table('tblemployee')->where('idno', '=', $request->get('idno'))->first();
+        return response()->json(['employee' => $employee]);
+    }
+
+    public function getEmployees()
+    {
+        $employees = \DB::table('tblemployee');
+        return DataTables::of($employees)
+            ->addColumn('action', function ($employees) {
+                return '<a href="javascript:void(0)" class="btn btn-sm btn-primary import_button"><i class="fa fa-cloud-download" aria-hidden="true"></i> Import</a>';
+            })
+            ->make(true);
+    }
+
     /**
      * Display a listing of the resource.
      *
