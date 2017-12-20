@@ -875,6 +875,8 @@
                         $('#trainer_form').find('input[id=phone]').data('default', data.data.phone);
                         $('#trainer_form').find('input[id=address]').data('default', data.data.address);
 
+                        $('select').attr('disabled', true);
+
                         if (!data.errors) {
                             $('#submit_trainer').addClass('d-none').attr('js-visible', false);
                             $('#submit_trainer').closest('form').find('input').attr('readonly', true);
