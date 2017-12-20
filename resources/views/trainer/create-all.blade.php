@@ -287,7 +287,10 @@
                         $('#name').val(nonNullValue(data.employee.fname) + ' ' + nonNullValue(data.employee.mname) + ' ' + nonNullValue(data.employee.lname));
                         var formatted = $('#name').val().replace('  ', ' ');
                         $('#name').val(formatted);
+<<<<<<< HEAD
                         $('#agency_name').val('Baguio General Hospital and Medical Center');
+=======
+>>>>>>> d97deba07b830e20e9563931c733a16f07fff576
                         $('#current_position').val(nonNullValue(data.employee.Position));
                         $('#email').val(nonNullValue(data.employee.emailadd));
                         $('#address').val(nonNullValue(data.employee.address_old));
