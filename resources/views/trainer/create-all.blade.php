@@ -13,7 +13,10 @@
     <form class="form-horizontal row" method="POST" action="">
         {{ csrf_field() }}
 
-        <div class="col-md-12"><button type="button" class="btn btn-success save_form" />Submit</div>
+        <div class="col-12 col-md-12">
+            <button type="button" class="btn btn-success save_form" />Submit</button>
+            <button type="button" class="btn btn-success pull-right import_from_tblemployee" data-toggle="modal" data-target="#importModal" />Import data</button>
+        </div>
 
         <div class="col-md-6">
             <div class="card card-info">
@@ -209,6 +212,40 @@
         <div class="col-md-12"><button type="button" class="btn btn-success save_form" />Submit</div>
 
     </form> {{--  End form  --}}
+
+    <!-- Modal -->
+    <div class="modal fade" id="importModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="importModalLabel">Search</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" action="{{ route('division.store') }}">
+                    <div class="modal-body">
+                        {{ csrf_field() }}
+
+                        <table class="table table-hover table-bordered table-striped datatable" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>First</th>
+                                    <th>Last</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    {{--  <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" id="modal_submit" class="btn btn-primary">Create</button>
+                    </div>  --}}
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('scripts')
@@ -220,6 +257,42 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
+            });
+
+            $('.datatable').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('employee.data') }}",
+                columns: [
+                    {data: 'idno', name: 'idno'},
+                    {data: 'fname', name: 'fname'},
+                    {data: 'lname', name: 'lname'},
+                    {data: 'action', name: 'action', orderable: false, searchable: false}
+                ]
+            });
+
+            function nonNullValue(val) {
+                return val != null ? val : '';
+            }
+
+            $(document).on('click', '.import_button', function () {
+                var employee_id = $(this).closest('tr').find('td:first-child').html();
+
+                $.ajax({
+                    type: "GET",
+                    url: "{{ route('employee.get') }}",
+                    data: { idno: employee_id },
+                    success: function(data) {
+                        $('#name').val(nonNullValue(data.employee.fname) + ' ' + nonNullValue(data.employee.mname) + ' ' + nonNullValue(data.employee.lname));
+                        var formatted = $('#name').val().replace('  ', ' ');
+                        $('#name').val(formatted);
+                        $('#current_position').val(nonNullValue(data.employee.Position));
+                        $('#email').val(nonNullValue(data.employee.emailadd));
+                        $('#address').val(nonNullValue(data.employee.address_old));
+                        $('#mobile').val(nonNullValue(data.employee.celno));
+                        $('#phone').val(nonNullValue(data.employee.telno));
+                    }
+                });
             });
 
             $(document).on('change', '#type', function () {

@@ -36,6 +36,9 @@ Route::resource('expertise', 'ExpertiseController')->middleware('auth');
 Route::resource('training', 'TrainingController')->middleware('auth');
 Route::resource('division', 'DivisionController')->middleware('auth');
 
+Route::get('employee/get', 'DivisionController@getEmployee')->name('employee.get');
+Route::get('employee/data', 'DivisionController@getEmployees')->name('employee.data');
+
 /*
 
    Curriculum Vitae
