@@ -23,10 +23,10 @@
                             <input type="text" class="form-control underlined" name="title" id="title" value="{{ $certification->title }}" placeholder="Certification title" required> </div>
                         <div class="form-group">
                             <label for="description">Description</label>
-                            <input type="text" class="form-control underlined" name="description" id="description" value="{{ $certification->description }}" placeholder="Description" required> </div>
+                            <input type="text" class="form-control underlined" name="description" id="description" value="{{ $certification->description }}" placeholder="Description"> </div>
                         <div class="form-group">
                             <label for="date">Date</label>
-                            <input type="text" class="form-control underlined" name="date" id="date" value="{{ $certification->date }}" placeholder="Date" required> </div>
+                            <input type="text" class="form-control underlined" name="date" id="date" value="{{ $certification->date }}" placeholder="Date"> </div>
                         
                         <div class="form-group">
                             <input type="submit" class="btn btn-success btn-block" />

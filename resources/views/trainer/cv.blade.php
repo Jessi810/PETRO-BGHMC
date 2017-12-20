@@ -77,7 +77,7 @@
                                                     @endforeach
                                                 </select> </div>
                                             <div class="col-md-4">
-                                                <label for="subdivision">Sub-division</label>
+                                                <label for="subdivision">Sector/Department</label>
                                                 <select id="subdivision" name="subdivision" class="form-control" disabled>
                                                     <option value="">SELECT</option>
                                                     @foreach ($subdivisions as $subdivision)

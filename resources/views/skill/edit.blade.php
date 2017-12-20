@@ -24,11 +24,11 @@
                                 <input type="text" class="form-control underlined" name="title" id="title" value="{{ $skill->title }}" placeholder="Skill" required> </div>
                             <div class="col-md-4">
                                 <label for="proficiency">Proficiency</label>
-                                <input type="text" class="form-control underlined" name="proficiency" id="proficiency" value="{{ $skill->proficiency }}" placeholder="Skill level" required> </div>
+                                <input type="text" class="form-control underlined" name="proficiency" id="proficiency" value="{{ $skill->proficiency }}" placeholder="Skill level"> </div>
                         </div>
                         <div class="form-group">
                             <label for="description">Description</label>
-                            <input type="text" class="form-control underlined" name="description" id="description" value="{{ $skill->description }}" placeholder="Description" required> </div>
+                            <input type="text" class="form-control underlined" name="description" id="description" value="{{ $skill->description }}" placeholder="Description"> </div>
                         
                         <div class="form-group">
                             <input type="submit" class="btn btn-success btn-block" />

@@ -23,16 +23,16 @@
                             <input type="text" class="form-control underlined" name="name" id="name" value="{{ $reference->name }}" placeholder="Name of reference" required> </div>
                         <div class="form-group">
                             <label for="company_name">Company</label>
-                            <input type="text" class="form-control underlined" name="company_name" id="company_name" value="{{ $reference->company_name }}" placeholder="Company name" required> </div>
+                            <input type="text" class="form-control underlined" name="company_name" id="company_name" value="{{ $reference->company_name }}" placeholder="Company name"> </div>
                         <div class="form-group">
                             <label for="position">Position</label>
-                            <input type="text" class="form-control underlined" name="position" id="position" value="{{ $reference->position }}" placeholder="Position" required> </div>
+                            <input type="text" class="form-control underlined" name="position" id="position" value="{{ $reference->position }}" placeholder="Position"> </div>
                         <div class="form-group">
                             <label for="mobile">Mobile</label>
-                            <input type="text" class="form-control underlined" name="mobile" id="mobile" value="{{ $reference->mobile }}" placeholder="Mobile number" required> </div>
+                            <input type="text" class="form-control underlined" name="mobile" id="mobile" value="{{ $reference->mobile }}" placeholder="Mobile number"> </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control underlined" name="email" id="email" value="{{ $reference->email }}" placeholder="Email address" required> </div>
+                            <input type="email" class="form-control underlined" name="email" id="email" value="{{ $reference->email }}" placeholder="Email address"> </div>
                         
                         <div class="form-group">
                             <input type="submit" class="btn btn-success btn-block" />

@@ -23,7 +23,7 @@
                             <input type="text" class="form-control underlined" name="company_name" id="company_name" value="{{ $work->company_name }}" placeholder="Company name" required> </div>
                         <div class="form-group">
                             <label for="position">Position</label>
-                            <input type="text" class="form-control underlined" name="position" id="position" value="{{ $work->position }}" placeholder="Position in company" required> </div>
+                            <input type="text" class="form-control underlined" name="position" id="position" value="{{ $work->position }}" placeholder="Position in company"> </div>
                         <div class="row form-group">
                             <div class="col-md-6">
                                 <label for="datefrom">Date</label>

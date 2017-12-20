@@ -28,10 +28,10 @@
                         </div>
 
                         <div class="row form-group">
-                            <div class="col-md-8">
+                            <div class="col-md-6">
                                 <label for="major">Major</label>
                                 <input type="text" class="form-control underlined" name="major" id="major" value="{{ $education->major }}" placeholder="Major"> </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <label for="minor">Minor</label>
                                 <input type="text" class="form-control underlined" name="minor" id="minor" value="{{ $education->minor }}" placeholder="Minor"> </div>
                         </div>                            
