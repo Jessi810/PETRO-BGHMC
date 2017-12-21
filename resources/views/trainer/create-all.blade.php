@@ -14,9 +14,9 @@
         {{ csrf_field() }}
 
         <div class="col-12 col-md-12">
-            <button type="button" class="btn btn-success save_form" />Submit</button>
-            <button type="button" class="btn btn-success pull-right import_from_tblemployee" data-toggle="modal" data-target="#importModal" />Import data</button>
-            <button type="reset" class="btn btn-danger pull-right" />Reset</button>
+            <button type="button" class="btn btn-success save_form" style="min-width: 10rem; " />Submit</button>
+            <button type="button" class="btn btn-success pull-right import_from_tblemployee" data-toggle="modal" data-target="#importModal" />Import personal data</button>
+            <button type="reset" class="btn btn-danger btn-sm" />Reset</button>
         </div>
 
         <div class="col-md-6">
@@ -66,7 +66,7 @@
                                 @endforeach
                             </select> </div>
                         <div class="col-md-6">
-                            <label for="subdivision">Sub-division</label>
+                            <label for="subdivision">Sector/Department</label>
                             <select id="subdivision" name="subdivision" class="form-control" disabled>
                                 <option value="">SELECT</option>
                                 @foreach ($subdivisions as $subdivision)
@@ -210,8 +210,10 @@
             </div> {{--  End card-info  --}}
         </div> {{--  End col-md-12  --}}
 
-        <div class="col-md-12"><button type="button" class="btn btn-success save_form" />Submit</div>
-
+        <div class="col-md-12">
+            <button type="button" class="btn btn-success save_form" style="min-width: 10rem; " />Submit</button>
+            <button type="reset" class="btn btn-danger btn-sm" />Reset</button>
+        </div>
     </form> {{--  End form  --}}
 
     <!-- Modal -->
@@ -293,8 +295,13 @@
                         $('#address').val(nonNullValue(data.employee.address_old));
                         $('#mobile').val(nonNullValue(data.employee.celno));
                         $('#phone').val(nonNullValue(data.employee.telno));
+                        $('#type').val('Internal').change();
                     }
                 });
+            });
+
+            $(document).on('click', 'button[type=reset]', function () {
+                $('span.has-error').remove();
             });
 
             $(document).on('change', '#type', function () {
@@ -345,7 +352,6 @@
                                 } else {
                                     var keystr = key.replace('.', '\\[').concat('\\]');
                                 }
-                                console.log(keystr);
                                 
                                 $('<span class="has-error">' + errors[key] + '<\/span>').insertAfter("#" + keystr);
                             }
