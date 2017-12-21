@@ -294,10 +294,18 @@
                 ]
             });
 
+            /**
+            * 
+            * @param val
+            * @return {string} Return val if not empty else return empty string
+            */
             function nonNullValue(val) {
                 return val != null ? val : '';
             }
 
+            /*
+            * Click Event: 'Import personal data' button
+            */
             $(document).on('click', '.import_button', function () {
                 var employee_id = $(this).closest('tr').find('td:first-child').html();
 
@@ -320,10 +328,18 @@
                 });
             });
 
+            /*
+            * Click Event: Reset button
+            */
             $(document).on('click', 'button[type=reset]', function () {
-                $('span.has-error').remove();
+                $('span.has-error').remove();                   // Hide all error messages
+                $('#internal_division').addClass('d-none');     // Hide division and sub-division options
+                $('#subdivision option').addClass('d-none');    // Fix sub-division showing items after reset
             });
 
+            /*
+            * Change Event: Type select options
+            */
             $(document).on('change', '#type', function () {
                 var type = $(this).val();
 
@@ -335,6 +351,10 @@
                     $('#internal_division').find('select').attr('disabled', 'disabled');
                 }
             });
+
+            /*
+            * Change Event: Division select options
+            */
             $(document).on('change', '#division', function () {
                 var id = $(this).find(':selected').attr('id');
                 
@@ -343,6 +363,9 @@
                 $('option.' + id).removeClass('d-none');
             });
             
+            /*
+            * Click Event: Submit button (class: save_form)
+            */
             $(document).on('click', '.save_form', function (e) {
                 e.preventDefault();
                 var form = $('form');
