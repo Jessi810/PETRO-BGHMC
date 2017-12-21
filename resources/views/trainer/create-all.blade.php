@@ -134,6 +134,46 @@
             <div class="card card-info">
                 <div class="card-header">
                     <div class="header-block">
+                        <p class="title"> Work Experience </p>
+                    </div>
+                    <div class="header-block pull-right">
+                        <p class="title">
+                            <a href="javascript:void(0)" class="btn btn-primary btn-sm rounded add_work" data-toggle="tooltip" data-placement="top" title="Add Work Experience">
+                                Add
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <div class="wrapper_work"></div>
+                </div> {{--  End card-block  --}}
+            </div> {{--  End card-info  --}}
+        </div> {{--  End col-md-12  --}}
+
+        <div class="col-md-12">
+            <div class="card card-info">
+                <div class="card-header">
+                    <div class="header-block">
+                        <p class="title"> Trainings Conducted </p>
+                    </div>
+                    <div class="header-block pull-right">
+                        <p class="title">
+                            <a href="javascript:void(0)" class="btn btn-primary btn-sm rounded add_training" data-toggle="tooltip" data-placement="top" title="Add Training">
+                                Add
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <div class="wrapper_training"></div>
+                </div> {{--  End card-block  --}}
+            </div> {{--  End card-info  --}}
+        </div> {{--  End col-md-12  --}}
+
+        <div class="col-md-12">
+            <div class="card card-info">
+                <div class="card-header">
+                    <div class="header-block">
                         <p class="title"> Skills </p>
                     </div>
                     <div class="header-block pull-right">
@@ -186,26 +226,6 @@
                 </div>
                 <div class="card-block">
                     <div class="wrapper_ref"></div>
-                </div> {{--  End card-block  --}}
-            </div> {{--  End card-info  --}}
-        </div> {{--  End col-md-12  --}}
-
-        <div class="col-md-12">
-            <div class="card card-info">
-                <div class="card-header">
-                    <div class="header-block">
-                        <p class="title"> Work Experience </p>
-                    </div>
-                    <div class="header-block pull-right">
-                        <p class="title">
-                            <a href="javascript:void(0)" class="btn btn-primary btn-sm rounded add_work" data-toggle="tooltip" data-placement="top" title="Add Work Experience">
-                                Add
-                            </a>
-                        </p>
-                    </div>
-                </div>
-                <div class="card-block">
-                    <div class="wrapper_work"></div>
                 </div> {{--  End card-block  --}}
             </div> {{--  End card-info  --}}
         </div> {{--  End col-md-12  --}}
@@ -385,6 +405,30 @@
                 index_edu++; console.log('Add edu: ' + index_edu);
             });
             $(wrapper_edu).on('click', '.remove_edu', function(e) {
+                e.preventDefault();
+                $(this).parents('div.form-group').remove();
+            });
+
+            var add_training = $('.add_training');
+            var wrapper_training = $('.wrapper_training');
+            var index_training = 0;
+            $(add_training).click(function() {
+                var fieldHTML =
+                    '<div class="row form-group has-error">' +
+                        '<div class="col-md-5">' +
+                            '<input type="text" class="form-control underlined" name="training_topic[' + index_training + ']" id="training_topic[' + index_training + ']" placeholder="Topic" required> </div>' +
+                        '<div class="col-md-3">' +
+                            '<input type="text" class="form-control underlined" name="training_datefrom[' + index_training + ']" id="training_datefrom[' + index_training + ']" placeholder="Date conducted"> </div>' +
+                        '<div class="col-md-3">' +
+                            '<input type="text" class="form-control underlined" name="training_agency_name[' + index_training + ']" id="training_agency_name[' + index_training + ']" placeholder="Agency name"> </div>' +
+                        '<div class="col-md-1">' +
+                            '<button class="btn btn-danger remove_training" type="button">-</div>' +
+                    '</div>';
+                $(wrapper_training).append(fieldHTML);
+
+                index_training++; console.log('Add work: ' + index_training);
+            });
+            $(wrapper_training).on('click', '.remove_training', function(e) {
                 e.preventDefault();
                 $(this).parents('div.form-group').remove();
             });

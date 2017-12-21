@@ -11,6 +11,7 @@ use Petro\Reference;
 use Petro\Work;
 use Petro\Division;
 use Petro\Subdivision;
+use Petro\Training;
 use Carbon\Carbon;
 use Petro\Http\Requests\TrainerRequest;
 use Illuminate\Http\Request;
@@ -73,6 +74,11 @@ class TrainerController extends Controller
             'ref_position.*'     => 'sometimes|nullable|string',
             'ref_mobile.*'       => 'sometimes|nullable|string',
             'ref_email.*'        => 'sometimes|nullable|email',
+
+            // Trainings
+            'training_topic.*' => 'sometimes|required|string',
+            'training_datefrom.*' => 'sometimes|nullable|date|before_or_equal:' . Carbon::now(),
+            'training_agency_name.*' => 'sometimes|nullable|string',
         ];
         
         $validator = Validator::make($request->all(), $rules);
@@ -155,6 +161,16 @@ class TrainerController extends Controller
                 $work->dateto = Input::get("work_dateto.$key");
                 $work->description = Input::get("work_description.$key");
                 $trainer->works()->save($work);
+            }
+        }
+        
+        if (count(Input::get('training_topic')) > 0) {
+            foreach (Input::get('training_topic') as $key => $val) {
+                $training = new Training();
+                $training->topic = Input::get("training_topic.$key");
+                $training->datefrom = Input::get("training_datefrom.$key");
+                $training->agency_name = Input::get("training_agency_name.$key");
+                $trainer->trainings()->save($training);
             }
         }
 

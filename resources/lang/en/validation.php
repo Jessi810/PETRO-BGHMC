@@ -145,6 +145,12 @@ return [
         ],
         'exp_title.*' => [
             'required' => 'The expertise field is required.'
+        ],
+        'training_topic.*' => [
+            'required' => 'The topic field is required.'
+        ],
+        'training_datefrom.*' => [
+            'before_or_equal' => 'The date must be a date before or equal to today',
         ]
     ],
 
