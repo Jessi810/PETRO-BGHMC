@@ -651,11 +651,13 @@
                 var type = $(this).val();
 
                 if (type == 'Internal') {
-                    $('#internal_division').removeClass('d-none');
-                    $('#internal_division').find('select').removeAttr('disabled');
-                } else {
-                    $('#internal_division').addClass('d-none');
-                    $('#internal_division').find('select').attr('disabled', 'disabled');
+                    $('#division').removeClass('d-none').removeAttr('disabled');
+                    $('#subdivision').removeClass('d-none').removeAttr('disabled');
+                } else if (type == 'External' | type == '') {
+                    $('#division').attr('disabled', true)
+                        .val('');
+                    $('#subdivision').attr('disabled', true)
+                        .val('');
                 }
             });
             $(document).on('change', '#division', function () {
@@ -820,7 +822,7 @@
             $('[js-toggle=submit]').on('click', function() {
                 var toggle = $($(this).attr('toggle-visibility'));
 
-                if ($(toggle).attr('js-visible') == 'true')
+                if ($(toggle).attr('js-visible') == 'true')   // Cancel mode
                 {
                     // Submit button
                     $(toggle).attr('js-visible', 'false');
@@ -839,7 +841,7 @@
                         $(this).val(defaultVal);
                     });
                 }
-                else
+                else   // Edit mode
                 {
                     // Submit button
                     $(toggle).attr('js-visible', 'true');
@@ -851,7 +853,11 @@
                     // Form inputs
                     var form = $($(this).attr('toggle-readonly'));
                     $(form).find('input').attr('readonly', false);
-                    $(form).find('select').attr('disabled', false);
+                    $('#type').attr('disabled', false);
+                    if ($('#type').val() == 'Internal') {
+                        $(form).find('select#division').attr('disabled', false);
+                        $(form).find('select#subdivision').attr('disabled', false);
+                    }
                 }
             });
 
