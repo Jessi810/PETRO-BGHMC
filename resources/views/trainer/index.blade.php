@@ -116,7 +116,7 @@
                         <div class="form-group">
                             <div>
                                 <label>
-                                    <input id="typeAll" class="radio" name="type" type="radio" value="All">
+                                    <input id="typeAll" class="radio" name="type" type="radio" value="">
                                     <span>Show all</span>
                                 </label>
                             </div>
