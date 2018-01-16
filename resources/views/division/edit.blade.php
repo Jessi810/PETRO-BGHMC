@@ -20,7 +20,7 @@
                             <input type="text" class="form-control underlined" name="name" id="name" value="{{ $division->name }}" placeholder="Division name" required> </div>                        
                         
                         <div id="subdivision_group" class="form-group">
-                            <label for="">Sub-division</label>
+                            <label for="">Sector/Department</label>
                             <a href="javascript:void(0)" class="btn btn-primary btn-sm rounded pull-right add_subdivision" data-toggle="tooltip" data-placement="top" title="Add Sub-division">
                                 Add
                             </a>
