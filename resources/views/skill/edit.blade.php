@@ -20,7 +20,7 @@
                         
                         <div class="row form-group">
                             <div class="col-md-8">
-                                <label for="title">Skill</label>
+                                <label for="title">Skill <span class="badge badge-secondary">required</span></label>
                                 <input type="text" class="form-control underlined" name="title" id="title" value="{{ $skill->title }}" placeholder="Skill" required> </div>
                             <div class="col-md-4">
                                 <label for="proficiency">Proficiency</label>

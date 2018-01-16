@@ -19,7 +19,7 @@
                         <input type="hidden" name="_method" value="put">
 
                         <div class="form-group">
-                            <label for="name">Name</label>
+                            <label for="name">Name <span class="badge badge-secondary">required</span></label>
                             <input type="text" class="form-control underlined" name="name" id="name" value="{{ $reference->name }}" placeholder="Name of reference" required> </div>
                         <div class="form-group">
                             <label for="company_name">Company</label>

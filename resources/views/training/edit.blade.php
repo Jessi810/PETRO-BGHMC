@@ -17,7 +17,7 @@
                         
                         <div class="row form-group">
                             <div class="col-md-8">
-                                <label for="topic">Topic</label>
+                                <label for="topic">Topic <span class="badge badge-secondary">required</span></label>
                                 <input type="text" class="form-control underlined" name="topic" id="topic" value="{{ $training->topic }}" placeholder="Topic" required> </div>
                             <div class="col-md-4">
                                 <label for="datefrom">Date</label>

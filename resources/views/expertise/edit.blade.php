@@ -19,7 +19,7 @@
                         <input type="hidden" name="_method" value="put">
 
                         <div class="form-group">
-                            <label for="title">Expertise</label>
+                            <label for="title">Expertise <span class="badge badge-secondary">required</span></label>
                             <input type="text" class="form-control underlined" name="title" id="title" value="{{ $expertise->title }}" placeholder="Field of expertise" required> </div>
                         <div class="form-group">
                             <label for="description">Description</label>
