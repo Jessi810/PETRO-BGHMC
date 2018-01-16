@@ -78,7 +78,7 @@
                                                 </dd>
                                                 <br>
                                                 <dt class="d-inline">Email</dt>
-                                                <dd class="d-inline">{{ $trainer->email }}</dd>
+                                                <dd class="d-inline"><a href="mailto:{{ $trainer->email }}">{{ $trainer->email }}</a></dd>
                                                 <br>
                                                 <dt class="d-inline">Position</dt>
                                                 <dd class="d-inline">{{ $trainer->current_position }}</dd>
