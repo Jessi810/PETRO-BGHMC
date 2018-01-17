@@ -25,7 +25,7 @@ class TrainingRequest extends FormRequest
     {
         return [
             'topic' => 'required|string',
-            'datefrom' => 'nullable|date',
+            'datefrom' => 'nullable|date|date_format:Y-m-d',
             'agency_name' => 'nullable|string',
         ];
     }

@@ -26,8 +26,8 @@ class WorkRequest extends FormRequest
         return [
             'company_name' => 'required|string',
             'position' => 'nullable|string',
-            'datefrom' => 'nullable|date|before_or_equal:dateto',
-            'dateto' => 'nullable|date|after_or_equal:datefrom',
+            'datefrom' => 'nullable|date|date_format:Y-m-d|before_or_equal:dateto',
+            'dateto' => 'nullable|date|date_format:Y-m-d|after_or_equal:datefrom',
             'description' => 'nullable|string',
         ];
     }

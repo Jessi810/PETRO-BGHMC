@@ -38,7 +38,7 @@ class TrainerRequest extends FormRequest
             
             // Certification
             'cert_title.*'       => 'sometimes|required|string',
-            'cert_date.*'        => 'sometimes|nullable|date|before_or_equal:' . Carbon::now(),
+            'cert_date.*'        => 'sometimes|nullable|date|date_format:Y-m-d|before_or_equal:' . Carbon::now(),
             'cert_description.*' => 'sometimes|nullable|string',
 
             // Education
@@ -60,8 +60,8 @@ class TrainerRequest extends FormRequest
             'work_name.*'         => 'sometimes|required|string',
             'work_company_name.*' => 'sometimes|required|string',
             'work_position.*'     => 'sometimes|nullable|string',
-            'work_datefrom.*'     => 'sometimes|nullable|date|before_or_equal:dateto',
-            'work_dateto.*'       => 'sometimes|nullable|date|after_or_equal:datefrom',
+            'work_datefrom.*'     => 'sometimes|nullable|date|date_format:Y-m-d|before_or_equal:dateto',
+            'work_dateto.*'       => 'sometimes|nullable|date|date_format:Y-m-d|after_or_equal:datefrom',
             'work_description.*'  => 'sometimes|nullable|string',
         ];
     }

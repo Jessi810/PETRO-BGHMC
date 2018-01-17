@@ -26,7 +26,7 @@ class CertificationRequest extends FormRequest
     {
         return [
             'title' => 'required|string',
-            'date' => 'nullable|date|before_or_equal:' . Carbon::now(),
+            'date' => 'nullable|date|date_format:Y-m-d|before_or_equal:' . Carbon::now(),
             'description' => 'nullable|string',
         ];
     }
