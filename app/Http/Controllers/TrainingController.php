@@ -5,6 +5,7 @@ namespace Petro\Http\Controllers;
 use Petro\Training;
 use Petro\Trainer;
 use Illuminate\Http\Request;
+use Petro\Http\Requests\TrainingRequest;
 use Illuminate\Support\Facades\Validator;
 
 class TrainingController extends Controller
@@ -104,7 +105,7 @@ class TrainingController extends Controller
      * @param  \Petro\Training  $training
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Training $training)
+    public function update(TrainingRequest $request, Training $training)
     {
         $request->user()->authorizeRoles(['Admin']);
         

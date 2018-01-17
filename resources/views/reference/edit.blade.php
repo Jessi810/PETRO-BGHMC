@@ -15,6 +15,16 @@
 
                         <input type="hidden" name="_method" value="put">
 
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
                         <div class="form-group">
                             <label for="name">Name <span class="badge badge-secondary">required</span></label>
                             <input type="text" class="form-control underlined" name="name" id="name" value="{{ $reference->name }}" placeholder="Name of reference" required> </div>

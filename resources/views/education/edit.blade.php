@@ -15,6 +15,16 @@
 
                         <input type="hidden" name="_method" value="put">
 
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
                         <div class="row form-group">
                             <div class="col-md-8">
                                 <label for="school">School <span class="badge badge-secondary">required</span></label>
