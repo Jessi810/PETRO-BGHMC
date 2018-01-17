@@ -406,6 +406,32 @@
                 });
             });
 
+            $('form').on('click', '.add_training, .add_work, .add_cert', function() {
+                $("[name^=training_datefrom]").datepicker({
+                    dateFormat: "yy-mm-dd",
+                    changeMonth: true,
+                    changeYear: true
+                });
+
+                $("[name^=cert_date]").datepicker({
+                    dateFormat: "yy-mm-dd",
+                    changeMonth: true,
+                    changeYear: true
+                }); 
+
+                $("[name^=work_datefrom]").datepicker({
+                    dateFormat: "yy-mm-dd",
+                    changeMonth: true,
+                    changeYear: true
+                }); 
+
+                $("[name^=work_dateto]").datepicker({
+                    dateFormat: "yy-mm-dd",
+                    changeMonth: true,
+                    changeYear: true
+                }); 
+            });
+
             var add_edu = $('.add_edu');
             var wrapper_edu = $('.wrapper_edu');
             var index_edu = 0;
