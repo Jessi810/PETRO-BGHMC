@@ -56,5 +56,19 @@
 @section('scripts')
     <script>
         $('#sidebar-item-trainer').addClass('open active');
+
+        $(function() {
+            $("#datefrom").datepicker({
+                dateFormat: "yy-mm-dd",
+                changeMonth: true,
+                changeYear: true
+            });
+            
+            $("#dateto").datepicker({
+                dateFormat: "yy-mm-dd",
+                changeMonth: true,
+                changeYear: true
+            });
+        });
     </script>
 @endsection

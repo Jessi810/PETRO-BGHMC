@@ -14,7 +14,10 @@
     <link href="{{ asset('css/vendor.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app-red.css') }}" rel="stylesheet">
     <link href="{{ asset('css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="{{ asset('css/site.css') }}" rel="stylesheet">
+
+    <!-- Scripts -->
 
     <!-- Theme initialization -->
     {{--  <script>
@@ -76,6 +79,7 @@
 <script src="{{ asset('js/vendor.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
 {{--  <script src="{{ asset('js/turbolinks.js') }}"></script>  --}}
 {{--  <script src="{{ asset('js/jquery-3.2.1.slim.min.js') }}"></script>  --}}
