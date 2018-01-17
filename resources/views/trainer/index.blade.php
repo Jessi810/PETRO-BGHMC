@@ -67,7 +67,7 @@
                                                     @endforeach
                                                 </dd>
                                                 <br>
-                                                <dt class="d-inline">Sub-division</dt>
+                                                <dt class="d-inline">Sector/Department</dt>
                                                 <dd class="d-inline">
                                                     {{--  TODO: Change loop to only get subdivision of trainer instead of looping.  --}}
                                                     @foreach ($subdivisions as $subdivision)
