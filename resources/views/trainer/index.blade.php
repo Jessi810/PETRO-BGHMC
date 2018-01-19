@@ -157,6 +157,7 @@
                                 <th>Type</th>
                                 <th>Agency</th>
                                 <th>Expertise</th>
+                                <th></th>
                             </tr>
                         </thead>
                     </table>
@@ -178,7 +179,8 @@
                 {data: 'name', name: 'name'},
                 {data: 'type', name: 'type'},
                 {data: 'agency_name', name: 'agency_name'},
-                {data: 'expertises', name: 'expertises.title', orderable: false}
+                {data: 'expertises', name: 'expertises.title', orderable: false},
+                {data: 'actions', name: 'actions', orderable: false}
             ]
         });
 

@@ -12,6 +12,7 @@ use Petro\Work;
 use Petro\Division;
 use Petro\Subdivision;
 use Petro\Training;
+use Petro\User;
 use Carbon\Carbon;
 use DataTables;
 use Petro\Http\Requests\TrainerRequest;
@@ -233,6 +234,19 @@ class TrainerController extends Controller
                         return str_limit($exp->title, 30, '...');
                     })->implode(', ');
                 })
+                ->addColumn('actions', function (Trainer $trainer) {
+                    return
+                        '<a href="'. route('portfolio', $trainer->id) .'" class="btn btn-sm btn-success stop-accordion" data-toggle="tooltip" data-placement="top" title="Show CV">' .
+                            '<i class="fa fa-user-circle-o" aria-hidden="true"></i></a>' .
+                        '&nbsp;<a href="'. route('cv', $trainer->id) .'" class="btn btn-sm btn-success stop-accordion" data-toggle="tooltip" data-placement="top" title="Show Trainer Info">' .
+                            '<i class="fa fa-info-circle" aria-hidden="true"></i></a>' .
+                        '&nbsp;<form class="form-horizontal" style="display: inline;" method="POST" action="'. route('trainer.destroy', $trainer->id) .'">' .
+                            csrf_field() .
+                            '<input type="hidden" name="_method" value="delete">' .
+                            '<button type="submit" class="btn btn-sm btn-success stop-accordion"><i class="fa fa-trash" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Delete Trainer"></i></a>' .
+                        '</form>';
+                })
+                ->rawColumns(['actions'])
                 ->toJson();
     }
 
