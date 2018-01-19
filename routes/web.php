@@ -26,6 +26,8 @@ Route::get('trainer/create-all', function() {
     return view('trainer/create-all', ['divisions' => $divisions, 'subdivisions' => $subdivisions]);
 })->middleware('auth');
 Route::post('trainer/create-all', 'TrainerController@create_all');
+
+Route::get('trainer/data', 'TrainerController@getTrainers')->name('trainer.data');
 Route::resource('trainer', 'TrainerController')->middleware('auth');
 Route::resource('education', 'EducationController')->middleware('auth');
 Route::resource('work', 'WorkController')->middleware('auth');

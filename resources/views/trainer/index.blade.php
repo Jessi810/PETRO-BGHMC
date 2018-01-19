@@ -141,12 +141,46 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-md-12">
+            <div class="card card-info">
+                <div class="card-header">
+                    <div class="header-block">
+                        <p class="title"> DataTable </p>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <table class="table table-hover table-bordered table-striped datatable" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Agency</th>
+                                <th>Expertise</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
 
 @section('scripts')
     <script>
         $('#sidebar-item-trainer').addClass('open active');
+
+        $('.datatable').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "{{ route('trainer.data') }}",
+            columns: [
+                {data: 'name', name: 'name'},
+                {data: 'type', name: 'type'},
+                {data: 'agency_name', name: 'agency_name'},
+                {data: 'expertises', name: 'expertises.title'}
+            ]
+        });
 
         function GetURLParameter(sParam) {
             var sPageURL = window.location.search.substring(1);

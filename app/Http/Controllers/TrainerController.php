@@ -13,6 +13,7 @@ use Petro\Division;
 use Petro\Subdivision;
 use Petro\Training;
 use Carbon\Carbon;
+use DataTables;
 use Petro\Http\Requests\TrainerRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -218,6 +219,21 @@ class TrainerController extends Controller
             'divisions' => $divisions,
             'subdivisions' => $subdivisions
         ]);
+    }
+
+    public function getTrainers()
+    {
+        $trainers = Trainer::with('expertises');
+        //$trainers = \DB::table('trainers')->select(['name', 'type', 'agency_name']);
+        // return DataTables::of($trainers)
+        //     ->make(true);
+        return DataTables::eloquent($trainers)
+                ->addColumn('expertises', function (Trainer $trainer) {
+                    return $trainer->expertises->map(function($exp) {
+                        return str_limit($exp->title, 30, '...');
+                    })->implode(', ');
+                })
+                ->toJson();
     }
 
     /**
