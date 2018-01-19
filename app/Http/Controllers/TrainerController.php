@@ -231,8 +231,8 @@ class TrainerController extends Controller
         return DataTables::eloquent($trainers)
                 ->addColumn('expertises', function (Trainer $trainer) {
                     return $trainer->expertises->map(function($exp) {
-                        return str_limit($exp->title, 30, '...');
-                    })->implode(', ');
+                        return $exp->title;
+                    })->implode('<br />');
                 })
                 ->addColumn('actions', function (Trainer $trainer) {
                     return
@@ -246,7 +246,7 @@ class TrainerController extends Controller
                             '<button type="submit" class="btn btn-sm btn-success stop-accordion"><i class="fa fa-trash" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Delete Trainer"></i></a>' .
                         '</form>';
                 })
-                ->rawColumns(['actions'])
+                ->rawColumns(['expertises', 'actions'])
                 ->toJson();
     }
 
