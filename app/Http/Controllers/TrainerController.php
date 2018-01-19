@@ -330,6 +330,7 @@ class TrainerController extends Controller
         $rules = [
             'name'             => 'required|string',
             'current_position' => 'nullable|string',
+            'agency_name'      => 'nullable|string',
             'email'            => 'nullable|email',
             'address'          => 'nullable|string',
             'mobile'           => 'nullable|string',

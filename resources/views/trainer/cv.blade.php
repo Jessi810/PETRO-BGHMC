@@ -86,6 +86,11 @@
                                                 </select> </div>
                                         </div>
                                         <div class="row form-group">
+                                            <div class="col-md-8">
+                                                <label for="email">Agency</label>
+                                                <input type="text" readonly class="form-control underlined" name="agency_name" id="agency_name" data-default="{{ $trainer->agency_name }}" value="{{ $trainer->agency_name }}" placeholder="Agency"> </div>
+                                            </div>
+                                        <div class="row form-group">
                                             <div class="col-md-4">
                                                 <label for="email">Email</label>
                                                 <input type="text" readonly class="form-control underlined" name="email" id="email" data-default="{{ $trainer->email }}" value="{{ $trainer->email }}" placeholder="Email address"> </div>
