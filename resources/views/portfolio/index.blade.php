@@ -43,7 +43,7 @@
             <div class="left-col-block blocks">
                 <header class="header theiaStickySidebar">
                     <div class="profile-img">
-                        <img src="{{ asset('ResumeX/img/img-profile.jpg') }}" class="img-responsive" alt=""/>
+                        <img src="{{ asset($trainer->profile_picture) }}" class="img-responsive" alt=""/>
                     </div>
                     <div class="content">
                         <h1>{{ $trainer->name }}</h1>
@@ -53,17 +53,17 @@
                             <p>
                                 {{ $trainer->about }}
                             </p>
-                            <p><img src="{{ asset('ResumeX/img/Signature.png') }}" alt="" class="img-responsive"/></p>
+                            {{--  <p><img src="{{ asset('ResumeX/img/Signature.png') }}" alt="" class="img-responsive"/></p>  --}}
                         </div>
 
 
-                        <ul class="social-icon">
+                        {{--  <ul class="social-icon">
                             <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                             <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
                             <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
                             <li><a href="#"><i class="fa fa-slack" aria-hidden="true"></i></a></li>
                             <li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-                        </ul>
+                        </ul>  --}}
                     </div>
 
                 </header>
