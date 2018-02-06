@@ -89,7 +89,7 @@
             </li>  --}}
             <li class="profile dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                    <div class="img" style="background-image: url('https://avatars3.githubusercontent.com/u/3959008?v=3&s=40')"> </div>
+                    <div class="img" style="background-image: url('{{ !empty(Auth::user()->profile_picture) ? asset(Auth::user()->profile_picture) : asset('img/profile_pictures/default_user_icon.png') }}')"> </div>
                     <span class="name"> {{ Auth::user()->name }} </span>
                 </a>
                 <div class="dropdown-menu profile-dropdown-menu" aria-labelledby="dropdownMenu1">

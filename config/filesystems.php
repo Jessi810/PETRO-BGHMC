@@ -63,6 +63,10 @@ return [
             'bucket' => env('AWS_BUCKET'),
         ],
 
+        'profile_picture' => [
+            'driver' => 'local',
+            'root'   => public_path(),
+        ],
     ],
 
 ];

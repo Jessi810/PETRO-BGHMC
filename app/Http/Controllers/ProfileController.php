@@ -14,7 +14,10 @@ class ProfileController extends Controller
     }
 
     public function updateProfile(Request $request) {
+        $picture = $request->file('profile_picture')->store('img/profile_pictures', 'profile_picture');
+
         $user = Auth::user();
+        $user->profile_picture = $picture;
         $user->update($request->all());
 
         $request->session()->flash('alert-success', 'Profile updated successfully!');

@@ -18,7 +18,7 @@
                 <div class="card-block">
                     @include('includes.alert-message')
 
-                    <form class="form-horizontal" method="POST" action="{{ route('profile.update') }}">
+                    <form class="form-horizontal" method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <input type="hidden" name="_method" value="PUT">
@@ -30,6 +30,10 @@
                             <label for="email">Email</label>
                             <input type="text" readonly class="form-control underlined" name="email" id="email" value="{{ $user->email }}" placeholder="Email"> </div>
 
+                        <div class="form-group">
+                            <label for="profile_picture">Profile Picture</label>
+                            <input type="file" readonly class="form-control" name="profile_picture" id="profile_picture"> </div>
+        
                         <div class="form-group">
                             <input type="submit" id="edit_profile_submit" class="btn btn-success btn-block invisible" />
                         </div>
