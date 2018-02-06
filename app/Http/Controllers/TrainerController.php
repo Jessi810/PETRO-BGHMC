@@ -180,6 +180,22 @@ class TrainerController extends Controller
             'redirect' => route("trainer.index")
         ]);
     }
+
+    public function showUpload($id) {
+        $trainer = Trainer::find($id);
+
+        return view('trainer.upload', ['trainer' => $trainer]);
+    }
+
+    public function uploadProfile(Request $request, $id) {
+        $picture = $request->file('profile_picture')->store('img/trainer_pictures', 'profile_picture');
+
+        $trainer = Trainer::find($id);
+        $trainer->profile_picture = $picture;
+        $trainer->update();
+
+        return redirect()->route('cv', ['id' => $id]);
+    }
     
     /**
      * Display a listing of the resource.

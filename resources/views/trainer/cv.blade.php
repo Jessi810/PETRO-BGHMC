@@ -42,7 +42,8 @@
                                 <div class="card-header">
                                     <div class="header-block pull-right">
                                         <p class="title">
-                                            <a id="edit_trainer" href="javascript: void(0)" class="btn btn-primary btn-sm rounded" js-toggle="submit" toggle-visibility="#submit_trainer" toggle-readonly="#trainer_form">Edit</a>
+                                            <a href="{{ route('trainer.upload.show', [$trainer->id]) }}" class="btn btn-primary btn-sm rounded">Upload Picture</a>
+                                            &nbsp;<a id="edit_trainer" href="javascript: void(0)" class="btn btn-primary btn-sm rounded" js-toggle="submit" toggle-visibility="#submit_trainer" toggle-readonly="#trainer_form">Edit</a>
                                         </p>
                                     </div>
                                 </div>
