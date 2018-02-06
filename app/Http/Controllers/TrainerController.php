@@ -20,6 +20,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\File;
 
 class TrainerController extends Controller
 {
@@ -191,8 +192,16 @@ class TrainerController extends Controller
         $picture = $request->file('profile_picture')->store('img/trainer_pictures', 'profile_picture');
 
         $trainer = Trainer::find($id);
+
+        $current_picture = $trainer->profile_picture;
+
         $trainer->profile_picture = $picture;
         $trainer->update();
+
+        if ($current_picture != null) {
+            // Delete old profile picture
+            File::delete(public_path() . '/' . $current_picture);
+        }
 
         return redirect()->route('cv', ['id' => $id]);
     }
