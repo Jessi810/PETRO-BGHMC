@@ -9,12 +9,12 @@
                         <p class="title"> Upload Profile Picture </p>
                     </div>
                 </div>
-                <div class="card-block p-0 p-sm-0">
+                <div class="card-block">
+                    <img src="{{ asset($trainer->profile_picture) }}" style="max-width: 150px; max-height: 150px;" />
                     <form class="form-horizontal" method="POST" action="{{ route('trainer.upload.store', ['id' => $trainer->id]) }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="form-group">
-                            <label for="profile_picture">Profile Picture</label>
                             <input type="file" name="profile_picture" id="profile_picture">
                         </div>
 
