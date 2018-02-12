@@ -16,6 +16,7 @@
         <div class="col-12 col-md-12">
             <button type="button" class="btn btn-success save_form" style="min-width: 10rem; " />Submit</button>
             <button type="button" class="btn btn-success pull-right import_from_tblemployee" data-toggle="modal" data-target="#importModal" />Import personal data</button>
+            <a href="{{ url('trainer/create-bulk') }}" class="btn btn-success pull-right">Bulk Create</a>
             <button type="reset" class="btn btn-danger btn-sm" />Reset</button>
         </div>
 

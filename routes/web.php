@@ -26,6 +26,13 @@ Route::get('trainer/create-all', function() {
     return view('trainer/create-all', ['divisions' => $divisions, 'subdivisions' => $subdivisions]);
 })->middleware('auth');
 Route::post('trainer/create-all', 'TrainerController@create_all');
+Route::get('trainer/create-bulk', function() {
+    $divisions = DB::table('divisions')->get();
+    $subdivisions = DB::table('subdivisions')->get();
+    
+    return view('trainer/create-bulk', ['divisions' => $divisions, 'subdivisions' => $subdivisions]);
+})->middleware('auth');
+Route::post('trainer/create-bulk', 'TrainerController@create_bulk')->name('trainer.bulk.store');
 Route::get('trainer/{id}/upload', 'TrainerController@showUpload')->name('trainer.upload.show');
 Route::post('trainer/{id}/upload', 'TrainerController@uploadProfile')->name('trainer.upload.store');
 Route::get('trainer/data', 'TrainerController@getTrainers')->name('trainer.data');

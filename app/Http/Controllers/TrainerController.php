@@ -182,6 +182,29 @@ class TrainerController extends Controller
         ]);
     }
 
+    public function create_bulk(Request $request) {
+        $request->user()->authorizeRoles(['Admin']);
+
+        if (count(Input::get('idno')) > 0) {
+            foreach (Input::get('idno') as $key => $value) {
+                $employee = DB::table('tblemployee')->where('idno', Input::get("idno.$key"))->first();
+
+                $trainer = new Trainer();
+                $trainer->name = $employee->fname . ' ' . $employee->lname;
+                $trainer->email = $employee->emailadd;
+                $trainer->type = 'Internal';
+                $trainer->agency_name = 'Baguio General Hospital and Medical Center';
+                $trainer->current_position = $employee->Position;
+                $trainer->address = $employee->address_old;
+                $trainer->mobile = $employee->celno;
+                $trainer->phone = $employee->telno;
+                $trainer->save();
+            }
+        }
+
+        return redirect()->route('trainer.index');
+    }
+
     public function showUpload($id) {
         $trainer = Trainer::find($id);
 
