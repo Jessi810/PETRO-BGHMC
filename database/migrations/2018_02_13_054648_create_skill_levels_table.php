@@ -16,7 +16,7 @@ class CreateSkillLevelsTable extends Migration
         Schema::create('skill_levels', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('description')->nullable();
+            $table->string('description', 1000)->nullable();
             $table->integer('level')->nullable()->unsigned();
             $table->timestamps();
         });
