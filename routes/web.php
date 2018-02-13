@@ -10,6 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Petro\SkillLevel;
+
+// Fixes "count(): Parameter must be an array or an object that implements Countable"
+// on PHP 7.2
+if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
+    // Ignores notices and reports all other kinds... and warnings
+    error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
+    // error_reporting(E_ALL ^ E_WARNING); // Maybe this is enough
+}
 
 Route::get('/', function () {
     return redirect('login');
@@ -22,8 +31,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('trainer/create-all', function() {
     $divisions = DB::table('divisions')->get();
     $subdivisions = DB::table('subdivisions')->get();
+    $skillLevels = SkillLevel::get();
     
-    return view('trainer/create-all', ['divisions' => $divisions, 'subdivisions' => $subdivisions]);
+    return view('trainer/create-all', ['divisions' => $divisions, 'subdivisions' => $subdivisions, 'skillLevels' => $skillLevels]);
 })->middleware('auth');
 Route::post('trainer/create-all', 'TrainerController@create_all');
 Route::get('trainer/create-bulk', function() {

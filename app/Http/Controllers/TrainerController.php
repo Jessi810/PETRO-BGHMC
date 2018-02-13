@@ -15,6 +15,7 @@ use Petro\Training;
 use Petro\User;
 use Carbon\Carbon;
 use DataTables;
+use Petro\SkillLevel;
 use Petro\Http\Requests\TrainerRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -60,6 +61,7 @@ class TrainerController extends Controller
             'skill_title.*'       => 'sometimes|required|string',
             'skill_proficiency.*' => 'sometimes|nullable|integer|min:1|max:100',
             'skill_description.*' => 'sometimes|nullable|string',
+            'skill_level.*'       => 'sometimes|nullable|integer',
     
             // Work
             'work_name.*'         => 'sometimes|required|string',
@@ -129,6 +131,7 @@ class TrainerController extends Controller
                 $skill->title = Input::get("skill_title.$key");
                 $skill->proficiency = Input::get("skill_proficiency.$key");
                 $skill->description = Input::get("skill_description.$key");
+                $skill->level()->associate(SkillLevel::find(Input::get("skill_level.$key")))->save();
                 $trainer->skills()->save($skill);
             }
         }

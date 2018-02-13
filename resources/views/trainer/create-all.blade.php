@@ -492,7 +492,12 @@
                         '<div class="col-md-3">' +
                             '<input type="text" class="form-control underlined" name="skill_title[' + index_skill + ']" id="skill_title[' + index_skill + ']" placeholder="Skill" required> </div>' +
                         '<div class="col-md-2">' +
-                            '<input type="text" class="form-control underlined" name="skill_proficiency[' + index_skill + ']" id="skill_proficiency[' + index_skill + ']" placeholder="Skill level (1-100)"> </div>' +
+                            '<select id="skill_level[' + index_skill + ']" name="skill_level[' + index_skill + ']" class="form-control">' +
+                                '<option value="">SELECT</option>' +
+                                @foreach($skillLevels as $level)
+                                    '<option value="{{ $level->id }}">{{ $level->name }}</option>' +
+                                @endforeach
+                            '</select> </div>' +
                         '<div class="col-md-6">' +
                             '<input type="text" class="form-control underlined" name="skill_description[' + index_skill + ']" id="skill_description[' + index_skill + ']" placeholder="Description"> </div>' +
                         '<div class="col-md-1">' +
