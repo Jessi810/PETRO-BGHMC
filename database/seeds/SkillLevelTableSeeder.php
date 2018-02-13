@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-use App\SkillLevel;
+use Petro\SkillLevel;
 
 class SkillLevelTableSeeder extends Seeder
 {

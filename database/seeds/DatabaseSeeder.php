@@ -23,5 +23,6 @@ class DatabaseSeeder extends Seeder
         $this->call(TrainingTableSeeder::class);
         $this->call(DivisionTableSeeder::class);
         $this->call(SubdivisionTableSeeder::class);
+        $this->call(SkillLevelTableSeeder::class);
     }
 }
