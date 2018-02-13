@@ -4,6 +4,7 @@ namespace Petro\Http\Controllers;
 
 use Petro\Skill;
 use Petro\Trainer;
+use Petro\SkillLevel;
 use Petro\Http\Requests\SkillRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -45,6 +46,7 @@ class SkillController extends Controller
             'title' => 'required|string',
             'proficiency' => 'nullable|integer|min:1|max:100',
             'description' => 'nullable|string',
+            'skill_level' => 'nullable|integer',
         ];
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
@@ -57,6 +59,7 @@ class SkillController extends Controller
         
         $input = $request->all();
         $skill = Skill::create($input);
+        $skill->level()->associate(SkillLevel::find($request->get('skill_level')))->save();
         $trainer = Trainer::find($request->get('trainer_id'));
         $saved = $skill->trainer()->associate($trainer)->save();
         return $saved == true

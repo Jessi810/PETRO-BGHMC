@@ -11,6 +11,7 @@ use Petro\Expertise;
 use Petro\Training;
 use Petro\Division;
 use Petro\Subdivision;
+use Petro\SkillLevel;
 
 use Illuminate\Http\Request;
 
@@ -27,6 +28,7 @@ class CvController extends Controller
         $trainings = Training::where('trainer_id', '=', $id)->get();
         $divisions = Division::get();
         $subdivisions = Subdivision::get();
+        $skillLevels = SkillLevel::get();
         if ($trainer->subdivision_id == null) {
             return view('trainer/cv', compact([
                 'trainer',
@@ -39,6 +41,7 @@ class CvController extends Controller
                 'trainings',
                 'divisions',
                 'subdivisions',
+                'skillLevels'
             ]));
         }
 
@@ -56,6 +59,7 @@ class CvController extends Controller
             'trainings',
             'divisions',
             'subdivisions',
+            'skillLevels',
             'trainer_div',
             'trainer_subdiv',
         ]));

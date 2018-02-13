@@ -461,7 +461,13 @@
                                                                 <input type="text" class="form-control underlined" name="title" id="title" placeholder="Skill" required> </div>
                                                             <div class="col-md-4">
                                                                 <label for="proficiency">Proficiency</label>
-                                                                <input type="text" class="form-control underlined" name="proficiency" id="proficiency" placeholder="Skill level 1-100"> </div>
+                                                                <select id="skill_level" name="skill_level" class="form-control">
+                                                                    <option value="">SELECT</option>
+                                                                    @foreach($skillLevels as $level)
+                                                                        <option value="{{ $level->id }}">{{ $level->name }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="description">Description</label>
