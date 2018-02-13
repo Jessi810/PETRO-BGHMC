@@ -13,4 +13,9 @@ class Skill extends Model
     public function trainer() {
         return $this->belongsTo(Trainer::class);
     }
+
+    public function level()
+    {
+        return $this->belongsTo(SkillLevel::class);
+    }
 }

@@ -21,6 +21,9 @@ class CreateSkillsTable extends Migration
 
             $table->integer('trainer_id')->unsigned()->index()->nullable();
             $table->foreign('trainer_id')->references('id')->on('trainers')->onDelete('cascade');
+
+            $table->integer('level_id')->unsigned()->index()->nullable();
+            $table->foreign('level_id')->references('id')->on('skill_levels')->onDelete('set null');
             
             $table->timestamps();
         });
