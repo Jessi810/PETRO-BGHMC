@@ -19,7 +19,11 @@ class CreateTrainersTable extends Migration
             $table->integer('subdivision_id')->unsigned()->index()->nullable();
             $table->foreign('subdivision_id')->references('id')->on('subdivisions')->onDelete('set null');
 
-            $table->string('name');
+            $table->string('lname');
+            $table->string('fname');
+            $table->string('mname')->nullable();
+            $table->string('nextensiom')->nullable();
+
             $table->enum('type', array('Internal', 'External'));
             $table->string('agency_name')->nullable();
             $table->string('current_position')->nullable();

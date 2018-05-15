@@ -17,8 +17,11 @@ class CreateEducationTable extends Migration
             $table->increments('id');
             $table->string('school');
             $table->integer('year_graduated')->nullable();
-            $table->string('major')->nullable();
-            $table->string('minor')->nullable();
+            $table->string('degree')->nullable();
+            $table->string('highlevel')->nullable();
+            $table->string('scholar')->nullable();
+            $table->string('yearto')->integer();
+            $table->string('yearfrom')->integer();
             
             $table->integer('trainer_id')->unsigned()->index()->nullable();
             $table->foreign('trainer_id')->references('id')->on('trainers')->onDelete('cascade');
