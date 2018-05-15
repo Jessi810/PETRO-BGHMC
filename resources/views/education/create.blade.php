@@ -21,17 +21,28 @@
                                 <label for="school">School <span class="badge badge-secondary">required</span></label>
                                 <input type="text" class="form-control underlined" name="school" id="school" placeholder="School name" required> </div>
                             <div class="col-md-4">
-                                <label for="year_graduated">Year</label>
+                                <label for="year_graduated">Year Graduated</label>
                                 <input type="text" class="form-control underlined" name="year_graduated" id="year_graduated" placeholder="Year graduated"> </div>
+                            <div class="col-md-6">
+                                <label for="degree">Degree</label>
+                                <input type="text" class="form-control underlined" name="degree" id="degree" placeholder="Degree"> </div>
+                            <div class="col-md-6">
+                                <label for="highlevel">Highest Grade/ Level/ Units Earned</label>
+                                <input type="text" class="form-control underlined" name="highlevel" id="highlevel" placeholder="Highest Grade/ Level/ Units Earned"> </div>
                         </div>
 
                         <div class="row form-group">
                             <div class="col-md-6">
-                                <label for="major">Major</label>
-                                <input type="text" class="form-control underlined" name="major" id="major" placeholder="Major"> </div>
+                                <label for="yearfrom">From</label>
+                                <input type="text" class="form-control underlined" name="yearfrom" id="yearfrom" placeholder="Year"> </div>
                             <div class="col-md-6">
-                                <label for="minor">Minor</label>
-                            <input type="text" class="form-control underlined" name="minor" id="minor" placeholder="Minor"> </div>
+                                <label for="yearto">To</label>
+                                <input type="text" class="form-control underlined" name="yearto" id="yearto" placeholder="Year"> </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-6">
+                                <label for="scholar">Scholarship/ Academic Honors Received</label>
+                                <input type="text" class="form-control underlined" name="scholar" id="scholar" placeholder="Scholarship/ Academic Honors Received"> </div>
                         </div>
                         
                         <div class="form-group">
