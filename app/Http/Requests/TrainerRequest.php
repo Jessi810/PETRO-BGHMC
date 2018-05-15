@@ -44,8 +44,11 @@ class TrainerRequest extends FormRequest
             // Education
             'school.*'         => 'sometimes|required|string',
             'year_graduated.*' => 'sometimes|nullable|integer|min:1900|max:' . Carbon::now()->year,
-            'major.*'          => 'sometimes|nullable|integer',
-            'minor.*'          => 'sometimes|nullable|integer',
+            'yearto.*'         => 'sometimes|nullable|integer',
+            'yearfrom.*'       => 'sometimes|nullable|integer',
+            'degree.*'         => 'sometimes|nullable|string',
+            'scholar.*'        => 'sometimes|nullable|string',
+            'highlevel.*'      => 'sometimes|nullable|string',
 
             // Expertise
             'exp_title.*'       => 'sometimes|required|string',

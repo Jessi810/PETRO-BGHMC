@@ -27,8 +27,11 @@ class EducationRequest extends FormRequest
         return [
             'school'         => 'required|string',
             'year_graduated' => 'nullable|integer|min:1900|max:' . Carbon::now()->year,
-            'major'          => 'nullable|string',
-            'minor'          => 'nullable|string',
+            'degree'         => 'nullable|string',
+            'scholar'        => 'nullable|string',
+            'highlevel'      => 'nullable|string',
+            'yearto'         => 'nullable|integer',
+            'yearfrom'       => 'nullable|integer',
         ];
     }
 }
