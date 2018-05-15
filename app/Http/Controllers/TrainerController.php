@@ -29,8 +29,9 @@ class TrainerController extends Controller
         $request->user()->authorizeRoles(['Admin']);
 
         $rules = [
-            'name'        => 'required|string',
-            'agency_name' => 'required|string',
+            'lname'        => 'required|string',
+            'fname'        => 'required|string',
+            'agency_name' => 'string|nullable',
             'type'        => 'required|in:Internal,External',
             // 'division'    => 'required_if:type|string|exists:divisions',
             // 'subdivision' => 'required_if:type|string|exists:subdivisions',
@@ -50,8 +51,11 @@ class TrainerController extends Controller
             // Education
             'school.*'         => 'sometimes|required|string',
             'year_graduated.*' => 'sometimes|nullable|integer|min:1900|max:' . Carbon::now()->year,
-            'major.*'          => 'sometimes|nullable|integer',
-            'minor.*'          => 'sometimes|nullable|integer',
+            'degree.*'         => 'sometimes|nullable|string',
+            'highlevel.*'      => 'sometimes|nullable|string',
+            'scholar.*'        => 'sometimes|nullable|string',
+            'yearto.*'             => 'sometimes|nullable|integer',
+            'yearfrom.*'           => 'sometimes|nullable|integer',
     
             // Expertise
             'exp_title.*'       => 'sometimes|required|string',
@@ -94,7 +98,10 @@ class TrainerController extends Controller
         }
         
         $trainer = new Trainer();
-        $trainer->name = $request->get('name');
+        $trainer->lname = $request->get('lname');
+        $trainer->fname = $request->get('fname');
+        $trainer->mname = $request->get('mname');
+        $trainer->nextension = $request->get('nextension');
         $trainer->email = $request->get('email');
         $trainer->type = $request->get('type');
         $trainer->agency_name = $request->get('agency_name');
@@ -119,8 +126,11 @@ class TrainerController extends Controller
                 $edu = new Education();
                 $edu->school = Input::get("school.$key");
                 $edu->year_graduated = Input::get("year_graduated.$key");
-                $edu->major = Input::get("major.$key");
-                $edu->minor = Input::get("minor.$key");
+                $edu->degree = Input::get("degree.$key");
+                $edu->highlevel = Input::get("highlevel.$key");
+                $edu->scholar = Input::get("scholar.$key");
+                $edu->yearto = Input::get("yearto.$key");
+                $edu->yearfrom = Input::get("yearfrom.$key");
                 $trainer->educations()->save($edu);
             }
         }
@@ -193,7 +203,10 @@ class TrainerController extends Controller
                 $employee = DB::table('tblemployee')->where('idno', Input::get("idno.$key"))->first();
 
                 $trainer = new Trainer();
-                $trainer->name = $employee->fname . ' ' . $employee->lname;
+                $trainer->lname = $employee->lname;
+                $trainer->fname = $employee->fname;
+                $trainer->mname = $employee->mname;
+                $trainer->nextension = $employee->nextension;
                 $trainer->email = $employee->emailadd;
                 $trainer->type = 'Internal';
                 $trainer->agency_name = 'Baguio General Hospital and Medical Center';
@@ -249,7 +262,11 @@ class TrainerController extends Controller
 
             $trainers->whereHas('expertises', function($query) use ($search) {
                 $query->where('title', 'LIKE', '%'.$search.'%');
-            })->orWhere('name', 'LIKE', '%'.$search.'%')->orderBy('name', 'asc');
+            })->orWhere('lname', 'LIKE', '%'.$search.'%')
+            ->orWhere('fname', 'LIKE', '%'.$search.'%')
+            ->orWhere('mname', 'LIKE', '%'.$search.'%')
+            ->orWhere('nextension', 'LIKE', '%'.$search.'%')
+            ->orderBy('lname', 'asc');
             
             //return view('trainer.index', ['trainers' => $trainers, 'expertises' => $exps]);
         }
@@ -287,14 +304,14 @@ class TrainerController extends Controller
                 })
                 ->addColumn('actions', function (Trainer $trainer) {
                     return
-                        '<a href="'. route('portfolio', $trainer->id) .'" class="btn btn-sm btn-success stop-accordion" data-toggle="tooltip" data-placement="top" title="Show CV">' .
+                        '<a target="_blank" href="'. route('portfolio', $trainer->id) .'" class="btn btn-sm btn-success stop-accordion" data-toggle="tooltip" data-placement="top" title="Show Portfolio">' .
                             '<i class="fa fa-user-circle-o" aria-hidden="true"></i></a>' .
-                        '&nbsp;<a href="'. route('cv', $trainer->id) .'" class="btn btn-sm btn-success stop-accordion" data-toggle="tooltip" data-placement="top" title="Show Trainer Info">' .
+                        '&nbsp;<a target="_blank" href="'. route('cv', $trainer->id) .'" class="btn btn-sm btn-success stop-accordion" data-toggle="tooltip" data-placement="top" title="Show CV">' .
                             '<i class="fa fa-info-circle" aria-hidden="true"></i></a>' .
                         '&nbsp;<form class="form-horizontal" style="display: inline;" method="POST" action="'. route('trainer.destroy', $trainer->id) .'">' .
                             csrf_field() .
                             '<input type="hidden" name="_method" value="delete">' .
-                            '<button type="submit" class="btn btn-sm btn-success stop-accordion"><i class="fa fa-trash" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Delete Trainer"></i></a>' .
+                            '<button type="submit" onclick="return confirm_alert(this);" class="btn btn-sm btn-success stop-accordion"><i class="fa fa-trash" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Delete Trainer"></i></a>' .
                         '</form>';
                 })
                 ->rawColumns(['expertises', 'actions'])
@@ -323,7 +340,10 @@ class TrainerController extends Controller
         $request->user()->authorizeRoles(['Admin']);
 
         $trainer = new Trainer();
-        $trainer->name = $request->get('name');
+        $trainer->lname = $request->get('lname');
+        $trainer->fname = $request->get('fname');
+        $trainer->mname = $request->get('mname');
+        $trainer->nextension = $request->get('nextension');
         $trainer->email = $request->get('email');
         $trainer->type = $request->get('type');
         $trainer->agency_name = $request->get('agency_name');
@@ -379,7 +399,8 @@ class TrainerController extends Controller
         $request->user()->authorizeRoles(['Admin']);
 
         $rules = [
-            'name'             => 'required|string',
+            'lname'            => 'required|string',
+            'fname'            => 'required|string',
             'current_position' => 'nullable|string',
             'agency_name'      => 'nullable|string',
             'email'            => 'nullable|email',
@@ -392,8 +413,8 @@ class TrainerController extends Controller
         if ($validator->fails()) {
             return response()->json([
                 'status' => 'danger',
-                'title' => 'Validation Failed',
-                'msg' => 'One or more fields has an invalid data.',
+                'title'  => 'Validation Failed',
+                'msg'    => 'One or more fields has an invalid data.',
                 'errors' => $validator->errors()]);
         }
 
@@ -407,9 +428,9 @@ class TrainerController extends Controller
             if ($trainer->updated_at > $updated_at) {
                 return response()->json([
                     'status' => 'success',
-                    'title' => 'Edit Success',
-                    'msg' => 'Data has been updated to the database.',
-                    'data' => $trainer,
+                    'title'  => 'Edit Success',
+                    'msg'    => 'Data has been updated to the database.',
+                    'data'   => $trainer,
                 ]);
             }
 

@@ -43,10 +43,13 @@ class EducationController extends Controller
     {
         $request->user()->authorizeRoles(['Admin']);
         $rules = [
-            'school'         => 'required|string',
-            'year_graduated' => 'nullable|integer|min:1900|max:' . Carbon::now()->year,
-            'major'          => 'nullable|integer',
-            'minor'          => 'nullable|integer'
+            'school'         => 'sometimes|required|string',
+            'year_graduated' => 'sometimes|nullable|integer|min:1900|max:' . Carbon::now()->year,
+            'degree'         => 'sometimes|nullable|string',
+            'highlevel'      => 'sometimes|nullable|string',
+            'scholar'        => 'sometimes|nullable|string',
+            'yearto'         => 'sometimes|nullable|integer',
+            'yearfrom'       => 'sometimes|nullable|integer',
         ];
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
