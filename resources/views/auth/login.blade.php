@@ -16,15 +16,15 @@
                 <input class="checkbox" id="remember" type="checkbox">
                 <span>Remember me</span>
             </label>
-            <a href="{{ route('password.request') }}" class="forgot-btn pull-right">Forgot password?</a>
+            {{-- <a href="{{ route('password.request') }}" class="forgot-btn pull-right">Forgot password?</a> --}}
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-block btn-primary">Login</button>
         </div>
-        <div class="form-group">
+        {{-- <div class="form-group">
             <p class="text-muted text-center">Don't have an account?
                 <a href="{{ route('register') }}">Sign Up!</a>
             </p>
-        </div>
+        </div> --}}
     </form>
 @endsection
