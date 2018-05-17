@@ -31,9 +31,9 @@
                             <input type="text" readonly class="form-control underlined" name="email" id="email" value="{{ $user->email }}" placeholder="Email"> </div>
 
                         <div class="form-group">
-                            <label for="profile_picture">Profile Picture</label>
-                            <input type="file" readonly class="form-control" name="profile_picture" id="profile_picture"> </div>
-        
+                            <label for="profile_picture" class="invisible" id="label_profile_picture">Profile Picture</label>
+                            <input type="file" readonly class="form-control invisible" name="profile_picture" id="profile_picture"> </div>
+                            
                         <div class="form-group">
                             <input type="submit" id="edit_profile_submit" class="btn btn-success btn-block invisible" />
                         </div>
@@ -64,8 +64,10 @@
                     $('#name').attr("readonly", false);
                     $('#email').attr("readonly", false);
 
-                    // Show submit button
+                    // Show edit profile picture
                     $('#edit_profile_submit').removeClass('invisible');
+                    $('#profile_picture').removeClass('invisible');
+                    $('#label_profile_picture').removeClass('invisible');
                 } else { // Cancel edit of profile
                     // Change edit button properties
                     $('#edit_profile_button').removeClass('btn-danger');
@@ -75,8 +77,10 @@
                     $('#name').attr("readonly", true).text(def_name).val(def_name);
                     $('#email').attr("readonly", true).text(def_email).val(def_email);
 
-                    // Remove submit button
+                    // Remove edit profile picture
                     $('#edit_profile_submit').addClass('invisible');
+                    $('#profile_picture').addClass('invisible');
+                    $('#label_profile_picture').addClass('invisible');
                 }
             });
         });
