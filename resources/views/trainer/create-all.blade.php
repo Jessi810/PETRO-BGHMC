@@ -8,7 +8,7 @@
                     <li>{{ $error }}</li>
                 @endforeach
             </ul>
-        </div>
+        </div> 
     @endif
     <form class="form-horizontal row" method="POST" action="">
         {{ csrf_field() }}
@@ -16,7 +16,7 @@
         <div class="col-12 col-md-12">
             <button type="button" class="btn btn-success save_form" style="min-width: 10rem; " />Submit</button>
             <button type="button" class="btn btn-success pull-right import_from_tblemployee" data-toggle="modal" data-target="#importModal" />Import personal data</button>
-            <a href="{{ url('trainer/create-bulk') }}" class="btn btn-success pull-right">Bulk Create</a>
+            <!-- <a href="{{ url('trainer/create-bulk') }}" class="btn btn-success pull-right">Bulk Create</a> -->
             <button type="reset" class="btn btn-danger btn-sm" />Reset</button>
         </div>
 
@@ -32,13 +32,26 @@
                 </div>
                 <div class="card-block">
                     <div class="form-group has-error">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control underlined" name="name" id="name" placeholder="Trainer's name" required> </div>
+                        <label for="lname">Last Name</label>
+                        <input type="text" class="form-control underlined" name="lname" id="lname" placeholder="Last Name" required>
+                    </div>
+                    <div class="form-group has-error">
+                        <label for="fname">First Name</label>
+                        <input type="text" class="form-control underlined" name="fname" id="fname" placeholder="First Name" required>
+                    </div>
+                    <div class="form-group has-error">
+                        <label for="mname">Middle Name</label>
+                        <input type="text" class="form-control underlined" name="mname" id="mname" placeholder="Middle Initial" required>
+                    </div>
+                    <div class="form-group has-error">
+                        <label for="nextension">Name Extension</label>
+                        <input type="text" class="form-control underlined" name="nextension" id="nextension" placeholder="Name Extension" required>
+                    </div>
                     <div class="form-group has-error">
                         <label for="exp_title[0]">Expertise</label>
                         <div class="wrapper_exp">
                             <div class="input-group">
-                                <input type="text" class="form-control underlined" name="exp_title[0]" id="exp_title[0]" placeholder="Trainer's field of expertise" required>
+                                <input type="text" class="form-control underlined" style="width: inherit;" name="exp_title[0]" id="exp_title[0]" placeholder="Trainer's field of expertise" autocomplete="off" required>
                                 <span class="input-group-btn">
                                     <button class="btn btn-success add_exp" type="button">+</button>
                                 </span>
@@ -48,7 +61,7 @@
                     <div class="row form-group has-error">
                         <div class="col-md-8">
                             <label for="agency_name">Agency</label>
-                            <input type="text" class="form-control underlined" name="agency_name" id="agency_name" placeholder="Trainer's agency" required> </div>
+                            <input type="text" class="form-control underlined" name="agency_name" id="agency_name" placeholder="Trainer's agency"> </div>
                         <div class="col-md-4">
                             <label for="type">Type</label>
                             <select id="type" name="type" class="form-control">
@@ -253,10 +266,10 @@
 
                         <table class="table table-hover table-bordered table-striped datatable" style="width:100%">
                             <thead>
-                                <tr>
-                                    <th>Id</th>
+                                <tr><th>ID</th>
                                     <th>First</th>
                                     <th>Last</th>
+                                    {{-- <th>Position</th> --}}
                                     <th></th>
                                 </tr>
                             </thead>
@@ -291,6 +304,7 @@
                     {data: 'idno', name: 'idno'},
                     {data: 'fname', name: 'fname'},
                     {data: 'lname', name: 'lname'},
+                    // {data: 'position', name: 'position'},
                     {data: 'action', name: 'action', orderable: false, searchable: false}
                 ]
             });
@@ -300,7 +314,7 @@
             * @param val
             * @return {string} Return val if not empty else return empty string
             */
-            function nonNullValue(val) {
+            function nonNullValue(val) { 
                 return val != null ? val : '';
             }
 
@@ -315,15 +329,25 @@
                     url: "{{ route('employee.get') }}",
                     data: { idno: employee_id },
                     success: function(data) {
-                        $('#name').val(nonNullValue(data.employee.fname) + ' ' + nonNullValue(data.employee.mname) + ' ' + nonNullValue(data.employee.lname));
-                        var formatted = $('#name').val().replace('  ', ' ');
-                        $('#name').val(formatted);
+                        $('#lname').val(nonNullValue(data.employee.lname));
+                        $('#fname').val(nonNullValue(data.employee.fname));
+                        $('#mname').val(nonNullValue(data.employee.mid));
+                        $('#nextension').val(nonNullValue(data.employee.nameextension));
+                        var formatted1 = $('#lname').val().replace('  ', ' ');
+                        var formatted2 = $('#fname').val().replace('  ', ' ');
+                        var formatted3 = $('#mname').val().replace('  ', ' ');
+                        var formatted4 = $('#nextension').val().replace('  ', ' ');
+                        $('#lname').val(formatted1);
+                        $('#fname').val(formatted2);
+                        $('#mname').val(formatted3);
+                        $('#nextension').val(formatted4);
                         $('#agency_name').val('Baguio General Hospital and Medical Center');
                         $('#current_position').val(nonNullValue(data.employee.Position));
-                        $('#email').val(nonNullValue(data.employee.emailadd));
-                        $('#address').val(nonNullValue(data.employee.address_old));
-                        $('#mobile').val(nonNullValue(data.employee.celno));
-                        $('#phone').val(nonNullValue(data.employee.telno));
+                        // $('#email').val(nonNullValue(data.employee.emailadd));
+                        // $('#address').val(nonNullValue(data.employee.address_old));
+                        // $('#mobile').val(nonNullValue(data.employee.celno));
+                        // $('#phone').val(nonNullValue(data.employee.telno));
+                        // $('#school').val(nonNullValue(data.employee.school));
                         $('#type').val('Internal').change();
                     }
                 });
@@ -444,9 +468,15 @@
                         '<div class="col-md-2">' +
                             '<input type="text" class="form-control underlined" name="year_graduated[' + index_edu + ']" id="year_graduated[' + index_edu + ']" placeholder="Year graduated"> </div>' +
                         '<div class="col-md-2">' +
-                            '<input type="text" class="form-control underlined" name="major[' + index_edu + ']" id="major[' + index_edu + ']" placeholder="Major"> </div>' +
+                            '<input type="text" class="form-control underlined" name="degree[' + index_edu + ']" id="degree[' + index_edu + ']" placeholder="Degree Course (Optional)"> </div>' +
+                        '<div class="col-md-3">' +
+                            '<input type="text" class="form-control underlined" name="highlevel[' + index_edu + ']" id="highlevel[' + index_edu + ']" placeholder="Highest Grade/ Level/ Units Earned"> </div>' +
                         '<div class="col-md-2">' +
-                            '<input type="text" class="form-control underlined" name="minor[' + index_edu + ']" id="minor[' + index_edu + ']" placeholder="Minor"> </div>' +
+                            '<input type="text" class="form-control underlined" name="yearfrom[' + index_edu + ']" id="yearfrom[' + index_edu + ']" placeholder="From"> </div>' +
+                        '<div class="col-md-2">' +
+                            '<input type="text" class="form-control underlined" name="yearto[' + index_edu + ']" id="yearto[' + index_edu + ']" placeholder="To"> </div>' +
+                        '<div class="col-md-4">' +
+                            '<input type="text" class="form-control underlined" name="scholar[' + index_edu + ']" id="scholar[' + index_edu + ']" placeholder="Scholarship/ Academic Honors Received Course (Optional)"> </div>' +
                         '<div class="col-md-1">' +
                             '<button class="btn btn-danger remove_edu" type="button">-</button>' +
                     '</div>';
@@ -598,18 +628,90 @@
             $(add_exp).click(function() {
                 var fieldHTML =
                     '<div class="input-group">' +
-                        '<input type="text" class="form-control underlined" name="exp_title[' + index_exp + ']" id="exp_title[' + index_exp + ']" placeholder="Trainer\'s field of expertise" required>' +
+                        '<input type="text" class="form-control underlined" style="width: inherit;" name="exp_title[' + index_exp + ']" id="exp_title[' + index_exp + ']" placeholder="Trainer\'s field of expertise" required>' +
                         '<span class="input-group-btn">' +
                             '<button class="btn btn-danger remove_exp" type="button">-</button>' +
                         '</span>' +
                     '</div>';
                 $(wrapper_exp).append(fieldHTML);
+                createTypeahead('exp_title', index_exp); // creates Typeahead autocomplete on dynamically added field
+                $('span.twitter-typeahead').css('width', 'inherit');
 
                 index_exp++; console.log('Add exp: ' + index_exp);
             });
             $(wrapper_exp).on('click', '.remove_exp', function(e) {
                 e.preventDefault();
                 $(this).parents('div.input-group').remove();
+            });
+        });
+    </script>
+    <script>
+        function createTypeahead(field_name, index) {
+            var bloodhound = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.whitespace,
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '{{ route('autocomplete/expertise') }}' + '?q=%QUERY%',
+                    wildcard: '%QUERY%'
+                },
+            });
+            
+            $('[id="' + field_name + '[' + index + ']"]').typeahead({
+                hint: true,
+                highlight: true,
+                minLength: 1
+            }, {
+                name: 'expertises',
+                source: bloodhound,
+                display: function(data) {
+                    return data.title  //Input value to be set when you select a suggestion. 
+                },
+                templates: {
+                    empty: [
+                        '<div class="list-group search-results-dropdown"><div class="list-group-item">Nothing found.</div></div>'
+                    ],
+                    header: [
+                        '<div class="list-group search-results-dropdown">'
+                    ],
+                    suggestion: function(data) {
+                        return '<div style="font-weight:normal; margin-top:-10px ! important;" class="list-group-item">' + data.title + '</div></div>'
+                    }
+                }
+            });
+        }
+    </script>
+    <script>
+        $(document).ready(function() {
+            var bloodhound = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.whitespace,
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '{{ route('autocomplete/expertise') }}' + '?q=%QUERY%',
+                    wildcard: '%QUERY%'
+                },
+            });
+            
+            $('[id^=exp_title]').typeahead({
+                hint: true,
+                highlight: true,
+                minLength: 1
+            }, {
+                name: 'expertises',
+                source: bloodhound,
+                display: function(data) {
+                    return data.title  //Input value to be set when you select a suggestion. 
+                },
+                templates: {
+                    empty: [
+                        '<div class="list-group search-results-dropdown"><div class="list-group-item">Nothing found.</div></div>'
+                    ],
+                    header: [
+                        '<div class="list-group search-results-dropdown">'
+                    ],
+                    suggestion: function(data) {
+                        return '<div style="font-weight:normal; margin-top:-10px ! important;" class="list-group-item">' + data.title + '</div></div>'
+                    }
+                }
             });
         });
     </script>
