@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>{{ $trainer->name }} | Portfolio</title>
+    <title>{{ $trainer->lname }}, {{ $trainer->fname }} {{ $trainer->mname }} {{ $trainer->nextension }} | Portfolio</title>
 
     <!-- favicon -->
     <link href="favicon.png" rel=icon>
@@ -22,13 +22,22 @@
     <!-- Style CSS -->
     <link href="{{ asset('Resumex/css/style.css') }}" rel="stylesheet">
 
+    <style>
+        .content-item {
+            margin-bottom: 12px;
+        }
+    </style>
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!-- WARNING: Respond.js does not work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
+
+<button id="printNo" class="btn btn-sm btn-success" onclick="myFunction()">Print this page</button>
+
 <body id="page-top" data-spy="scroll" data-target=".navbar">
     <div id="main-wrapper">
         <!-- Page Preloader -->
@@ -46,7 +55,7 @@
                         <img src="{{ asset($trainer->profile_picture) }}" class="img-responsive" alt=""/>
                     </div>
                     <div class="content">
-                        <h1>{{ $trainer->name }}</h1>
+                        <h1>{{ $trainer->lname }}, {{ $trainer->fname }} {{ $trainer->mname }} {{ $trainer->nextension }}</h1>
                         <span class="lead">{{ $trainer->current_position }}</span>
 
                         <div class="about-text">
@@ -90,11 +99,18 @@
                                             {{ $to = new Carbon\Carbon($work->dateto) }}
                                         </div>
                                         <div class="content-item">
-                                            <small>{{ $from->year }} - {{  $to->year }}</small>
+                                            @if($from->year)
+                                            <small>{{ $from->year }} - 
+                                                @if($to-year)
+                                                {{  $to->year }}</small>
+                                                @else
+                                                Present</small>
+                                                @endif
+                                            @endif
                                             <h3>{{ $work->position }}</h3>
                                             <h4>{{ $work->company_name }}</h4>
 
-                                            {{--  <p>United Kingdom, London</p>  --}}
+                                            <!-- {{--  <p>United Kingdom, London</p>  --}} -->
                                         </div>
                                     @endforeach
                                     
@@ -152,11 +168,21 @@
                                         <div class="content-item">
                                             <small>{{ $education->year_graduated }}</small>
                                             <h3>{{ $education->school }}</h3>
-                                            @if ($education->major)
-                                                <h4>Major: {{ $education->major }}</h4>
+                                            @if ($education->degree)
+                                                <h4>Degree: {{ $education->degree }}</h4>
                                             @endif
-                                            @if ($education->minor)
-                                                <h4>Minor: {{ $education->minor }}</h4>
+                                            @if ($education->yearfrom)
+                                                <h4>From: {{ $education->yearfrom }}</h4>
+                                                @if($education->yearto)
+                                                <h4>To: {{ $education->yearto }}</h4>
+                                                @else<h4>To: Present</h4>
+                                                @endif
+                                            @endif
+                                            @if ($education->highlevel)
+                                                <h4>Highest Grade/ Level/ Units Earned: {{ $education->highlevel }}</h4>
+                                            @endif
+                                            @if ($education->scholar)
+                                                <h4>Scholarship/ Academic Honors Received: {{ $education->scholar }}</h4>
                                             @endif
 
                                             {{--  <p>United Kingdom, London</p>  --}}
@@ -495,23 +521,6 @@
                         <!--.container-fluid-->
                     </section>
                     <!--.section-contact-->
-
-                    <footer class="footer">
-                        <div class="copyright-section">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="copytext">&copy; Resumex. All rights reserved | Design By: <a
-                                                href="https://themehippo.com">themehippo</a></div>
-                                    </div>
-                                </div>
-                                <!--.row-->
-                            </div>
-                            <!-- .container-fluid -->
-                        </div>
-                        <!-- .copyright-section -->
-                    </footer> <!-- .footer -->
-
                 </div> <!-- Sticky -->
             </div> <!-- .right-col-block -->
         </div> <!-- .columns-block -->
@@ -524,5 +533,14 @@
     <script src="{{ asset('Resumex/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('Resumex/js/theia-sticky-sidebar.js') }}"></script>
     <script src="{{ asset('Resumex/js/scripts.js') }}"></script>
+
+    <script>
+        function myFunction()
+        {
+            $('#printNo').addClass('hidden');
+            window.print();
+            $('#printNo').removeClass('hidden');
+        }
+    </script>
 </body>
 </html>
