@@ -43,7 +43,11 @@
                                     <div class="header-block pull-right">
                                         <p class="title">
                                             <a href="{{ route('trainer.upload.show', [$trainer->id]) }}" class="btn btn-primary btn-sm rounded">Upload Picture</a>
-                                            &nbsp;<a id="edit_trainer" href="javascript: void(0)" class="btn btn-primary btn-sm rounded" js-toggle="submit" toggle-visibility="#submit_trainer" toggle-readonly="#trainer_form">Edit</a>
+                                            &nbsp;
+                                            <a id="edit_trainer" href="javascript: void(0)" class="btn btn-primary btn-sm rounded" js-toggle="submit" toggle-visibility="#submit_trainer" toggle-readonly="#trainer_form">Edit</a>
+                                            &nbsp;
+                                            <a target="_blank" href="{{ route('portfolio', $trainer->id) }}" class="btn btn-primary btn-sm rounded stop-accordion" data-toggle="tooltip" data-placement="top" title="Print Portfolio">
+                                            Print</a>
                                         </p>
                                     </div>
                                 </div>
@@ -54,12 +58,26 @@
                                         <input type="hidden" name="_method" value="PUT">
 
                                         <div class="row form-group">
-                                            <div class="col-md-7">
-                                                <label for="name">Name</label>
-                                                <input type="text" readonly class="form-control underlined" name="name" id="name" data-default="{{ $trainer->name }}" value="{{ $trainer->name }}" placeholder="Name" required> </div>
+                                            <div class="col-md-6">
+                                                <label for="lname">Last Name</label>
+                                                <input type="text" readonly class="form-control underlined" name="lname" id="lname" data-default="{{ $trainer->lname }}" value="{{ $trainer->lname }}" placeholder="Last Name" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="fname">First Name</label>
+                                                <input type="text" readonly class="form-control underlined" name="fname" id="fname" data-default="{{ $trainer->fname }}" value="{{ $trainer->fname }}" placeholder="First Name" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="mname">Middle Name</label>
+                                                <input type="text" readonly class="form-control underlined" name="mname" id="mname" data-default="{{ $trainer->mname }}" value="{{ $trainer->mname }}" placeholder="Middle Name">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="nextension">Name Extension</label>
+                                                <input type="text" readonly class="form-control underlined" name="nextension" id="nextension" data-default="{{ $trainer->nextension }}" value="{{ $trainer->nextension }}" placeholder="Name Extension (Jr., VI)">
+                                            </div>
                                             <div class="col-md-5">
                                                 <label for="current_position">Position</label>
-                                                <input type="text" readonly class="form-control underlined" name="current_position" id="current_position" data-default="{{ $trainer->current_position }}" value="{{ $trainer->current_position }}" placeholder="Current position"> </div>
+                                                <input type="text" readonly class="form-control underlined" name="current_position" id="current_position" data-default="{{ $trainer->current_position }}" value="{{ $trainer->current_position }}" placeholder="Current position">
+                                            </div>
                                         </div>
                                         <div class="row form-group">
                                             <div class="col-md-4">
@@ -130,9 +148,12 @@
                                         <thead class="thead-default">
                                             <tr>
                                                 <th>School</th>
-                                                <th>Year</th>
-                                                <th>Major</th>
-                                                <th>Minor</th>
+                                                <th>Year Graduated</th>
+                                                <th>Degree</th>
+                                                <th>Highest Grade/ Level/ Units Earned</th>
+                                                <th>From</th>
+                                                <th>To</th>
+                                                <th>Scholarship/ Academic Honors Received</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -141,8 +162,11 @@
                                                 <tr>
                                                     <td>{{ $education->school }}</td>
                                                     <td>{{ $education->year_graduated }}</td>
-                                                    <td>{{ $education->major }}</td>
-                                                    <td>{{ $education->minor }}</td>
+                                                    <td>{{ $education->degree }}</td>
+                                                    <td>{{ $education->highlevel }}</td>
+                                                    <td>{{ $education->yearfrom }}</td>
+                                                    <td>{{ $education->yearto }}</td>
+                                                    <td>{{ $education->scholar }}</td>
                                                     <td>
                                                         <a href="{{ route('education.edit', [$education->id, $trainer->id]) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit Education">
                                                             <i class="fa fa-pencil" aria-hidden="true"></i></a>
@@ -171,17 +195,29 @@
                                                                 <label for="school">School <span class="badge badge-secondary">required</span></label>
                                                                 <input type="text" class="form-control underlined" name="school" id="school" placeholder="School name" required> </div>
                                                             <div class="col-md-4">
-                                                                <label for="year_graduated">Year</label>
+                                                                <label for="year_graduated">Year Graduated</label>
                                                                 <input type="text" class="form-control underlined" name="year_graduated" id="year_graduated" placeholder="Year graduated"> </div>
+                                                            <div class="col-md-6">
+                                                                <label for="degree">Degree</label>
+                                                                <input type="text" class="form-control underlined" name="degree" id="degree" placeholder="Degree"> </div>
+                                                            <div class="col-md-6">
+                                                                <label for="highlevel">Highest Grade/ Level/ Units Earned</label>
+                                                                <input type="text" class="form-control underlined" name="highlevel" id="highlevel" placeholder="Highest Grade/ Level/ Units Earned"> </div>
+
                                                         </div>
 
                                                         <div class="row form-group">
                                                             <div class="col-md-6">
-                                                                <label for="major">Major</label>
-                                                                <input type="text" class="form-control underlined" name="major" id="major" placeholder="Major"> </div>
+                                                                <label for="yearfrom">From</label>
+                                                            <input type="text" class="form-control underlined" name="yearfrom" id="yearfrom" placeholder="Year"> </div>
                                                             <div class="col-md-6">
-                                                                <label for="minor">Minor</label>
-                                                            <input type="text" class="form-control underlined" name="minor" id="minor" placeholder="Minor"> </div>
+                                                                <label for="yearto">To</label>
+                                                                <input type="text" class="form-control underlined" name="yearto" id="yearto" placeholder="Year"> </div>
+                                                        </div>
+                                                        <div class="row form-group">
+                                                            <div class="col-md-6">
+                                                                <label for="scholar">Scholarship/ Academic Honors Received</label>
+                                                                <input type="text" class="form-control underlined" name="scholar" id="scholar" placeholder="Scholarship/ Academic Honors Received"> </div>
                                                         </div>
 
                                                         <div class="form-group">
@@ -754,6 +790,7 @@
                 var form = $('form[formtype="' + form_type + '"][id="' + form_type + '_template"]');
                 var data = $(form).serializeArray(); // Get all form's field value
                 data.push({name: 'trainer_id', value: '{{ $trainer->id }}'});   // Add trainer id to post
+                var _this = this;
 
                 $.ajax({
                     type        : 'POST',
@@ -764,6 +801,9 @@
                         console.log('SUCCESS');
 
                         showAlert(data);
+
+                        // Clears form when successfully saved
+                        _this.form.reset();
 
                         if (!data.errors) {
                             temp_name(data.data, data, form_type, form_route);   // Pass newly saved data
