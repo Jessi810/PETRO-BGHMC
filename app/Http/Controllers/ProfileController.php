@@ -15,22 +15,22 @@ class ProfileController extends Controller
     }
 
     public function updateProfile(Request $request) {
-        $picture = $request->file('profile_picture')->store('img/profile_pictures', 'profile_picture');
-
         $user = Auth::user();
 
-        $current_picture = $user->profile_picture;
+        if ($request->hasFile('profile_picture')) {
+            $picture = $request->file('profile_picture')->store('img/profile_pictures', 'profile_picture');
 
-        $user->profile_picture = $picture;
-        $user->update($request->all());
+            $current_picture = $user->profile_picture;
 
-        $user->profile_picture = $picture;
-        $user->update();
+            $user->profile_picture = $picture;
 
-        if ($current_picture != null) {
-            // Delete old profile picture
-            File::delete(public_path() . '/' . $current_picture);
+            if ($current_picture != null) {
+                // Delete old profile picture
+                File::delete(public_path() . '/' . $current_picture);
+            }
         }
+
+        $user->update($request->all());
 
         $request->session()->flash('alert-success', 'Profile updated successfully!');
         return redirect()->route('profile.index');
