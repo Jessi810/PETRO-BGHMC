@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-12">
             <div class="card card-info">
                 <div class="card-header">
                     <div class="header-block">
@@ -43,6 +43,9 @@
                                     <td colspan="2" class="p-0 p-sm-0">
                                         <div id="accordion{{ $division->id }}" class="collapse">
                                             <table class="table table-sm">
+                                                    <tr>
+                                                        <td style="padding-left: 25px;"><h4>Departments: </h4></td>
+                                                    </tr>
                                                     @foreach ($subdivisions as $subdivision)
                                                         @if ($subdivision->division_id == $division->id)
                                                             <tr>
