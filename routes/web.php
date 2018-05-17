@@ -38,7 +38,7 @@ Route::get('trainer/create-all', function() {
 Route::post('trainer/create-all', 'TrainerController@create_all');
 Route::get('trainer/create-bulk', function() {
     $divisions = DB::table('divisions')->get();
-    $subdivisions = DB::table('subdivisions')->get();
+    $subdivisions = DB::table('subdivisions')->get(); 
     
     return view('trainer/create-bulk', ['divisions' => $divisions, 'subdivisions' => $subdivisions]);
 })->middleware('auth');
@@ -55,6 +55,9 @@ Route::resource('skill', 'SkillController')->middleware('auth');
 Route::resource('expertise', 'ExpertiseController')->middleware('auth');
 Route::resource('training', 'TrainingController')->middleware('auth');
 Route::resource('division', 'DivisionController')->middleware('auth');
+Route::get('adduser', 'UserController@adduser')->name('Add User')->middleware('auth');
+Route::post('adduser/save', 'UserController@addusersave')->name('Add User')->middleware('auth');
+Route::get('listusers', 'UserController@listuser')->name('List Users')->middleware('auth');
 
 Route::get('employee/get', 'DivisionController@getEmployee')->name('employee.get');
 Route::get('employee/data', 'DivisionController@getEmployees')->name('employee.data');
@@ -83,3 +86,5 @@ Route::prefix('profile')->group(function () {
 Route::get('/debug', function () {
     return view('debug');
 });
+
+Route::get('autocomplete/expertise', 'AutoCompleteController@expertise')->name('autocomplete/expertise');
