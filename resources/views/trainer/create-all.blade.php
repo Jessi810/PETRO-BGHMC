@@ -651,7 +651,7 @@
                 datumTokenizer: Bloodhound.tokenizers.whitespace,
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
                 remote: {
-                    url: '{{ route('autocomplete/expertise') }}' + '?q=%QUERY%',
+                    url: '{{ route('autocomplete.expertise') }}' + '?q=%QUERY%',
                     wildcard: '%QUERY%'
                 },
             });
@@ -686,7 +686,7 @@
                 datumTokenizer: Bloodhound.tokenizers.whitespace,
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
                 remote: {
-                    url: '{{ route('autocomplete/expertise') }}' + '?q=%QUERY%',
+                    url: '{{ route('autocomplete.expertise') }}' + '?q=%QUERY%',
                     wildcard: '%QUERY%'
                 },
             });
