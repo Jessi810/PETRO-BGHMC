@@ -40,7 +40,9 @@
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" class="form-control underlined" name="email" id="email" value="{{ $reference->email }}" placeholder="Email address"> </div>
-                        
+                        <div class="form-group">
+                            <label for="description">Description / Remarks</label>
+                            <input type="text" class="form-control underlined" name="description" id="description" value="{{ $reference->description }}" placeholder="Description / Remarks"> </div>
                         <div class="form-group">
                             <input type="submit" class="btn btn-success btn-block" />
                         </div>

@@ -50,6 +50,9 @@
                             <div class="col-md-6">
                                 <label for="scholar">Scholarship/ Academic Honors Received</label>
                                 <input type="text" class="form-control underlined" name="scholar" id="scholar" value="{{ $education->scholar }}" placeholder="Scholarship/ Academic Honors Received"> </div>
+                            <div class="col-md-12">
+                                <label for="description">Description / Remarks</label>
+                                <input type="text" class="form-control underlined" name="description" id="description" value="{{ $education->description }}" placeholder="Description / Remarks"> </div>
                         </div>                            
                         
                         <div class="form-group">

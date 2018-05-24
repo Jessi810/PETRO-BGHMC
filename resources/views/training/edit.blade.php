@@ -36,7 +36,9 @@
                         <div class="form-group">
                             <label for="agency_name">Agency</label>
                             <input type="text" class="form-control underlined" name="agency_name" id="agency_name" value="{{ $training->agency_name }}" placeholder="Agency name"> </div>
-                        
+                        <div class="form-group">
+                            <label for="description">Description / Remarks</label>
+                            <input type="text" class="form-control underlined" name="description" id="description" value="{{ $training->description }}" placeholder="Description / Remarks"> </div>
                         <div class="form-group">
                             <input type="submit" class="btn btn-success btn-block" />
                         </div>
