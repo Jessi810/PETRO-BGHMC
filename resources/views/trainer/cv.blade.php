@@ -297,11 +297,11 @@
                                                         </div>
                                                         <div class="row form-group">
                                                             <div class="col-md-6">
-                                                                <label for="datefrom">Date (year/month/day)</label>
-                                                                <input type="text" class="form-control underlined" name="datefrom" id="datefrom" placeholder="Date started (e.g. 2018/12/31)"> </div>
+                                                                <label for="datefrom">Date (year-month-day)</label>
+                                                                <input type="text" class="form-control underlined" name="datefrom" id="datefrom" placeholder="Date started (e.g. 2018-12-31)"> </div>
                                                             <div class="col-md-6">
                                                                 <label for="datefrom" class="invisible">Date</label>
-                                                                <input type="text" class="form-control underlined" name="dateto" id="dateto" placeholder="Date ended (e.g. 2018/12/31)"> </div>
+                                                                <input type="text" class="form-control underlined" name="dateto" id="dateto" placeholder="Date ended (e.g. 2018-12-31)"> </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="description">Description / Remarks</label>
@@ -433,8 +433,8 @@
                                                             <label for="position">Description / Remarks</label>
                                                             <input type="text" class="form-control underlined" name="description" id="description" placeholder="Description / Remarks"> </div>
                                                         <div class="form-group">
-                                                            <label for="date">Date (year/month/day)</label>
-                                                            <input type="text" class="form-control underlined" name="date" id="date" placeholder="Date (e.g. 2018/12/31)"> </div>
+                                                            <label for="date">Date (year-month-day)</label>
+                                                            <input type="text" class="form-control underlined" name="date" id="date" placeholder="Date (e.g. 2018-12-31)"> </div>
 
                                                         <div class="form-group">
                                                             <button type="button" class="btn btn-success btn-block save_form">Add Certification</button>
@@ -585,8 +585,8 @@
                                                                 <label for="topic">Topic <span class="badge badge-secondary">required</span></label>
                                                                 <input type="text" class="form-control underlined" name="topic" id="topic" placeholder="Topic" required> </div>
                                                             <div class="col-md-4">
-                                                                <label for="datefrom">Date (year/month/day)</label>
-                                                                <input type="text" class="form-control underlined" name="datefrom" id="datefrom" placeholder="Date conducted (e.g. 2018/12/31)"> </div>
+                                                                <label for="datefrom">Date (year-month-day)</label>
+                                                                <input type="text" class="form-control underlined" name="datefrom" id="datefrom" placeholder="Date conducted (e.g. 2018-12-31)"> </div>
                                                         </div>
 
                                                         <div class="form-group">

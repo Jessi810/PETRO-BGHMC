@@ -37,7 +37,7 @@
                                 <input type="text" class="form-control underlined" name="datefrom" id="datefrom" value="{{ $work->datefrom }}" placeholder="Date started (e.g. 2018-12-31)"> </div>
                             <div class="col-md-6">
                                 <label for="datefrom" class="invisible">Date</label>
-                                <input type="text" class="form-control underlined" name="dateto" id="dateto" value="{{ $work->dateto }}" placeholder="Date ended (e.g. 2018/12/31)"> </div>
+                                <input type="text" class="form-control underlined" name="dateto" id="dateto" value="{{ $work->dateto }}" placeholder="Date ended (e.g. 2018-12-31)"> </div>
                         </div>
                         <div class="form-group">
                             <label for="description">Description / Remarks</label>
