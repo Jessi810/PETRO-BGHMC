@@ -586,7 +586,7 @@
                                                                 <input type="text" class="form-control underlined" name="topic" id="topic" placeholder="Topic" required> </div>
                                                             <div class="col-md-4">
                                                                 <label for="datefrom">Date (year-month-day)</label>
-                                                                <input type="text" class="form-control underlined" name="datefrom" id="datefrom" placeholder="Date conducted (e.g. 2018-12-31)"> </div>
+                                                                <input type="text" class="form-control underlined" name="datefrom" id="datefrom2" placeholder="Date conducted (e.g. 2018-12-31)"> </div>
                                                         </div>
 
                                                         <div class="form-group">
@@ -704,6 +704,34 @@
 @endsection
 
 @section('scripts')
+    <script>
+        $(function() {
+            
+            $("#date").datepicker({
+                dateFormat: "yy-mm-dd",
+                changeMonth: true,
+                changeYear: true
+            });
+
+            $("#datefrom").datepicker({
+                dateFormat: "yy-mm-dd",
+                changeMonth: true,
+                changeYear: true
+            });
+            
+            $("#datefrom2").datepicker({
+                dateFormat: "yy-mm-dd",
+                changeMonth: true,
+                changeYear: true
+            });
+
+            $("#dateto").datepicker({
+                dateFormat: "yy-mm-dd",
+                changeMonth: true,
+                changeYear: true
+            });
+        });
+    </script>
     <script>
         $('#sidebar-item-trainer').addClass('open active');
 
