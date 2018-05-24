@@ -5,11 +5,11 @@
     </div>
     <div class="footer-block author">
         <ul>
-            <li> developed by <strong>Jessi Sibayan</strong> </li>
-            <li>
-                <a href="https://github.com/Jessi810"><i class="fa fa-github" aria-hidden="true"></i></a>
-                <a href="mailto:jessisibayan@gmail.com"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
-            </li>
+            <li> developed by <strong>Jessi Sibayan, Erwin Rommel Urbien & Nikki Joy Bang-i</strong> </li>
+            <!-- <li>
+                <a href="https://www.facebook.com"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="https://www.instagram.com"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            </li> -->
         </ul>
     </div>
 </footer>

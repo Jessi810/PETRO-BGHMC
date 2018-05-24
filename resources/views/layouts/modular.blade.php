@@ -16,9 +16,10 @@
     <link href="{{ asset('css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="{{ asset('css/site.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/chartist.min.css') }}" rel="stylesheet">
+    @yield('css')
 
     <!-- Scripts -->
-
     <!-- Theme initialization -->
     {{--  <script>
         var themeSettings = (localStorage.getItem('themeSettings')) ? JSON.parse(localStorage.getItem('themeSettings')) :
@@ -38,10 +39,10 @@
 <div class="main-wrapper">
     <div class="app" id="app">
         @include('includes.header')
-        @include('includes.sidebar')
+       <!--  @include('includes.sidebar')
         <div class="sidebar-overlay" id="sidebar-overlay"></div>
         <div class="sidebar-mobile-menu-handle" id="sidebar-mobile-menu-handle"></div>
-        <div class="mobile-menu-handle"></div>
+        <div class="mobile-menu-handle"></div> -->
         <article class="content dashboard-page">
             @yield('content')
         </article>
@@ -81,6 +82,8 @@
 <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+<script src="{{ asset('js/chartist.min.js') }}"></script>
 {{--  <script src="{{ asset('js/turbolinks.js') }}"></script>  --}}
 {{--  <script src="{{ asset('js/jquery-3.2.1.slim.min.js') }}"></script>  --}}
 <script>

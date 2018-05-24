@@ -98,7 +98,7 @@ body {
 .app {
   position: relative;
   width: 100%;
-  padding-left: 230px;
+  padding-left: 0px;
   min-height: 100vh;
   margin: 0 auto;
   left: 0;
@@ -1676,7 +1676,7 @@ span a {
   background-color: #d7dde4;
   height: 70px;
   position: absolute;
-  left: 230px;
+  left: 0px;
   right: 0;
   -webkit-transition: left 0.3s ease;
   transition: left 0.3s ease;

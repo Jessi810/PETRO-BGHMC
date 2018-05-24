@@ -20,9 +20,10 @@ class DivisionController extends Controller
     public function getEmployees()
     {
         $employees = \DB::table('tblemployee');
+
         return DataTables::of($employees)
             ->addColumn('action', function ($employees) {
-                return '<a href="javascript:void(0)" class="btn btn-sm btn-primary import_button"><i class="fa fa-cloud-download" aria-hidden="true"></i> Import</a>';
+                return '<a href="javascript:void(0)" class="btn btn-sm btn-primary import_button" data-dismiss="modal"><i class="fa fa-cloud-download" aria-hidden="true"></i> Import</a>';
             })
             ->make(true);
     }

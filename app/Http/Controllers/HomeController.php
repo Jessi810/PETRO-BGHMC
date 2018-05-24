@@ -4,6 +4,8 @@ namespace Petro\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Petro\Expertise;
+
 class HomeController extends Controller
 {
     /**
@@ -24,6 +26,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $request->user()->authorizeRoles(['Admin', 'User']);
-        return view('home');
+        $expertises = Expertise::has('trainer')->orderBy('title', 'asc')->get();
+        return view('home', compact('expertises'));
     }
 }
