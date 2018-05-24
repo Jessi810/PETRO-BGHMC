@@ -22,7 +22,7 @@ class CreateTrainersTable extends Migration
             $table->string('lname');
             $table->string('fname');
             $table->string('mname')->nullable();
-            $table->string('nextensiom')->nullable();
+            $table->string('nextension')->nullable();
 
             $table->enum('type', array('Internal', 'External'));
             $table->string('agency_name')->nullable();
