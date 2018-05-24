@@ -87,4 +87,8 @@ Route::get('/debug', function () {
     return view('debug');
 });
 
-Route::get('autocomplete/expertise', 'AutoCompleteController@expertise')->name('autocomplete/expertise');
+Route::get('autocomplete/expertise', 'AutoCompleteController@expertise')->name('autocomplete.expertise');
+
+Route::get('filter', 'FilterController@filterExpertises')->name('filter');
+
+Route::get('report', 'ChartController@index')->name('report.index');

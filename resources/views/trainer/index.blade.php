@@ -2,6 +2,29 @@
 
 @section('content')
     <div class="row">
+        {{--  Filter  --}}
+        <div class="col-md-12">
+            <div class="card card-info">
+                <div class="card-header">
+                    <div class="header-block">
+                        <p class="title"> Filter </p>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <form action="{{ route('filter') }}">
+                        <select id="expertise" name="expertise" class="form-control">
+                            <option value="">SELECT</option>
+                            @foreach ($expertises as $expertise)
+                                <option value="{{ $expertise->title }}">{{ $expertise->title }}</option>
+                            @endforeach
+                        </select>
+                        <input type="submit" id="filterSubmit" class="invisible" />
+                    </form>
+                </div>
+            </div>
+        </div>
+            
+        {{--  Trainer List  --}}
         <div class="col-md-12">
             <div class="card card-info">
                 <div class="card-header">
@@ -36,6 +59,21 @@
 @section('scripts')
     <script>
         $('#sidebar-item-trainer').addClass('open active');
+
+        $("select#expertise").change(function(){
+            {{--  process($(this).children(":selected").html());  --}}
+            $('#filterSubmit').trigger('click');
+        });
+        $(document).ready(function() {
+            // Removes duplicate on SELECT OPTIONS
+            var map = {};
+            $('select option').each(function () {
+                if (map[this.value]) {
+                    $(this).remove()
+                }
+                map[this.value] = true;
+            })
+        });
 
         $('.datatable').DataTable({
             processing: true,
