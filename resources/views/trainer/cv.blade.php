@@ -190,7 +190,7 @@
 
                                             {{--  Form for adding education  --}}
                                             <tr>
-                                                <td colspan="5">
+                                                <td colspan="9">
                                                     <form id="education_template" class="d-none" formtype="education" formshown="false" formroute="{{ route('education.store') }}">
                                                         <div class="row form-group">
                                                             <div class="col-md-8">
@@ -578,7 +578,7 @@
 
                                             {{--  Form for adding education  --}}
                                             <tr>
-                                                <td colspan="4">
+                                                <td colspan="5">
                                                     <form id="training_template" class="d-none" formtype="training" formshown="false" formroute="{{ route('training.store') }}">
                                                         <div class="row form-group">
                                                             <div class="col-md-8">
@@ -657,7 +657,7 @@
 
                                             {{--  Form for adding relevant references  --}}
                                             <tr>
-                                                <td colspan="6">
+                                                <td colspan="7">
                                                     <form id="reference_template" class="d-none" formtype="reference" formshown="false" formroute="{{ route('reference.store') }}">
                                                         <div class="form-group">
                                                             <label for="name">Name</label>
