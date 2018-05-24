@@ -28,7 +28,10 @@
         ],
         "psr-4": {
             "Petro\\": "app/"
-        }
+        },
+        "files": [
+            "app/includes/fusioncharts.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
