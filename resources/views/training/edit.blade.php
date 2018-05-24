@@ -30,8 +30,8 @@
                                 <label for="topic">Topic <span class="badge badge-secondary">required</span></label>
                                 <input type="text" class="form-control underlined" name="topic" id="topic" value="{{ $training->topic }}" placeholder="Topic" required> </div>
                             <div class="col-md-4">
-                                <label for="datefrom">Date</label>
-                                <input type="text" class="form-control underlined" name="datefrom" id="datefrom" value="{{ $training->datefrom }}" placeholder="Date conducted"> </div>
+                                <label for="datefrom">Date (year-month-day)</label>
+                                <input type="text" class="form-control underlined" name="datefrom" id="datefrom" value="{{ $training->datefrom }}" placeholder="Date conducted (e.g. 2018-12-31)"> </div>
                         </div>
                         <div class="form-group">
                             <label for="agency_name">Agency</label>
