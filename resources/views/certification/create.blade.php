@@ -20,8 +20,8 @@
                             <label for="title">Title</label>
                             <input type="text" class="form-control underlined" name="title" id="title" placeholder="Certification title" required> </div>
                         <div class="form-group">
-                            <label for="position">Description</label>
-                            <input type="text" class="form-control underlined" name="description" id="description" placeholder="Description" required> </div>
+                            <label for="position">Description / Remarks</label>
+                            <input type="text" class="form-control underlined" name="description" id="description" placeholder="Description / Remarks" required> </div>
                         <div class="form-group">
                             <label for="date">Date</label>
                             <input type="text" class="form-control underlined" name="date" id="date" placeholder="Date" required> </div>

@@ -33,14 +33,14 @@
                             <input type="text" class="form-control underlined" name="position" id="position" value="{{ $work->position }}" placeholder="Position in company"> </div>
                         <div class="row form-group">
                             <div class="col-md-6">
-                                <label for="datefrom">Date</label>
-                                <input type="text" class="form-control underlined" name="datefrom" id="datefrom" value="{{ $work->datefrom }}" placeholder="Date started"> </div>
+                                <label for="datefrom">Date (year-month-day)</label>
+                                <input type="text" class="form-control underlined" name="datefrom" id="datefrom" value="{{ $work->datefrom }}" placeholder="Date started (e.g. 2018-12-31)"> </div>
                             <div class="col-md-6">
                                 <label for="datefrom" class="invisible">Date</label>
-                                <input type="text" class="form-control underlined" name="dateto" id="dateto" value="{{ $work->dateto }}" placeholder="Date ended"> </div>
+                                <input type="text" class="form-control underlined" name="dateto" id="dateto" value="{{ $work->dateto }}" placeholder="Date ended (e.g. 2018-12-31)"> </div>
                         </div>
                         <div class="form-group">
-                            <label for="description">Description</label>
+                            <label for="description">Description / Remarks</label>
                             <input type="text" class="form-control underlined" name="description" id="description" value="{{ $work->description }}" placeholder="Accomplisments, job you've done, etc."> </div>
                         
                         <div class="form-group">

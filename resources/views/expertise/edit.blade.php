@@ -29,8 +29,8 @@
                             <label for="title">Expertise <span class="badge badge-secondary">required</span></label>
                             <input type="text" class="form-control underlined" name="title" id="title" value="{{ $expertise->title }}" placeholder="Field of expertise" required> </div>
                         <div class="form-group">
-                            <label for="description">Description</label>
-                            <input type="text" class="form-control underlined" name="description" id="description" value="{{ $expertise->description }}" placeholder="Description"> </div>
+                            <label for="description">Description / Remarks</label>
+                            <input type="text" class="form-control underlined" name="description" id="description" value="{{ $expertise->description }}" placeholder="Description / Remarks"> </div>
                         
                         <div class="form-group">
                             <input type="submit" class="btn btn-success btn-block" />

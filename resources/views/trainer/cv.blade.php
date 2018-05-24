@@ -154,6 +154,7 @@
                                                 <th>From</th>
                                                 <th>To</th>
                                                 <th>Scholarship/ Academic Honors Received</th>
+                                                <th>Description / Remarks</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -167,6 +168,7 @@
                                                     <td>{{ $education->yearfrom }}</td>
                                                     <td>{{ $education->yearto }}</td>
                                                     <td>{{ $education->scholar }}</td>
+                                                    <td>{{ $education->description }}</td>
                                                     <td>
                                                         <a href="{{ route('education.edit', [$education->id, $trainer->id]) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit Education">
                                                             <i class="fa fa-pencil" aria-hidden="true"></i></a>
@@ -215,9 +217,14 @@
                                                                 <input type="text" class="form-control underlined" name="yearto" id="yearto" placeholder="Year"> </div>
                                                         </div>
                                                         <div class="row form-group">
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-12">
                                                                 <label for="scholar">Scholarship/ Academic Honors Received</label>
                                                                 <input type="text" class="form-control underlined" name="scholar" id="scholar" placeholder="Scholarship/ Academic Honors Received"> </div>
+                                                        </div>
+                                                        <div class="row form-group">
+                                                            <div class="col-md-12">
+                                                                <label for="description">Description / Remarks</label>
+                                                                <input type="text" class="form-control underlined" name="description" id="description" placeholder="Description / Remarks"> </div>
                                                         </div>
 
                                                         <div class="form-group">
@@ -251,7 +258,7 @@
                                                 <th>Position</th>
                                                 <th>Date Started</th>
                                                 <th>Date Ended</th>
-                                                <th>Description</th>
+                                                <th>Description / Remarks</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -290,14 +297,14 @@
                                                         </div>
                                                         <div class="row form-group">
                                                             <div class="col-md-6">
-                                                                <label for="datefrom">Date</label>
-                                                                <input type="text" class="form-control underlined" name="datefrom" id="datefrom" placeholder="Date started"> </div>
+                                                                <label for="datefrom">Date (year-month-day)</label>
+                                                                <input type="text" class="form-control underlined" name="datefrom" id="datefrom" placeholder="Date started (e.g. 2018-12-31)"> </div>
                                                             <div class="col-md-6">
                                                                 <label for="datefrom" class="invisible">Date</label>
-                                                                <input type="text" class="form-control underlined" name="dateto" id="dateto" placeholder="Date ended"> </div>
+                                                                <input type="text" class="form-control underlined" name="dateto" id="dateto" placeholder="Date ended (e.g. 2018-12-31)"> </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="description">Description</label>
+                                                            <label for="description">Description / Remarks</label>
                                                             <input type="text" class="form-control underlined" name="description" id="description" placeholder="Accomplisments, job you've done, etc."> </div>
                                     
                                                         <div class="form-group">
@@ -328,7 +335,7 @@
                                         <thead class="thead-default">
                                             <tr>
                                                 <th>Title</th>
-                                                <th>Description</th>
+                                                <th>Description / Remarks</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -358,7 +365,7 @@
                                                             <label for="title">Title</label>
                                                             <input type="text" class="form-control underlined" name="title" id="title" placeholder="Field of expertise" required> </div>
                                                         <div class="form-group">
-                                                            <label for="description">Description</label>
+                                                            <label for="description">Description / Remarks</label>
                                                             <input type="text" class="form-control underlined" name="description" id="description" placeholder="Description"> </div>
 
                                                         <div class="form-group">
@@ -391,7 +398,7 @@
                                         <thead class="thead-default">
                                             <tr>
                                                 <th>Title</th>
-                                                <th>Description</th>
+                                                <th>Description / Remarks</th>
                                                 <th>Date</th>
                                                 <th></th>
                                             </tr>
@@ -423,11 +430,11 @@
                                                             <label for="title">Title</label>
                                                             <input type="text" class="form-control underlined" name="title" id="title" placeholder="Certification title" required> </div>
                                                         <div class="form-group">
-                                                            <label for="position">Description</label>
-                                                            <input type="text" class="form-control underlined" name="description" id="description" placeholder="Description"> </div>
+                                                            <label for="position">Description / Remarks</label>
+                                                            <input type="text" class="form-control underlined" name="description" id="description" placeholder="Description / Remarks"> </div>
                                                         <div class="form-group">
-                                                            <label for="date">Date</label>
-                                                            <input type="text" class="form-control underlined" name="date" id="date" placeholder="Date"> </div>
+                                                            <label for="date">Date (year-month-day)</label>
+                                                            <input type="text" class="form-control underlined" name="date" id="date" placeholder="Date (e.g. 2018-12-31)"> </div>
 
                                                         <div class="form-group">
                                                             <button type="button" class="btn btn-success btn-block save_form">Add Certification</button>
@@ -459,7 +466,7 @@
                                         <thead class="thead-default">
                                             <tr>
                                                 <th>Title</th>
-                                                <th>Description</th>
+                                                <th>Description / Remarks</th>
                                                 <th>Proficiency</th>
                                                 <th></th>
                                             </tr>
@@ -506,8 +513,8 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="description">Description</label>
-                                                            <input type="text" class="form-control underlined" name="description" id="description" placeholder="Description"> </div>
+                                                            <label for="description">Description / Remarks</label>
+                                                            <input type="text" class="form-control underlined" name="description" id="description" placeholder="Description / Remarks"> </div>
 
                                                         <div class="form-group">
                                                             <button type="button" class="btn btn-success btn-block save_form">Add Skill</button>
@@ -539,6 +546,7 @@
                                                 <th>Topic</th>
                                                 <th>Date</th>
                                                 <th>Agency</th>
+                                                <th>Description / Remarks</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -548,6 +556,7 @@
                                                     <td>{{ $training->topic }}</td>
                                                     <td>{{ $training->datefrom }}</td>
                                                     <td>{{ $training->agency_name }}</td>
+                                                    <td>{{ $training->description }}</td>
                                                     <td>
                                                         <a href="{{ route('training.edit', [$training->id, $trainer->id]) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit Training">
                                                             <i class="fa fa-pencil" aria-hidden="true"></i></a>
@@ -576,14 +585,18 @@
                                                                 <label for="topic">Topic <span class="badge badge-secondary">required</span></label>
                                                                 <input type="text" class="form-control underlined" name="topic" id="topic" placeholder="Topic" required> </div>
                                                             <div class="col-md-4">
-                                                                <label for="datefrom">Date</label>
-                                                                <input type="text" class="form-control underlined" name="datefrom" id="datefrom" placeholder="Date conducted"> </div>
+                                                                <label for="datefrom">Date (year-month-day)</label>
+                                                                <input type="text" class="form-control underlined" name="datefrom" id="datefrom" placeholder="Date conducted (e.g. 2018-12-31)"> </div>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="major">Agency</label>
                                                             <input type="text" class="form-control underlined" name="agency_name" id="agency_name" placeholder="Agency name"> </div>
 
+                                                        <div class="form-group">
+                                                            <label for="description">Description / Remarks</label>
+                                                            <input type="text" class="form-control underlined" name="description" id="description" placeholder="Description / Remarks"> </div>
+    
                                                         <div class="form-group">
                                                             <button type="button" class="btn btn-success btn-block save_form">Add Training</button>
                                                         </div>
@@ -616,6 +629,7 @@
                                                 <th>Position</th>
                                                 <th>Mobile</th>
                                                 <th>Email</th>
+                                                <th>Description / Remarks</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -627,6 +641,7 @@
                                                     <td>{{ $reference->position }}</td>
                                                     <td>{{ $reference->mobile }}</td>
                                                     <td>{{ $reference->email }}</td>
+                                                    <td>{{ $reference->description }}</td>
                                                     <td>
                                                         <a href="{{ route('reference.edit', [$reference->id, $trainer->id]) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit Reference">
                                                             <i class="fa fa-pencil" aria-hidden="true"></i></a>
@@ -662,6 +677,12 @@
                                                             <div class="col-md-5">
                                                                 <label for="mobile">Mobile</label>
                                                                 <input type="text" class="form-control underlined" name="mobile" id="mobile" placeholder="Mobile number"> </div>
+                                                        </div>
+
+                                                        <div class="row form-group">
+                                                            <div class="col-md-12">
+                                                                <label for="description">Description / Remarks</label>
+                                                                <input type="email" class="form-control underlined" name="description" id="description" placeholder="Description / Remarks"> </div>
                                                         </div>
                                                         
                                                         <div class="form-group">

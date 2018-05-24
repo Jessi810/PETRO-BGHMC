@@ -25,8 +25,8 @@
                                 <input type="text" class="form-control underlined" name="proficiency" id="proficiency" placeholder="Skill level 1-100" required> </div>
                         </div>
                         <div class="form-group">
-                            <label for="description">Description</label>
-                            <input type="text" class="form-control underlined" name="description" id="description" placeholder="Description" required> </div>
+                            <label for="description">Description / Remarks</label>
+                            <input type="text" class="form-control underlined" name="description" id="description" placeholder="Description / Remarks" required> </div>
                         
                         <div class="form-group">
                             <input type="submit" class="btn btn-success btn-block" />
