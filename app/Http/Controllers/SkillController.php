@@ -44,7 +44,7 @@ class SkillController extends Controller
         $request->user()->authorizeRoles(['Admin']);
         $rules = [
             'title' => 'required|string',
-            'proficiency' => 'nullable|integer|min:1|max:100',
+            'proficiency' => 'nullable|string',
             'description' => 'nullable|string',
             'skill_level' => 'nullable|integer',
         ];
@@ -97,8 +97,12 @@ class SkillController extends Controller
     public function edit(Request $request, Skill $skill)
     {
         $request->user()->authorizeRoles(['Admin']);
+
+        $skillLevels = SkillLevel::get();
+        $trainer = Trainer::find($request->get('trainer_id'));
+        $trainer_id = $trainer->id;
         
-        return view('skill.edit', compact('skill'));
+        return view('skill.edit', compact('skill', 'skillLevels', 'trainer_id'));
     }
 
     /**
@@ -112,6 +116,9 @@ class SkillController extends Controller
     {
         $request->user()->authorizeRoles(['Admin']);
         
+        $input = $request->all();
+        $skill->level()->associate(SkillLevel::find($request->get('skill_level')))->save();
+
         $skill->update($request->all());
         return redirect()->route('cv', ['id' => $skill->trainer_id])->with('success','Skill updated successfully');
     }

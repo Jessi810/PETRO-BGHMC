@@ -477,9 +477,7 @@
                                                     <td>{{ $skill->title }}</td>
                                                     <td>{{ $skill->description }}</td>
                                                     <td>
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar" style="width: {{ $skill->proficiency }}%" aria-valuenow="{{ $skill->proficiency }}" aria-valuemin="0" aria-valuemax="100">{{ $skill->proficiency }}</div>
-                                                        </div>
+                                                        {{ $skill->level->name }}
                                                     </td>
                                                     <td>
                                                         <a href="{{ route('skill.edit', [$skill->id, $trainer->id]) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit Skill">
