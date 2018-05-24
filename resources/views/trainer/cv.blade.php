@@ -251,7 +251,7 @@
                                                 <th>Position</th>
                                                 <th>Date Started</th>
                                                 <th>Date Ended</th>
-                                                <th>Description</th>
+                                                <th>Description / Remarks</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -297,7 +297,7 @@
                                                                 <input type="text" class="form-control underlined" name="dateto" id="dateto" placeholder="Date ended"> </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="description">Description</label>
+                                                            <label for="description">Description / Remarks</label>
                                                             <input type="text" class="form-control underlined" name="description" id="description" placeholder="Accomplisments, job you've done, etc."> </div>
                                     
                                                         <div class="form-group">
@@ -328,7 +328,7 @@
                                         <thead class="thead-default">
                                             <tr>
                                                 <th>Title</th>
-                                                <th>Description</th>
+                                                <th>Description / Remarks</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -358,7 +358,7 @@
                                                             <label for="title">Title</label>
                                                             <input type="text" class="form-control underlined" name="title" id="title" placeholder="Field of expertise" required> </div>
                                                         <div class="form-group">
-                                                            <label for="description">Description</label>
+                                                            <label for="description">Description / Remarks</label>
                                                             <input type="text" class="form-control underlined" name="description" id="description" placeholder="Description"> </div>
 
                                                         <div class="form-group">
@@ -391,7 +391,7 @@
                                         <thead class="thead-default">
                                             <tr>
                                                 <th>Title</th>
-                                                <th>Description</th>
+                                                <th>Description / Remarks</th>
                                                 <th>Date</th>
                                                 <th></th>
                                             </tr>
@@ -423,8 +423,8 @@
                                                             <label for="title">Title</label>
                                                             <input type="text" class="form-control underlined" name="title" id="title" placeholder="Certification title" required> </div>
                                                         <div class="form-group">
-                                                            <label for="position">Description</label>
-                                                            <input type="text" class="form-control underlined" name="description" id="description" placeholder="Description"> </div>
+                                                            <label for="position">Description / Remarks</label>
+                                                            <input type="text" class="form-control underlined" name="description" id="description" placeholder="Description / Remarks"> </div>
                                                         <div class="form-group">
                                                             <label for="date">Date</label>
                                                             <input type="text" class="form-control underlined" name="date" id="date" placeholder="Date"> </div>
@@ -459,7 +459,7 @@
                                         <thead class="thead-default">
                                             <tr>
                                                 <th>Title</th>
-                                                <th>Description</th>
+                                                <th>Description / Remarks</th>
                                                 <th>Proficiency</th>
                                                 <th></th>
                                             </tr>
@@ -506,8 +506,8 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="description">Description</label>
-                                                            <input type="text" class="form-control underlined" name="description" id="description" placeholder="Description"> </div>
+                                                            <label for="description">Description / Remarks</label>
+                                                            <input type="text" class="form-control underlined" name="description" id="description" placeholder="Description / Remarks"> </div>
 
                                                         <div class="form-group">
                                                             <button type="button" class="btn btn-success btn-block save_form">Add Skill</button>

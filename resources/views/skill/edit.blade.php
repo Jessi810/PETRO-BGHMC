@@ -34,8 +34,8 @@
                                 <input type="text" class="form-control underlined" name="proficiency" id="proficiency" value="{{ $skill->proficiency }}" placeholder="Skill level"> </div>
                         </div>
                         <div class="form-group">
-                            <label for="description">Description</label>
-                            <input type="text" class="form-control underlined" name="description" id="description" value="{{ $skill->description }}" placeholder="Description"> </div>
+                            <label for="description">Description / Remarks</label>
+                            <input type="text" class="form-control underlined" name="description" id="description" value="{{ $skill->description }}" placeholder="Description / Remarks"> </div>
                         
                         <div class="form-group">
                             <input type="submit" class="btn btn-success btn-block" />

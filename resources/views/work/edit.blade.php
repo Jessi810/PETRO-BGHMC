@@ -40,7 +40,7 @@
                                 <input type="text" class="form-control underlined" name="dateto" id="dateto" value="{{ $work->dateto }}" placeholder="Date ended"> </div>
                         </div>
                         <div class="form-group">
-                            <label for="description">Description</label>
+                            <label for="description">Description / Remarks</label>
                             <input type="text" class="form-control underlined" name="description" id="description" value="{{ $work->description }}" placeholder="Accomplisments, job you've done, etc."> </div>
                         
                         <div class="form-group">
