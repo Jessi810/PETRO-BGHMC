@@ -53,6 +53,10 @@
           <a class="nav-link" href="{{ route('division.index') }}">
               <i class="fa fa-pencil-square-o"></i> Divisions </a>
       </li>
+      <li class="nav-item">
+          <a class="nav-link" href="{{ route('report.index') }}">
+              <i class="fa fa-file"></i> Reports </a>
+      </li>
       <li class="nav-item" ">
           
       </li>
