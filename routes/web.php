@@ -92,3 +92,4 @@ Route::get('autocomplete/expertise', 'AutoCompleteController@expertise')->name('
 Route::get('filter', 'FilterController@filterExpertises')->name('filter');
 
 Route::get('report', 'ChartController@index')->name('report.index');
+Route::get('getTrainerCount7Days', 'ChartController@getTrainerCount7Days')->name('report.trainer7days');
