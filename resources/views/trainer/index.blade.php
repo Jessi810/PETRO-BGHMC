@@ -86,7 +86,7 @@
                 {data: 'nextension', name: 'nextension'},
                 {data: 'type', name: 'type'},
                 {data: 'agency_name', name: 'agency_name'},
-                {data: 'expertises', name: 'expertises.title'},
+                {data: 'expertises', name: 'expertises.title', 'orderable': false, },
                 {data: 'actions', name: 'actions', orderable: false}
             ]
         });
