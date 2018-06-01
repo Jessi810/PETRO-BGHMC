@@ -114,6 +114,7 @@
                         "xAxisLineThickness": "1",
                         "xAxisLineColor": "#999999",
                         "showAlternateHGridColor": "0",
+                        "decimals": "3",
 
                         "theme": "fint"
                     };
@@ -131,6 +132,7 @@
                     
                     trainer7DaysLineChart.render();
                     console.log(chartData);
+                    console.log(data.today);
                 }
             });
 
